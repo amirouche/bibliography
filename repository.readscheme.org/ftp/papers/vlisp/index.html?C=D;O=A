@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /ftp/papers/vlisp</title>
+ </head>
+ <body>
+<h1>Index of /ftp/papers/vlisp</h1>
+<table><tr><th><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=D">Description</a></th></tr><tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[DIR]"></td><td><a href="/ftp/papers/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="compiler.pdf">compiler.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">455K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="compiler.ps.gz">compiler.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">169K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="faithfulness.pdf">faithfulness.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">282K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="faithfulness.ps.gz">faithfulness.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">118K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="flattener.pdf">flattener.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">335K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="flattener.ps.gz">flattener.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">121K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="guide.pdf">guide.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">355K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="guide.ps.gz">guide.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">124K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="image_builder.pdf">image_builder.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">359K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="image_builder.ps.gz">image_builder.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">135K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="linker.pdf">linker.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">236K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="linker.ps.gz">linker.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right"> 79K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="mtps.pdf">mtps.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">753K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mtps.ps.gz">mtps.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">301K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="prescheme.pdf">prescheme.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">352K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="prescheme.ps.gz">prescheme.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">134K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="preschemerevised.pdf">preschemerevised.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">477K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="preschemerevised.ps.gz">preschemerevised.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">190K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="pureprescheme.pdf">pureprescheme.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">324K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pureprescheme.ps.gz">pureprescheme.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">116K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="runtime.pdf">runtime.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">279K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="runtime.ps.gz">runtime.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">104K</td></tr>
+<tr><td valign="top"><img src="/icons/layout.gif" alt="[   ]"></td><td><a href="vm.pdf">vm.pdf</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">491K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="vm.ps.gz">vm.ps.gz</a></td><td align="right">22-Oct-2010 13:04  </td><td align="right">189K</td></tr>
+<tr><th colspan="5"><hr></th></tr>
+</table>
+<address>Apache/2.2.9 (Debian) mod_wsgi/2.5 Python/2.5.2 Server at repository.readscheme.org Port 80</address>
+</body></html>

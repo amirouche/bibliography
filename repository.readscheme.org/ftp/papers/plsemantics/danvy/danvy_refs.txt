@@ -1,0 +1,73 @@
+﻿Olivier Danvy - semantics stuff:
+
+
+Olivier Danvy and Lasse R. Nielsen. Defunctionalization at work. Principles and Practice of Declarative Programming (PPDP’01), September 2001. Extended version available as the research report BRICS RS-01-23. AVailable online: pdf.
+
+Mads Sig Ager, Dariusz Biernacki, Olivier Danvy, and Jan Midtgaard. A functional correspondence between evaluators and abstract machines. Principles and Practice of Declarative Programming (PPDP’03). August 2003. Also available as the research report BRICS RS-03-13. Available online: pdf.
+
+Mads Sig Ager, Dariusz Biernacki, Olivier Danvy, and Jan Midtgaard. From interpreter to compiler and virtual machine: a functional derivation. Research Report BRICS RS-03-14. University of Aarhus. March 2003. Available online: pdf.
+
+Olivier Danvy. A rational deconstruction of Landin’s SECD machine. Implementation and Application of Functional Languages, 16th International Workshop, IFL’04. September 2004. Extended version available as the research report BRICS RS-03-33. Available online: pdf.
+
+Olivier Danvy. On Evaluation Contexts, Continuations, and the Rest of the Computation. Continuations Workshop 2004 (CW04). January 2004. Available online: pdf.
+
+Mads Sig Ager, Olivier Danvy, and Jan Midtgaard. A functional correspondence between call-by-need evaluators and lazy abstract machines. Information Processing Letters, 90(5):223–232. 2004. Extended version available as the technical report BRICS-RS-04-3. Available online: pdf.
+
+Dariusz Biernacki and Olivier Danvy. From interpreter to logic engine by defunctionalization. Logic Based Program Synthesis and Transformation (LOPSTR 2003). August 2003. Also available as the research report BRICS RS-04-5. Available online: pdf.
+
+Olivier Danvy and Lasse R. Nielsen. Refocusing in reduction semantics. Technical Report BRICS RS-04-26. University of Aarhus. November 2004. A preliminary version appears in proceedings of the Workshop on Rule-Based Programming (RULE 2001). Available online: pdf.
+
+Mads Sig Ager, Olivier Danvy, and Jan Midtgaard. A functional correspondence between monadic evaluators and abstract machines for languages with computational effects. Theoretical Computer Science, 342(1):149–172, 2005. Extended version available as the research report BRICS RS-04-28. Available online: pdf.
+
+Olivier Danvy. From reduction-based to reduction-free normalization. Workshop on Reduction Strategies in Rewriting and Programming (WRS'04). May 2004. Also available as the research report BRICS RS-04-30. Available online: pdf.
+
+Małgorzata Biernacka, Dariusz Biernacki, and Olivier Danvy. An operational foundation for delimited continuations in the CPS hierarchy. Logical Methods in Computer Science, 1(2:5):139. November 2005. Also available as the research report BRICS RS-05-24. Available online: pdf.
+
+Małgorzata Biernacka and Olivier Danvy. A syntactic correspondence between context-sensitive calculi and abstract machines. Theoretical Computer Science, 375(1-3):76108, 2007. Extended version available as the research report BRICS RS-05-38. Available online: pdf.
+
+Dariusz Biernacki. The Theory and Practice of Programming Languages with Delimited Continuations. PhD thesis, BRICS PhD School, University of Aarhus. December 2005. Available online: pdf.
+
+Małgorzata Biernacka. A Derivational Approach to the Operational Semantics of Functional Languages. PhD thesis, BRICS PhD School, University of Aarhus. January 2006. Available online: pdf.
+
+Małgorzata Biernacka and Olivier Danvy. A concrete framework for environment machines. ACM Transactions on Computational Logic, 9(1):130, 2007. Article #6. Extended version available as the research report BRICS RS-06-3. Available online: pdf.
+
+Olivier Danvy and Kevin Millikin. A rational deconstruction of Landin’s J operator. Research Report BRICS RS-06-17. University
+of Aarhus. December 2006. A preliminary version appears in the proceedings of the Workshop on the Implementation and Application of Functional Languages. AVailable online: pdf.
+
+Olivier Danvy and Kevin Millikin. On the equivalence between small-step and big-step abstract machines: a simple application of lightweight fusion. Information Processing Letters, 106(3):100–109, 2008. Extended version available as the technical report BRICS-RS-07-16. Available online: pdf.
+
+Olivier Danvy. From Reduction-based to Reduction-free Normalization. Summer School on Advanced Functional Programming (AFP08). May 2008. Available online: pdf.
+
+Olivier Danvy and Kevin Millikin. Refunctionalization at work. Science of Computer Programming. 74(8):534-549. 2009. Extended version available as the research report BRICS RS-08-04. Available online: pdf.
+
+Olivier Danvy and Jacob Johannsen. Inter-deriving semantic artifacts for object-oriented programming. Workshop on Logic, Language, Information and Computation (WoLLIC 2008). July 2008. Extended version available as the research report BRICS RS-08-05. Available online: pdf.
+
+Jacob Johannsen. An Investigation of Abadi and Cardelli's Untyped Calculus of Objects. Master's thesis. BRICS RS-08-06. University of Aarhus. JUne 2008. Available online: pdf.
+
+Olivier Danvy. "Towards compatible and interderivable semantic specifications for the Scheme programming language, part I: abstract machines, natural semantics, and denotational semantics". 2008 Workshop on Scheme and Functional Programming. September 2008. Available online: pdf.
+
+Małgorzata Biernacka and Olivier Danvy. "Towards compatible and interderivable semantic specifications for the Scheme programming language, part II: reduction semantics and abstract machines". 2008 Workshop on Scheme and Functional Programming. September 2008. Available online: pdf.
+
+Olivier Danvy. Defunctionalized Interpreters for Programming Languages. International Conference on Functional Programming (ICFP08). September 2008. Available online: ACM Digital Library.
+
+Olivier Danvy, Kevin Millikin, Johan Munk, and Ian Zerny. Defunctionalized Interpreters for Call-by-Need Evaluation. Functional and Logic Programming (FLOPS 2010). April 2010. Available online: pdf.
+
+Olivier Danvy, Jacob Johannsen and Ian Zerny. A Walk in the Semantic Park. Partial Evaluation and Semantics-Based Program Manipulation (PEPM 2011). January 2011. Available online: pdf.
+
+Olivier Danvy, Kevin Millikin, Johan Munk, and Ian Zerny. On Inter-deriving Small-step and Big-step Semantics: A Case Study for Storeless Call-by-need Evaluation. Theoretical Computer Science, to appear 2012. Available online: pdf.
+
+Ian Zerny. On Graph Rewriting, Reduction and Evaluation. Trends in Functional Programming Volume 10 (TFP 2009). 2009. Available online: pdf.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

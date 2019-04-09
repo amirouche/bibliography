@@ -1,0 +1,8132 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 5728
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT2 1 Tf
+14 0 0 14 85.96 710.67 Tm
+0 g
+0 Tc
+0 Tw
+(Identifying Pro)Tj
+/TT3 1 Tf
+7 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.6108 0 TD
+(table Specialization in Object-Oriented Languages)Tj
+/TT5 1 Tf
+12 0 0 12 176.8 685 Tm
+[(Jef)19(frey Dean, Craig Chambers, and David Grove)]TJ
+11 0 0 11 182.96 661.67 Tm
+(Department of Computer Science and Engineering)Tj
+5.6627 -1.1818 TD
+(University of Washington)Tj
+/TT2 1 Tf
+12 0 0 12 63 627 Tm
+(Abstract)Tj
+/TT7 1 Tf
+10 0 0 10 63 608.33 Tm
+-0.022 Tw
+(The performance of object-oriented languages can be greatly improved if methods can be specialized for particular classes)Tj
+0 -1.2 TD
+-0.023 Tw
+[(of ar)18.9(guments. Such specialization can provide the compiler with enough class information about the receivers of messages)]TJ
+T*
+0.079 Tw
+[(within the specialized routine to enable these messages to be statically-bound to their tar)34.1(get methods and subsequently)]TJ
+T*
+-0.002 Tw
+[(inlined. W)81.2(e)0( present an algorithm for automatically determining which methods are most pro)]TJ
+/TT8 1 Tf
+36.8011 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.002 Tw
+(table to specialize for which)Tj
+-37.3572 -1.2 TD
+0.012 Tw
+[(ar)17.9(gument classes. This algorithm improves on previous automatic techniques by avoiding the twin problems of over)34.7(- and)]TJ
+T*
+0 Tw
+(underspecialization and by being suitable for specializing programs that use multi-methods.)Tj
+/TT2 1 Tf
+12 0 0 12 63 527 Tm
+[(1)-943.8(Introduction)]TJ
+/TT7 1 Tf
+10 0 0 10 63 508.33 Tm
+0.061 Tw
+(Object-oriented languages are useful for implementing abstractions and structuring programs to be more extensible and)Tj
+T*
+-0.055 Tw
+[(maintainable. One of the key reasons is dynamic binding \(also known as message passing\). Unfortunately)88.2(, dynamic binding)]TJ
+T*
+0.005 Tw
+[(is slow)67.2(, compared with a simple procedure call. In relatively pure object-oriented languages, such as Smalltalk [Goldber)36.4(g)]TJ
+T*
+0.106 Tw
+[(& Robson 83], Eif)20.7(fel [Meyer 92], T)37.4(rellis [Schaf)19.4(fert)]TJ
+/TT10 1 Tf
+21.597 0 TD
+(et al.)Tj
+/TT7 1 Tf
+2.106 0 TD
+[( 86], S)]TJ
+9 0 0 9 328.53 472.33 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 344.51 472.33 Tm
+0.106 Tw
+[( [Ungar & Smith 87], and Cecil [Chambers 92b],)]TJ
+-28.151 -1.2 TD
+0.031 Tw
+(dynamic binding occurs very frequently and consequently its impact on performance is severe. For example, an ef)Tj
+/TT8 1 Tf
+46.101 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(cient)Tj
+-46.6572 -1.2 TD
+-0.047 Tw
+[(implementation of Smalltalk-80 runs a suite of small benchmarks 5 to 10 times more slowly than does optimized C, in lar)34.4(ge)]TJ
+T*
+0.025 Tw
+(part due to the overhead of dynamic binding [Chambers & Ungar 91]. Even for hybrid languages that promote relatively)Tj
+T*
+-0.044 Tw
+(coarse-grained use of dynamic binding, such as C++ [Stroustrup 91], Modula-3 [Nelson 91], and CLOS [Bobrow)Tj
+/TT10 1 Tf
+44.858 0 TD
+(et al.)Tj
+/TT7 1 Tf
+1.954 0 TD
+[( 88],)]TJ
+-46.812 -1.2 TD
+0.003 Tw
+(dynamic binding can become a performance bottleneck if the programming style in use encourages heavier use of object-)Tj
+T*
+0 Tw
+(oriented features.)Tj
+0 -1.8 TD
+0.063 Tw
+[(Program performance can be improved if the tar)28.4(get of a dynamic message send can be determined at compile-time. By)]TJ
+0 -1.2 TD
+0.109 Tw
+[(doing so, the cost of determining the tar)27.9(get method at runtime is eliminated, and these statically bound call sites also)]TJ
+T*
+0.064 Tw
+[(become amenable to further optimizations such as inlining. In order to statically bind a call site, however)62.3(, the compiler)]TJ
+T*
+0.169 Tw
+(requires static information about the possible classes of the receiver of a message. One way of obtaining this class)Tj
+T*
+-0.013 Tw
+[(information is to produce a version of a method specialized for a subset of its possible ar)38.1(gument classes. This provides the)]TJ
+T*
+0.001 Tw
+[(compiler with additional information about the classes of the methodí)69.7(s formal ar)20.5(guments, permitting messages sent to the)]TJ
+T*
+-0.034 Tw
+(formals to be statically bound and potentially inlined. This can greatly improve performance. For example, S)Tj
+9 0 0 9 493.11 310.33 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 509.1 310.33 Tm
+-0.034 Tw
+[( programs)]TJ
+-44.61 -1.2 TD
+0 Tw
+(run from 1.5 to 5 times faster as a result of specialization [Chambers 92a].)Tj
+0 -1.8 TD
+0.107 Tw
+(In this paper we present an algorithm that identi)Tj
+/TT8 1 Tf
+20.0171 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.107 Tw
+(es automatically those points in the program where specialization is)Tj
+-20.5733 -1.2 TD
+0 Tw
+(pro)Tj
+/TT8 1 Tf
+1.333 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.021 Tw
+(table using call graphs derived from dynamic pro)Tj
+/TT8 1 Tf
+19.8355 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.021 Tw
+(les of the program. Section 2 provides an example motivating the)Tj
+-22.2808 -1.2 TD
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.035 Tw
+(ts of specialization. Section 3 discusses previous work and identi)Tj
+/TT8 1 Tf
+26.2545 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.035 Tw
+(es several shortcomings which are addressed by)Tj
+-29.2545 -1.2 TD
+-0.032 Tw
+(our algorithm. Section 4 presents our algorithm. Section 5 describes our current implementation status. Section 6 discusses)Tj
+T*
+0 Tw
+[(related work, and section 7 of)22.8(fers our conclusions.)]TJ
+/TT2 1 Tf
+12 0 0 12 63 211 Tm
+[(2)-943.8(A)0( Motivating Example)]TJ
+/TT7 1 Tf
+10 0 0 10 63 192.33 Tm
+0.074 Tw
+[(T)69.8(o)0( illustrate the issues surrounding specialization of methods in object-oriented languages, we present an example of a)]TJ
+T*
+0.056 Tw
+(keyed table class hierarchy and the basic table lookup method,)Tj
+/TT12 1 Tf
+25.791 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.056 Tw
+[(. In the inheritance graph below)70.3(, class names are)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT3 5 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+14 0 obj
+<<
+/Length 11237
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+0.061 Tw
+(shown in boldface type, inheritance relations are indicated by arrows, and methods de)Tj
+/TT8 1 Tf
+35.0538 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.061 Tw
+(ned for a class are shown in the)Tj
+-35.6099 -1.2 TD
+0 Tw
+(boxes:)Tj
+0 -23.68 TD
+(The)Tj
+/TT12 1 Tf
+1.806 0 TD
+(fetch)Tj
+/TT7 1 Tf
+2.999 0 TD
+0.002 Tw
+( method is the primary interface to tables. This method is de)Tj
+/TT8 1 Tf
+24.0713 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.002 Tw
+(ned in the)Tj
+/TT12 1 Tf
+4.1935 0 TD
+0 Tw
+(Table)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.0001 Tc
+0.0019 Tw
+( abstract class and is inherited)Tj
+-36.624 -1.2 TD
+0 Tc
+0.037 Tw
+(by all data structures that support a table-like interface. The)Tj
+/TT12 1 Tf
+24.433 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.037 Tw
+[( method in turn sends the)]TJ
+/TT12 1 Tf
+10.548 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+0.037 Tw
+[( message to itself)]TJ
+-41.577 -1.2 TD
+0.033 Tw
+[(with a default error)21.9(-handling closure \(enclosed in braces\) as an extra ar)24.6(gument. Each concrete implementation of a table)]TJ
+T*
+0 Tw
+(de)Tj
+/TT8 1 Tf
+0.9438 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.189 Tw
+(nes its own)Tj
+/TT12 1 Tf
+5.313 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+0.189 Tw
+[( method, except for)]TJ
+/TT12 1 Tf
+8.777 0 TD
+0 Tw
+(GrowableHashTable)Tj
+/TT7 1 Tf
+10.195 0 TD
+0.189 Tw
+[( which inherits the)]TJ
+/TT12 1 Tf
+8.417 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+0.189 Tw
+[( method from its)]TJ
+-41.398 -1.2 TD
+0 Tw
+(superclass,)Tj
+/TT12 1 Tf
+4.607 0 TD
+(HashTable)Tj
+/TT7 1 Tf
+5.397 0 TD
+(.)Tj
+-10.004 -1.8 TD
+-0.009 Tw
+[(Call graphs are a useful framework with which to describe the ef)32.2(fects of specialization. A call graph represents the calling)]TJ
+0 -1.2 TD
+0.045 Tw
+[(structure of a program: nodes correspond to methods and edges represent calls from one method to another)72.6(. For the call)]TJ
+T*
+0.041 Tw
+[(graphs in this paper)42.4(, call sites are indicated with small squares, which are white)-1255.5( if the call site is dynamically bound,)]TJ
+T*
+0.02 Tw
+[(and are shaded)-1338.6( if the call site is statically bound. Edges have a weight associated with them, indicating the number of)]TJ
+T*
+0.005 Tw
+(times the edge was traversed during execution. The following call graph illustrates a program fragment where )Tj
+/TT8 1 Tf
+44.2592 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.005 Tw
+(ve callers)Tj
+-44.8154 -1.2 TD
+0 Tw
+(send the)Tj
+/TT12 1 Tf
+3.553 0 TD
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+( message:)Tj
+-6.551 -18.123 TD
+(The)Tj
+/TT12 1 Tf
+1.792 0 TD
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+-0.012 Tw
+[( method sends the)]TJ
+/TT12 1 Tf
+7.39 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+-0.012 Tw
+[( message to)]TJ
+/TT12 1 Tf
+4.876 0 TD
+0 Tw
+(self)Tj
+/TT7 1 Tf
+2.399 0 TD
+-0.012 Tw
+[(, which is dynamically dispatched since three dif)29.1(ferent)]TJ
+/TT12 1 Tf
+21.949 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+-45.002 -1.2 TD
+(methods can be invoked from this one call site.)Tj
+0 -1.8 TD
+0.087 Tw
+(By specializing the)Tj
+/TT12 1 Tf
+8.174 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.087 Tw
+[( method for dif)19.4(ferent subsets of its potential receiver classes, the compiler can obtain more)]TJ
+-11.172 -1.2 TD
+0.004 Tw
+(precise static information in the specialized versions about the class of the receiver of the)Tj
+/TT12 1 Tf
+35.942 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+0.0002 Tc
+0.0038 Tw
+( message, enabling the)Tj
+ET
+1 i 
+304.69 632.18 m
+307.99 632.18 l
+304.69 643.72 l
+301.38 632.18 l
+f*
+0 G
+2 J 0 j 1.08 w 3.86 M []0 d
+304.69 632.18 m
+304.69 562.47 l
+S
+211.79 636.96 m
+214.41 634.93 l
+218.87 646.06 l
+209.18 638.98 l
+f*
+211.8 636.95 m
+189.74 608.27 l
+S
+378.12 635.38 m
+380.96 637.07 l
+372.21 645.28 l
+375.28 633.68 l
+f*
+378.13 635.38 m
+393.9 608.56 l
+S
+0.5 g
+0.5 G
+0 J 0.6 w 
+113.78 677.79 373.1 -31.68 re
+B*
+1 g
+0 G
+108.88 679.96 375.53 -30.89 re
+B*
+BT
+/TT14 1 Tf
+12 0 0 12 281.42 684.78 Tm
+0 g
+0 Tc
+0 Tw
+[(T)92(able)]TJ
+-10.6783 -6.1692 TD
+(String)Tj
+ET
+1 g
+111.01 677.69 368.32 -24.8 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 114.95 671.02 Tm
+0 g
+-0.052 Tw
+(method fetch\(self@Table, key\):Value { return fetch3\(self, key, { error\(ìkey not foundî\) }\) })Tj
+0 -1.2 TD
+0 Tw
+(method fetch3\(self@Table, key, if_absent\) {)Tj
+/TT10 1 Tf
+18.137 0 TD
+(abstract)Tj
+/TT7 1 Tf
+3.276 0 TD
+( })Tj
+ET
+0.5 g
+0.5 G
+75.63 604.98 217.99 -20.77 re
+B*
+1 g
+0 G
+70.44 606.33 220.8 -19.21 re
+B*
+72.4 603.36 215.89 -13.86 re
+f
+BT
+10 0 0 10 76.34 596.69 Tm
+0 g
+-0.057 Tw
+(method fetch3\(self@String, key, if_absent\) {)Tj
+/TT10 1 Tf
+17.828 0 TD
+0 Tw
+(..code.)Tj
+/TT7 1 Tf
+2.637 0 TD
+(.})Tj
+/TT14 1 Tf
+12 0 0 12 397.22 611.34 Tm
+[(V)92.2(ector)]TJ
+ET
+0.5 g
+0.5 G
+324.35 605.58 221.8 -20.78 re
+B*
+1 g
+0 G
+319.06 606.93 224.67 -19.21 re
+B*
+322.17 603.95 218.55 -13.86 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 326.11 597.29 Tm
+0 g
+-0.059 Tw
+(method fetch3\(self@Vector, key, if_absent\) {)Tj
+/TT10 1 Tf
+18.095 0 TD
+0 Tw
+(..code.)Tj
+/TT7 1 Tf
+2.637 0 TD
+(.})Tj
+/TT14 1 Tf
+12 0 0 12 244.06 564.4601 Tm
+[(HashT)93.5(able)]TJ
+ET
+0.5 g
+0.5 G
+196.75 558.8 243.93 -19.31 re
+B*
+1 g
+0 G
+190.94 560.05 247.08 -17.85 re
+B*
+198.44 557.29 236.27 -12.89 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 202.38 550.6201 Tm
+0 g
+-0.019 Tw
+(method fetch3\(self@HashTable, key, if_absent\) {)Tj
+/TT10 1 Tf
+19.866 0 TD
+0 Tw
+(..code.)Tj
+/TT7 1 Tf
+2.637 0 TD
+(.})Tj
+/TT14 1 Tf
+12 0 0 12 191.91 510.37 Tm
+[(Gr)18.3(owableHashT)95.1(able)]TJ
+ET
+0.5 g
+0.5 G
+265.61 503.14 79.17 -19.04 re
+B*
+1 g
+0 G
+263.78 504.39 77.91 -17.85 re
+B*
+266.15 501.63 74.5 -12.88 re
+f
+BT
+/TT10 1 Tf
+10 0 0 10 270.09 494.96 Tm
+0 g
+(no fetch3 method)Tj
+ET
+301.56 523.59 m
+304.87 523.59 l
+301.56 535.12 l
+298.26 523.59 l
+f*
+2 J 1.08 w 
+301.56 523.59 m
+301.56 508.56 l
+S
+1 g
+0 J 
+389.94 381.33 5.74 -5.74 re
+B*
+0.5 g
+126.93 369.33 5.74 -5.74 re
+B*
+1 g
+392.97 321.81 m
+392.97 326.13 l
+387.34 326.13 382.77 324.195 382.77 321.81 c
+382.77 319.425 387.34 317.49 392.97 317.49 c
+398.6 317.49 403.17 319.425 403.17 321.81 c
+403.17 324.195 398.6 326.13 392.97 326.13 c
+f
+2 J 0.6 w 
+393 326.14 m
+387.392 326.14 382.84 324.214 382.84 321.84 c
+382.84 319.466 387.392 317.54 393 317.54 c
+398.608 317.54 403.16 319.466 403.16 321.84 c
+403.16 324.214 398.608 326.14 393 326.14 c
+S
+0 J 1.08 w 
+177.66 210.28 m
+149.232 210.28 126.16 203.784 126.16 195.78 c
+126.16 187.776 149.232 181.28 177.66 181.28 c
+206.088 181.28 229.16 187.776 229.16 195.78 c
+229.16 203.784 206.088 210.28 177.66 210.28 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 134.66 194 Tm
+0 g
+(fetch3\(@Vector\))Tj
+ET
+2 J 
+290.83 248.57 m
+283.17 245.7 264.98 239 255.41 234.21 c
+242.96 228.46 225.72 219.85 210.41 212.19 c
+S
+210.3 212.17 m
+208.91 214.92 l
+202.75 208.36 l
+211.68 209.42 l
+f*
+210.3 212.17 m
+211.31 212.64 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 259.87 227.03 Tm
+(10,000)Tj
+ET
+0 J 
+293.46 210.28 m
+265.032 210.28 241.96 203.784 241.96 195.78 c
+241.96 187.776 265.032 181.28 293.46 181.28 c
+321.888 181.28 344.96 187.776 344.96 195.78 c
+344.96 203.784 321.888 210.28 293.46 210.28 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 250.51 194 Tm
+(fetch3\(@String\))Tj
+ET
+2 J 
+293.7 246.66 m
+293.7 241.87 293.7 230.38 293.7 219.85 c
+S
+293.7 218.73 m
+290.62 218.73 l
+293.7 210.27 l
+296.78 218.73 l
+f*
+293.7 218.73 m
+293.7 219.85 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 298.39 227.03 Tm
+(6,000)Tj
+ET
+0 J 
+421.86 210.28 m
+386.532 210.28 357.86 203.784 357.86 195.78 c
+357.86 187.776 386.532 181.28 421.86 181.28 c
+457.188 181.28 485.86 187.776 485.86 195.78 c
+485.86 203.784 457.188 210.28 421.86 210.28 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 370.17 194 Tm
+(fetch3\(@HashTable\))Tj
+ET
+2 J 
+296.58 248.57 m
+309.02 242.83 353.06 224.64 385.62 211.23 c
+S
+384.55 211.71 m
+383.33 208.89 l
+392.32 208.36 l
+385.77 214.54 l
+f*
+384.55 211.71 m
+383.52 212.13 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 361.94 227.03 Tm
+(100)Tj
+ET
+0 J 
+293.94 278.92 m
+272.136 278.92 254.44 272.424 254.44 264.42 c
+254.44 256.416 272.136 249.92 293.94 249.92 c
+315.744 249.92 333.44 256.416 333.44 264.42 c
+333.44 272.424 315.744 278.92 293.94 278.92 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 256.27 262.66 Tm
+(fetch\(@Table\))Tj
+ET
+2 J 
+390.41 315.32 m
+384.66 309.57 372.21 296.17 363.6 291.38 c
+354.98 286.59 342.53 281.81 331.04 277.02 c
+S
+330.44 276.83 m
+329.47 279.75 l
+322.42 274.15 l
+331.42 273.91 l
+f*
+330.45 276.83 m
+331.51 277.17 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 381.7 295.69 Tm
+(9,500)Tj
+ET
+344.45 315.32 m
+340.62 309.57 332.96 297.12 327.21 291.38 c
+322.43 287.55 316.68 282.76 v
+S
+316.39 282.54 m
+314.38 284.87 l
+309.97 277.02 l
+318.39 280.2 l
+f*
+316.39 282.54 m
+317.25 283.25 l
+S
+BT
+8.6 0 0 8.6 339.92 295.69 Tm
+(500)Tj
+ET
+293.7 315.32 m
+293.7 310.53 293.7 299.04 293.7 288.51 c
+S
+293.7 287.39 m
+290.62 287.39 l
+293.7 278.93 l
+296.78 287.39 l
+f*
+293.7 287.39 m
+293.7 288.51 l
+S
+BT
+8.6 0 0 8.6 298.39 295.69 Tm
+(6,000)Tj
+ET
+253.49 315.32 m
+258.28 309.57 270.72 294.25 279.34 282.76 c
+S
+277.86 284.57 m
+275.46 282.64 l
+283.17 277.98 l
+280.26 286.5 l
+f*
+277.86 284.57 m
+277.19 285.45 l
+S
+BT
+8.6 0 0 8.6 276.96 295.69 Tm
+(99)Tj
+ET
+216.15 315.32 m
+221.89 309.57 236.26 296.17 243.92 291.38 c
+249.66 287.55 257.32 282.76 264.98 278.93 c
+S
+263.16 279.87 m
+261.78 277.12 l
+270.71 276.06 l
+264.55 282.62 l
+f*
+263.17 279.87 m
+262.16 280.34 l
+S
+BT
+8.6 0 0 8.6 248.47 295.69 Tm
+(1)Tj
+ET
+1 g
+0 J 
+290.83 252.4 5.75 -5.74 re
+B*
+390.41 321.34 5.74 -5.74 re
+B*
+345.5 321.81 m
+345.5 326.13 l
+339.87 326.13 335.3 324.195 335.3 321.81 c
+335.3 319.425 339.87 317.49 345.5 317.49 c
+351.13 317.49 355.7 319.425 355.7 321.81 c
+355.7 324.195 351.13 326.13 345.5 326.13 c
+f
+2 J 0.6 w 
+345.48 326.14 m
+339.872 326.14 335.32 324.214 335.32 321.84 c
+335.32 319.466 339.872 317.54 345.48 317.54 c
+351.088 317.54 355.64 319.466 355.64 321.84 c
+355.64 324.214 351.088 326.14 345.48 326.14 c
+S
+0 J 1.08 w 
+342.94 321.34 5.74 -5.74 re
+B*
+293.5 321.81 m
+293.5 326.13 l
+287.87 326.13 283.3 324.195 283.3 321.81 c
+283.3 319.425 287.87 317.49 293.5 317.49 c
+299.13 317.49 303.7 319.425 303.7 321.81 c
+303.7 324.195 299.13 326.13 293.5 326.13 c
+f
+2 J 0.6 w 
+293.52 326.14 m
+287.912 326.14 283.36 324.214 283.36 321.84 c
+283.36 319.466 287.912 317.54 293.52 317.54 c
+299.128 317.54 303.68 319.466 303.68 321.84 c
+303.68 324.214 299.128 326.14 293.52 326.14 c
+S
+0 J 1.08 w 
+290.94 321.34 5.74 -5.74 re
+B*
+253.06 321.81 m
+253.06 326.13 l
+247.43 326.13 242.86 324.195 242.86 321.81 c
+242.86 319.425 247.43 317.49 253.06 317.49 c
+258.69 317.49 263.26 319.425 263.26 321.81 c
+263.26 324.195 258.69 326.13 253.06 326.13 c
+f
+2 J 0.6 w 
+253.08 326.14 m
+247.472 326.14 242.92 324.214 242.92 321.84 c
+242.92 319.466 247.472 317.54 253.08 317.54 c
+258.688 317.54 263.24 319.466 263.24 321.84 c
+263.24 324.214 258.688 326.14 253.08 326.14 c
+S
+0 J 1.08 w 
+250.5 321.34 5.74 -5.74 re
+B*
+215.75 321.81 m
+215.75 326.13 l
+210.12 326.13 205.55 324.195 205.55 321.81 c
+205.55 319.425 210.12 317.49 215.75 317.49 c
+221.38 317.49 225.95 319.425 225.95 321.81 c
+225.95 324.195 221.38 326.13 215.75 326.13 c
+f
+2 J 0.6 w 
+215.76 326.14 m
+210.152 326.14 205.6 324.214 205.6 321.84 c
+205.6 319.466 210.152 317.54 215.76 317.54 c
+221.368 317.54 225.92 319.466 225.92 321.84 c
+225.92 324.214 221.368 326.14 215.76 326.14 c
+S
+0 J 1.08 w 
+213.19 321.34 5.74 -5.74 re
+B*
+BT
+/TT10 1 Tf
+11 0 0 11 429.69 318.79 Tm
+0 g
+(clients of)Tj
+/TT12 1 Tf
+3.8836 0 TD
+(fetch)Tj
+ET
+411.45 321.92 m
+411.45 324.92 l
+406.25 321.92 l
+411.45 318.92 l
+f*
+2 J 0.6 w 
+411.45 321.92 m
+425.78 321.92 l
+S
+endstream
+endobj
+15 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+/TT14 16 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+18 0 obj
+<<
+/Length 13717
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+0.001 Tw
+(message to be statically bound. The call graph below shows one way of specializing that statically binds all of the calls to)Tj
+/TT12 1 Tf
+0 -1.2 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+( routines:)Tj
+-3.598 -17.462 TD
+-0.003 Tw
+(By producing a specialized version of)Tj
+/TT12 1 Tf
+15.359 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+-0.003 Tw
+( for each of the three main kinds of tables and thereby statically-binding the)Tj
+-18.357 -1.2 TD
+-0.049 Tw
+(calls to)Tj
+/TT12 1 Tf
+3.012 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+-0.049 Tw
+(, 16,100 \(10,000 + 6,000 + 100\) dynamic dispatches were eliminated. These statically-bound)Tj
+/TT12 1 Tf
+36.748 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+-0.049 Tw
+[( call)]TJ
+-46.956 -1.2 TD
+0 Tw
+(sites are now amenable to inlining to further improve performance.)Tj
+0 -1.8 TD
+0.214 Tw
+(Whether or not it is pro)Tj
+/TT8 1 Tf
+10.4289 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.214 Tw
+[(table to perform these specializations depends on the desired trade-of)29.1(f between run-time)]TJ
+-10.985 -1.2 TD
+-0.036 Tw
+(performance improvement and compile time and code space costs. In this example, the system might elect to not specialize)Tj
+/TT12 1 Tf
+T*
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+-0.04 Tw
+[( for)]TJ
+/TT12 1 Tf
+1.585 0 TD
+0 Tw
+(HashTable)Tj
+/TT7 1 Tf
+5.397 0 TD
+-0.04 Tw
+[(í)55(s, since there isní)21.4(t much bene)]TJ
+/TT8 1 Tf
+11.8862 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.04 Tw
+(t for specializing it \(a savings of only 100 dynamic dispatches\) but)Tj
+-22.4224 -1.2 TD
+0.037 Tw
+(there is a signi)Tj
+/TT8 1 Tf
+5.9152 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.037 Tw
+[(cant cost in terms of increased compiled code space and compilation time. Similarly)86.4(, the system neední)22.2(t)]TJ
+-6.4714 -1.2 TD
+0.017 Tw
+(produce a specialized version of)Tj
+/TT12 1 Tf
+13.214 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.017 Tw
+[( for)]TJ
+/TT12 1 Tf
+1.7 0 TD
+0 Tw
+(GrowableHashTable)Tj
+/TT7 1 Tf
+10.194 0 TD
+0.017 Tw
+[(í)55(s, since)]TJ
+/TT12 1 Tf
+3.504 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.999 0 TD
+0.017 Tw
+[( never called any routines \(directly)]TJ
+-34.609 -1.2 TD
+0.02 Tw
+(or indirectly\) where the knowledge that the receiver was a)Tj
+/TT12 1 Tf
+23.678 0 TD
+0 Tw
+(GrowableHashTable)Tj
+/TT7 1 Tf
+10.194 0 TD
+0.02 Tw
+[( would have provided any additional)]TJ
+-33.872 -1.2 TD
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(t over knowing that it inherited from)Tj
+/TT12 1 Tf
+14.8512 0 TD
+(HashTable)Tj
+/TT7 1 Tf
+5.397 0 TD
+(.)Tj
+-22.692 -1.8 TD
+0.059 Tw
+[(W)79.8(e)0( used)]TJ
+/TT12 1 Tf
+3.757 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.059 Tw
+[( as an example to illustrate the tradeof)23.1(fs in specialization. Of course, for such a simple method, inline-)]TJ
+-6.755 -1.2 TD
+0.087 Tw
+[(expansion would be a more ef)23.9(fective optimization; inlining achieves the ef)25(fect of specializing the called routine in the)]TJ
+T*
+-0.034 Tw
+(context of all the data )Tj
+/TT8 1 Tf
+8.7431 0 TD
+0 Tw
+(ﬂ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.034 Tw
+(ow information available at the call site, and also eliminate the call-return overhead associated with)Tj
+-9.2992 -1.2 TD
+-0.03 Tw
+[(out-of-line specialization. However)45(, only small routines can be so aggressively specialized without suf)26(fering from a severe)]TJ
+T*
+0.026 Tw
+[(explosion in code space and compilation time. There remains a lar)22.6(ge class of methods that are too lar)20.1(ge to inline-expand)]TJ
+T*
+-0.019 Tw
+(but still bene)Tj
+/TT8 1 Tf
+5.128 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.019 Tw
+[(t from specialization. For example, hash table lookups are usually too lar)31(ge to inline ef)19.9(fectively but they can)]TJ
+-5.6842 -1.2 TD
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(t signi)Tj
+/TT8 1 Tf
+2.4727 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(cantly from specialization.)Tj
+/TT2 1 Tf
+12 0 0 12 63 301.38 Tm
+[(3)-943.8(Previous W)20.8(ork in Object-Oriented Languages)]TJ
+/TT7 1 Tf
+10 0 0 10 63 282.71 Tm
+-0.033 Tw
+(Method specialization has been incorporated into several existing implementations of object-oriented languages, including)Tj
+0 -1.2 TD
+0 Tw
+(S)Tj
+9 0 0 9 68.56 270.71 Tm
+(ELF)Tj
+10 0 0 10 84.54 270.71 Tm
+-0.01 Tw
+[( [Chambers & Ungar 91], T)40.4(rellis [Kilian 88], and Sather [Lim & Stolcke 91]. Each of these systems has used a fairly)]TJ
+-2.154 -1.2 TD
+-0.018 Tw
+(simple-minded strategy to determine when to specialize a method: a method is always specialized on the exact class of the)Tj
+T*
+-0.029 Tw
+[(receiver)41.2(, for all receiver classes, and never on anything else. While this approach is simple to implement and enables many)]TJ
+T*
+0 Tw
+(sends to)Tj
+/TT12 1 Tf
+3.498 0 TD
+(self)Tj
+/TT7 1 Tf
+2.399 0 TD
+( to be statically bound and potentially inlined, it can lead to)Tj
+/TT10 1 Tf
+23.958 0 TD
+(overspecialization)Tj
+/TT7 1 Tf
+7.329 0 TD
+( and/or)Tj
+/TT10 1 Tf
+3.053 0 TD
+(underspecialization)Tj
+/TT7 1 Tf
+7.885 0 TD
+(.)Tj
+-47.222 -1.5 TD
+0.114 Tw
+[(ï)-549.9(In some cases, specializing a routine for a single receiver class is overly precise: little or no additional bene)]TJ
+/TT8 1 Tf
+45.8534 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.114 Tw
+(t is)Tj
+-45.5095 -1.2 TD
+-0.049 Tw
+(obtained over specializing for a group of several receiver classes. In the example above, producing a version of)Tj
+/TT12 1 Tf
+43.802 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+-43.802 -1.2 TD
+0.102 Tw
+(specialized for)Tj
+/TT12 1 Tf
+6.31 0 TD
+0 Tw
+(GrowableHashTable)Tj
+/TT7 1 Tf
+10.194 0 TD
+0.102 Tw
+[(í)55(s)0( provides no additional bene)]TJ
+/TT8 1 Tf
+12.4057 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.102 Tw
+(t over a version of)Tj
+/TT12 1 Tf
+8.0261 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.102 Tw
+[( specialized for)]TJ
+/TT12 1 Tf
+-40.49 -1.2 TD
+0 Tw
+(HashTable)Tj
+/TT7 1 Tf
+5.397 0 TD
+0.142 Tw
+[(í)55(s: the generated code for these two specializations would be the same. The T)42.8(rellis implementation)]TJ
+-5.397 -1.2 TD
+-0.031 Tw
+(includes a pass after specialization that shares code among specializations that turn out to have identical machine code)Tj
+T*
+0 Tw
+(after specialization, alleviating the code space problem in some circumstances but still consuming compilation time.)Tj
+0 -1.5 TD
+0.135 Tw
+[(For lar)19.8(ge programs with deep inheritance hierarchies, producing a specialized version of every routine for every)]TJ
+0 -1.2 TD
+-0.019 Tw
+(potential receiver class can lead to signi)Tj
+/TT8 1 Tf
+15.824 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.019 Tw
+(cant code explosion. The S)Tj
+9 0 0 9 352.01 132.71 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 367.99 132.71 Tm
+-0.019 Tw
+[( implementation often avoids this problem by)]TJ
+-28.699 -1.2 TD
+-0.046 Tw
+(producing specializations lazily at run-time, as part of its general strategy of dynamic compilation. If a method is never)Tj
+T*
+-0.039 Tw
+[(invoked for a particular receiver class, then no compiled method will be produced. However)60.3(, this strategy can still lead)]TJ
+T*
+0.143 Tw
+[(to overspecialization if a method is invoked with a lar)25.5(ge number of distinct receiver classes during a programí)63.4(s)]TJ
+T*
+0.113 Tw
+(execution or if a method is invoked only rarely for a particular receiver class, as was the case with the)Tj
+/TT12 1 Tf
+43.202 0 TD
+0 Tw
+(fetch3)Tj
+ET
+0 G
+2 J 0 j 1.08 w 3.86 M []0 d
+1 i 
+244.53 617.03 m
+243.75 607.66 245.53 600.81 249.22 589.69 c
+S
+0 J 
+243.96 646.3 m
+220.224 646.3 200.96 639.804 200.96 631.8 c
+200.96 623.796 220.224 617.3 243.96 617.3 c
+267.696 617.3 286.96 623.796 286.96 631.8 c
+286.96 639.804 267.696 646.3 243.96 646.3 c
+S
+BT
+9.6 0 0 9.6 203.72 630.0601 Tm
+(fetch\(@Vector\))Tj
+ET
+0.5 g
+242.21 620.48 5.75 -5.74 re
+B*
+250.5 578.38 m
+222.072 578.38 199 571.884 199 563.88 c
+199 555.876 222.072 549.38 250.5 549.38 c
+278.928 549.38 302 555.876 302 563.88 c
+302 571.884 278.928 578.38 250.5 578.38 c
+S
+BT
+9.6 0 0 9.6 207.54 562.0901 Tm
+0 g
+(fetch3\(@Vector\))Tj
+ET
+249.89 586.77 m
+246.82 586.47 l
+250.73 578.36 l
+252.95 587.08 l
+f*
+2 J 
+249.89 586.77 m
+249.78 587.89 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 255.2 595.11 Tm
+(10,000)Tj
+ET
+0 J 
+136.68 646.3 m
+112.944 646.3 93.68 639.804 93.68 631.8 c
+93.68 623.796 112.944 617.3 136.68 617.3 c
+160.416 617.3 179.68 623.796 179.68 631.8 c
+179.68 639.804 160.416 646.3 136.68 646.3 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 96.49 630.0601 Tm
+(fetch\(@String\))Tj
+ET
+0.5 g
+132.97 620.48 5.74 -5.74 re
+B*
+134.7 578.38 m
+106.272 578.38 83.2 571.884 83.2 563.88 c
+83.2 555.876 106.272 549.38 134.7 549.38 c
+163.128 549.38 186.2 555.876 186.2 563.88 c
+186.2 571.884 163.128 578.38 134.7 578.38 c
+S
+BT
+9.6 0 0 9.6 91.69 562.0901 Tm
+0 g
+(fetch3\(@String\))Tj
+ET
+2 J 
+135.84 614.74 m
+135.84 608.99 135.84 595.59 134.88 584.1 c
+S
+134.88 586.81 m
+131.8 586.81 l
+134.88 578.35 l
+137.96 586.81 l
+f*
+134.88 586.81 m
+134.88 587.93 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 140.54 595.11 Tm
+(6,000)Tj
+ET
+0 J 
+370.44 646.3 m
+339.804 646.3 314.94 639.804 314.94 631.8 c
+314.94 623.796 339.804 617.3 370.44 617.3 c
+401.076 617.3 425.94 623.796 425.94 631.8 c
+425.94 639.804 401.076 646.3 370.44 646.3 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 321.49 630.0601 Tm
+(fetch\(@HashTable\))Tj
+ET
+0.5 g
+367.57 620.48 5.74 -5.74 re
+B*
+370.32 578.38 m
+334.992 578.38 306.32 571.884 306.32 563.88 c
+306.32 555.876 334.992 549.38 370.32 549.38 c
+405.648 549.38 434.32 555.876 434.32 563.88 c
+434.32 571.884 405.648 578.38 370.32 578.38 c
+S
+BT
+9.6 0 0 9.6 318.61 562.0901 Tm
+0 g
+(fetch3\(@HashTable\))Tj
+ET
+2 J 
+370.44 614.74 m
+370.44 609.96 370.44 598.46 370.44 587.93 c
+S
+370.44 586.81 m
+367.36 586.81 l
+370.44 578.35 l
+373.52 586.81 l
+f*
+370.44 586.81 m
+370.44 587.93 l
+S
+BT
+/TT7 1 Tf
+8.6 0 0 8.6 374.52 595.11 Tm
+(100)Tj
+ET
+288.07 682.72 m
+285.2 676.97 277.54 664.52 271.8 658.78 c
+269.88 655.91 267.01 653.04 264.14 649.21 c
+S
+265.94 650.68 m
+264.01 653.08 l
+259.35 645.38 l
+267.87 648.28 l
+f*
+265.94 650.68 m
+266.83 651.36 l
+S
+BT
+8.6 0 0 8.6 285.12 663.09 Tm
+(9,500)Tj
+ET
+243.07 682.72 m
+243.07 677.93 243.07 666.44 243.07 655.91 c
+S
+243.19 654.74 m
+240.12 654.44 l
+244.03 646.33 l
+246.25 655.05 l
+f*
+243.19 654.74 m
+243.08 655.86 l
+S
+BT
+8.6 0 0 8.6 248.12 663.09 Tm
+(500)Tj
+ET
+166.48 683.67 m
+175.09 678.89 199.03 662.61 217.22 649.21 c
+S
+217.72 648.93 m
+216.08 646.33 l
+224.88 644.42 l
+219.36 651.53 l
+f*
+217.73 648.93 m
+216.76 649.49 l
+S
+BT
+8.6 0 0 8.6 208.52 663.09 Tm
+(1,000)Tj
+ET
+160.73 683.67 m
+155.95 680.8 147.33 675.06 144.46 670.27 c
+142.54 665.48 141.58 660.69 139.67 654.95 c
+S
+139.65 654.73 m
+136.59 655.08 l
+138.71 646.33 l
+142.71 654.39 l
+f*
+139.65 654.73 m
+139.77 655.85 l
+S
+BT
+8.6 0 0 8.6 149.16 663.09 Tm
+(5,000)Tj
+ET
+372.36 682.72 m
+371.4 677.93 371.4 666.44 371.4 655.91 c
+S
+371.27 654.74 m
+368.21 655.05 l
+370.43 646.33 l
+374.33 654.44 l
+f*
+371.28 654.74 m
+371.39 655.86 l
+S
+BT
+8.6 0 0 8.6 375.72 663.09 Tm
+(99)Tj
+ET
+335.97 682.72 m
+339.8 676.97 349.38 663.57 357.04 651.12 c
+S
+355.56 652.92 m
+353.16 650.99 l
+360.86 646.33 l
+357.96 654.85 l
+f*
+355.57 652.92 m
+354.89 653.81 l
+S
+BT
+8.6 0 0 8.6 356.8 663.09 Tm
+(1)Tj
+ET
+0 J 
+481.14 646.12 m
+458.48 646.12 440.09 639.624 440.09 631.62 c
+440.09 623.616 458.48 617.12 481.14 617.12 c
+503.8 617.12 522.19 623.616 522.19 631.62 c
+522.19 639.624 503.8 646.12 481.14 646.12 c
+S
+BT
+/TT12 1 Tf
+9.6 0 0 9.6 446.48 629.87 Tm
+(fetch\(@Table\))Tj
+ET
+1 g
+372.73 689.96 m
+372.73 694.28 l
+367.1 694.28 362.53 692.345 362.53 689.96 c
+362.53 687.575 367.1 685.64 372.73 685.64 c
+378.36 685.64 382.93 687.575 382.93 689.96 c
+382.93 692.345 378.36 694.28 372.73 694.28 c
+f
+2 J 0.6 w 
+372.72 694.24 m
+367.112 694.24 362.56 692.314 362.56 689.94 c
+362.56 687.566 367.112 685.64 372.72 685.64 c
+378.328 685.64 382.88 687.566 382.88 689.94 c
+382.88 692.314 378.328 694.24 372.72 694.24 c
+S
+0 J 1.08 w 
+370.17 689.49 5.75 -5.74 re
+B*
+333.86 689.96 m
+333.86 694.28 l
+328.23 694.28 323.66 692.345 323.66 689.96 c
+323.66 687.575 328.23 685.64 333.86 685.64 c
+339.49 685.64 344.06 687.575 344.06 689.96 c
+344.06 692.345 339.49 694.28 333.86 694.28 c
+f
+2 J 0.6 w 
+333.84 694.24 m
+328.232 694.24 323.68 692.314 323.68 689.94 c
+323.68 687.566 328.232 685.64 333.84 685.64 c
+339.448 685.64 344 687.566 344 689.94 c
+344 692.314 339.448 694.24 333.84 694.24 c
+S
+0 J 1.08 w 
+331.3 689.49 5.74 -5.74 re
+B*
+288.89 689.96 m
+288.89 694.28 l
+283.26 694.28 278.69 692.345 278.69 689.96 c
+278.69 687.575 283.26 685.64 288.89 685.64 c
+294.52 685.64 299.09 687.575 299.09 689.96 c
+299.09 692.345 294.52 694.28 288.89 694.28 c
+f
+2 J 0.6 w 
+288.9 694.24 m
+283.292 694.24 278.74 692.314 278.74 689.94 c
+278.74 687.566 283.292 685.64 288.9 685.64 c
+294.508 685.64 299.06 687.566 299.06 689.94 c
+299.06 692.314 294.508 694.24 288.9 694.24 c
+S
+0 J 1.08 w 
+286.33 689.49 5.74 -5.74 re
+B*
+242.98 689.96 m
+242.98 694.28 l
+237.35 694.28 232.78 692.345 232.78 689.96 c
+232.78 687.575 237.35 685.64 242.98 685.64 c
+248.61 685.64 253.18 687.575 253.18 689.96 c
+253.18 692.345 248.61 694.28 242.98 694.28 c
+f
+2 J 0.6 w 
+243 694.24 m
+237.392 694.24 232.84 692.314 232.84 689.94 c
+232.84 687.566 237.392 685.64 243 685.64 c
+248.608 685.64 253.16 687.566 253.16 689.94 c
+253.16 692.314 248.608 694.24 243 694.24 c
+S
+0 J 1.08 w 
+240.43 689.49 5.73 -5.74 re
+B*
+163.48 689.96 m
+163.48 694.28 l
+157.85 694.28 153.28 692.345 153.28 689.96 c
+153.28 687.575 157.85 685.64 163.48 685.64 c
+169.11 685.64 173.68 687.575 173.68 689.96 c
+173.68 692.345 169.11 694.28 163.48 694.28 c
+f
+2 J 0.6 w 
+163.44 694.24 m
+157.832 694.24 153.28 692.314 153.28 689.94 c
+153.28 687.566 157.832 685.64 163.44 685.64 c
+169.048 685.64 173.6 687.566 173.6 689.94 c
+173.6 692.314 169.048 694.24 163.44 694.24 c
+S
+0 J 1.08 w 
+160.93 689.49 5.73 -5.74 re
+B*
+BT
+/TT10 1 Tf
+11 0 0 11 411.98 686.57 Tm
+0 g
+(clients of)Tj
+/TT12 1 Tf
+3.8845 0 TD
+(fetch)Tj
+ET
+393.74 689.7 m
+393.74 692.7 l
+388.55 689.7 l
+393.74 686.7 l
+f*
+2 J 0.6 w 
+393.74 689.7 m
+408.08 689.7 l
+S
+endstream
+endobj
+19 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+21 0 obj
+<<
+/Length 8299
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 81 713.33 Tm
+0 g
+0 Tc
+0.085 Tw
+(message sent to)Tj
+/TT12 1 Tf
+6.779 0 TD
+0 Tw
+(HashTable)Tj
+/TT7 1 Tf
+5.397 0 TD
+0.085 Tw
+[( objects. Moreover)43.4(, dynamic compilation may not be a suitable framework for some)]TJ
+-12.176 -1.2 TD
+0 Tw
+(programming systems.)Tj
+-0.9 -1.5 TD
+0.088 Tw
+[(ï)-549.9(By never specializing on an ar)22.3(gument other than the receiver)42.8(, these systems can miss some opportunities to boost)]TJ
+0.9 -1.2 TD
+-0.04 Tw
+(performance. Although message sends to the receiver comprise a signi)Tj
+/TT8 1 Tf
+27.8529 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.04 Tw
+(cant fraction of the message sends within most)Tj
+-28.409 -1.2 TD
+0.169 Tw
+[(methods, message sends to ar)22.2(guments other than the receiver are also common, and by not specializing on the)]TJ
+T*
+0.086 Tw
+[(ar)17.9(guments the compiler may lack the precise class information that is crucial to statically binding these messages.)]TJ
+T*
+0 Tw
+[(However)42(, the equally simplistic strategy of specializing on all ar)26(guments can lead to even worse code explosion.)]TJ
+0 -1.5 TD
+-0.001 Tw
+[(Specializing on multiple ar)21.7(guments seems particularly appropriate for object-oriented languages incorporating multi-)]TJ
+0 -1.2 TD
+0.231 Tw
+(methods, such as CLOS and Cecil. Multi-methods generalize standard singly-dispatched methods by allowing)Tj
+T*
+0.08 Tw
+[(dynamic binding to be based on the dynamic class of any subset of the messageí)72.7(s ar)19(guments, not just the receiver)]TJ
+T*
+-0.041 Tw
+[(ar)17.9(gument. In such a situation, there is no clearly-de)]TJ
+/TT8 1 Tf
+20.1473 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.041 Tw
+[(ned single receiver ar)30.1(gument that is appropriate for specialization,)]TJ
+-20.7035 -1.2 TD
+0.066 Tw
+[(and consequently more intelligent decisions are needed to determine the combinations of ar)32.1(gument classes that are)]TJ
+T*
+0 Tw
+(worth specializing.)Tj
+-1.8 -1.8 TD
+-0.019 Tw
+[(The algorithm presented in this paper addresses the problems of over)35(- and underspecialization. Specializations of methods)]TJ
+0 -1.2 TD
+-0.045 Tw
+(are made only as speci)Tj
+/TT8 1 Tf
+8.8718 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.045 Tw
+(c as is necessary to statically bind important \(high weight\) calls, and situations where it is pro)Tj
+/TT8 1 Tf
+36.6882 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(table)Tj
+-46.6723 -1.2 TD
+0.027 Tw
+[(to specialize a routine on ar)22.9(guments other than its receiver are identi)]TJ
+/TT8 1 Tf
+27.6241 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.027 Tw
+[(ed. W)88(e)0( are developing the algorithm in the context)]TJ
+-28.1803 -1.2 TD
+0 Tw
+(of a language based on multi-methods.)Tj
+0 -1.8 TD
+0.122 Tw
+(Lea has explored the potential bene)Tj
+/TT8 1 Tf
+14.7985 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.122 Tw
+(ts of applying specialization in the C++ language [Lea 90]. For a simple matrix)Tj
+-15.3546 -1.2 TD
+-0.002 Tw
+(multiplication benchmark where the index function was dynamically bound, Lea calculated a potential speedup of around)Tj
+T*
+0.028 Tw
+(a factor 10 if the multiply routine were specialized to the particular matrix representations, thereby statically-binding the)Tj
+T*
+0.115 Tw
+(index call. Lea proposed user annotations to guide where specialization was to be applied, but did not implement his)Tj
+T*
+0 Tw
+(proposal.)Tj
+/TT2 1 Tf
+12 0 0 12 63 422 Tm
+[(4)-943.8(A)0( Specialization Algorithm)]TJ
+/TT7 1 Tf
+10 0 0 10 63 403.33 Tm
+0.005 Tw
+(This section explains our algorithm for determining where specialization is pro)Tj
+/TT8 1 Tf
+31.6525 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.005 Tw
+(table. The next subsection discusses how)Tj
+-32.2087 -1.2 TD
+0.178 Tw
+(we measure pro)Tj
+/TT8 1 Tf
+6.6866 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.178 Tw
+[(tability)69.7(. Subsection 4.2 presents the basic algorithm, with subsection 4.3 explaining how the basic)]TJ
+-7.2427 -1.2 TD
+-0.039 Tw
+(algorithm is extended to cope with closures. Subsection 4.4 discusses how the algorithm is adapted to singly- and multiply-)Tj
+T*
+0 Tw
+(dispatched systems.)Tj
+/TT2 1 Tf
+11 0 0 11 63 346.99 Tm
+[(4.1)-1064.4(Pro)]TJ
+/TT3 1 Tf
+4.1215 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.6108 0 TD
+(tability)Tj
+/TT7 1 Tf
+10 0 0 10 63 329.92 Tm
+0.166 Tw
+(Our algorithm attempts to balance the costs and bene)Tj
+/TT8 1 Tf
+22.5438 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.166 Tw
+(ts of specialization to improve program performance without)Tj
+-23.1 -1.2 TD
+-0.007 Tw
+[(excessive space and compile time costs. W)86.5(e)0( measure the bene)]TJ
+/TT8 1 Tf
+24.6738 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.007 Tw
+(t of specialization by the dynamic number of dynamically-)Tj
+-25.2299 -1.2 TD
+0.266 Tw
+(bound message sends which are turned into statically-bound calls due to the additional information provided by)Tj
+T*
+0.022 Tw
+(specializing. The cost of specialization is measured by the increase in code space introduced by the specialized copies of)Tj
+T*
+0.063 Tw
+(routines. Our current implementation estimates pro)Tj
+/TT8 1 Tf
+20.754 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.063 Tw
+(tability by examining the cost-bene)Tj
+/TT8 1 Tf
+14.3594 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.063 Tw
+(t ratio of specialization. Based)Tj
+-36.2257 -1.2 TD
+-0.017 Tw
+(upon the desired balance between code space and compile time costs, and compiled program performance, we can select a)Tj
+T*
+0 Tw
+(maximum value for the cost-bene)Tj
+/TT8 1 Tf
+13.4399 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(t ratio that will be considered to be pro)Tj
+/TT8 1 Tf
+15.4956 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(table.)Tj
+-30.0479 -1.8 TD
+0.071 Tw
+(These costs and bene)Tj
+/TT8 1 Tf
+8.6822 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.071 Tw
+[(ts do not fully account for the ef)29.8(fects of specialization. In particular)46.3(, they do not account for the)]TJ
+-9.2384 -1.2 TD
+-0.016 Tw
+(performance improvement due to post-specialization inlining and subsequent optimization. Our pro)Tj
+/TT8 1 Tf
+39.6354 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.016 Tw
+(tability metric can be)Tj
+-40.1916 -1.2 TD
+0.099 Tw
+[(extended to take these secondary ef)24(fects into account by incorporating a persistent database that records the costs and)]TJ
+T*
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.01 Tw
+(ts of inlining [Dean & Chambers 94]. This information could then be combined with other cost-bene)Tj
+/TT8 1 Tf
+40.3634 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.01 Tw
+(t information)Tj
+-43.3634 -1.2 TD
+0 Tw
+(to improve the accuracy of the pro)Tj
+/TT8 1 Tf
+13.772 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(tability estimation.)Tj
+-14.3281 -1.8 TD
+-0.028 Tw
+(Our algorithm identi)Tj
+/TT8 1 Tf
+8.1647 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.028 Tw
+(es pro)Tj
+/TT8 1 Tf
+2.388 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.028 Tw
+[(table places to specialize by examining the programí)69.2(s call graph. Our current implementation)]TJ
+-11.665 -1.2 TD
+-0.007 Tw
+(uses a call graph constructed using pro)Tj
+/TT8 1 Tf
+15.4536 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+-0.007 Tw
+(le data from previous runs of the program.)Tj
+8 0 0 8 391.8 165.92 Tm
+0 Tw
+(*)Tj
+10 0 0 10 395.8 161.92 Tm
+-0.007 Tw
+[( Edge weights in the call graph help to)]TJ
+-33.28 -1.2 TD
+0.017 Tw
+(identify portions of the call graph which are important enough to warrant specialization. Other compilation systems have)Tj
+ET
+1 g
+63 138.98 486 -14.98 re
+f
+0 G
+2 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+216 129.91 m
+63 129.91 l
+B*
+BT
+7 0 0 7 63 121.6 Tm
+0 g
+0 Tw
+(*)Tj
+9 0 0 9 68.68 118 Tm
+0.0533 Tw
+(The Cecil implementation uses polymorphic inline caches \(PICs\) to speed dynamic dispatch [Hˆlzle)Tj
+/TT10 1 Tf
+41.0433 0 TD
+(et al.)Tj
+/TT7 1 Tf
+2.0511 0 TD
+[( 91]. A PIC is a call-site-)]TJ
+-43.0944 -1.1111 TD
+0.0422 Tw
+(specific method lookup cache, mapping argument classes for a message send to the routine which should be invoked. When a Cecil)Tj
+T*
+-0.0256 Tw
+(program terminates, its PICs contain a complete profile of the classes of arguments which appeared during program execution for)Tj
+51.3847 0 TD
+[( each)]TJ
+-51.3847 -1.1111 TD
+0.0544 Tw
+(send location in the program, and this provides sufficient information to reconstruct the call graph. We augment the PICs to ke)Tj
+51.7422 0 TD
+(ep a)Tj
+-51.7422 -1.1111 TD
+0 Tw
+(counter of the number of times each argument class occurred, to provide weights on each edge in the call graph.)Tj
+ET
+endstream
+endobj
+22 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT3 5 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+24 0 obj
+<<
+/Length 6970
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+-0.021 Tw
+(exploited dynamic pro)Tj
+/TT8 1 Tf
+8.9556 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.021 Tw
+(les to guide the application of optimizations, such as the Impact-C pro)Tj
+/TT8 1 Tf
+27.8178 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+-0.021 Tw
+(le-guided inliner [Chang)Tj
+/TT10 1 Tf
+9.9923 0 TD
+0 Tw
+(et)Tj
+-47.878 -1.2 TD
+(al.)Tj
+/TT7 1 Tf
+1.027 0 TD
+( 92].)Tj
+-1.027 -1.8 TD
+-0.008 Tw
+(A call graph constructed from pro)Tj
+/TT8 1 Tf
+13.5386 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.008 Tw
+(le data is not guaranteed to be conservative; a future program execution might traverse)Tj
+-14.0948 -1.2 TD
+0.025 Tw
+[(an edge not found in the call graph. Fortunately)70.5(, our algorithm does not require that the call graph be conservative, since)]TJ
+T*
+0.112 Tw
+[(producing or not producing a specialization does not af)26.3(fect program correctness. In the absence of other conservative)]TJ
+T*
+-0.012 Tw
+(information, we must however preserve the original unspecialized routine to catch cases where an edge is traversed with a)Tj
+T*
+0 Tw
+(receiver class not encountered during the pro)Tj
+/TT8 1 Tf
+17.9927 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(le-gathering program execution.)Tj
+/TT2 1 Tf
+11 0 0 11 63 614.99 Tm
+[(4.2)-1064.4(The Basic Algorithm)]TJ
+/TT7 1 Tf
+10 0 0 10 63 597.92 Tm
+[(T)69.8(wo characteristics of call graph edges are important for our algorithm:)]TJ
+0.9 -1.5 TD
+0.5499 Tc
+(ïA)Tj
+/TT10 1 Tf
+1.622 0 TD
+0 Tc
+-0.061 Tw
+[( pass-thr)39.3(ough edge)]TJ
+/TT7 1 Tf
+7.503 0 TD
+[( is an edge in which one or more of the formals of the caller are passed through as actual ar)22.7(guments)]TJ
+-8.225 -1.2 TD
+0.022 Tw
+(to the call site that is the source of the edge. All of the edges between the)Tj
+/TT12 1 Tf
+29.795 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.998 0 TD
+0.022 Tw
+[( method and the)]TJ
+/TT12 1 Tf
+6.75 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+0.022 Tw
+[( methods)]TJ
+-43.141 -1.2 TD
+-0.035 Tw
+(in the example call graphs are pass-through edges, because the send of the)Tj
+/TT12 1 Tf
+29.461 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.597 0 TD
+-0.035 Tw
+[( message passes through the)]TJ
+/TT12 1 Tf
+11.343 0 TD
+0 Tw
+(self)Tj
+/TT7 1 Tf
+-44.401 -1.2 TD
+(and)Tj
+/TT12 1 Tf
+1.675 0 TD
+(key)Tj
+/TT7 1 Tf
+1.799 0 TD
+-0.018 Tw
+[( formals of the)]TJ
+/TT12 1 Tf
+6.035 0 TD
+0 Tw
+(fetch)Tj
+/TT7 1 Tf
+2.999 0 TD
+-0.018 Tw
+[( method to the)]TJ
+/TT12 1 Tf
+5.925 0 TD
+0 Tw
+(fetch3)Tj
+/TT7 1 Tf
+3.598 0 TD
+-0.018 Tw
+[( call site. Conversely)67.7(, a)]TJ
+/TT10 1 Tf
+9.423 0 TD
+[(non pass-thr)40.3(ough edge)]TJ
+/TT7 1 Tf
+9.088 0 TD
+[( is one in which)]TJ
+-40.542 -1.2 TD
+0 Tw
+[(none of the caller)-34.2(í)55(s)0( formals are passed through as parameters of the message send.)]TJ
+-0.9 -1.5 TD
+0.5499 Tc
+(ïA)Tj
+/TT10 1 Tf
+1.811 0 TD
+0 Tc
+-0.061 Tw
+(statically-bound edge)Tj
+/TT7 1 Tf
+8.572 0 TD
+[( is an edge where the class information available in the caller is suf)]TJ
+/TT8 1 Tf
+25.978 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.061 Tw
+(cient to uniquely determine)Tj
+-36.0172 -1.2 TD
+0 Tw
+(the callee at compile-time. A)Tj
+/TT10 1 Tf
+11.824 0 TD
+[(dynamically-bound)-246.8(edge)]TJ
+/TT7 1 Tf
+9.854 0 TD
+( requires run-time dispatching to determine the callee.)Tj
+-23.478 -1.8 TD
+(A)Tj
+/TT10 1 Tf
+1.007 0 TD
+(dynamically-bound)Tj
+/TT7 1 Tf
+7.717 0 TD
+(,)Tj
+/TT10 1 Tf
+0.536 0 TD
+0.036 Tw
+[(pass-thr)39.3(ough edge)]TJ
+/TT7 1 Tf
+7.41 0 TD
+[( is one which might bene)]TJ
+/TT8 1 Tf
+10.2059 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.036 Tw
+(t from specialization, since knowing additional class)Tj
+-27.432 -1.2 TD
+0.017 Tw
+(information about the formals of the caller might allow the call to be statically-bound. In some situations, a)Tj
+/TT10 1 Tf
+43.382 0 TD
+0 Tw
+(dynamically-)Tj
+-43.382 -1.2 TD
+-0.032 Tw
+[(bound, non-pass thr)42.3(ough edge)]TJ
+/TT7 1 Tf
+12.243 0 TD
+(might bene)Tj
+/TT8 1 Tf
+4.4392 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.032 Tw
+(t from specialization. For example, a formal might be copied into a local before)Tj
+-17.2383 -1.2 TD
+0.113 Tw
+[(it is used as an ar)19.4(gument to a call. Our framework could be extended straightforwardly to account for more complex)]TJ
+T*
+-0.042 Tw
+[(relationships between formals and actuals. Grove and T)77.5(orczon compare the utility of several ìjump functionsî representing)]TJ
+T*
+0 Tw
+[(such relationships in the context of interprocedural constant propagation [Grove & T)84.7(orczon 93].)]TJ
+0 -1.8 TD
+0.015 Tw
+(The algorithm is presented below interspersed with discussion about its various pieces. The presentation is in the style of)Tj
+0 -1.2 TD
+0.158 Tw
+(a literate program [Knuth 92]. When helpful, call graph diagrams illustrating the various situations which occur are)Tj
+T*
+-0.017 Tw
+(presented. In these diagrams,)Tj
+/TT10 1 Tf
+11.811 0 TD
+0 Tw
+[(pass-thr)39.3(ough)]TJ
+/TT7 1 Tf
+5.238 0 TD
+-0.017 Tw
+[( edges are indicated as solid black lines, and)]TJ
+/TT10 1 Tf
+17.777 0 TD
+[(non pass-thr)40.3(ough)]TJ
+/TT7 1 Tf
+6.97 0 TD
+[( edges are shown)]TJ
+-41.796 -1.2 TD
+-0.001 Tw
+[(as gray lines. W)81.4(e)0( continue our convention of representing)]TJ
+/TT10 1 Tf
+23.286 0 TD
+0 Tw
+(statically-bound)Tj
+/TT7 1 Tf
+6.497 0 TD
+-0.001 Tw
+( calls with solid square and)Tj
+/TT10 1 Tf
+11.1 0 TD
+0 Tw
+(dynamically-bound)Tj
+/TT7 1 Tf
+-40.883 -1.2 TD
+(calls with white squares.)Tj
+/F1 1 Tf
+1.8 -7.801 TD
+(specialize_program)Tj
+/TT5 1 Tf
+9.332 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(budget)Tj
+/TT5 1 Tf
+3.056 0 TD
+(\))Tj
+/TT2 1 Tf
+-10.921 -1.2 TD
+(while)Tj
+/F2 1 Tf
+2.778 0 TD
+(cost)Tj
+/TT2 1 Tf
+1.832 0 TD
+( <)Tj
+/F2 1 Tf
+1.14 0 TD
+(budget)Tj
+/TT2 1 Tf
+3.056 0 TD
+( do)Tj
+/TT5 1 Tf
+-7.006 -1.2 TD
+(Let)Tj
+/F2 1 Tf
+1.626 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+-0.041 Tw
+[( := highest weight edge in call graph that is dynamically-bound, pass-through and is not visited)]TJ
+/F2 1 Tf
+-2.182 -1.2 TD
+0 Tw
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+( :=)Tj
+/F2 1 Tf
+1.417 0 TD
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+( +)Tj
+/F1 1 Tf
+1.14 0 TD
+(specialize)Tj
+/TT5 1 Tf
+4.722 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(e.caller)Tj
+/TT5 1 Tf
+3.221 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(e.callee.specializers)Tj
+/TT5 1 Tf
+8.942 0 TD
+(,)Tj
+/F2 1 Tf
+0.555 0 TD
+(e.weight)Tj
+/TT5 1 Tf
+3.722 0 TD
+(\))Tj
+/F2 1 Tf
+-28.274 -1.2 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(.)Tj
+/F2 1 Tf
+0.277 0 TD
+(visited)Tj
+/TT5 1 Tf
+2.833 0 TD
+( :=)Tj
+/TT2 1 Tf
+1.417 0 TD
+(true)Tj
+-6.883 -1.2 TD
+(end)Tj
+-1.8 -1.2 TD
+(end)Tj
+/F1 1 Tf
+2.055 0 TD
+(specialize_program)Tj
+ET
+1 g
+64.06 341.47 479.69 -33.6 re
+f
+BT
+/TT14 1 Tf
+10 0 0 10 64.06 334.8 Tm
+0 g
+[(specialize_pr)20.2(ogram)]TJ
+/TT7 1 Tf
+8.31 0 TD
+0.137 Tw
+[( is the top level routine of the algorithm. It loops, looking for edges which might bene)]TJ
+/TT8 1 Tf
+36.5187 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.137 Tw
+(t from)Tj
+-45.3848 -1.2 TD
+0.021 Tw
+(specialization, until a space budget allotted for specialization has been exceeded. It examines edges in decreasing order)Tj
+ET
+q
+1 i 
+63 360.58 484.41 -64 re
+W n
+0 G
+2 J 0 j 1.08 w 3.86 M []0 d
+546.88 346.56 m
+62.5 346.56 l
+548.63 303.4 m
+64.25 303.4 l
+S
+Q
+endstream
+endobj
+25 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 26 0 R
+/F2 27 0 R
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+/TT14 16 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+29 0 obj
+<<
+/Length 12460
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/F1 1 Tf
+10 0 0 10 81 563.5 Tm
+0 g
+0 Tc
+0 Tw
+(specialize)Tj
+/TT5 1 Tf
+4.722 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(specialize_node)Tj
+/TT5 1 Tf
+7.166 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(desired_info)Tj
+/TT5 1 Tf
+5.444 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+(\))Tj
+/F2 1 Tf
+-19.977 -1.2 TD
+(nodes_to_specialize)Tj
+/TT5 1 Tf
+9.055 0 TD
+( :=)Tj
+/TT15 1 Tf
+1.417 0 TD
+<0092>Tj
+/F1 1 Tf
+-10.472 -1.2 TD
+(collect_nodes)Tj
+/TT5 1 Tf
+6.665 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(specialize_node)Tj
+/TT5 1 Tf
+7.166 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(desired_info, benefit)Tj
+/TT5 1 Tf
+9 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(nodes_to_specialize)Tj
+/TT5 1 Tf
+9.055 0 TD
+(\))Tj
+/F2 1 Tf
+-33.331 -1.2 TD
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+( := sum of space cost for each node in)Tj
+/F2 1 Tf
+17.194 0 TD
+(nodes_to_specialize)Tj
+/TT2 1 Tf
+-19.027 -1.2 TD
+(if)Tj
+/F1 1 Tf
+0.889 0 TD
+(specialization_is_profitable)Tj
+/TT5 1 Tf
+13.052 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+(\))Tj
+/TT2 1 Tf
+0.611 0 TD
+(then)Tj
+/TT5 1 Tf
+-18.474 -1.2 TD
+(output directives to specialize members of)Tj
+/F2 1 Tf
+18.886 0 TD
+(nodes_to_specialize)Tj
+/TT5 1 Tf
+9.055 0 TD
+( for)Tj
+/F2 1 Tf
+1.722 0 TD
+(desired_info)Tj
+/TT2 1 Tf
+-31.463 -1.2 TD
+(else)Tj
+/F2 1 Tf
+1.8 -1.2 TD
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+( := 0)Tj
+/TT2 1 Tf
+-3.633 -1.2 TD
+(end)Tj
+T*
+(return)Tj
+/F2 1 Tf
+3.165 0 TD
+(cost)Tj
+/TT2 1 Tf
+-4.965 -1.2 TD
+(end)Tj
+/F1 1 Tf
+1.777 0 TD
+(specialize)Tj
+-1.777 -17.331 TD
+(collect_nodes)Tj
+/TT5 1 Tf
+6.665 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(node_to_specialize)Tj
+/TT5 1 Tf
+8.556 0 TD
+(,)Tj
+/F2 1 Tf
+0.555 0 TD
+(desired_info)Tj
+/TT5 1 Tf
+5.444 0 TD
+(,)Tj
+/TT2 1 Tf
+0.556 0 TD
+(var)Tj
+/F2 1 Tf
+1.778 0 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+(,)Tj
+/TT2 1 Tf
+0.556 0 TD
+(var)Tj
+/F2 1 Tf
+1.778 0 TD
+(node_set)Tj
+/TT5 1 Tf
+4.112 0 TD
+(\))Tj
+/TT2 1 Tf
+-31.533 -1.2 TD
+(/*)Tj
+/TT5 1 Tf
+0.667 0 TD
+( Return immediately if node already visited \(recursion\))Tj
+/TT2 1 Tf
+24.16 0 TD
+(*/)Tj
+-24.827 -1.2 TD
+(if)Tj
+/F2 1 Tf
+0.889 0 TD
+(node_to_specialize)Tj
+/TT15 1 Tf
+8.833 0 TD
+<0044>Tj
+/F2 1 Tf
+0.99 0 TD
+(node_set)Tj
+/TT2 1 Tf
+4.39 0 TD
+(then)Tj
+-13.302 -1.2 TD
+(return)Tj
+-1.8 -1.2 TD
+(end)Tj
+/F2 1 Tf
+T*
+(node_set)Tj
+/TT5 1 Tf
+4.112 0 TD
+( :=)Tj
+/F2 1 Tf
+1.417 0 TD
+(node_set)Tj
+/TT15 1 Tf
+4.389 0 TD
+<0046>Tj
+/TT5 1 Tf
+0.768 0 TD
+( {)Tj
+/F2 1 Tf
+0.89 0 TD
+(node_to_specialize)Tj
+/TT5 1 Tf
+8.555 0 TD
+( })Tj
+/TT2 1 Tf
+-20.131 -1.2 TD
+(foreach)Tj
+/TT5 1 Tf
+3.61 0 TD
+( incoming edge)Tj
+/F2 1 Tf
+7.055 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+( of)Tj
+/F2 1 Tf
+1.389 0 TD
+(node_to_specialize)Tj
+/TT2 1 Tf
+8.833 0 TD
+(do)Tj
+-19.643 -1.2 TD
+(/*)Tj
+/TT5 1 Tf
+0.667 0 TD
+( We want to take different action, depending on which of the four varieties of edge this is:)Tj
+/TT2 1 Tf
+39.499 0 TD
+(*/)Tj
+ET
+1 i 
+429.4 629.96 m
+426.41 630.25 l
+428.9 624.79 l
+432.38 629.68 l
+f*
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+461.72 674.01 m
+447.86 668.91 432.64 653.59 429.41 629.96 c
+S
+440.26 629.57 m
+437.51 630.72 l
+438.27 624.79 l
+443.02 628.42 l
+f*
+464.84 674.79 m
+448.29 663.55 446.48 645.84 440.27 629.56 c
+S
+0.5 g
+2 J 
+455.48 613.49 m
+455.48 618.14 459.25 621.91 463.9 621.91 c
+486.3 621.91 l
+490.95 621.91 494.72 618.14 494.72 613.49 c
+494.72 608.84 490.95 605.07 486.3 605.07 c
+463.9 605.07 l
+459.25 605.07 455.48 608.84 455.48 613.49 c
+b*
+1 g
+64.06 701.35 356.25 -125.78 re
+f
+BT
+/TT14 1 Tf
+10 0 0 10 64.06 694.69 Tm
+0 g
+(specialize)Tj
+/TT7 1 Tf
+4.302 0 TD
+-0.001 Tw
+(is called for each dynamically-bound edge that we are attempting to statically-)Tj
+-4.302 -1.2 TD
+-0.051 Tw
+(bind through specialization. It is given three parameters: the caller of the edge weíre trying)Tj
+T*
+0.04 Tw
+(to statically bind \()Tj
+/TT10 1 Tf
+7.367 0 TD
+0 Tw
+(specialize_node)Tj
+/TT7 1 Tf
+6.384 0 TD
+0.04 Tw
+(, which is the node we will potentially specialize\), the)Tj
+/TT10 1 Tf
+-13.751 -1.2 TD
+0 Tw
+[(desir)38(ed_info)]TJ
+/TT7 1 Tf
+4.961 0 TD
+0.083 Tw
+(, which is a description of the class information required to make the edge)Tj
+-4.961 -1.2 TD
+0.003 Tw
+(statically bound, and the)Tj
+/TT10 1 Tf
+10.034 0 TD
+0 Tw
+(bene)Tj
+/TT16 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT10 1 Tf
+0.5 0 TD
+(t)Tj
+/TT7 1 Tf
+0.2773 0 TD
+0.003 Tw
+(, which is the number of dynamically-bound sends which)Tj
+-12.699 -1.2 TD
+0.034 Tw
+(will be turned into statically bound sends if the edge can be statically bound \(simply the)Tj
+T*
+0.117 Tw
+(weight on the edge between)Tj
+/TT10 1 Tf
+11.992 0 TD
+0 Tw
+(specialize_node)Tj
+/TT7 1 Tf
+6.385 0 TD
+0.117 Tw
+[( and)]TJ
+/TT10 1 Tf
+2.176 0 TD
+0 Tw
+(callee)Tj
+/TT7 1 Tf
+2.387 0 TD
+0.117 Tw
+(\). There may be other routines)Tj
+-22.94 -1.2 TD
+0.234 Tw
+(called from this call site other than the callee \(since the call site is, by de)Tj
+/TT8 1 Tf
+32.4993 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(nition,)Tj
+-33.0554 -1.2 TD
+(dynamically bound\): these are shown with additional arrows.)Tj
+0 -1.7 TD
+(The routine returns the total cost of all nodes which are to be specialized.)Tj
+ET
+1 g
+453.91 616.37 m
+453.91 621.02 457.68 624.79 462.33 624.79 c
+484.73 624.79 l
+489.38 624.79 493.15 621.02 493.15 616.37 c
+493.15 611.72 489.38 607.95 484.73 607.95 c
+462.33 607.95 l
+457.68 607.95 453.91 611.72 453.91 616.37 c
+b*
+0.5 g
+434.54 685.18 m
+434.54 689.83 438.31 693.6 442.96 693.6 c
+503.67 693.6 l
+508.32 693.6 512.09 689.83 512.09 685.18 c
+512.09 680.53 508.32 676.76 503.67 676.76 c
+442.96 676.76 l
+438.31 676.76 434.54 680.53 434.54 685.18 c
+b*
+1 g
+431.44 688.06 m
+431.44 692.71 435.21 696.48 439.86 696.48 c
+500.57 696.48 l
+505.22 696.48 508.99 692.71 508.99 688.06 c
+508.99 683.41 505.22 679.64 500.57 679.64 c
+439.86 679.64 l
+435.21 679.64 431.44 683.41 431.44 688.06 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 439.84 686.51 Tm
+0 g
+(specialize_node)Tj
+ET
+471.14 631.34 m
+468.72 629.57 l
+474.21 627.14 l
+473.57 633.1 l
+f*
+0 J 
+463.28 677.14 m
+468.27 657.18 462.21 645.68 471.18 631.36 c
+S
+BT
+10 0 0 10 461.91 614.45 Tm
+(callee)Tj
+ET
+q
+63 710 484.41 -137.83 re
+W n
+1 g
+2 J 
+460.16 678.7 7.03 -7.03 re
+B*
+1.08 w 
+546.88 706.45 m
+62.5 706.45 l
+548.63 575.01 m
+64.25 575.01 l
+S
+Q
+BT
+/TT7 1 Tf
+10 0 0 10 469.53 656.45 Tm
+(Edge to specialize:)Tj
+/TT10 1 Tf
+1.328 -1 TD
+(benefit)Tj
+/TT7 1 Tf
+2.721 0 TD
+( =)Tj
+-4.049 -1 TD
+( edge weight)Tj
+ET
+1 g
+64.06 412.79 347.66 -127.34 re
+f
+BT
+/TT14 1 Tf
+10 0 0 10 64.06 406.13 Tm
+0 g
+(collect_nodes)Tj
+/TT7 1 Tf
+5.663 0 TD
+0.165 Tw
+[( is called to determine the connected subgraph of nodes which reach)]TJ
+/TT10 1 Tf
+-5.663 -1.2 TD
+0 Tw
+(node_to_specialize)Tj
+/TT7 1 Tf
+7.662 0 TD
+0.404 Tw
+[( through statically-bound, pass-through edges. This set is of)]TJ
+-7.662 -1.2 TD
+0.031 Tw
+(particular interest because such nodes should be specialized as a unit. If they were not)Tj
+T*
+0.336 Tw
+[(specialized together)42.3(, then calls which were statically-bound will be turned into)]TJ
+T*
+0.002 Tw
+[(dynamically-bound calls unnecessarily)70.8(. By specializing as a unit, we avoid introducing)]TJ
+T*
+0.12 Tw
+(new dynamically-bound calls which will have to be specialized back into statically-)Tj
+T*
+0 Tw
+(bound calls.)Tj
+0 -1.7 TD
+0.08 Tw
+(The routine computes)Tj
+/TT10 1 Tf
+9.207 0 TD
+0 Tw
+(node_set)Tj
+/TT7 1 Tf
+3.553 0 TD
+0.08 Tw
+(, the set of nodes to be specialized. It also adjusts the)Tj
+/TT10 1 Tf
+-12.76 -1.2 TD
+0 Tw
+(bene)Tj
+/TT16 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT10 1 Tf
+0.5 0 TD
+(t)Tj
+/TT7 1 Tf
+0.2773 0 TD
+-0.06 Tw
+[( value downward by the number of statically-bound non-pass-through calls which)]TJ
+-2.665 -1.2 TD
+0 Tw
+(may be turned into dynamically-bound calls.)Tj
+ET
+q
+63 426.17 484.41 -147.32 re
+W n
+2 J 1.08 w 
+546.88 417.89 m
+62.5 417.89 l
+548.63 284.89 m
+64.25 284.89 l
+S
+Q
+0.97 g
+2 J 
+489.93 400.71 m
+483.83 402.65 483.83 402.65 473.42 399.1 c
+463.01 395.55 463.01 395.55 451.53 384.91 c
+440.04 374.26 434.18 379.8 433.83 359.16 c
+433.47 338.52 418.75 335.61 420.19 318.52 c
+421.62 301.42 424.49 297.23 446.03 297.23 c
+467.56 297.23 488.02 299.56 501.06 300.08 c
+517.86 300.74 519.61 293.36 522.84 309.48 c
+525.62 323.26 520.44 331.69 522.23 342.98 c
+524.03 354.27 524.03 354.27 521.16 365.55 c
+518.28 376.85 518.28 376.85 511.11 383.62 c
+503.93 390.39 503.93 390.39 499.98 394.58 c
+496.03 398.78 496.03 398.78 489.93 400.71 c
+b*
+0 g
+493.06 373.57 m
+490.83 371.56 l
+496.54 369.72 l
+495.28 375.58 l
+f*
+0 J 
+481.61 381.38 m
+485.32 378.71 489.58 376.65 493.07 373.59 c
+S
+465.35 352.24 m
+463.32 350.06 l
+469.13 348.72 l
+467.39 354.43 l
+f*
+453.57 359.22 m
+458.89 358.75 462.14 355.5 465.38 352.25 c
+S
+488.38 349.22 m
+487.42 352.06 l
+483.46 347.55 l
+489.34 346.38 l
+f*
+505.28 358.64 m
+500.35 355.3 494.28 351.58 488.42 349.21 c
+S
+0.5 g
+2 J 
+428.01 310.61 m
+428.01 314.074 430.826 316.89 434.3 316.89 c
+508.84 316.89 l
+512.314 316.89 515.13 314.074 515.13 310.6 c
+515.13 307.136 512.314 304.32 508.84 304.32 c
+434.3 304.32 l
+430.826 304.32 428.01 307.136 428.01 310.61 c
+b*
+1 g
+424.52 312.76 m
+424.52 316.224 427.336 319.04 430.81 319.04 c
+505.35 319.04 l
+508.824 319.04 511.64 316.224 511.64 312.75 c
+511.64 309.286 508.824 306.47 505.35 306.47 c
+430.81 306.47 l
+427.336 306.47 424.52 309.286 424.52 312.76 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 432.6 311 Tm
+0 g
+(node_to_specialize)Tj
+ET
+0.5 g
+467.15 341.38 m
+467.15 344.854 469.966 347.67 473.44 347.67 c
+481.37 347.67 l
+484.844 347.67 487.66 344.854 487.66 341.38 c
+487.66 337.906 484.844 335.09 481.37 335.09 c
+473.44 335.09 l
+469.966 335.09 467.15 337.906 467.15 341.38 c
+b*
+1 g
+466.33 343.53 m
+466.33 347.004 469.146 349.82 472.62 349.82 c
+480.55 349.82 l
+484.024 349.82 486.84 347.004 486.84 343.53 c
+486.84 340.056 484.024 337.24 480.55 337.24 c
+472.62 337.24 l
+469.146 337.24 466.33 340.056 466.33 343.53 c
+b*
+0 g
+475.38 323.56 m
+472.58 324.65 l
+473.49 318.72 l
+478.17 322.47 l
+f*
+0 J 
+477.39 336.54 m
+477.29 327.3 476.64 326.18 475.4 323.56 c
+S
+0.7 g
+2 J 
+474.9 338.87 5.61 -5.25 re
+B*
+BT
+10 0 0 10 472.88 342.31 Tm
+0 g
+(C)Tj
+8 0 0 8 479.55 339.81 Tm
+(1)Tj
+10 0 0 10 441.69 381.49 Tm
+(w)Tj
+ET
+0.5 g
+444.25 365.16 m
+444.25 368.624 447.066 371.44 450.54 371.44 c
+458.47 371.44 l
+461.944 371.44 464.76 368.624 464.76 365.15 c
+464.76 361.686 461.944 358.87 458.47 358.87 c
+450.54 358.87 l
+447.066 358.87 444.25 361.686 444.25 365.16 c
+b*
+1 g
+443.43 367.31 m
+443.43 370.774 446.246 373.59 449.72 373.59 c
+457.65 373.59 l
+461.124 373.59 463.94 370.774 463.94 367.3 c
+463.94 363.836 461.124 361.02 457.65 361.02 c
+449.72 361.02 l
+446.246 361.02 443.43 363.836 443.43 367.31 c
+b*
+BT
+10 0 0 10 449.98 366.09 Tm
+0 g
+(C)Tj
+8 0 0 8 456.65 363.59 Tm
+(2)Tj
+ET
+0.5 g
+471.19 386.02 m
+471.19 389.484 474.006 392.3 477.48 392.3 c
+485.41 392.3 l
+488.884 392.3 491.7 389.484 491.7 386.01 c
+491.7 382.546 488.884 379.73 485.41 379.73 c
+477.48 379.73 l
+474.006 379.73 471.19 382.546 471.19 386.02 c
+b*
+1 g
+470.37 388.17 m
+470.37 391.634 473.186 394.45 476.66 394.45 c
+484.59 394.45 l
+488.064 394.45 490.88 391.634 490.88 388.16 c
+490.88 384.696 488.064 381.88 484.59 381.88 c
+476.66 381.88 l
+473.186 381.88 470.37 384.696 470.37 388.17 c
+b*
+BT
+10 0 0 10 476.92 386.94 Tm
+0 g
+(C)Tj
+8 0 0 8 483.59 384.44 Tm
+(4)Tj
+ET
+0.5 g
+495.63 365.16 m
+495.63 368.624 498.446 371.44 501.92 371.44 c
+509.85 371.44 l
+513.324 371.44 516.14 368.624 516.14 365.15 c
+516.14 361.686 513.324 358.87 509.85 358.87 c
+501.92 358.87 l
+498.446 358.87 495.63 361.686 495.63 365.16 c
+b*
+1 g
+494.81 367.31 m
+494.81 370.774 497.626 373.59 501.1 373.59 c
+509.03 373.59 l
+512.504 373.59 515.32 370.774 515.32 367.3 c
+515.32 363.836 512.504 361.02 509.03 361.02 c
+501.1 361.02 l
+497.626 361.02 494.81 363.836 494.81 367.31 c
+b*
+BT
+10 0 0 10 501.37 366.09 Tm
+0 g
+(C)Tj
+8 0 0 8 508.03 363.59 Tm
+(3)Tj
+ET
+0.7 g
+502.46 362.06 5.61 -5.24 re
+B*
+450.9 363.09 5.61 -5.25 re
+B*
+478.6 384.08 5.61 -5.25 re
+B*
+0 g
+465.11 374.17 m
+463.89 376.88 l
+460.41 372.05 l
+466.33 371.45 l
+f*
+0 J 
+479.11 380.8 m
+475.65 378.6 469.95 376.22 465.14 374.15 c
+S
+512.6 377.74 m
+510.61 379.95 l
+508.77 374.29 l
+514.6 375.54 l
+f*
+516.6 387.96 m
+512.39 385.11 513.52 380.84 512.63 377.74 c
+S
+1 g
+2 J 
+513.19 392.94 5.61 -5.25 re
+B*
+0.5 g
+483.86 399.95 m
+480.89 399.48 l
+484.66 394.81 l
+486.82 400.41 l
+f*
+0.5 G
+0 J 
+482.56 410.72 m
+484.88 408.74 484.27 403.81 483.88 399.95 c
+S
+1 g
+0 G
+2 J 
+479.35 415.53 5.6 -5.25 re
+B*
+0.5 g
+449.21 379.78 m
+446.25 379.31 l
+450.02 374.64 l
+452.17 380.24 l
+f*
+0.5 G
+0 J 
+447.9 390.56 m
+450.23 388.58 449.62 383.64 449.23 379.79 c
+S
+0.7 g
+0 G
+2 J 
+444.69 395.36 5.61 -5.24 re
+B*
+BT
+10 0 0 10 509.92 403.9 Tm
+0 g
+(node_set)Tj
+ET
+500.28 400.7 m
+498.27 402.19 l
+497.69 397.22 l
+502.29 399.2 l
+f*
+500.3 400.69 m
+501.58 402.46 l
+507.76 405.61 l
+S
+endstream
+endobj
+30 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 26 0 R
+/F2 27 0 R
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT14 16 0 R
+/TT15 31 0 R
+/TT16 32 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+34 0 obj
+<<
+/Length 23884
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 117 544.02 Tm
+0 g
+0 Tc
+0 Tw
+(if)Tj
+/TT5 1 Tf
+0.611 0 TD
+( is_dynamically_bound\()Tj
+/F2 1 Tf
+10.442 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(\))Tj
+/TT2 1 Tf
+0.61 0 TD
+(then)Tj
+/F2 1 Tf
+-10.419 -1.2 TD
+(nothing extra to do for dynamically bound incoming edges)Tj
+/TT2 1 Tf
+-1.8 -16.831 TD
+(else /*)Tj
+/TT5 1 Tf
+3.167 0 TD
+(is_statically_bound\()Tj
+/F2 1 Tf
+8.776 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(\))Tj
+/TT2 1 Tf
+0.611 0 TD
+(*/)Tj
+-11.31 -1.2 TD
+(if)Tj
+/F1 1 Tf
+0.888 0 TD
+(has_desired_info)Tj
+/TT5 1 Tf
+8.221 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(e, desired_info)Tj
+/TT5 1 Tf
+6.555 0 TD
+(\)\))Tj
+/TT2 1 Tf
+0.944 0 TD
+(then)Tj
+/F2 1 Tf
+-15.141 -1.2 TD
+[(already has the desired info; will still be statically bound)14( after specialization without cost)]TJ
+/TT2 1 Tf
+-1.8 -1.2 TD
+(else)Tj
+1.8 -1.2 TD
+(/*)Tj
+/TT5 1 Tf
+0.667 0 TD
+( Need to consider effect of specialization on statically-bound caller)Tj
+/TT2 1 Tf
+29.496 0 TD
+(*/)Tj
+-30.163 -18.344 TD
+(if)Tj
+/TT5 1 Tf
+0.888 0 TD
+(not\(is_pass_through\()Tj
+/F2 1 Tf
+9.388 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(\)\))Tj
+/TT2 1 Tf
+0.944 0 TD
+(then)Tj
+/F2 1 Tf
+-9.976 -1.2 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+( :=)Tj
+/F2 1 Tf
+1.418 0 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+( -)Tj
+/F2 1 Tf
+0.888 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(.weight)Tj
+ET
+1 i 
+526.55 595.11 m
+523.59 594.65 l
+527.34 589.97 l
+529.52 595.56 l
+f*
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+510.16 613.41 m
+515.58 607.19 524.01 603.06 526.58 595.12 c
+S
+76.11 592.71 m
+73.17 593.35 l
+75 587.63 l
+79.04 592.07 l
+f*
+111.72 614.19 m
+99.66 606.38 81.14 607.77 76.1 592.72 c
+S
+90.15 593.66 m
+87.56 595.19 l
+87.5 589.19 l
+92.73 592.13 l
+f*
+114.06 613.41 m
+101.51 604.34 97.05 604.61 90.13 593.66 c
+S
+483.92 638.92 m
+482.27 636.42 l
+488.26 636.07 l
+485.57 641.43 l
+f*
+453.12 659.5 m
+458.75 645.12 472.93 644.84 483.94 638.9 c
+S
+0.5 g
+2 J 
+418.73 573.01 m
+418.73 577.66 422.5 581.43 427.15 581.43 c
+448.8 581.43 l
+453.45 581.43 457.22 577.66 457.22 573.01 c
+457.22 568.36 453.45 564.59 448.8 564.59 c
+427.15 564.59 l
+422.5 564.59 418.73 568.36 418.73 573.01 c
+b*
+1 g
+161.72 699.16 239.06 -131.25 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 161.72 692.49 Tm
+0 g
+0.164 Tw
+(For the case of a dynamically-bound edge, specialization)Tj
+0 -1.2 TD
+0.681 Tw
+(incurs no reduction in bene)Tj
+/TT8 1 Tf
+13.6097 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.681 Tw
+(t, since the call to)Tj
+/TT10 1 Tf
+-14.1659 -1.2 TD
+0 Tw
+(node_to_specialize)Tj
+/TT7 1 Tf
+7.662 0 TD
+0.029 Tw
+[( is already dynamically dispatched. This)]TJ
+-7.662 -1.2 TD
+0.778 Tw
+(is true regardless of whether the edge entering)Tj
+/TT10 1 Tf
+T*
+0 Tw
+(node_to_specialize)Tj
+/TT7 1 Tf
+7.662 0 TD
+0.069 Tw
+[( is a)]TJ
+/TT10 1 Tf
+2.068 0 TD
+0 Tw
+[(pass_thr)39.3(ough)]TJ
+/TT7 1 Tf
+5.405 0 TD
+0.069 Tw
+[( edge \()]TJ
+/TT10 1 Tf
+2.858 0 TD
+0 Tw
+(caller1)Tj
+/TT7 1 Tf
+2.832 0 TD
+0.069 Tw
+(\) or not)Tj
+-20.825 -1.2 TD
+0 Tw
+(\()Tj
+/TT10 1 Tf
+0.333 0 TD
+(caller2)Tj
+/TT7 1 Tf
+2.831 0 TD
+0.265 Tw
+(\). If the newly introduced edge from)Tj
+/TT10 1 Tf
+16.619 0 TD
+0 Tw
+(caller1)Tj
+/TT7 1 Tf
+2.831 0 TD
+0.265 Tw
+[( to)]TJ
+/TT10 1 Tf
+-22.614 -1.2 TD
+0 Tw
+(specialized)Tj
+/TT7 1 Tf
+4.441 0 TD
+0.615 Tw
+[( has suf)]TJ
+/TT8 1 Tf
+4.265 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.615 Tw
+(cient weight, then)Tj
+/TT10 1 Tf
+9.2268 0 TD
+0 Tw
+(caller1)Tj
+/TT7 1 Tf
+2.832 0 TD
+0.615 Tw
+[( may)]TJ
+-21.321 -1.2 TD
+-0.018 Tw
+(potentially be split during a subsequent iteration of the main)Tj
+T*
+-0.061 Tw
+[(loop. This can cause a rippling ef)21.3(fect upwards as a whole call)]TJ
+T*
+0 Tw
+(chain is specialized.)Tj
+ET
+1 g
+417.19 575.89 m
+417.19 580.54 420.96 584.31 425.61 584.31 c
+447.26 584.31 l
+451.91 584.31 455.68 580.54 455.68 575.89 c
+455.68 571.24 451.91 567.47 447.26 567.47 c
+425.61 567.47 l
+420.96 567.47 417.19 571.24 417.19 575.89 c
+b*
+0.5 g
+412.45 624.39 m
+412.45 629.04 416.22 632.81 420.87 632.81 c
+456.8 632.81 l
+461.45 632.81 465.22 629.04 465.22 624.39 c
+465.22 619.74 461.45 615.97 456.8 615.97 c
+420.87 615.97 l
+416.22 615.97 412.45 619.74 412.45 624.39 c
+b*
+1 g
+410.34 627.27 m
+410.34 631.92 414.11 635.69 418.76 635.69 c
+454.69 635.69 l
+459.34 635.69 463.11 631.92 463.11 627.27 c
+463.11 622.62 459.34 618.85 454.69 618.85 c
+418.76 618.85 l
+414.11 618.85 410.34 622.62 410.34 627.27 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 416.41 625.72 Tm
+0 g
+(specialized)Tj
+ET
+437.05 589.57 m
+434.13 590.22 l
+435.93 584.5 l
+439.98 588.92 l
+f*
+0 J 
+439.84 613.22 m
+443.9 603.24 439.36 595.24 437.06 589.56 c
+S
+BT
+10 0 0 10 426.92 573.97 Tm
+(callee)Tj
+ET
+q
+63 710 484.41 -157.31 re
+W n
+0.7 g
+2 J 
+436.72 617.91 7.03 -7.03 re
+B*
+1.08 w 
+546.88 706.59 m
+62.5 706.59 l
+547.06 555.62 m
+61.72 555.62 l
+S
+Q
+0.5 g
+2 J 
+430.82 671.08 m
+430.82 675.72 434.59 679.49 439.24 679.49 c
+460.89 679.49 l
+465.54 679.49 469.31 675.72 469.31 671.07 c
+469.31 666.43 465.54 662.66 460.89 662.66 c
+439.24 662.66 l
+434.59 662.66 430.82 666.43 430.82 671.08 c
+b*
+1 g
+429.28 673.96 m
+429.28 678.61 433.05 682.38 437.7 682.38 c
+459.35 682.38 l
+464 682.38 467.77 678.61 467.77 673.96 c
+467.77 669.31 464 665.54 459.35 665.54 c
+437.7 665.54 l
+433.05 665.54 429.28 669.31 429.28 673.96 c
+b*
+0 g
+442.74 640.78 m
+440.02 642.01 l
+440.62 636.06 l
+445.46 639.55 l
+f*
+0 J 
+451.75 661.47 m
+451.6 647.1 446.36 646.36 442.74 640.78 c
+S
+1 g
+2 J 
+448.62 664.59 7.04 -7.03 re
+B*
+BT
+10 0 0 10 434.38 672.78 Tm
+0 g
+(caller1)Tj
+/TT14 1 Tf
+12 0 0 12 464.06 691.53 Tm
+(After)Tj
+ET
+119.52 586.95 m
+117.55 584.68 l
+123.44 583.53 l
+121.49 589.21 l
+f*
+0 J 
+112.5 613.22 m
+117.31 601.8 111.85 595.05 119.48 586.96 c
+S
+1 g
+2 J 
+109.38 617.91 7.03 -7.03 re
+B*
+BT
+/TT10 1 Tf
+10 0 0 10 124.22 598.16 Tm
+0 g
+(benefit)Tj
+ET
+0.5 g
+117.54 671.08 m
+117.54 675.72 121.31 679.49 125.96 679.49 c
+147.61 679.49 l
+152.26 679.49 156.03 675.72 156.03 671.07 c
+156.03 666.43 152.26 662.66 147.61 662.66 c
+125.96 662.66 l
+121.31 662.66 117.54 666.43 117.54 671.08 c
+b*
+1 g
+116 673.96 m
+116 678.61 119.77 682.38 124.42 682.38 c
+146.07 682.38 l
+150.72 682.38 154.49 678.61 154.49 673.96 c
+154.49 669.31 150.72 665.54 146.07 665.54 c
+124.42 665.54 l
+119.77 665.54 116 669.31 116 673.96 c
+b*
+0.5 g
+129.48 640.78 m
+126.75 642.01 l
+127.34 636.06 l
+132.2 639.55 l
+f*
+0.5 G
+0 J 
+138.47 661.47 m
+138.32 647.1 133.08 646.36 129.46 640.78 c
+S
+1 g
+0 G
+2 J 
+135.34 664.59 7.04 -7.03 re
+B*
+BT
+10 0 0 10 121.88 672.78 Tm
+0 g
+(caller2)Tj
+/TT14 1 Tf
+12 0 0 12 101.56 691.53 Tm
+[(Befor)18.5(e)]TJ
+ET
+0.5 g
+481.2 624.39 m
+481.2 629.04 484.97 632.81 489.62 632.81 c
+525.55 632.81 l
+530.2 632.81 533.97 629.04 533.97 624.39 c
+533.97 619.74 530.2 615.97 525.55 615.97 c
+489.62 615.97 l
+484.97 615.97 481.2 619.74 481.2 624.39 c
+b*
+1 g
+479.09 627.27 m
+479.09 631.92 482.86 635.69 487.51 635.69 c
+523.44 635.69 l
+528.09 635.69 531.86 631.92 531.86 627.27 c
+531.86 622.62 528.09 618.85 523.44 618.85 c
+487.51 618.85 l
+482.86 618.85 479.09 622.62 479.09 627.27 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 490.62 625.72 Tm
+0 g
+(original)Tj
+ET
+507.09 592.62 m
+504.66 590.87 l
+510.13 588.41 l
+509.52 594.38 l
+f*
+0 J 
+508.59 613.22 m
+508.59 607.63 504.43 599.32 507.15 592.62 c
+S
+1 g
+2 J 
+505.47 617.91 7.03 -7.03 re
+B*
+0.5 g
+69.88 671.08 m
+69.88 675.72 73.65 679.49 78.3 679.49 c
+99.96 679.49 l
+104.61 679.49 108.38 675.72 108.38 671.07 c
+108.38 666.43 104.61 662.66 99.96 662.66 c
+78.3 662.66 l
+73.65 662.66 69.88 666.43 69.88 671.08 c
+b*
+1 g
+68.34 673.96 m
+68.34 678.61 72.11 682.38 76.76 682.38 c
+98.42 682.38 l
+103.07 682.38 106.84 678.61 106.84 673.96 c
+106.84 669.31 103.07 665.54 98.42 665.54 c
+76.76 665.54 l
+72.11 665.54 68.34 669.31 68.34 673.96 c
+b*
+0 g
+99.61 642.34 m
+96.89 641.11 l
+101.75 637.63 l
+102.34 643.58 l
+f*
+0 J 
+90.62 663.03 m
+90.78 648.67 96.01 647.93 99.63 642.34 c
+S
+1 g
+2 J 
+87.69 664.59 7.03 -7.03 re
+B*
+BT
+10 0 0 10 74.22 672.78 Tm
+0 g
+(caller1)Tj
+ET
+0.5 g
+464.39 638.34 m
+463.07 641.03 l
+459.74 636.06 l
+465.7 635.66 l
+f*
+0.5 G
+0 J 1.08 w 
+508.97 659.5 m
+500.85 644.68 479.99 644.84 464.4 638.32 c
+S
+0 G
+2 J 0.6 w 
+494.32 671.08 m
+494.32 675.72 498.09 679.49 502.74 679.49 c
+524.39 679.49 l
+529.04 679.49 532.81 675.72 532.81 671.07 c
+532.81 666.43 529.04 662.66 524.39 662.66 c
+502.74 662.66 l
+498.09 662.66 494.32 666.43 494.32 671.08 c
+b*
+1 g
+492.78 673.96 m
+492.78 678.61 496.55 682.38 501.2 682.38 c
+522.85 682.38 l
+527.5 682.38 531.27 678.61 531.27 673.96 c
+531.27 669.31 527.5 665.54 522.85 665.54 c
+501.2 665.54 l
+496.55 665.54 492.78 669.31 492.78 673.96 c
+b*
+0.5 g
+509.64 641.87 m
+506.73 641.12 l
+510.93 636.84 l
+512.54 642.62 l
+f*
+0.5 G
+0 J 
+510.34 661.47 m
+510.49 647.45 508.8 646.9 509.68 641.87 c
+S
+1 g
+0 G
+2 J 
+506.44 664.59 7.03 -7.03 re
+B*
+BT
+10 0 0 10 497.88 672.78 Tm
+0 g
+(caller2)Tj
+ET
+0.5 g
+103.88 573.01 m
+103.88 577.66 107.65 581.43 112.3 581.43 c
+133.96 581.43 l
+138.61 581.43 142.38 577.66 142.38 573.01 c
+142.38 568.36 138.61 564.59 133.96 564.59 c
+112.3 564.59 l
+107.65 564.59 103.88 568.36 103.88 573.01 c
+b*
+1 g
+102.34 575.89 m
+102.34 580.54 106.11 584.31 110.76 584.31 c
+132.42 584.31 l
+137.07 584.31 140.84 580.54 140.84 575.89 c
+140.84 571.24 137.07 567.47 132.42 567.47 c
+110.76 567.47 l
+106.11 567.47 102.34 571.24 102.34 575.89 c
+b*
+BT
+10 0 0 10 112.08 573.97 Tm
+0 g
+(callee)Tj
+ET
+0.5 g
+70.7 625.72 m
+70.7 630.37 74.47 634.14 79.12 634.14 c
+148.85 634.14 l
+153.5 634.14 157.27 630.37 157.27 625.72 c
+157.27 621.07 153.5 617.3 148.85 617.3 c
+79.12 617.3 l
+74.47 617.3 70.7 621.07 70.7 625.72 c
+b*
+1 g
+67.23 628.6 m
+67.23 633.25 71 637.02 75.65 637.02 c
+145.38 637.02 l
+150.03 637.02 153.8 633.25 153.8 628.6 c
+153.8 623.95 150.03 620.18 145.38 620.18 c
+75.65 620.18 l
+71 620.18 67.23 623.95 67.23 628.6 c
+b*
+BT
+10 0 0 10 73.3 627.05 Tm
+0 g
+(node_to_specialize)Tj
+ET
+0.5 g
+439.01 451.41 m
+436.31 450.14 l
+441.2 446.73 l
+441.71 452.67 l
+f*
+0.5 G
+0 J 
+438.9 465.64 m
+439 453.47 438.74 452.03 439.05 451.4 c
+S
+0 g
+525.67 408.44 m
+522.73 407.88 l
+526.65 403.34 l
+528.62 409.01 l
+f*
+0 G
+509.58 424.34 m
+514.85 418.9 522.96 415.24 525.72 408.45 c
+S
+76.27 404.43 m
+73.37 405.17 l
+75 399.39 l
+79.18 403.7 l
+f*
+111.72 423.64 m
+99.79 416.59 81.54 417.76 76.26 404.48 c
+S
+90.33 405.17 m
+87.82 406.81 l
+87.5 400.82 l
+92.84 403.53 l
+f*
+114.06 422.92 m
+101.62 414.72 97.13 414.89 90.31 405.16 c
+S
+1 g
+164.84 502.72 235.94 -89.85 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 164.84 496.05 Tm
+0 g
+(For a statically-bound edge, we )Tj
+/TT8 1 Tf
+12.8296 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(rst check whether the call)Tj
+-13.3857 -1.2 TD
+0.313 Tw
+(site has enough static information to remain statically)Tj
+T*
+-0.031 Tw
+(bound after specialization, either to the)Tj
+/TT10 1 Tf
+15.664 0 TD
+0 Tw
+(specialized)Tj
+/TT7 1 Tf
+4.442 0 TD
+-0.031 Tw
+[( or to the)]TJ
+/TT10 1 Tf
+-20.106 -1.2 TD
+0 Tw
+(original)Tj
+/TT7 1 Tf
+3.222 0 TD
+0.048 Tw
+[( method. If this is the case, then the full bene)]TJ
+/TT8 1 Tf
+18.4195 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.048 Tw
+(t of)Tj
+-22.1976 -1.2 TD
+-0.024 Tw
+(specialization remains, and no specialization of the caller is)Tj
+T*
+0 Tw
+(needed.)Tj
+ET
+0.5 g
+2 J 
+412.44 434.19 m
+412.44 438.36 415.82 441.74 419.99 441.74 c
+457.35 441.74 l
+461.52 441.74 464.9 438.36 464.9 434.19 c
+464.9 430.02 461.52 426.64 457.35 426.64 c
+419.99 426.64 l
+415.82 426.64 412.44 430.02 412.44 434.19 c
+b*
+1 g
+410.34 436.77 m
+410.34 440.94 413.72 444.32 417.89 444.32 c
+455.25 444.32 l
+459.42 444.32 462.8 440.94 462.8 436.77 c
+462.8 432.6 459.42 429.22 455.25 429.22 c
+417.89 429.22 l
+413.72 429.22 410.34 432.6 410.34 436.77 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 416.37 435.13 Tm
+0 g
+(specialized)Tj
+ET
+437.14 403.45 m
+434.25 404.24 l
+435.78 398.44 l
+440.04 402.66 l
+f*
+0 J 
+439.67 424.18 m
+443.58 415.51 439.46 408.52 437.13 403.46 c
+S
+q
+63 516.69 484.41 -144.32 re
+W n
+0.7 g
+2 J 
+436.57 428.38 6.99 -6.31 re
+B*
+1.08 w 
+546.88 508.59 m
+62.5 508.59 l
+547.06 376.38 m
+61.72 376.38 l
+S
+Q
+BT
+/TT14 1 Tf
+12 0 0 12 463.75 494.09 Tm
+(After)Tj
+ET
+0.5 g
+2 J 
+70.84 432.94 m
+70.84 437.192 74.278 440.63 78.52 440.63 c
+149.73 440.63 l
+153.972 440.63 157.41 437.192 157.41 432.95 c
+157.41 428.699 153.972 425.26 149.73 425.26 c
+78.52 425.26 l
+74.278 425.26 70.84 428.698 70.84 432.94 c
+b*
+1 g
+67.38 435.57 m
+67.38 439.822 70.818 443.26 75.06 443.26 c
+146.26 443.26 l
+150.502 443.26 153.94 439.822 153.94 435.58 c
+153.94 431.329 150.502 427.89 146.26 427.89 c
+75.06 427.89 l
+70.818 427.89 67.38 431.328 67.38 435.57 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 73.44 433.95 Tm
+0 g
+(node_to_specialize)Tj
+ET
+119.23 401.56 m
+117.47 399.13 l
+123.44 398.51 l
+121 403.99 l
+f*
+0 J 
+112.5 422.75 m
+117.25 413.53 111.97 408.03 119.23 401.53 c
+S
+1 g
+2 J 
+109.38 427.03 7.03 -6.42 re
+B*
+BT
+10 0 0 10 124.22 408.8 Tm
+0 g
+(benefit)Tj
+ET
+0.5 g
+94.88 475.56 m
+94.88 479.812 98.318 483.25 102.56 483.25 c
+125.7 483.25 l
+129.942 483.25 133.38 479.812 133.38 475.57 c
+133.38 471.318 129.942 467.88 125.7 467.88 c
+102.56 467.88 l
+98.318 467.88 94.88 471.318 94.88 475.56 c
+b*
+1 g
+93.34 478.18 m
+93.34 482.432 96.778 485.87 101.02 485.87 c
+124.16 485.87 l
+128.402 485.87 131.84 482.432 131.84 478.19 c
+131.84 473.938 128.402 470.5 124.16 470.5 c
+101.02 470.5 l
+96.778 470.5 93.34 473.938 93.34 478.18 c
+b*
+0.5 g
+112.81 449.85 m
+110.02 450.93 l
+110.94 445 l
+115.61 448.76 l
+f*
+0.5 G
+0 J 
+115.81 466.79 m
+115.67 454.37 114.7 453.95 112.82 449.89 c
+S
+0.7 g
+0 G
+2 J 
+112.69 469.64 7.03 -6.41 re
+B*
+BT
+10 0 0 10 101.56 476.91 Tm
+0 g
+(caller)Tj
+/TT14 1 Tf
+12 0 0 12 101.56 493.99 Tm
+[(Befor)18.5(e)]TJ
+ET
+0.5 g
+480.8 434.19 m
+480.8 438.36 484.18 441.74 488.35 441.74 c
+525.71 441.74 l
+529.88 441.74 533.26 438.36 533.26 434.19 c
+533.26 430.02 529.88 426.64 525.71 426.64 c
+488.35 426.64 l
+484.18 426.64 480.8 430.02 480.8 434.19 c
+b*
+1 g
+478.7 436.77 m
+478.7 440.94 482.08 444.32 486.25 444.32 c
+523.61 444.32 l
+527.78 444.32 531.16 440.94 531.16 436.77 c
+531.16 432.6 527.78 429.22 523.61 429.22 c
+486.25 429.22 l
+482.08 429.22 478.7 432.6 478.7 436.77 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 490.94 435.13 Tm
+0 g
+(original)Tj
+ET
+506.4 406.06 m
+504.02 404.23 l
+509.57 401.94 l
+508.78 407.89 l
+f*
+0 J 
+508.03 424.18 m
+508.03 419.26 504.04 412 506.45 406.06 c
+S
+1 g
+2 J 
+504.92 428.38 6.99 -6.31 re
+B*
+0.5 g
+417.72 476.04 m
+417.72 480.21 421.1 483.59 425.27 483.59 c
+448.44 483.59 l
+452.61 483.59 455.99 480.21 455.99 476.04 c
+455.99 471.87 452.61 468.49 448.44 468.49 c
+425.27 468.49 l
+421.1 468.49 417.72 471.87 417.72 476.04 c
+b*
+1 g
+416.18 478.63 m
+416.18 482.79 419.56 486.17 423.73 486.17 c
+446.9 486.17 l
+451.07 486.17 454.45 482.79 454.45 478.62 c
+454.45 474.46 451.07 471.08 446.9 471.08 c
+423.73 471.08 l
+419.56 471.08 416.18 474.46 416.18 478.63 c
+b*
+0.7 g
+435.2 470.23 6.99 -6.3 re
+B*
+BT
+10 0 0 10 425.91 477.32 Tm
+0 g
+(caller)Tj
+ET
+1 g
+462.98 476.23 83.11 -9.87 re
+f
+BT
+/TT7 1 Tf
+9 0 0 9 462.98 470.23 Tm
+0 g
+-0.05 Tc
+(Still statically-bound)Tj
+ET
+447.34 464.32 m
+448.55 466.51 l
+443.55 466.42 l
+446.13 462.14 l
+f*
+0 J 
+461.42 469.22 m
+455.96 466.3 453.47 461.92 447.36 464.33 c
+S
+BT
+/TT10 1 Tf
+10 0 0 10 118.75 451.3 Tm
+0 Tc
+(w)Tj
+ET
+0.5 g
+2 J 
+419.64 388.72 m
+419.64 392.89 423.02 396.27 427.19 396.27 c
+450.36 396.27 l
+454.53 396.27 457.91 392.89 457.91 388.72 c
+457.91 384.55 454.53 381.17 450.36 381.17 c
+427.19 381.17 l
+423.02 381.17 419.64 384.55 419.64 388.72 c
+b*
+1 g
+418.11 391.3 m
+418.11 395.47 421.49 398.85 425.66 398.85 c
+448.83 398.85 l
+453 398.85 456.38 395.47 456.38 391.3 c
+456.38 387.13 453 383.75 448.83 383.75 c
+425.66 383.75 l
+421.49 383.75 418.11 387.13 418.11 391.3 c
+b*
+BT
+10 0 0 10 427.79 389.33 Tm
+0 g
+(callee)Tj
+ET
+0.5 g
+104.85 386.64 m
+104.85 390.892 108.288 394.33 112.53 394.33 c
+135.66 394.33 l
+139.902 394.33 143.34 390.892 143.34 386.65 c
+143.34 382.398 139.902 378.96 135.66 378.96 c
+112.53 378.96 l
+108.288 378.96 104.85 382.398 104.85 386.64 c
+b*
+1 g
+103.31 389.27 m
+103.31 393.522 106.748 396.96 110.99 396.96 c
+134.12 396.96 l
+138.362 396.96 141.8 393.522 141.8 389.28 c
+141.8 385.029 138.362 381.59 134.12 381.59 c
+110.99 381.59 l
+106.748 381.59 103.31 385.028 103.31 389.27 c
+b*
+BT
+10 0 0 10 113.05 387.31 Tm
+0 g
+(callee)Tj
+ET
+107.28 453.62 m
+108.43 451.4 l
+111.12 455.61 l
+106.13 455.84 l
+f*
+0 J 
+93.16 458.46 m
+100.18 458.06 101.63 451.95 107.25 453.62 c
+S
+BT
+/TT7 1 Tf
+10 0 0 10 64.25 457.55 Tm
+(edge)Tj
+/TT10 1 Tf
+1.887 0 TD
+( e)Tj
+ET
+0.5 g
+439.43 229.44 m
+436.65 228.31 l
+441.39 224.63 l
+442.21 230.57 l
+f*
+0.5 G
+439.06 245.72 m
+439.19 229.51 438.79 230.37 439.47 229.45 c
+S
+483.6 226.91 m
+480.92 225.55 l
+485.96 222.28 l
+486.27 228.27 l
+f*
+439.08 247.72 m
+438.91 231.59 473.86 232.82 483.63 226.92 c
+S
+0 g
+526.55 181.36 m
+523.59 180.9 l
+527.34 176.22 l
+529.52 181.81 l
+f*
+0 G
+510.16 199.66 m
+515.58 193.44 524.01 189.31 526.58 181.37 c
+S
+76.11 178.96 m
+73.17 179.59 l
+75 173.88 l
+79.04 178.32 l
+f*
+111.72 200.44 m
+99.66 192.63 81.14 194.02 76.1 178.97 c
+S
+90.14 179.91 m
+87.56 181.44 l
+87.5 175.44 l
+92.73 178.39 l
+f*
+114.06 199.66 m
+101.51 190.59 97.05 190.86 90.13 179.91 c
+S
+q
+63 300.38 484.41 -159.44 re
+W n
+1 g
+164.84 286.97 235.94 -146.03 re
+f
+Q
+BT
+/TT7 1 Tf
+10 0 0 10 164.84 280.3 Tm
+0.028 Tw
+(For a statically-bound edge that does not pass-through any)Tj
+0 -1.2 TD
+-0.037 Tw
+(formals, the bene)Tj
+/TT8 1 Tf
+6.8401 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.037 Tw
+(t of specialization is tempered by the fact)Tj
+-7.3962 -1.2 TD
+0.034 Tw
+(that the statically-bound call from)Tj
+/TT10 1 Tf
+13.969 0 TD
+0 Tw
+(caller)Tj
+/TT7 1 Tf
+2.332 0 TD
+0.034 Tw
+[( to)]TJ
+/TT10 1 Tf
+1.346 0 TD
+0 Tw
+(specialize)Tj
+/TT7 1 Tf
+3.942 0 TD
+0.034 Tw
+[( may)]TJ
+-21.589 -1.2 TD
+-0.051 Tw
+(become dynamically-bound after specialization, if the static)Tj
+T*
+0.125 Tw
+(information available in)Tj
+/TT10 1 Tf
+10.23 0 TD
+0 Tw
+(caller)Tj
+/TT7 1 Tf
+2.332 0 TD
+0.125 Tw
+[( is insuf)]TJ
+/TT8 1 Tf
+3.397 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.125 Tw
+(cient to statically)Tj
+-16.5152 -1.2 TD
+0.051 Tw
+(determine whether the)Tj
+/TT10 1 Tf
+9.341 0 TD
+0 Tw
+(specialized)Tj
+/TT7 1 Tf
+4.442 0 TD
+0.051 Tw
+[( or)]TJ
+/TT10 1 Tf
+1.434 0 TD
+0 Tw
+(original)Tj
+/TT7 1 Tf
+3.222 0 TD
+0.051 Tw
+[( method will)]TJ
+-18.439 -1.2 TD
+0.168 Tw
+[(be called. T)69.9(o)0( be conservative, the algorithm reduces the)]TJ
+T*
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.124 Tw
+(t of specialization \()Tj
+/TT10 1 Tf
+8.0611 0 TD
+0 Tw
+(bene)Tj
+/TT16 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT10 1 Tf
+0.5 0 TD
+(t\))Tj
+/TT7 1 Tf
+0.6093 0 TD
+0.124 Tw
+[( by)]TJ
+/TT10 1 Tf
+1.748 0 TD
+0 Tw
+(w)Tj
+/TT7 1 Tf
+0.602 0 TD
+0.124 Tw
+(, the weight of the)Tj
+-15.852 -1.2 TD
+0.018 Tw
+(edge from)Tj
+/TT10 1 Tf
+4.367 0 TD
+0 Tw
+(caller)Tj
+/TT7 1 Tf
+2.6 0 TD
+(to)Tj
+/TT10 1 Tf
+1.045 0 TD
+(specialize)Tj
+/TT7 1 Tf
+3.942 0 TD
+0.018 Tw
+(. Specialization is only a win)Tj
+-11.954 -1.2 TD
+0 Tw
+(if)Tj
+/TT10 1 Tf
+0.876 0 TD
+(bene)Tj
+/TT16 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT10 1 Tf
+0.5 0 TD
+0.015 Tw
+(t > w)Tj
+/TT7 1 Tf
+2.1483 0 TD
+[( \(if)]TJ
+/TT10 1 Tf
+1.473 0 TD
+0 Tw
+(bene)Tj
+/TT16 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT10 1 Tf
+0.5 0 TD
+(t)Tj
+/TT7 1 Tf
+0.2763 0 TD
+0.015 Tc
+( )Tj
+/TT10 1 Tf
+0.53 0 TD
+0 Tc
+(w)Tj
+/TT7 1 Tf
+0.602 0 TD
+0.015 Tw
+(, then specialization only moves)Tj
+-10.681 -1.2 TD
+0 Tw
+(dynamic calls from one location to another\).)Tj
+ET
+0.5 g
+2 J 
+412.45 210.64 m
+412.45 215.29 416.22 219.06 420.87 219.06 c
+456.8 219.06 l
+461.45 219.06 465.22 215.29 465.22 210.64 c
+465.22 205.99 461.45 202.22 456.8 202.22 c
+420.87 202.22 l
+416.22 202.22 412.45 205.99 412.45 210.64 c
+b*
+1 g
+410.34 213.52 m
+410.34 218.17 414.11 221.94 418.76 221.94 c
+454.69 221.94 l
+459.34 221.94 463.11 218.17 463.11 213.52 c
+463.11 208.87 459.34 205.1 454.69 205.1 c
+418.76 205.1 l
+414.11 205.1 410.34 208.87 410.34 213.52 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 416.41 211.97 Tm
+0 g
+(specialized)Tj
+ET
+437.05 175.82 m
+434.13 176.47 l
+435.93 170.75 l
+439.98 175.17 l
+f*
+0 J 
+439.84 199.47 m
+443.9 189.49 439.36 181.49 437.06 175.81 c
+S
+q
+63 300.38 484.41 -159.44 re
+W n
+0.7 g
+2 J 
+436.72 204.16 7.03 -7.04 re
+B*
+1.08 w 
+546.88 292.84 m
+62.5 292.84 l
+547.06 145 m
+61.72 145 l
+S
+Q
+BT
+/TT14 1 Tf
+12 0 0 12 464.06 277.78 Tm
+(After)Tj
+ET
+0.5 g
+2 J 
+70.84 210.64 m
+70.84 215.29 74.61 219.06 79.26 219.06 c
+148.99 219.06 l
+153.64 219.06 157.41 215.29 157.41 210.64 c
+157.41 205.99 153.64 202.22 148.99 202.22 c
+79.26 202.22 l
+74.61 202.22 70.84 205.99 70.84 210.64 c
+b*
+1 g
+67.38 213.52 m
+67.38 218.17 71.15 221.94 75.8 221.94 c
+145.52 221.94 l
+150.17 221.94 153.94 218.17 153.94 213.52 c
+153.94 208.87 150.17 205.1 145.52 205.1 c
+75.8 205.1 l
+71.15 205.1 67.38 208.87 67.38 213.52 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 73.44 211.97 Tm
+0 g
+(node_to_specialize)Tj
+ET
+119.38 176.1 m
+117.53 173.76 l
+123.43 172.91 l
+121.22 178.45 l
+f*
+0 J 
+112.5 199.47 m
+117.29 189.3 111.9 183.26 119.38 176.07 c
+S
+1 g
+2 J 
+109.38 204.16 7.03 -7.04 re
+B*
+BT
+10 0 0 10 124.22 184.41 Tm
+0 g
+(benefit)Tj
+ET
+0.5 g
+94.88 257.33 m
+94.88 261.97 98.65 265.74 103.3 265.74 c
+124.96 265.74 l
+129.61 265.74 133.38 261.97 133.38 257.32 c
+133.38 252.68 129.61 248.91 124.96 248.91 c
+103.3 248.91 l
+98.65 248.91 94.88 252.68 94.88 257.33 c
+b*
+1 g
+93.34 260.21 m
+93.34 264.85 97.11 268.62 101.76 268.62 c
+123.42 268.62 l
+128.07 268.62 131.84 264.85 131.84 260.2 c
+131.84 255.56 128.07 251.79 123.42 251.79 c
+101.76 251.79 l
+97.11 251.79 93.34 255.56 93.34 260.21 c
+b*
+0.5 g
+112.64 228.75 m
+109.81 229.74 l
+110.94 223.85 l
+115.48 227.77 l
+f*
+0.5 G
+0 J 
+115.81 247.72 m
+115.66 233.7 114.64 233.63 112.65 228.79 c
+S
+0.7 g
+0 G
+2 J 
+112.69 250.84 7.03 -7.03 re
+B*
+BT
+10 0 0 10 101.56 259.03 Tm
+0 g
+(caller)Tj
+/TT14 1 Tf
+12 0 0 12 101.56 277.78 Tm
+[(Befor)18.5(e)]TJ
+ET
+0.5 g
+481.2 210.64 m
+481.2 215.29 484.97 219.06 489.62 219.06 c
+525.55 219.06 l
+530.2 219.06 533.97 215.29 533.97 210.64 c
+533.97 205.99 530.2 202.22 525.55 202.22 c
+489.62 202.22 l
+484.97 202.22 481.2 205.99 481.2 210.64 c
+b*
+1 g
+479.09 213.52 m
+479.09 218.17 482.86 221.94 487.51 221.94 c
+523.44 221.94 l
+528.09 221.94 531.86 218.17 531.86 213.52 c
+531.86 208.87 528.09 205.1 523.44 205.1 c
+487.51 205.1 l
+482.86 205.1 479.09 208.87 479.09 213.52 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 491.41 211.97 Tm
+0 g
+(original)Tj
+ET
+507.1 178.87 m
+504.67 177.11 l
+510.14 174.66 l
+509.54 180.63 l
+f*
+0 J 
+508.59 199.47 m
+508.59 193.88 504.43 185.57 507.15 178.87 c
+S
+1 g
+2 J 
+505.47 204.16 7.03 -7.04 re
+B*
+0.5 g
+417.76 257.33 m
+417.76 261.97 421.53 265.74 426.18 265.74 c
+447.83 265.74 l
+452.48 265.74 456.25 261.97 456.25 257.32 c
+456.25 252.68 452.48 248.91 447.83 248.91 c
+426.18 248.91 l
+421.53 248.91 417.76 252.68 417.76 257.33 c
+b*
+1 g
+416.22 260.21 m
+416.22 264.85 419.99 268.62 424.64 268.62 c
+446.29 268.62 l
+450.94 268.62 454.71 264.85 454.71 260.2 c
+454.71 255.56 450.94 251.79 446.29 251.79 c
+424.64 251.79 l
+419.99 251.79 416.22 255.56 416.22 260.21 c
+b*
+435.34 250.84 7.04 -7.03 re
+B*
+BT
+10 0 0 10 426 259.03 Tm
+0 g
+(caller)Tj
+ET
+1 g
+463.28 257.53 83.6 -11 re
+f
+BT
+/TT7 1 Tf
+9 0 0 9 463.28 251.53 Tm
+0 g
+-0.05 Tc
+(Now dynamically-bound)Tj
+ET
+447.38 244.32 m
+448.7 246.42 l
+443.74 246.59 l
+446.07 242.21 l
+f*
+0 J 
+461.72 249.72 m
+456.17 246.42 453.68 241.48 447.41 244.34 c
+S
+BT
+/TT10 1 Tf
+10 0 0 10 118.75 230.97 Tm
+0 Tc
+(w)Tj
+ET
+0.5 g
+2 J 
+419.7 159.91 m
+419.7 164.56 423.47 168.33 428.12 168.33 c
+449.77 168.33 l
+454.42 168.33 458.19 164.56 458.19 159.91 c
+458.19 155.26 454.42 151.49 449.77 151.49 c
+428.12 151.49 l
+423.47 151.49 419.7 155.26 419.7 159.91 c
+b*
+1 g
+418.16 162.79 m
+418.16 167.44 421.93 171.21 426.58 171.21 c
+448.23 171.21 l
+452.88 171.21 456.65 167.44 456.65 162.79 c
+456.65 158.14 452.88 154.37 448.23 154.37 c
+426.58 154.37 l
+421.93 154.37 418.16 158.14 418.16 162.79 c
+b*
+BT
+10 0 0 10 427.89 160.87 Tm
+0 g
+(callee)Tj
+ET
+0.5 g
+104.85 159.91 m
+104.85 164.56 108.62 168.33 113.27 168.33 c
+134.92 168.33 l
+139.57 168.33 143.34 164.56 143.34 159.91 c
+143.34 155.26 139.57 151.49 134.92 151.49 c
+113.27 151.49 l
+108.62 151.49 104.85 155.26 104.85 159.91 c
+b*
+1 g
+103.31 162.79 m
+103.31 167.44 107.08 171.21 111.73 171.21 c
+133.38 171.21 l
+138.03 171.21 141.8 167.44 141.8 162.79 c
+141.8 158.14 138.03 154.37 133.38 154.37 c
+111.73 154.37 l
+107.08 154.37 103.31 158.14 103.31 162.79 c
+b*
+BT
+10 0 0 10 113.05 160.87 Tm
+0 g
+(callee)Tj
+ET
+107.41 233.32 m
+108.65 231.18 l
+111.12 235.47 l
+106.17 235.47 l
+f*
+0 J 
+93.16 238.59 m
+100.25 238.15 101.65 231.33 107.41 233.34 c
+S
+BT
+/TT7 1 Tf
+10 0 0 10 64.25 237.81 Tm
+(edge)Tj
+/TT10 1 Tf
+1.887 0 TD
+( e)Tj
+ET
+endstream
+endobj
+35 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 26 0 R
+/F2 27 0 R
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT14 16 0 R
+/TT16 32 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+37 0 obj
+<<
+/Length 21108
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 153 491.33 Tm
+0 g
+0 Tc
+0 Tw
+(else /*)Tj
+/TT5 1 Tf
+3.167 0 TD
+(is_pass_through\()Tj
+/F2 1 Tf
+7.666 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(\))Tj
+/TT2 1 Tf
+0.61 0 TD
+(*/)Tj
+-10.199 -1.2 TD
+(/*)Tj
+/TT5 1 Tf
+0.667 0 TD
+( Recur on this edge, collecting nodes)Tj
+/TT2 1 Tf
+16.666 0 TD
+(*/)Tj
+/F1 1 Tf
+-17.333 -1.2 TD
+(collect_nodes)Tj
+/TT5 1 Tf
+6.665 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(.caller,)Tj
+/F2 1 Tf
+3.221 0 TD
+(desired_info)Tj
+/TT5 1 Tf
+5.444 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(benefit)Tj
+/TT5 1 Tf
+3 0 TD
+(,)Tj
+/F2 1 Tf
+0.556 0 TD
+(node_set)Tj
+/TT5 1 Tf
+4.112 0 TD
+(\))Tj
+/TT2 1 Tf
+-26.243 -1.2 TD
+(end)Tj
+-1.8 -1.2 TD
+(end)Tj
+-1.8 -1.2 TD
+(end)Tj
+-1.8 -1.2 TD
+(end)Tj
+-1.8 -1.2 TD
+(end)Tj
+/F1 1 Tf
+2.055 0 TD
+(collect_nodes)Tj
+-2.055 -8.359 TD
+(specialization_is_profitable)Tj
+/TT5 1 Tf
+13.053 0 TD
+(\()Tj
+/F2 1 Tf
+0.333 0 TD
+(cost)Tj
+/TT5 1 Tf
+1.833 0 TD
+(,)Tj
+/F2 1 Tf
+0.277 0 TD
+( benefit)Tj
+/TT5 1 Tf
+3.279 0 TD
+(\))Tj
+/F2 1 Tf
+-16.975 -1.2 TD
+(return true if cost is acceptable, given the benefit; false otherwise)Tj
+/TT2 1 Tf
+-1.8 -1.2 TD
+(end)Tj
+/F1 1 Tf
+1.777 0 TD
+(specialization_is_profitable)Tj
+-1.777 -6.884 TD
+(has_desired_info)Tj
+/TT5 1 Tf
+8.221 0 TD
+(\()Tj
+/F2 1 Tf
+0.332 0 TD
+(e)Tj
+/TT5 1 Tf
+0.556 0 TD
+(,)Tj
+/F2 1 Tf
+0.278 0 TD
+( desired_info)Tj
+/TT5 1 Tf
+5.722 0 TD
+(\))Tj
+/F2 1 Tf
+-13.309 -1.2 TD
+(return true if e’s caller has desired_info available statically; false otherwise)Tj
+/TT2 1 Tf
+-1.8 -1.2 TD
+(end)Tj
+/F1 1 Tf
+2.078 0 TD
+(has_desired_info)Tj
+/TT7 1 Tf
+-3.878 -2.9 TD
+-0.007 Tw
+(The output of this algorithm is a list of specialization directives. These directives are )Tj
+/TT8 1 Tf
+33.9752 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.007 Tw
+[(rst processed to mer)28.8(ge directives to)]TJ
+-34.5314 -1.2 TD
+0.033 Tw
+[(specialize the same routine in non-interfering ways. If a routine contains multiple call sites, each to a dif)34.2(ferent formal of)]TJ
+T*
+0.066 Tw
+[(the routine, each call site can generate distinct specialization directives. These directives are mer)27.1(ged where they do not)]TJ
+T*
+0 Tw
+(con)Tj
+/TT8 1 Tf
+1.4438 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.18 Tw
+[(ict \(specialize the same formal for dif)27.2(ferent types\) to reduce the number of specializations computed. \(W)94.1(e are)]TJ
+-2 -1.2 TD
+-0.034 Tw
+(investigating algorithms to generate specialization directives that more directly account for multiple specializable call sites)Tj
+T*
+0.242 Tw
+(within a single routine.\) Once the set of directives is computed, our system obeys the directives to generate the)Tj
+T*
+0 Tw
+(specializations.)Tj
+0 -1.8 TD
+0.077 Tw
+(As written, the algorithm has worst-case time complexity)Tj
+/TT10 1 Tf
+23.795 0 TD
+0 Tw
+(O)Tj
+/TT7 1 Tf
+0.721 0 TD
+(\()Tj
+/TT10 1 Tf
+0.333 0 TD
+(E)Tj
+8 0 0 8 317.6 91.9 Tm
+(2)Tj
+/TT7 1 Tf
+10 0 0 10 321.6 87.9 Tm
+0.077 Tw
+(\), where)Tj
+/TT10 1 Tf
+3.678 0 TD
+0 Tw
+(E)Tj
+/TT7 1 Tf
+0.61 0 TD
+0.077 Tw
+[( is the number of edges in the call graph. By)]TJ
+-30.148 -1.2 TD
+0.61 Tw
+(segregating the various types of edges and only visiting dynamically-bound pass-through edges in the)Tj
+ET
+1 i 
+441.67 612.11 m
+439.9 614.53 l
+437.48 609.04 l
+443.45 609.69 l
+f*
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+445.31 618.41 m
+441.43 615.48 441.94 613.59 441.72 612.1 c
+S
+522.33 611.29 m
+520.72 613.8 l
+517.98 608.5 l
+523.94 608.77 l
+f*
+526.56 618.41 m
+522.25 615.16 523.06 612.98 522.35 611.25 c
+S
+422 640.37 m
+420.15 642.7 l
+417.97 637.16 l
+423.86 638.04 l
+f*
+427.68 646.63 m
+424.39 644.31 423.61 642.27 422.02 640.34 c
+S
+503.25 640.37 m
+501.4 642.7 l
+499.22 637.16 l
+505.11 638.04 l
+f*
+508.93 646.63 m
+505.64 644.31 504.86 642.27 503.27 640.34 c
+S
+0.5 g
+2 J 
+434.72 627.68 m
+434.72 631.893 438.127 635.3 442.33 635.3 c
+449.43 635.3 l
+453.633 635.3 457.04 631.893 457.04 627.69 c
+457.04 623.477 453.633 620.07 449.43 620.07 c
+442.33 620.07 l
+438.127 620.07 434.72 623.477 434.72 627.68 c
+b*
+1 g
+433.83 630.29 m
+433.83 634.493 437.237 637.9 441.44 637.9 c
+448.54 637.9 l
+452.743 637.9 456.15 634.493 456.15 630.29 c
+456.15 626.087 452.743 622.68 448.54 622.68 c
+441.44 622.68 l
+437.237 622.68 433.83 626.087 433.83 630.29 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 440.96 629.1 Tm
+0 g
+0 Tw
+(S)Tj
+8 0 0 8 445.96 626.6 Tm
+(3)Tj
+ET
+q
+63 710 484.41 -210 re
+W n
+0.7 g
+442.15 623.94 6.11 -6.35 re
+B*
+0.97 g
+123.83 670.75 m
+117.19 673.09 117.19 673.09 105.86 668.8 c
+94.53 664.5 94.53 664.5 82.03 651.61 c
+69.53 638.72 74.53 638.13 69.14 613.72 c
+64.84 593.94 60.55 588.47 64.84 568.16 c
+68.75 549.41 60.94 545.5 84.38 545.5 c
+107.81 545.5 121.75 548.25 135.94 548.88 c
+154.23 549.68 157.42 540.81 160.94 560.34 c
+163.97 577.03 158.99 587.3 160.94 600.97 c
+162.89 614.64 160.94 614.5 157.81 628.17 c
+154.69 641.84 154.69 641.84 146.88 650.05 c
+139.06 658.25 139.06 658.25 134.77 663.33 c
+130.47 668.41 130.47 668.41 123.83 670.75 c
+b*
+Q
+127.82 637.3 m
+125.47 635.44 l
+131.04 633.21 l
+130.18 639.15 l
+f*
+0 J 
+114.77 647.34 m
+119.02 643.93 123.94 641.34 127.85 637.3 c
+S
+97.61 611.53 m
+95.44 609.45 l
+101.21 607.79 l
+99.77 613.61 l
+f*
+84.26 620.5 m
+90.29 619.9 93.88 615.65 97.56 611.55 c
+S
+121.67 608.17 m
+120.64 610.99 l
+116.8 606.37 l
+122.71 605.36 l
+f*
+140.53 619.79 m
+135.03 615.65 128.23 611.02 121.71 608.16 c
+S
+75.88 533.44 m
+72.96 534.08 l
+74.76 528.4 l
+78.79 532.8 l
+f*
+106.63 552.4 m
+96.28 545.42 80.44 546.58 75.86 533.43 c
+S
+88.19 534.31 m
+85.59 535.8 l
+85.61 529.81 l
+90.79 532.82 l
+f*
+108.67 551.7 m
+97.94 543.63 94.02 543.74 88.17 534.3 c
+S
+q
+63 710 484.41 -210 re
+W n
+1 g
+180.47 692.12 200.78 -192.12 re
+f
+Q
+BT
+/TT7 1 Tf
+10 0 0 10 180.47 685.46 Tm
+-0.031 Tw
+[(W)80.8(e)0( attempt to specialize all statically-bound, pass-)]TJ
+T*
+0.113 Tw
+(through callers of the)Tj
+/TT10 1 Tf
+9.222 0 TD
+0 Tw
+(node_to_specialize)Tj
+/TT7 1 Tf
+7.662 0 TD
+0.113 Tw
+[( routine)]TJ
+-16.884 -1.2 TD
+0.335 Tw
+(as a whole. This avoids converting statically-)Tj
+T*
+0.064 Tw
+(bound pass-through calls into dynamically-bound)Tj
+T*
+0.357 Tw
+[(calls unnecessarily)67.9(. T)70.8(o)0( )]TJ
+/TT8 1 Tf
+10.318 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.357 Tw
+(nd the subgraph that)Tj
+-10.8741 -1.2 TD
+0.072 Tw
+(reaches specialize through statically-bound, pass-)Tj
+T*
+0.185 Tw
+(through calls, we recursively call)Tj
+/TT14 1 Tf
+14.415 0 TD
+0 Tw
+(collect_nodes)Tj
+/TT7 1 Tf
+-14.415 -1.2 TD
+-0.057 Tw
+(for the caller of the edge to add the reachable nodes)Tj
+T*
+0 Tw
+(to the)Tj
+/TT10 1 Tf
+2.499 0 TD
+(node_set)Tj
+/TT7 1 Tf
+3.553 0 TD
+(.)Tj
+-6.052 -1.7 TD
+-0.045 Tw
+(In the diagram at the left, the computed)Tj
+/TT10 1 Tf
+15.654 0 TD
+0 Tw
+(node_set)Tj
+/TT7 1 Tf
+3.553 0 TD
+-0.045 Tw
+[( is)]TJ
+-19.207 -1.2 TD
+0 Tw
+({)Tj
+/TT10 1 Tf
+0.48 0 TD
+(node_to_specialize)Tj
+/TT7 1 Tf
+7.661 0 TD
+(,)Tj
+/TT10 1 Tf
+1.017 0 TD
+(C)Tj
+8 0 0 8 278.71 557.96 Tm
+(1)Tj
+/TT7 1 Tf
+10 0 0 10 282.71 560.46 Tm
+(,)Tj
+/TT10 1 Tf
+1.017 0 TD
+(C)Tj
+8 0 0 8 299.54 557.96 Tm
+(2)Tj
+/TT7 1 Tf
+10 0 0 10 303.54 560.46 Tm
+(,)Tj
+/TT10 1 Tf
+1.017 0 TD
+(C)Tj
+8 0 0 8 320.37 557.96 Tm
+(3)Tj
+/TT7 1 Tf
+10 0 0 10 324.37 560.46 Tm
+(,)Tj
+/TT10 1 Tf
+1.017 0 TD
+(C)Tj
+8 0 0 8 341.2 557.96 Tm
+(4)Tj
+/TT7 1 Tf
+10 0 0 10 345.2 560.46 Tm
+0.517 Tw
+(}. After)Tj
+-16.473 -1.2 TD
+0.296 Tw
+(specialization, specialized versions for each of)Tj
+T*
+0 Tw
+(these nodes would be created.)Tj
+ET
+q
+63 710 484.41 -210 re
+W n
+2 J 1.08 w 
+546.88 706.59 m
+62.5 706.59 l
+547.06 502.5 m
+61.72 502.5 l
+S
+Q
+BT
+/TT14 1 Tf
+12 0 0 12 464.06 694.66 Tm
+(After)Tj
+ET
+0.5 g
+2 J 
+71.58 561.63 m
+71.58 565.833 74.987 569.24 79.19 569.24 c
+146.77 569.24 l
+150.973 569.24 154.38 565.833 154.38 561.63 c
+154.38 557.427 150.973 554.02 146.77 554.02 c
+79.19 554.02 l
+74.987 554.02 71.58 557.427 71.58 561.63 c
+b*
+1 g
+68.26 564.23 m
+68.26 568.433 71.667 571.84 75.87 571.84 c
+143.45 571.84 l
+147.653 571.84 151.06 568.433 151.06 564.23 c
+151.06 560.027 147.653 556.62 143.45 556.62 c
+75.87 556.62 l
+71.667 556.62 68.26 560.027 68.26 564.23 c
+b*
+BT
+/TT10 1 Tf
+10 0 0 10 72.37 562.6 Tm
+0 g
+(node_to_specialize)Tj
+ET
+112.83 530.87 m
+110.89 528.58 l
+116.8 527.52 l
+114.77 533.16 l
+f*
+0 J 
+107.31 551.53 m
+111.36 542.56 107.01 537.15 112.82 530.85 c
+S
+1 g
+2 J 
+104.6 555.77 6.1 -6.36 re
+B*
+BT
+10 0 0 10 117.48 537.68 Tm
+0 g
+(benefit)Tj
+ET
+0.5 g
+99.04 598.89 m
+99.04 603.103 102.447 606.51 106.65 606.51 c
+113.75 606.51 l
+117.953 606.51 121.36 603.103 121.36 598.9 c
+121.36 594.687 117.953 591.28 113.75 591.28 c
+106.65 591.28 l
+102.447 591.28 99.04 594.687 99.04 598.89 c
+b*
+1 g
+98.14 601.5 m
+98.14 605.703 101.547 609.11 105.75 609.11 c
+112.85 609.11 l
+117.053 609.11 120.46 605.703 120.46 601.5 c
+120.46 597.297 117.053 593.89 112.85 593.89 c
+105.75 593.89 l
+101.547 593.89 98.14 597.297 98.14 601.5 c
+b*
+0 g
+107.62 576.36 m
+104.78 577.33 l
+105.95 571.45 l
+110.46 575.4 l
+f*
+0 J 
+110.18 593.03 m
+110.06 580.79 109.23 580.32 107.61 576.35 c
+S
+0.7 g
+2 J 
+107.47 595.86 6.1 -6.36 re
+B*
+BT
+10 0 0 10 105.28 600.31 Tm
+0 g
+(C)Tj
+8 0 0 8 111.94 597.8101 Tm
+(1)Tj
+/TT14 1 Tf
+12 0 0 12 101.56 694.66 Tm
+[(Befor)18.5(e)]TJ
+/TT10 1 Tf
+10 0 0 10 71.33 647.97 Tm
+(w)Tj
+ET
+0.5 g
+74.11 627.68 m
+74.11 631.893 77.517 635.3 81.72 635.3 c
+88.82 635.3 l
+93.023 635.3 96.43 631.893 96.43 627.69 c
+96.43 623.477 93.023 620.07 88.82 620.07 c
+81.72 620.07 l
+77.517 620.07 74.11 623.477 74.11 627.68 c
+b*
+1 g
+73.22 630.29 m
+73.22 634.493 76.627 637.9 80.83 637.9 c
+87.93 637.9 l
+92.133 637.9 95.54 634.493 95.54 630.29 c
+95.54 626.087 92.133 622.68 87.93 622.68 c
+80.83 622.68 l
+76.627 622.68 73.22 626.087 73.22 630.29 c
+b*
+BT
+10 0 0 10 80.35 629.1 Tm
+0 g
+(C)Tj
+8 0 0 8 87.02 626.6 Tm
+(2)Tj
+ET
+0.5 g
+103.43 652.94 m
+103.43 657.153 106.837 660.56 111.04 660.56 c
+118.14 660.56 l
+122.343 660.56 125.75 657.153 125.75 652.95 c
+125.75 648.737 122.343 645.33 118.14 645.33 c
+111.04 645.33 l
+106.837 645.33 103.43 648.737 103.43 652.94 c
+b*
+1 g
+102.54 655.54 m
+102.54 659.753 105.947 663.16 110.15 663.16 c
+117.25 663.16 l
+121.453 663.16 124.86 659.753 124.86 655.55 c
+124.86 651.337 121.453 647.93 117.25 647.93 c
+110.15 647.93 l
+105.947 647.93 102.54 651.337 102.54 655.54 c
+b*
+BT
+10 0 0 10 109.67 654.36 Tm
+0 g
+(C)Tj
+8 0 0 8 116.33 651.86 Tm
+(4)Tj
+ET
+0.5 g
+130.03 627.68 m
+130.03 631.893 133.437 635.3 137.64 635.3 c
+144.75 635.3 l
+148.953 635.3 152.36 631.893 152.36 627.69 c
+152.36 623.477 148.953 620.07 144.75 620.07 c
+137.64 620.07 l
+133.437 620.07 130.03 623.477 130.03 627.68 c
+b*
+1 g
+129.14 630.29 m
+129.14 634.493 132.547 637.9 136.75 637.9 c
+143.85 637.9 l
+148.053 637.9 151.46 634.493 151.46 630.29 c
+151.46 626.087 148.053 622.68 143.85 622.68 c
+136.75 622.68 l
+132.547 622.68 129.14 626.087 129.14 630.29 c
+b*
+BT
+10 0 0 10 136.27 629.1 Tm
+0 g
+(C)Tj
+8 0 0 8 142.94 626.6 Tm
+(3)Tj
+ET
+0.7 g
+137.47 623.94 6.1 -6.35 re
+B*
+81.36 625.19 6.1 -6.36 re
+B*
+111.5 650.6 6.1 -6.36 re
+B*
+0 g
+96.35 638.36 m
+95.01 641.04 l
+91.71 636.04 l
+97.69 635.69 l
+f*
+0 J 
+112.06 646.63 m
+108.17 643.88 101.68 640.9 96.35 638.34 c
+S
+148.27 642.16 m
+146.31 644.42 l
+144.35 638.75 l
+150.24 639.89 l
+f*
+152.85 655.31 m
+147.95 651.61 149.7 645.94 148.3 642.16 c
+S
+1 g
+2 J 
+149.15 661.33 6.1 -6.36 re
+B*
+0.5 g
+117.14 668.71 m
+114.19 668.15 l
+118.11 663.6 l
+120.08 669.27 l
+f*
+0.5 G
+0 J 
+115.8 682.87 m
+118.54 680.28 117.54 673.5 117.15 668.71 c
+S
+1 g
+0 G
+2 J 
+112.31 688.7 6.1 -6.36 re
+B*
+0.5 g
+79.42 644.29 m
+76.47 643.73 l
+80.39 639.18 l
+82.37 644.85 l
+f*
+0.5 G
+0 J 
+78.09 658.45 m
+80.83 655.86 79.82 649.07 79.43 644.29 c
+S
+0.7 g
+0 G
+2 J 
+74.6 664.27 6.1 -6.36 re
+B*
+0 g
+434.8 640.6 m
+432.43 638.75 l
+437.99 636.5 l
+437.16 642.44 l
+f*
+0 J 
+430.39 647.34 m
+432.53 643.97 433.92 641.9 434.81 640.63 c
+S
+417.58 612.08 m
+415.37 610.05 l
+421.09 608.25 l
+419.79 614.11 l
+f*
+410.94 619.97 m
+413.78 618.27 415.06 615.38 417.58 612.09 c
+S
+0.5 g
+2 J 
+416.76 515.17 m
+416.76 519.383 420.167 522.79 424.37 522.79 c
+444.08 522.79 l
+448.283 522.79 451.69 519.383 451.69 515.18 c
+451.69 510.967 448.283 507.56 444.08 507.56 c
+424.37 507.56 l
+420.167 507.56 416.76 510.967 416.76 515.17 c
+b*
+1 g
+415.36 517.78 m
+415.36 521.983 418.767 525.39 422.97 525.39 c
+442.68 525.39 l
+446.883 525.39 450.29 521.983 450.29 517.78 c
+450.29 513.577 446.883 510.17 442.68 510.17 c
+422.97 510.17 l
+418.767 510.17 415.36 513.577 415.36 517.78 c
+b*
+0.5 g
+395.61 561.63 m
+395.61 565.833 399.017 569.24 403.22 569.24 c
+446.77 569.24 l
+450.973 569.24 454.38 565.833 454.38 561.63 c
+454.38 557.427 450.973 554.02 446.77 554.02 c
+403.22 554.02 l
+399.017 554.02 395.61 557.427 395.61 561.63 c
+b*
+1 g
+393.27 564.23 m
+393.27 568.433 396.677 571.84 400.88 571.84 c
+444.42 571.84 l
+448.623 571.84 452.03 568.433 452.03 564.23 c
+452.03 560.027 448.623 556.62 444.42 556.62 c
+400.88 556.62 l
+396.677 556.62 393.27 560.027 393.27 564.23 c
+b*
+BT
+10 0 0 10 402.05 562.6 Tm
+0 g
+(specialized)Tj
+ET
+428.43 530.87 m
+426.5 528.57 l
+432.41 527.52 l
+430.36 533.16 l
+f*
+0 J 
+422.93 551.53 m
+426.98 542.56 422.64 537.15 428.45 530.85 c
+S
+BT
+9 0 0 9 422.3 515.8 Tm
+(callee)Tj
+ET
+0.7 g
+2 J 
+420.22 555.77 6.1 -6.36 re
+B*
+0.5 g
+419.35 598.89 m
+419.35 603.103 422.757 606.51 426.96 606.51 c
+434.06 606.51 l
+438.263 606.51 441.67 603.103 441.67 598.9 c
+441.67 594.687 438.263 591.28 434.06 591.28 c
+426.96 591.28 l
+422.757 591.28 419.35 594.687 419.35 598.89 c
+b*
+1 g
+418.45 601.5 m
+418.45 605.703 421.857 609.11 426.06 609.11 c
+433.17 609.11 l
+437.373 609.11 440.78 605.703 440.78 601.5 c
+440.78 597.297 437.373 593.89 433.17 593.89 c
+426.06 593.89 l
+421.857 593.89 418.45 597.297 418.45 601.5 c
+b*
+0 g
+427.91 576.36 m
+425.08 577.32 l
+426.25 571.45 l
+430.75 575.41 l
+f*
+0 J 
+430.5 593.03 m
+430.37 580.79 429.54 580.32 427.93 576.35 c
+S
+0.7 g
+2 J 
+427.79 595.86 6.1 -6.36 re
+B*
+BT
+10 0 0 10 425.59 600.31 Tm
+0 g
+(S)Tj
+8 0 0 8 430.58 597.8101 Tm
+(1)Tj
+ET
+0.5 g
+400.67 627.68 m
+400.67 631.893 404.077 635.3 408.28 635.3 c
+415.39 635.3 l
+419.593 635.3 423 631.893 423 627.69 c
+423 623.477 419.593 620.07 415.39 620.07 c
+408.28 620.07 l
+404.077 620.07 400.67 623.477 400.67 627.68 c
+b*
+1 g
+399.78 630.29 m
+399.78 634.493 403.187 637.9 407.39 637.9 c
+414.49 637.9 l
+418.693 637.9 422.1 634.493 422.1 630.29 c
+422.1 626.087 418.693 622.68 414.49 622.68 c
+407.39 622.68 l
+403.187 622.68 399.78 626.087 399.78 630.29 c
+b*
+BT
+10 0 0 10 406.91 629.1 Tm
+0 g
+(S)Tj
+8 0 0 8 411.91 626.6 Tm
+(2)Tj
+ET
+0.5 g
+419.05 652.94 m
+419.05 657.153 422.457 660.56 426.66 660.56 c
+433.77 660.56 l
+437.973 660.56 441.38 657.153 441.38 652.95 c
+441.38 648.737 437.973 645.33 433.77 645.33 c
+426.66 645.33 l
+422.457 645.33 419.05 648.737 419.05 652.94 c
+b*
+1 g
+418.16 655.54 m
+418.16 659.753 421.567 663.16 425.77 663.16 c
+432.87 663.16 l
+437.073 663.16 440.48 659.753 440.48 655.55 c
+440.48 651.337 437.073 647.93 432.87 647.93 c
+425.77 647.93 l
+421.567 647.93 418.16 651.337 418.16 655.54 c
+b*
+BT
+10 0 0 10 424.29 653.86 Tm
+0 g
+(S)Tj
+8 0 0 8 429.29 651.36 Tm
+(4)Tj
+ET
+0.7 g
+407.92 625.19 6.1 -6.36 re
+B*
+427.12 650.6 6.11 -6.36 re
+B*
+0 g
+454.99 641.8 m
+452.8 643.83 l
+451.48 638 l
+457.19 639.78 l
+f*
+0 J 
+468 682 m
+462.27 677.68 460.11 651.77 455.04 641.8 c
+S
+0.5 g
+432.74 668.71 m
+429.8 668.14 l
+433.72 663.6 l
+435.69 669.27 l
+f*
+0.5 G
+431.43 682.87 m
+434.17 680.28 433.17 673.5 432.77 668.71 c
+S
+402.58 641.91 m
+399.83 640.7 l
+404.67 637.16 l
+405.32 643.12 l
+f*
+393.71 681.11 m
+397.18 677.83 400 652.64 402.6 641.94 c
+S
+0 G
+2 J 
+515.97 627.68 m
+515.97 631.893 519.377 635.3 523.58 635.3 c
+530.68 635.3 l
+534.883 635.3 538.29 631.893 538.29 627.69 c
+538.29 623.477 534.883 620.07 530.68 620.07 c
+523.58 620.07 l
+519.377 620.07 515.97 623.477 515.97 627.68 c
+b*
+1 g
+515.08 630.29 m
+515.08 634.493 518.487 637.9 522.69 637.9 c
+529.79 637.9 l
+533.993 637.9 537.4 634.493 537.4 630.29 c
+537.4 626.087 533.993 622.68 529.79 622.68 c
+522.69 622.68 l
+518.487 622.68 515.08 626.087 515.08 630.29 c
+b*
+BT
+10 0 0 10 522.21 629.1 Tm
+0 g
+(C)Tj
+8 0 0 8 528.88 626.6 Tm
+(3)Tj
+ET
+0.7 g
+523.41 623.94 6.1 -6.35 re
+B*
+0 g
+515.73 641.05 m
+513.39 639.18 l
+518.98 637 l
+518.07 642.93 l
+f*
+0 J 
+511.64 647.34 m
+513.56 644.32 514.86 642.36 515.74 641.1 c
+S
+498.82 612.08 m
+496.61 610.05 l
+502.34 608.25 l
+501.03 614.11 l
+f*
+492.19 619.97 m
+495.03 618.27 496.31 615.38 498.83 612.09 c
+S
+491.9 530.58 m
+488.94 530.87 l
+491.39 525.45 l
+494.86 530.28 l
+f*
+503.51 552.4 m
+493.15 545.42 493.27 544.2 491.93 530.56 c
+S
+519.56 530.64 m
+516.56 530.66 l
+519.52 525.44 l
+522.56 530.61 l
+f*
+505.54 551.7 m
+507.48 542.62 518.01 539.58 519.59 530.63 c
+S
+0.5 g
+2 J 
+483.39 561.63 m
+483.39 565.833 486.797 569.24 491 569.24 c
+521.77 569.24 l
+525.973 569.24 529.38 565.833 529.38 561.63 c
+529.38 557.427 525.973 554.02 521.77 554.02 c
+491 554.02 l
+486.797 554.02 483.39 557.427 483.39 561.63 c
+b*
+1 g
+481.55 564.23 m
+481.55 568.433 484.957 571.84 489.16 571.84 c
+519.93 571.84 l
+524.133 571.84 527.54 568.433 527.54 564.23 c
+527.54 560.027 524.133 556.62 519.93 556.62 c
+489.16 556.62 l
+484.957 556.62 481.55 560.027 481.55 564.23 c
+b*
+BT
+10 0 0 10 490.34 562.6 Tm
+0 g
+(original)Tj
+ET
+1 g
+501.47 555.77 6.1 -6.36 re
+B*
+0.5 g
+500.6 598.89 m
+500.6 603.103 504.007 606.51 508.21 606.51 c
+515.31 606.51 l
+519.513 606.51 522.92 603.103 522.92 598.9 c
+522.92 594.687 519.513 591.28 515.31 591.28 c
+508.21 591.28 l
+504.007 591.28 500.6 594.687 500.6 598.89 c
+b*
+1 g
+499.7 601.5 m
+499.7 605.703 503.107 609.11 507.31 609.11 c
+514.42 609.11 l
+518.623 609.11 522.03 605.703 522.03 601.5 c
+522.03 597.297 518.623 593.89 514.42 593.89 c
+507.31 593.89 l
+503.107 593.89 499.7 597.297 499.7 601.5 c
+b*
+0 g
+509.94 576.36 m
+507.11 577.32 l
+508.29 571.45 l
+512.78 575.41 l
+f*
+0 J 
+512.53 593.03 m
+512.4 580.79 511.57 580.32 509.96 576.35 c
+S
+0.7 g
+2 J 
+509.04 595.86 6.1 -6.36 re
+B*
+BT
+10 0 0 10 506.84 600.31 Tm
+0 g
+(C)Tj
+8 0 0 8 513.5 597.8101 Tm
+(1)Tj
+ET
+0.5 g
+481.92 627.68 m
+481.92 631.893 485.327 635.3 489.53 635.3 c
+496.64 635.3 l
+500.843 635.3 504.25 631.893 504.25 627.69 c
+504.25 623.477 500.843 620.07 496.64 620.07 c
+489.53 620.07 l
+485.327 620.07 481.92 623.477 481.92 627.68 c
+b*
+1 g
+481.03 630.29 m
+481.03 634.493 484.437 637.9 488.64 637.9 c
+495.74 637.9 l
+499.943 637.9 503.35 634.493 503.35 630.29 c
+503.35 626.087 499.943 622.68 495.74 622.68 c
+488.64 622.68 l
+484.437 622.68 481.03 626.087 481.03 630.29 c
+b*
+BT
+10 0 0 10 488.16 629.1 Tm
+0 g
+(C)Tj
+8 0 0 8 494.83 626.6 Tm
+(2)Tj
+ET
+0.5 g
+500.3 652.94 m
+500.3 657.153 503.707 660.56 507.91 660.56 c
+515.02 660.56 l
+519.223 660.56 522.63 657.153 522.63 652.95 c
+522.63 648.737 519.223 645.33 515.02 645.33 c
+507.91 645.33 l
+503.707 645.33 500.3 648.737 500.3 652.94 c
+b*
+1 g
+499.41 655.54 m
+499.41 659.753 502.817 663.16 507.02 663.16 c
+514.12 663.16 l
+518.323 663.16 521.73 659.753 521.73 655.55 c
+521.73 651.337 518.323 647.93 514.12 647.93 c
+507.02 647.93 l
+502.817 647.93 499.41 651.337 499.41 655.54 c
+b*
+BT
+10 0 0 10 506.54 654.36 Tm
+0 g
+(C)Tj
+8 0 0 8 513.21 651.86 Tm
+(4)Tj
+ET
+0.7 g
+489.17 625.19 6.1 -6.36 re
+B*
+508.37 650.6 6.11 -6.36 re
+B*
+0.5 g
+480.94 639.48 m
+478.7 637.51 l
+484.36 635.6 l
+483.18 641.46 l
+f*
+0.5 G
+0 J 
+393.75 682.47 m
+429.14 687.15 458.13 665.1 480.98 639.48 c
+S
+0 g
+531.05 642.67 m
+528.07 643 l
+530.48 637.5 l
+534.03 642.33 l
+f*
+0 G
+468 682.5 m
+496.41 664.56 533.64 678.67 531.09 642.66 c
+S
+0.5 g
+497.62 663.16 m
+495.23 661.34 l
+500.77 659.03 l
+500 664.98 l
+f*
+0.5 G
+433.5 682.5 m
+456.66 664.95 486.21 673.23 497.64 663.2 c
+S
+1 g
+0 G
+2 J 
+464.77 688.7 6.1 -6.36 re
+B*
+390.22 688.7 6.1 -6.36 re
+B*
+427.94 688.7 6.1 -6.36 re
+B*
+0.5 g
+101.91 517.02 m
+101.91 521.223 105.317 524.63 109.52 524.63 c
+129.24 524.63 l
+133.443 524.63 136.85 521.223 136.85 517.02 c
+136.85 512.817 133.443 509.41 129.24 509.41 c
+109.52 509.41 l
+105.317 509.41 101.91 512.817 101.91 517.02 c
+b*
+1 g
+100.51 519.62 m
+100.51 523.833 103.917 527.24 108.12 527.24 c
+127.84 527.24 l
+132.043 527.24 135.45 523.833 135.45 519.63 c
+135.45 515.417 132.043 512.01 127.84 512.01 c
+108.12 512.01 l
+103.917 512.01 100.51 515.417 100.51 519.62 c
+b*
+BT
+9 0 0 9 107.46 517.64 Tm
+0 g
+(callee)Tj
+ET
+1 g
+64.06 378.78 479.69 -39.06 re
+f
+BT
+/TT14 1 Tf
+10 0 0 10 64.06 372.11 Tm
+0 g
+[(specialization_is_pr)21.3(o)]TJ
+/TT17 1 Tf
+8.923 0 TD
+(ﬁ)Tj
+/TT14 1 Tf
+0.5562 0 TD
+(table)Tj
+/TT7 1 Tf
+2.1089 0 TD
+0.103 Tw
+[( makes a )]TJ
+/TT8 1 Tf
+4.0575 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.103 Tw
+(nal yes or no decision about a potential specialization, based on the cost and)Tj
+-16.2017 -1.2 TD
+0 Tw
+(bene)Tj
+/TT8 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.038 Tw
+[(t. The exact nature of the heuristics depends on the desired trade-of)31.3(fs between code space and compile time vs. run-)]TJ
+-2.4438 -1.2 TD
+0 Tw
+(time performance.)Tj
+ET
+q
+63 392 484.41 -59.59 re
+W n
+1.08 w 
+546.88 383.88 m
+62.5 383.88 l
+548.63 339.16 m
+64.25 339.16 l
+S
+Q
+1 g
+64.06 269.53 479.69 -25 re
+f
+BT
+/TT14 1 Tf
+10 0 0 10 64.06 262.86 Tm
+0 g
+[(has_desir)20.2(ed_info)]TJ
+/TT7 1 Tf
+7.427 0 TD
+-0.025 Tw
+(accepts a call graph edge,)Tj
+/TT10 1 Tf
+10.367 0 TD
+0 Tw
+(e)Tj
+/TT7 1 Tf
+0.444 0 TD
+-0.025 Tw
+(, and a description of class information,)Tj
+/TT10 1 Tf
+15.9 0 TD
+0 Tw
+[(desir)38(ed_info)]TJ
+/TT7 1 Tf
+4.961 0 TD
+-0.025 Tw
+(, and returns true if)Tj
+/TT10 1 Tf
+7.76 0 TD
+0 Tw
+(e)Tj
+/TT7 1 Tf
+0.443 0 TD
+-0.055 Tc
+(ís)Tj
+-47.302 -1.2 TD
+0 Tc
+(caller is guaranteed to have the)Tj
+/TT10 1 Tf
+12.656 0 TD
+[(desir)38(ed_info)]TJ
+/TT7 1 Tf
+4.961 0 TD
+[( available statically)67.8(.)]TJ
+ET
+q
+63 284.41 484.41 -44.85 re
+W n
+1.08 w 
+546.88 274.62 m
+62.5 274.62 l
+548.63 242.41 m
+64.25 242.41 l
+S
+Q
+endstream
+endobj
+38 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 26 0 R
+/F2 27 0 R
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT14 16 0 R
+/TT17 39 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+41 0 obj
+<<
+/Length 8567
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT5 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+0 Tw
+(specialize_program)Tj
+/TT7 1 Tf
+8.664 0 TD
+0.016 Tw
+[( loop and statically-bound edges in the)]TJ
+/TT5 1 Tf
+15.796 0 TD
+0 Tw
+(collect_nodes)Tj
+/TT7 1 Tf
+6.111 0 TD
+0.016 Tw
+[( loop, the algorithm reduces to)]TJ
+/TT10 1 Tf
+12.56 0 TD
+0 Tw
+(O)Tj
+/TT7 1 Tf
+0.722 0 TD
+(\()Tj
+/TT10 1 Tf
+0.332 0 TD
+0.016 Tw
+(DP * SP +)Tj
+-44.185 -1.2 TD
+0 Tw
+(SN)Tj
+/TT7 1 Tf
+1.166 0 TD
+-0.04 Tw
+(\), where)Tj
+/TT10 1 Tf
+3.444 0 TD
+0 Tw
+(DP)Tj
+/TT7 1 Tf
+1.332 0 TD
+-0.04 Tw
+[( is the number of dynamically-bound pass-through edges,)]TJ
+/TT10 1 Tf
+22.912 0 TD
+0 Tw
+(SP)Tj
+/TT7 1 Tf
+1.111 0 TD
+-0.04 Tw
+[( is the number of statically-bound pass-through)]TJ
+-29.965 -1.2 TD
+0.011 Tw
+(edges, and)Tj
+/TT10 1 Tf
+4.491 0 TD
+0 Tw
+(SN)Tj
+/TT7 1 Tf
+1.167 0 TD
+0.011 Tw
+[( is the number of statically-bound non-pass-through edges. The product)]TJ
+/TT10 1 Tf
+28.954 0 TD
+(DP * SP)Tj
+/TT7 1 Tf
+3.465 0 TD
+[( is signi)]TJ
+/TT8 1 Tf
+3.1338 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.011 Tw
+(cant only when a)Tj
+-41.767 -1.2 TD
+0.129 Tw
+[(lar)18.7(ge number of statically-bound pass-through edges are repeatedly collected as part of processing a lar)36(ge number of)]TJ
+T*
+0.128 Tw
+[(dynamically-bound edges, which we consider a rare occurrence. Consequently)77.6(, we expect this algorithm to take time)]TJ
+T*
+0.308 Tw
+(roughly linear in the number of edges in practice, and our initial experimental results con)Tj
+/TT8 1 Tf
+39.9394 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.308 Tw
+(rm that identifying)Tj
+-40.4956 -1.2 TD
+0 Tw
+(specializations is quick.)Tj
+/TT2 1 Tf
+11 0 0 11 63 620.99 Tm
+[(4.3)-1064.4(Closures)]TJ
+/TT7 1 Tf
+10 0 0 10 63 603.92 Tm
+-0.024 Tw
+(In the presence of )Tj
+/TT8 1 Tf
+7.2893 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.024 Tw
+(rst-class, lexically-nested function objects, such as blocks in Smalltalk and S)Tj
+9 0 0 9 445.44 603.92 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 461.42 603.92 Tm
+-0.024 Tw
+[( and closures in Cecil,)]TJ
+-39.842 -1.2 TD
+0.207 Tw
+[(a message can be sent to a formal not of the sending routine but of a lexically-enclosing routine. W)105.5(e)0( extend our)]TJ
+T*
+0.074 Tw
+(specialization algorithm to support this case by computing the)Tj
+/TT5 1 Tf
+25.738 0 TD
+0 Tw
+(node_to_specialize)Tj
+/TT7 1 Tf
+8.555 0 TD
+0.074 Tw
+[( not as the caller of the edge being)]TJ
+-34.293 -1.2 TD
+0.025 Tw
+(specialized but as the routine that declares the formal that is being passed through to the call site. In many situations this)Tj
+T*
+-0.049 Tw
+(will be the same as the caller of the edge being specialized, but in the presence of closures this can be a routine that lexica)Tj
+47.555 0 TD
+0 Tw
+(lly)Tj
+-47.555 -1.2 TD
+(encloses the caller of the edge.)Tj
+/TT2 1 Tf
+11 0 0 11 63 523.58 Tm
+[(4.4)-1064.4(Specialization in Single- and Multiple-Dispatching Systems)]TJ
+/TT7 1 Tf
+10 0 0 10 63 506.5 Tm
+-0.05 Tw
+[(Our specialization algorithm allows any subset of a routineí)63(s ar)19(guments to be considered a candidate for specialization. The)]TJ
+T*
+-0.034 Tw
+[(subset selected is determined from the messages sent by the routine and the ar)35.1(guments of those messages that are subjected)]TJ
+T*
+0.098 Tw
+[(to run-time type tests to determine the tar)24(get method. In the presence of multi-methods, several of the ar)26.5(guments of a)]TJ
+T*
+-0.028 Tw
+(particular dynamically-bound call site might be subject to run-time type tests, in which case the)Tj
+/TT5 1 Tf
+37.993 0 TD
+0 Tw
+(desired_info)Tj
+/TT7 1 Tf
+5.444 0 TD
+-0.028 Tw
+[( manipulated)]TJ
+-43.437 -1.2 TD
+0 Tw
+(by the algorithm will be a set of <variable, desired class> pairs.)Tj
+0 -1.8 TD
+-0.053 Tw
+[(T)69.8(o)0( implement specialization, our implementation generates new methods whose formals are restricted to apply to particular)]TJ
+0 -1.2 TD
+0.016 Tw
+(subsets of classes. This approach exploits our environments multi-method dispatching infrastructure, using multi-method)Tj
+T*
+0.003 Tw
+(dispatching to test when a particular specialized version is appropriate. This infrastructure may not be present in a singly-)Tj
+T*
+-0.058 Tw
+[(dispatched system. T)74(o)0( exploit our algorithm in such a system, we recommend that the basic run-time system of the language)]TJ
+T*
+0.142 Tw
+[(be augmented to support selecting method implementations based on the classes of several ar)28.9(guments. Alternatively)68.5(,)]TJ
+T*
+-0.023 Tw
+[(versions of a routine specialized on ar)23.1(guments could be limited to being invoked only from call sites that possess statically)]TJ
+T*
+0 Tw
+(the required class information, with other cases being caught by the original unspecialized routine.)Tj
+/TT2 1 Tf
+12 0 0 12 63 347.17 Tm
+[(5)-943.8(Implementation Results)]TJ
+/TT7 1 Tf
+10 0 0 10 63 328.5 Tm
+0.147 Tw
+[(W)79.8(e)0( have implemented the described algorithm in the context of the Cecil compiler)72.8(. Our current system constructs a)]TJ
+T*
+-0.054 Tw
+[(programí)56.7(s call graph derived from pro)]TJ
+/TT8 1 Tf
+15.0288 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.054 Tw
+(les of the program, generates specialization directives using the algorithm described)Tj
+-15.5849 -1.2 TD
+-0.018 Tw
+[(in this paper)42.4(, and produces specialized versions of routines based on these specialization directives. As one measure of the)]TJ
+T*
+-0.02 Tw
+[(ef)17.9(fectiveness of the algorithm, the specialization directives produced by our algorithm agree with our intuitive sense about)]TJ
+T*
+-0.013 Tw
+(what specializations are most pro)Tj
+/TT8 1 Tf
+13.2771 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.013 Tw
+(table. For a more empirical assessment, we examined the cost of our implementation of)Tj
+-13.8333 -1.2 TD
+-0.004 Tw
+(the algorithm, measured by the number of generated specializations, and its bene)Tj
+/TT8 1 Tf
+32.3061 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.004 Tw
+(ts, measured in runtime performance of)Tj
+-32.8623 -1.2 TD
+0.069 Tw
+(the program after specialization. In order to provide a realistic benchmark, all of our measurements are based upon the)Tj
+T*
+0.044 Tw
+(specializations produced by the algorithm when it was run on the Cecil compiler program, a 30,000-line Cecil program.)Tj
+T*
+0.089 Tw
+(The speed of executing the algorithm itself is good, taking a few seconds for small programs and under 5 minutes for)Tj
+T*
+0 Tw
+[(computing specializations for the lar)23.4(ge Cecil compiler program.)]TJ
+0 -1.8 TD
+0.013 Tw
+[(T)69.8(able 1 compares the number of specializations that would be generated for this program by a static approach \(as used in)]TJ
+0 -1.2 TD
+0.14 Tw
+[(Sather and T)37.4(rellis\), by a dynamic compilation-based approach \(as used in S)]TJ
+9 0 0 9 380.03 190.5 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 396.01 190.5 Tm
+0.14 Tw
+(\), and by our selective specialization)Tj
+-33.301 -1.2 TD
+-0.049 Tw
+[(algorithm, for both singly- and multiply-dispatched systems. The static, per)33.1(-class column re)]TJ
+/TT8 1 Tf
+36.1422 0 TD
+0 Tw
+(ﬂ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.049 Tw
+(ects the number of specialized)Tj
+-36.6984 -1.2 TD
+0.146 Tw
+(methods that would be generated if each source method were specialized for each of the possible classes of its )Tj
+/TT8 1 Tf
+47.0635 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(rst)Tj
+-47.6197 -1.2 TD
+-0.017 Tw
+[(ar)17.9(gument, for the single-dispatching row)73.4(, or for all possible combinations of subclasses of the dispatched ar)32.5(guments of the)]TJ
+T*
+0.014 Tw
+[(method, for the multiple-dispatching row)72.8(. T)70.8(o)0( model the dynamic compilation-based strategy)73.8(, we used pro)]TJ
+/TT8 1 Tf
+42.343 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.014 Tw
+(le information)Tj
+-42.8992 -1.2 TD
+-0.016 Tw
+[(to determine which combinations of ar)25.8(guments occurred during a run of the program. W)91.2(e)0( then restricted the static strategy)]TJ
+T*
+0.012 Tw
+[(to only generate specializations for receivers \(or combinations of dispatched ar)29.5(guments\) that occurred during the pro)]TJ
+/TT8 1 Tf
+46.8283 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(led)Tj
+-47.3844 -1.2 TD
+0.042 Tw
+(execution. The ìdynamic methods calledî column indicates that only around half of the statically-de)Tj
+/TT8 1 Tf
+40.6988 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.042 Tw
+(ned methods were)Tj
+-41.255 -1.2 TD
+0.041 Tw
+(actually invoked during the pro)Tj
+/TT8 1 Tf
+12.7162 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.041 Tw
+(led execution. The )Tj
+/TT8 1 Tf
+7.7866 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.041 Tw
+(nal two columns report the number of specializations generated by)Tj
+-21.6151 -1.2 TD
+0.033 Tw
+[(our selective specialization algorithm under two dif)23.5(ferent heuristic settings: a ìnormalî setting and a setting that is more)]TJ
+ET
+endstream
+endobj
+42 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+44 0 obj
+<<
+/Length 7535
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+0.037 Tw
+(aggressive in deciding the specializations that are pro)Tj
+/TT8 1 Tf
+21.6125 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.037 Tw
+(table. The numbers in these columns include the static number of)Tj
+-22.1687 -1.2 TD
+-0.005 Tw
+(methods in the program \(because our algorithm always preserves the unspecialized version of a method\), plus the number)Tj
+T*
+0.125 Tw
+(of additional specialized methods generated by our algorithm, to give the total number of methods in the specialized)Tj
+T*
+0 Tw
+(program.)Tj
+0 -15.6 TD
+0.058 Tw
+[(As the above numbers indicate, statically specializing a method for each possible receiver class is unattractive for lar)33.6(ge)]TJ
+0 -1.2 TD
+0.051 Tw
+(programs with deep inheritance hierarchies and its extension to multiply-dispatched systems is completely infeasible. A)Tj
+T*
+0.05 Tw
+(dynamic approach is more attractive, but requires adopting a dynamic compilation model, which is impractical in many)Tj
+T*
+-0.046 Tw
+[(environments. Our selective algorithm produces many fewer specializations than the static, per)31.5(-class specialization scheme)]TJ
+T*
+-0.033 Tw
+[(and is on a par with the dynamic specialization strategy)72.5(. This is remarkable because the dynamic )]TJ
+/TT8 1 Tf
+38.3585 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.033 Tw
+(gures are for a particular)Tj
+-38.9146 -1.2 TD
+-0.016 Tw
+(program execution that only exercises only 2883 out of 5812 methods in the program. The number of specialized methods)Tj
+T*
+0.135 Tw
+(for the dynamic compilation approach would increase signi)Tj
+/TT8 1 Tf
+24.6877 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.135 Tw
+(cantly as more of the program was exercised, while our)Tj
+-25.2438 -1.2 TD
+-0.03 Tw
+[(approach would focus specialization ef)25(fort on those parts of the program where specialization really provides bene)]TJ
+/TT8 1 Tf
+45.3693 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.03 Tw
+(ts. Our)Tj
+-45.9254 -1.2 TD
+0.025 Tw
+(algorithm could be adapted to a dynamic compilation-based environment by using precomputed specialization directives)Tj
+T*
+0.072 Tw
+(to decide if and how to specialize a method when it is )Tj
+/TT8 1 Tf
+22.5798 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.072 Tw
+(rst invoked at run-time. This would lead to signi)Tj
+/TT8 1 Tf
+19.8787 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.072 Tw
+(cantly fewer)Tj
+-43.5709 -1.2 TD
+0 Tw
+[(specializations than the simple dynamic per)26.8(-class strategy)67.4(, as the last column indicates.)]TJ
+0 -1.8 TD
+-0.056 Tw
+[(T)69.8(o)0( measure the bottom-line ef)21.1(fects of the algorithm, we compiled the Cecil compiler program using standard optimizations,)]TJ
+0 -1.2 TD
+0.252 Tw
+(standard optimizations plus specialization, and standard optimizations plus aggressive specialization. Our standard)Tj
+T*
+0.004 Tw
+(optimizations include intraprocedural concrete type analysis, inlining, dead code elimination \(to optimize away unneeded)Tj
+T*
+0.037 Tw
+(closure creations\), and hard-wired type prediction for a small number of common messages such as)Tj
+/TT12 1 Tf
+40.582 0 TD
+0 Tw
+(if)Tj
+/TT7 1 Tf
+1.199 0 TD
+0.037 Tw
+[( and)]TJ
+/TT12 1 Tf
+2.017 0 TD
+0 Tw
+(+.)Tj
+/TT7 1 Tf
+1.2 0 TD
+0.037 Tw
+[( W)80.8(e)0( then)]TJ
+-44.998 -1.2 TD
+0.067 Tw
+[(measured the time taken by each of the three compiler executables to compile a small suite of Cecil programs. T)83.2(able 2)]TJ
+T*
+0 Tw
+(shows the relative execution time and compiled code space for the three versions of the compiler program.)Tj
+0 -13.2 TD
+-0.013 Tw
+(Our specialization algorithm yields signi)Tj
+/TT8 1 Tf
+16.2224 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.013 Tw
+(cant runtime improvement with only small increases in code space cost \(and the)Tj
+-16.7786 -1.2 TD
+0.138 Tw
+(corresponding compile time required\). Since the aggressively specialized program shows little improvement over the)Tj
+T*
+0 Tw
+(specialized program, we conclude that our algorithm is working well at selecting pro)Tj
+/TT8 1 Tf
+33.9062 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(table methods to specialize.)Tj
+/TT2 1 Tf
+12 0 0 12 63 146 Tm
+[(6)-943.8(Related W)20.7(ork)]TJ
+/TT7 1 Tf
+10 0 0 10 63 127.33 Tm
+0.264 Tw
+(The implementations of S)Tj
+9 0 0 9 174.46 127.33 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 190.44 127.33 Tm
+0.264 Tw
+[( [Chambers & Ungar 91], T)42.4(rellis [Kilian 88], and Sather [Lim & Stolcke 91] use)]TJ
+-12.744 -1.2 TD
+0.063 Tw
+[(specialization to provide the compiler with additional information about the classes of ar)30.1(guments to a routine, allowing)]TJ
+T*
+0.092 Tw
+(many message sends within the routine to be statically-bound. All of this previous work takes the approach of always)Tj
+T*
+0.008 Tw
+[(specializing on the exact class of the receiver and not specializing on any other ar)35.7(guments. As discussed in section 3, this)]TJ
+T*
+0.111 Tw
+(can lead to both overspecialization and underspecialization. Our approach is more precise because it identi)Tj
+/TT8 1 Tf
+44.1761 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.111 Tw
+(es sets of)Tj
+/TT2 1 Tf
+11 0 0 11 215.74 654.67 Tm
+0 Tw
+[(T)74.5(able 1: Generated Specializations)]TJ
+/TT5 1 Tf
+9 0 0 9 130.93 633 Tm
+(Static)Tj
+-0.3322 -1.2222 TD
+(Source)Tj
+-0.3333 -1.2222 TD
+(Methods)Tj
+5.9789 1.2222 TD
+(Static,)Tj
+-0.8044 -1.2222 TD
+(Per-Class)Tj
+5.6078 2.4444 TD
+(Dynamic)Tj
+0.0278 -1.2222 TD
+(Methods)Tj
+0.4989 -1.2222 TD
+(Called)Tj
+4.8244 1.2222 TD
+(Dynamic,)Tj
+-0.1111 -1.2222 TD
+(Per-Class)Tj
+7.3844 1.2222 TD
+(Selective)Tj
+-1.0544 -1.2222 TD
+(Specialization)Tj
+9.2789 2.4444 TD
+(Aggressive)Tj
+0.4433 -1.2222 TD
+(Selective)Tj
+-1.0544 -1.2222 TD
+(Specialization)Tj
+9.8067 2.4444 TD
+(Dynamic)Tj
+-0.0845 -1.2222 TD
+(Selective)Tj
+-1.0544 -1.2222 TD
+(Specialization)Tj
+-43.6911 -2.1111 TD
+(Single)Tj
+-1.11 -1.1111 TD
+(Dispatch)Tj
+7.0611 1.1111 TD
+[(5812)-2448.7(16,917)-2984.7(2883)-3544.3(5299)-1390.9(5812+233=6045)-1381(5812+526=6338)-1456.6(2883+233=31)84.5(16)]TJ
+-6.6167 -3.2222 TD
+(Multiple)Tj
+-0.4444 -1.1111 TD
+(Dispatch)Tj
+11.1789 1.1111 TD
+[(172,824)-8753(6226)-1390.9(5812+247=6059)-1381(5812+967=6779)-1382.1(2883+247=3130)]TJ
+/TT2 1 Tf
+11 0 0 11 164.76 300.67 Tm
+[(T)74.5(able 2: Runtime Performance and Code Space Usage)]TJ
+/TT5 1 Tf
+9 0 0 9 264.09 268 Tm
+(Standard)Tj
+-0.9978 -1.2222 TD
+(Optimizations)Tj
+10.1767 2.4444 TD
+(plus)Tj
+-1.11 -1.2222 TD
+(Selective)Tj
+-1.0544 -1.2222 TD
+(Specialization)Tj
+9.9522 2.4444 TD
+(plus)Tj
+-1.5533 -1.2222 TD
+(Aggressive)Tj
+-0.6111 -1.2222 TD
+(Specialization)Tj
+-24.0722 -2.1111 TD
+[(Execution time)-6208.1(1.00)-6030.4(0.67)-5652.6(0.66)]TJ
+-2.1633 -2.1111 TD
+[(Compiled code size)-6203.4(1.00)-6030.4(1.05)-5652.6(1.27)]TJ
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+63.14 542.25 m
+63.14 644.75 l
+B*
+116.64 542.25 m
+116.64 644.75 l
+B*
+119.14 542.25 m
+119.14 644.75 l
+B*
+166.46 541.75 m
+166.46 645.25 l
+B*
+216.01 541.75 m
+216.01 645.25 l
+B*
+262.9 541.75 m
+262.9 645.25 l
+B*
+314.83 541.75 m
+314.83 645.25 l
+B*
+392.84 541.75 m
+392.84 645.25 l
+B*
+470.85 541.75 m
+470.85 645.25 l
+B*
+548.86 542.25 m
+548.86 644.75 l
+B*
+549.11 645 m
+62.89 645 l
+B*
+548.61 605.25 m
+63.39 605.25 l
+B*
+548.61 602.75 m
+63.39 602.75 l
+B*
+116.39 575 m
+62.89 575 l
+B*
+216.26 575 m
+166.21 575 l
+B*
+549.11 575 m
+262.65 575 l
+B*
+549.11 542 m
+62.89 542 l
+B*
+152.77 212.25 m
+152.77 290.75 l
+B*
+244.35 212.25 m
+244.35 290.75 l
+B*
+246.85 212.25 m
+246.85 290.75 l
+B*
+319.05 211.75 m
+319.05 291.25 l
+B*
+390.84 211.75 m
+390.84 291.25 l
+B*
+459.23 212.25 m
+459.23 290.75 l
+B*
+459.48 291 m
+152.52 291 l
+B*
+458.98 251.25 m
+153.02 251.25 l
+B*
+458.98 248.75 m
+153.02 248.75 l
+B*
+459.48 231 m
+152.52 231 l
+B*
+459.48 212 m
+152.52 212 l
+B*
+endstream
+endobj
+45 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT12 10 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+47 0 obj
+<<
+/Length 6944
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT7 1 Tf
+10 0 0 10 63 713.33 Tm
+0 g
+0 Tc
+0.028 Tw
+(receiver classes which enable static-binding of message sends send to the receiver \(thereby avoiding overspecialization\),)Tj
+0 -1.2 TD
+-0.032 Tw
+[(and because it allows specialization on ar)24.3(guments other than just the receiver of a message \(preventing underspecialization)]TJ
+T*
+0 Tw
+[(for ar)18.9(guments\).)]TJ
+0 -1.8 TD
+0.081 Tw
+(The techniques described in this paper focus on using specialization to convert dynamically-bound message sends into)Tj
+0 -1.2 TD
+0.042 Tw
+[(statically-bound calls. However)45.4(, many dynamically-bound message sends still exist in the residual program. Other work)]TJ
+T*
+-0.013 Tw
+(focuses on reducing the overhead of dynamic dispatching in object-oriented programs, by partially evaluating the routines)Tj
+T*
+-0.025 Tw
+(to perform method lookup with respect to the inheritance hierarchy of the program being executed [Khoo & Sundaresh 91,)Tj
+T*
+0.158 Tw
+[(Harnett & Montenyohl 92]. W)87.9(e)0( rely on standard caching techniques to reduce the overhead of dynamic dispatching)]TJ
+T*
+0 Tw
+([Krasner 83, Hˆlzle)Tj
+/TT10 1 Tf
+8.16 0 TD
+(et al.)Tj
+/TT7 1 Tf
+1.998 0 TD
+( 91].)Tj
+-10.158 -1.8 TD
+0.061 Tw
+[(Cooper)41.8(, Hall, and Kennedy present a general framework for identifying when creating multiple, specialized copies of a)]TJ
+0 -1.2 TD
+0.204 Tw
+(procedure can provide additional information for solving data)Tj
+/TT8 1 Tf
+26.1145 0 TD
+0 Tw
+(ﬂ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.204 Tw
+(ow optimization problems [Cooper)Tj
+/TT10 1 Tf
+15.0723 0 TD
+(et al)Tj
+/TT7 1 Tf
+1.953 0 TD
+(. 92]. Their)Tj
+-43.696 -1.2 TD
+0.031 Tw
+[(approach begins with the programí)61.6(s call graph, makes a forwards pass over the call graph propagating ìcloning vectorsî)]TJ
+T*
+0.048 Tw
+(which represent the information available at call sites that is deemed interesting by the called routine, and then makes a)Tj
+T*
+0.037 Tw
+[(second pass mer)21.7(ging equivalent cloning vectors and identifying specializations. Their framework applies to any forward)]TJ
+T*
+0 Tw
+(data)Tj
+/TT8 1 Tf
+1.6655 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.241 Tw
+[(ow analysis problem, including constant propagation and concrete type analysis. Our work dif)37.9(fers from this)]TJ
+-2.2217 -1.2 TD
+0.013 Tw
+(framework in several important respects. First, we do not assume the existence of a complete call graph prior to analysis.)Tj
+T*
+-0.005 Tw
+(Instead, we use a subset of the real call graph derived from dynamic pro)Tj
+/TT8 1 Tf
+28.7578 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.005 Tw
+(le information. Second, our algorithm is tailored)Tj
+-29.3139 -1.2 TD
+0.009 Tw
+[(to object-oriented languages, where the information of interest is derived from the specializations of the ar)34.5(guments of the)]TJ
+T*
+0.018 Tw
+(called routines. Our algorithm consequently works backwards from the places that demand the most precise information,)Tj
+T*
+0.002 Tw
+(rather than proceeding in two phases as does Cooper)Tj
+/TT10 1 Tf
+21.305 0 TD
+(et al.)Tj
+/TT7 1 Tf
+2 0 TD
+[(í)55(s)0( algorithm. Finally)68.8(, our algorithm exploits pro)]TJ
+/TT8 1 Tf
+19.0527 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.002 Tw
+(le information)Tj
+-42.9139 -1.2 TD
+0 Tw
+(to guide its search for pro)Tj
+/TT8 1 Tf
+10.2471 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(table specializations.)Tj
+-10.8032 -1.8 TD
+0.012 Tw
+[(Ruf, Katz, and W)81.4(eise [Ruf & W)81.4(eise 91, Katz & W)81.1(eise 92] also address the problem of avoiding overspecialization. Their)]TJ
+0 -1.2 TD
+0.01 Tw
+(work seeks to identify when two specializations end up leading to the same code. Ruf identi)Tj
+/TT8 1 Tf
+36.9186 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.01 Tw
+(es the subset of information)Tj
+-37.4747 -1.2 TD
+0.014 Tw
+(used during specialization and reuses the specialization for other call sites that share the same abstract static information.)Tj
+T*
+0.019 Tw
+[(Katz extends this work by noting when not all of the information conveyed by a routineí)70.2(s result is used by the rest of the)]TJ
+T*
+-0.046 Tw
+[(program. Our work dif)20.9(fers from these in that we are working with a richer data and language model than a functional subset)]TJ
+T*
+-0.042 Tw
+(of Scheme, we exploit dynamic pro)Tj
+/TT8 1 Tf
+14.0083 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+-0.042 Tw
+(le information to be more selective in where to apply specialization, and our algorithm)Tj
+-14.5644 -1.2 TD
+0.124 Tw
+(can choose to avoid specialization that does not pay for itself, even if some optimizations could be performed in the)Tj
+T*
+0 Tw
+(specialized routine.)Tj
+/TT2 1 Tf
+12 0 0 12 63 338 Tm
+[(7)-943.8(Conclusions)]TJ
+/TT7 1 Tf
+10 0 0 10 63 319.33 Tm
+0.02 Tw
+[(W)79.8(e)0( have presented an algorithm for determining which methods in an object-oriented language should be specialized for)]TJ
+T*
+0.022 Tw
+[(which set of ar)19.6(gument classes. Our algorithm uses weighted call graphs derived from dynamic pro)]TJ
+/TT8 1 Tf
+39.6385 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.022 Tw
+(les of the program to)Tj
+-40.1947 -1.2 TD
+0.037 Tw
+(determine those parts of the program with high execution. Our algorithm strives to balance the bene)Tj
+/TT8 1 Tf
+40.4876 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.037 Tw
+(ts of specialization)Tj
+-41.0438 -1.2 TD
+0.155 Tw
+(against its costs, improving on previous automatic specialization algorithms by avoiding both overspecialization and)Tj
+T*
+0.003 Tw
+(underspecialization. As a consequence of its more judicious application of specialization, our algorithm is appropriate for)Tj
+T*
+-0.02 Tw
+[(specializing on multiple ar)22.7(guments of a method and coping with multi-methods. Initial results from our implementation of)]TJ
+T*
+0.098 Tw
+(the algorithm are encouraging: a 50% speed improvement for a substantial application program with only a 5% space)Tj
+T*
+-0.006 Tw
+[(increase. The algorithm and its approach of exploiting the programí)69(s weighted call graph could be adapted for other kinds)]TJ
+T*
+0 Tw
+(of languages to help select the routines that are most pro)Tj
+/TT8 1 Tf
+22.5488 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(table to specialize.)Tj
+/TT2 1 Tf
+12 0 0 12 63 202 Tm
+(Acknowledgments)Tj
+/TT7 1 Tf
+10 0 0 10 63 183.33 Tm
+0.138 Tw
+(This research)Tj
+5.881 0 TD
+-0.01 Tc
+0.132 Tw
+[(is supported in part by a National Science Foundation Research Initiation A)103.3(ward \(contract number CCR-)]TJ
+-5.881 -1.2 TD
+0.195 Tw
+(9210990\) and several gifts from Sun Microsystems, Inc.)Tj
+23.776 0 TD
+0 Tc
+0.204 Tw
+(The comments from the anonymous referees improved the)Tj
+-23.776 -1.2 TD
+0.025 Tw
+[(presentation of this paper)57.7(. W)79.8(e)0( thank Stephen North and Eleftherios Koutso)]TJ
+/TT8 1 Tf
+30.1324 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.025 Tw
+[(os of A)118.9(T&T Bell Laboratories for producing)]TJ
+/TT12 1 Tf
+-30.6886 -1.2 TD
+0 Tw
+(dot)Tj
+/TT7 1 Tf
+1.799 0 TD
+(, a program for automatic graph layout;)Tj
+/TT12 1 Tf
+15.988 0 TD
+(dot)Tj
+/TT7 1 Tf
+1.799 0 TD
+[( has been invaluable in visualizing lar)23.4(ge call graphs.)]TJ
+ET
+endstream
+endobj
+48 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+/TT12 10 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+52 0 obj
+<<
+/Length 9744
+>>
+stream
+1 g
+/GS1 gs
+63 720 486 -648 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 63 712 Tm
+0 g
+0 Tc
+0 Tw
+(References)Tj
+/TT7 1 Tf
+10 0 0 10 63 696.3301 Tm
+([Bobrow)Tj
+/TT10 1 Tf
+3.835 0 TD
+0.032 Tw
+(et al.)Tj
+/TT7 1 Tf
+2.03 0 TD
+[( 88] D. G. Bobrow)70.5(, L. G. DeMichiel, R. P)117.5(.)0( Gabriel, S. E. Keene, G. Kiczales, D. A. Moon. Common Lisp)]TJ
+-4.065 -1 TD
+0 Tw
+(Object System Speci)Tj
+/TT8 1 Tf
+8.332 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+(cation X3J13. In)Tj
+/TT10 1 Tf
+6.8798 0 TD
+(SIGPLAN Notices 23\(Special Issue\))Tj
+/TT7 1 Tf
+14.407 0 TD
+[(, September)41.4(, 1988.)]TJ
+-31.975 -1.2 TD
+0.208 Tw
+[([Chambers & Ungar 91] Craig Chambers and David Ungar)66.7(. Making Pure Object-Oriented Languages Practical. In)]TJ
+/TT10 1 Tf
+1.8 -1 TD
+-0.027 Tw
+[(OOPSLA í91 Confer)41(ence Pr)37.5(oceedings)]TJ
+/TT7 1 Tf
+15.252 0 TD
+[(, pp. 1-15, Phoenix, AZ, October, 1991.)-216.4(Published as)]TJ
+/TT10 1 Tf
+21.191 0 TD
+(SIGPLAN Notices 26\(10\))Tj
+/TT7 1 Tf
+10.107 0 TD
+0 Tw
+(,)Tj
+-46.55 -1 TD
+[(October)41.7(, 1991.)]TJ
+-1.8 -1.2 TD
+0.111 Tw
+([Chambers 92a] Craig Chambers.)Tj
+/TT10 1 Tf
+14.129 0 TD
+(The Design and Implementation of the S)Tj
+9 0 0 9 371.98 642.33 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 387.95 642.33 Tm
+0.111 Tw
+[( Compiler)111.8(, an Optimizing Compiler for)]TJ
+-30.695 -1 TD
+0.192 Tw
+[(Object-Oriented Pr)40.2(ogramming Languages)]TJ
+/TT7 1 Tf
+17.392 0 TD
+(. Ph.D. thesis, Department of Computer Science, Stanford University,)Tj
+-17.392 -1 TD
+0 Tw
+(report STAN-CS-92-1420, March, 1992.)Tj
+-1.8 -1.2 TD
+0.031 Tw
+([Chambers 92b] Craig Chambers. Object-Oriented Multi-Methods in Cecil. In)Tj
+/TT10 1 Tf
+31.785 0 TD
+[(ECOOP í92 Confer)41.8(ence Pr)38.5(oceedings)]TJ
+/TT7 1 Tf
+15.035 0 TD
+(, pp.)Tj
+-45.02 -1 TD
+0.112 Tw
+[(33-56, Utrecht, the Netherlands, June/July)74.6(, 1992. Published as)]TJ
+/TT10 1 Tf
+26.006 0 TD
+[(Lectur)37.8(e Notes in Computer Science 615)]TJ
+/TT7 1 Tf
+16.428 0 TD
+[(, Springer)22.9(-)]TJ
+-42.434 -1 TD
+0 Tw
+[(V)111.2(erlag, Berlin, 1992.)]TJ
+-1.8 -1.2 TD
+([Chang)Tj
+/TT10 1 Tf
+3.226 0 TD
+0.034 Tw
+(et al.)Tj
+/TT7 1 Tf
+2.033 0 TD
+[( 92] Pohua P)114.2(.)0( Chang, Scott A. Mahlke, W)46.2(illiam Y)130.2(.)0( Chen, and W)82.5(en-Mei W)93.5(.)0( Hwu. Pro)]TJ
+/TT8 1 Tf
+34.2885 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5562 0 TD
+0.034 Tw
+(le-Guided Automatic)Tj
+-38.3036 -1 TD
+0 Tw
+(Inline Expansion for C Programs. In)Tj
+/TT10 1 Tf
+14.796 0 TD
+[(Softwar)38.8(eóPractice and Experience 22\(5\))]TJ
+/TT7 1 Tf
+16.701 0 TD
+[(, pp. 349-369, May)70(, 1992.)]TJ
+-33.297 -1.2 TD
+([Cooper)Tj
+/TT10 1 Tf
+3.509 0 TD
+-0.016 Tw
+(et al.)Tj
+/TT7 1 Tf
+1.982 0 TD
+[( 92] Keith D. Cooper)44.7(, Mary W)94.9(.)0( Hall, and Ken Kennedy)70.4(. Procedure Cloning. In)]TJ
+/TT10 1 Tf
+31.441 0 TD
+[(Pr)37(oceeding of the 1992 IEEE)]TJ
+-35.132 -1 TD
+0 Tw
+[(International Confer)40.2(ence on Computer Languages)]TJ
+/TT7 1 Tf
+20.229 0 TD
+(, pp. 96-105, Oakland, CA, April, 1992.)Tj
+-22.029 -1.2 TD
+0.09 Tw
+[([Dean & Chambers 94] Jef)23.4(frey Dean and Craig Chambers. T)76.8(oward Better Inlining Decisions Using Inlining T)45.2(rials. T)71.5(o)]TJ
+1.8 -1 TD
+0.01 Tw
+(appear in)Tj
+/TT10 1 Tf
+3.961 0 TD
+[(Pr)37(oceedings of the ACM Symposium on Lisp and Functional Pr)47.4(ogramming Languages)]TJ
+/TT7 1 Tf
+34.786 0 TD
+(, Orlando, FL, June,)Tj
+-38.747 -1 TD
+0.093 Tw
+(1994. An earlier version appears as technical report 93-05-05, Department of Computer Science and Engineering,)Tj
+T*
+0 Tw
+[(University of W)83.5(ashington, May)67.7(, 1993.)]TJ
+-1.8 -1.2 TD
+0.182 Tw
+[([Goldber)19.9(g & Robson 83] Adele Goldber)22.5(g and David Robson.)]TJ
+/TT10 1 Tf
+26.478 0 TD
+(Smalltalk-80: The Language and Its Implementation)Tj
+/TT7 1 Tf
+21.872 0 TD
+0 Tw
+(.)Tj
+-46.55 -1 TD
+[(Addison-W)83(esley)65.7(, Reading, MA, 1983.)]TJ
+-1.8 -1.2 TD
+0.033 Tw
+[([Grove & T)72.7(orczon 93] Dan Grove and Linda T)78(orczon. Interprocedural Constant Propagation: A Study of Jump Function)]TJ
+1.8 -1 TD
+0.354 Tw
+(Implementations. In)Tj
+/TT10 1 Tf
+9.008 0 TD
+[(Pr)38(oceedings of the SIGPLAN í93 Confer)45.9(ence on Pr)39.5(ogramming Language Design and)]TJ
+-9.008 -1 TD
+0 Tw
+(Implementation)Tj
+/TT7 1 Tf
+6.274 0 TD
+(, pp. 90-99, Albuquerque, NM, June, 1993. Published as)Tj
+/TT10 1 Tf
+22.763 0 TD
+(SIGPLAN Notices 28\(6\))Tj
+/TT7 1 Tf
+9.661 0 TD
+(, June, 1993.)Tj
+-40.498 -1.2 TD
+0.162 Tw
+[([Harnett & Montenyohl 92] Sheila Harnett and Mar)29(garet Montenyohl. T)74(owards Ef)]TJ
+/TT8 1 Tf
+34.516 0 TD
+0 Tw
+(ﬁ)Tj
+/TT7 1 Tf
+0.5561 0 TD
+0.162 Tw
+(cient Compilation of a Dynamic)Tj
+-33.2721 -1 TD
+0.235 Tw
+(Object-Oriented Language. In)Tj
+/TT10 1 Tf
+12.972 0 TD
+[(Pr)37(oceedings of the 1992 W)96.1(orkshop on Partial Evaluation and Semantics-Based)]TJ
+-12.972 -1 TD
+0.025 Tw
+[(Pr)38(ogram Manipulation)]TJ
+/TT7 1 Tf
+9.289 0 TD
+[(, pp. 82-89, San Francisco, CA, 1992. Published as Y)108.9(ale University Department of Computer)]TJ
+-9.289 -1 TD
+0 Tw
+[(Science T)71.2(echnical Report Y)113.9(ALEU/DCS/RR-909.)]TJ
+-1.8 -1.2 TD
+([Hˆlzle)Tj
+/TT10 1 Tf
+3.461 0 TD
+0.214 Tw
+(et al.)Tj
+/TT7 1 Tf
+2.214 0 TD
+[( 91] Urs Hˆlzle, Craig Chambers, and David Ungar)63(. Optimizing Dynamically-T)74.1(yped Object-Oriented)]TJ
+-3.875 -1 TD
+0.205 Tw
+(Programming Languages with Polymorphic Inline Caches. In)Tj
+/TT10 1 Tf
+26.252 0 TD
+[(ECOOP í91 Confer)41.8(ence Pr)37.5(oceedings)]TJ
+/TT7 1 Tf
+15.558 0 TD
+(, pp. 21-38,)Tj
+-41.81 -1 TD
+0 Tw
+[(Geneva, Switzerland, July)70.1(, 1991.)]TJ
+-1.8 -1.2 TD
+-0.024 Tw
+[([Katz & W)81.4(eise 92] Morry Katz and Daniel W)86.8(eise. T)71.5(owards a New Perspective on Partial Evaluation. In)]TJ
+/TT10 1 Tf
+41.19 0 TD
+[(Pr)38(oceedings of the)]TJ
+-39.39 -1 TD
+0.052 Tw
+[(1992 W)93(orkshop on Partial Evaluation and Semantics-Based Pr)47.4(ogram Manipulation)]TJ
+/TT7 1 Tf
+33.936 0 TD
+(, pp. 29-37, San Francisco, CA,)Tj
+-33.936 -1 TD
+0 Tw
+[(1992. Published as Y)105(ale University Department of Computer Science T)78.2(echnical Report Y)113.9(ALEU/DCS/RR-909.)]TJ
+-1.8 -1.2 TD
+[([Kilian 88] Michael F)84(.)0( Kilian. Why T)37.2(rellis/Owl Runs Fast. Unpublished manuscript, March, 1988.)]TJ
+T*
+0.164 Tw
+([Khoo & Sundaresh 91] Siau Cheng Khoo and R. S. Sundaresh. Compiling Inheritance using Partial Evaluation. In)Tj
+/TT10 1 Tf
+1.8 -1 TD
+-0.043 Tw
+[(Pr)38(oceedings of the 1991 Symposium on Partial Evaluation and Semantics-Based Pr)53.5(ogram Manipulation)]TJ
+/TT7 1 Tf
+41.343 0 TD
+[(, pp. 21)39(1-222,)]TJ
+-41.343 -1 TD
+0 Tw
+[(New Haven, CT)76.9(, 1991.)]TJ
+-1.8 -1.2 TD
+0.056 Tw
+([Knuth 92] Donald E. Knuth.)Tj
+/TT10 1 Tf
+12.243 0 TD
+[(Literate Pr)38.5(ogramming)]TJ
+/TT7 1 Tf
+9.042 0 TD
+(. Center for the Study of Language and Information, Lecture Notes)Tj
+-19.485 -1 TD
+0 Tw
+(Series, 1992.)Tj
+-1.8 -1.2 TD
+-0.002 Tw
+[([Krasner 83] Glenn Krasner)44.9(, editor)55.5(.)]TJ
+/TT10 1 Tf
+14.412 0 TD
+[(Smalltalk-80: Bits of History)59.9(, W)92(o)0(r)38.2(ds of Advice)]TJ
+/TT7 1 Tf
+18.433 0 TD
+[(. Addison-W)82(esley)65.7(, Reading, MA, 1983.)]TJ
+-32.845 -1.2 TD
+0.102 Tw
+([Lea 90] Douglas Lea. Customization in C++. In)Tj
+/TT10 1 Tf
+20.539 0 TD
+[(Pr)38(oceedings of the 1990 Usenix C++ Confer)47.3(ence)]TJ
+/TT7 1 Tf
+20.427 0 TD
+(, pp. 301-314, San)Tj
+-39.166 -1 TD
+0 Tw
+[(Francisco, CA, April, 1990)5.7(.)]TJ
+-1.8 -1.2 TD
+0.216 Tw
+([Lim & Stolcke 91] Chu-Cheow Lim and Andreas Stolcke. Sather Language Design and Performance Evaluation.)Tj
+1.8 -1 TD
+0 Tw
+[(T)69.8(echnical report TR-91-034, International Computer Science Institute, May)77.7(, 1991.)]TJ
+-1.8 -1.2 TD
+-0.0001 Tc
+0.0001 Tw
+[([Meyer 92] Bertrand Meyer)58.3(.)]TJ
+/TT10 1 Tf
+11.574 0 TD
+0 Tc
+0 Tw
+(Eiffel: The Language)Tj
+/TT7 1 Tf
+8.495 0 TD
+[(. Prentice Hall, New Y)104.4(ork, 1992.)]TJ
+-20.069 -1.2 TD
+-0.0001 Tc
+0.0001 Tw
+[([Nelson 91] Greg Nelson, editor)58.4(.)]TJ
+/TT10 1 Tf
+13.352 0 TD
+0 Tc
+0 Tw
+[(Systems Pr)40(ogramming with Modula-3)]TJ
+/TT7 1 Tf
+15.148 0 TD
+[(. Prentice Hall, Englewood Clif)23.4(fs, NJ, 1991.)]TJ
+-28.5 -1.2 TD
+-0.061 Tw
+[([Ruf & W)82.7(eise 91] Erik Ruf and Daniel W)86.6(eise. Using T)72.7(ypes to A)77(void Redundant Specialization. In)]TJ
+/TT10 1 Tf
+38.411 0 TD
+[(Pr)37(oceedings of the PEPM)]TJ
+-36.611 -1 TD
+0.034 Tw
+[(í91 Symposium on Partial Evaluation and Semantics-Based Pr)50.4(ogram Manipulation)]TJ
+/TT7 1 Tf
+33.714 0 TD
+[(s, pp. 321-333, New Haven, CT)82.1(,)]TJ
+-33.714 -1 TD
+0 Tw
+(June, 1991. Published as)Tj
+/TT10 1 Tf
+10.105 0 TD
+(SIGPLAN Notices 26\(9\))Tj
+/TT7 1 Tf
+9.661 0 TD
+[(, September)41.4(, 1991.)]TJ
+-21.566 -1.2 TD
+[([Schaf)18.9(fert)]TJ
+/TT10 1 Tf
+4.297 0 TD
+0.069 Tw
+(et al.)Tj
+/TT7 1 Tf
+2.068 0 TD
+[( 86] Craig Schaf)19.5(fert, T)70.5(opher Cooper)41.7(, Bruce Bullis, Mike Kilian, and Carrie W)44.9(ilpolt. An Introduction to)]TJ
+-4.565 -1 TD
+0.227 Tw
+[(T)34.8(rellis/Owl. In)]TJ
+/TT10 1 Tf
+6.609 0 TD
+[(OOPSLA í86 Confer)42(ence Pr)37.5(oceedings)]TJ
+/TT7 1 Tf
+16.012 0 TD
+[(, pp. 9-16, Portland, OR, September)47.2(, 1986. Published as)]TJ
+/TT10 1 Tf
+-22.621 -1 TD
+0 Tw
+[(SIGPLAN Notices 21\(1)78.5(1\))]TJ
+/TT7 1 Tf
+10.087 0 TD
+[(, November)42.7(, 1986.)]TJ
+-11.887 -1.2 TD
+0.085 Tw
+([Stroustrup 91] Bjarne Stroustrup.)Tj
+/TT10 1 Tf
+14.247 0 TD
+[(The C++ Pr)39.6(ogramming Language, Second Edition)]TJ
+/TT7 1 Tf
+20.836 0 TD
+[(. Addison-W)83(esley)65.7(, Reading, MA,)]TJ
+-33.283 -1 TD
+0 Tw
+(1991.)Tj
+-1.8 -1.2 TD
+0.086 Tw
+([Ungar & Smith 87] David Ungar and Randall B. Smith. S)Tj
+9 0 0 9 305.91 100.33 Tm
+0 Tw
+(ELF)Tj
+10 0 0 10 321.89 100.33 Tm
+0.086 Tw
+[(: The Power of Simplicity)69.7(. In)]TJ
+/TT10 1 Tf
+12.416 0 TD
+[(OOPSLA í87 Confer)41(ence)]TJ
+-36.505 -1 TD
+0 Tw
+[(Pr)38(oceedings)]TJ
+/TT7 1 Tf
+4.959 0 TD
+-0.035 Tw
+[(, pp. 227-241, Orlando, FL, October)49.6(, 1987. Published as)]TJ
+/TT10 1 Tf
+22.405 0 TD
+(SIGPLAN Notices 22\(12\))Tj
+/TT7 1 Tf
+10.09 0 TD
+[(, December)42.4(, 1987. Also)]TJ
+-37.454 -1 TD
+0 Tw
+(published in)Tj
+/TT10 1 Tf
+5.164 0 TD
+(Lisp and Symbolic Computation 4\(3\))Tj
+/TT7 1 Tf
+14.77 0 TD
+(, Kluwer Academic Publishers, June, 1991.)Tj
+ET
+endstream
+endobj
+53 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT7 7 0 R
+/TT8 8 0 R
+/TT10 9 0 R
+>>
+/ExtGState <<
+/GS1 11 0 R
+>>
+>>
+endobj
+11 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+54 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 701
+/CapHeight 0
+/Descent -298
+/Flags 4
+/FontBBox [-167 -299 1063 827]
+/FontName /ABJNLM+Symbol
+/ItalicAngle 0
+/StemV 0
+/FontFile2 55 0 R
+>>
+endobj
+55 0 obj
+<<
+/Filter /FlateDecode
+/Length 3146
+/Length1 5792
+>>
+stream
+HâºóxWU«ﬂÁû{Ôw¬ƒ1$X€Ñ9i,ùq"6hNö4â&‚⁄∆K|˘©-ﬂâ¶Fã°)˘‡BD2#Í¸jÆ$3""ãñ"∑˜yÔã˙X˝Á„wœÁu>?Œœœ9Áﬁ; ÈÑè¨Í⁄⁄Ÿ—€ˆWÄIÔÄö¯úπpqòÒD…ÃE≤Ê^óiﬂxf-ößø∞Ì,˝∫⁄¯ÃÒÉÛ.•ΩâˆEu≥™Ù∂∑/©uM≥™5•—ﬁOªuˆú•uU}ŒªËøÑ˝]^?´∫v˜µcJÅÅıå_ZOGÍ≥ﬁzv=áˆ˙ÜK÷‹Q6ÇˆZˆ1Ù¶ÖÒ&∂¸j ˆ „sÊ4Œ¨æÏÊ"ŒÌÏÌú„⁄ÜÍ%M)œõ€ÿ_	„Ys´fïç]WúSÃ∏mö?´©ÚÅãÔRŒ•§6ÕolZjo¨“Ü3>|a√Î^ıa¨økQ·Áî=î'(ORûÍ]ﬂáÎ¡^å¡*o5∆a:Qié`õYá5&´É≠ÿÜ. h‰£ nfùìË∆Nt{3≠:xÉYña*kµ{ûóÅÖË4Î—ÈıÛ∆ô±—k7À∞	”ëÈÁ≤ÊQTÿÌh@°w?*˝õºï1 Ó›ãÖ&qTzWyegxhÛèat0	38:∞Ÿ6xácï(6«Ÿ{=^√åÚF£≠^g∫Àtõfü9Ëï„≥«ú4{É˝’qïÉ–tbá7Û∞Éˆå≥~2Órúâúøì:≥.xŒl‰˙ßpı=(¿‹Eˇ÷Î@ÅmCæÂÃÒJ˘7¬∂—S$®Ô¡ù(∫1›¥caÿÃ\1fwòm(¥mA¬t…n”π?f†»œˆr√J¨¬Aá7÷€á≈Hx«Xs;^ZΩÕÃGz–Ó%LMoNPîcM–äÃL6À‹ëÃ‡( Õc^>“Ïf≥ÂtnÇgº√^j8	µ¡”céáÜ9f[p‹¶3Ö±ÊdXhvÖEa?∂H0èªn]π,¬
+\§ª’{æÇ≈≥Îuó◊.®w%ØÊhläﬂÇT`nıó_Û˛Û8>æıFf•ux9W◊våˇlE÷”◊gÁè¸ÄôïÀÍ¿îé3ófÌå¢)˛ê‡˙é`háÕIÈsÜ¯¡˘#ØôRëµ”ƒ&'ªùXULÁuTùE7˝ãÛı·B⁄ﬂ·≥"e⁄©-oÔOi˘Ø€”ÂÔEù¥|"∞∂‡5—âpZ¬"T—Æ§T˘µòŒxeµWΩ≈á“ & ÿ§^H…£L•Q )ìΩ"l¢,e{◊GÖ+m+öŸÁT'´«Ó√F≥õ\i±‘n≈V÷õÆ∏qìÌ*¸v¨∑G±å˛“p=«≠≈0Ø *	sPGﬂØ˝⁄Ë ˚;B¶y)¿+Æ€ÑÜÀ1/ŸWÉ nì;Ñ∏ßßL√ÉÏg4˚ks4{ÂA3Ó∫¢c¡4¯›Âƒ'AÚÇÊcä®ècΩåXÀ.‰#0èÂ4ˆq°ß<ét∂…VbH8ìŒÄ§bÁ±⁄ñ¬„K(π#›œcŒÔE;c˝‹i√æÖlÍWQöYßƒ&0’&¢¸ˆË8„ÖÙö£„ú«$∑GÊÏw]"N…¶Ï•¥p}œËë¿ Œ/«âÀÖ[˜Ö„lcnäù8ù˘iäQöåm¶‹«ˆ≠·a3ô˚1≈Â+\orm:v%•≈	ÎópåRûáª∏ÆQN∏ˆÙ`{tå}åÂ\XßÄu[ìí„$v»å≥GÕÊezo)ΩÓtÈ„^w{˘)àñ%€qLsí≤ó{]„$ñiF±,ëî¢ì˘©dÓ›Ÿ…‰Zö˘©—πˇíº-}ƒK‰ay˚Àﬁò•o(û‰€xØ’û∫4ßkD—Ó˜ófB‰-7N¡_¥h&=ÈFÑ#"Òî¯éxR|[<!ˇ-ˇ%ˇ)æ%˛C|S¸ªÿ#˛M<"˛UÎ¸ãÙ7g‘"`È,ß[ñ˛'Òê¯GÒ†¯ÒÄ¯∫¯;qø¯[ÒUÒÒ7‚>Òe|Ìe£ıí|/Q˜ÒKÈ/&È</H^¸Ö¯û&üï˛å¯¥ÿ%>•π?)˝	qèÿ)˛L‹%˛T|\¸â¯~åk9Ø«z≠ËEéÔ<ñ_è¢#;1P÷rFÂõ7§œE,9ûæ:Iè‡br;ﬂ=vBÑá˘•P»zÛ˝fIWoõF¯ëÊ⁄Åá8b¿“˘‚˜…"ZŒÁ,7“÷d.bI◊√qı-jÛÄxø¯ıπóìﬂó~ü¸ﬂ”Ë˜ sO≤ø{¯ç‰,◊üÛX|WÌ6b˘ÓâEªZ[£mê˛-±Õùc|óëÎÂ˘Üx∑zXßË◊≈ª4ÊZEÔ‰I∂∏CuZ˝ö∏F{˙U’Y-ﬁé£79∑UÚ‹&ÆLûùï∏íñ”-ﬂˆ+¥ûÑj$¥o+¥ûÊo?#-ä¥`7#À±å£äX“exæå+ËsK∫å8èª≠ÆÂóƒ[qãj›⁄kiú[Tk©<Kƒ≈‚"≠z·Ñﬁ{«|LdÀxØ•ñŒc˘˝÷§›üßHµ˚M⁄˝&Õ≠sq>}ç⁄˝FÕÕy,nVõzq∂8Kú)~A¨ogà7ª’›ıdM◊<Øó^!~^ú&~Nú*^ßù*ó>EºV,?#NØK¢ﬂs¶üVˇì‰)÷ç˛îÙ´ƒ	‚x≠fúÙ+≈±‚‚Òr±à≠-œú”GãóàÖ‚≈b}ñ_}NøP¸§ò/éD	ô'˝‚Ò‰råÄ•≥ruBœóû#«Y‰0~i[ú«oë-sd˘ΩÌÍ\ûÈC≈!zœ¡«ƒ¡˚\’$œI2çŸÄ˛1`È|g#ùŸX∫”ì±t›Fß[∂9%∫∂gÈvıìÁL1UÏ+ˆœSƒFë!üÆzGAÔ(X—”›Ú‘≥—¸´∏˙*zó≥˜µîMî nJ∆L^Ÿj‚y…Õ0Ê/„›/˜Ω1íYxﬁ˚ﬁË√<˚‹+˜N	òO˛…}JÈﬂó{vFf_∆˚–ﬂó1Ê;ïuˇ√|µƒ4Ñ·ôÌv€≤vKZ†∂ÖÚHZ±!nÄ‰ÄAÖƒ¥h¢"r–¯:®—ò!ò#âO∆Gºà^º @Q‘Äèh√A™HÄ≈oó ¡ƒãcæf˚ÌÃd˛˘gˇ˘˛ljÊYË[+—c'vèØî
+ûF“<æV:∏É80œ*≤
+Û8—Î¬H7¿#™302–"Ú=h…¥87π‡Ä[ Nèì•‘KÎ7<Ng±ÍA	x)G˚nÄ'˚°Q˜∂vUÕÆ@y‰ô^¥?@‚·ª‚˝CÄ W?"¸oUñÚÃQ»›≤÷Æ•≤ÕΩ]˝/—ÅüP∏˚8C¬r7÷^U„Ÿ4∞∏ËµK§ÅWD»O]¢«%∫¬,ôﬂßIù/wÎí~|›ÀÂ*∂∏O¬‘L
+Ç©‹†û$câÉISr"ég‘—Œk™∂±Ë§œ'⁄÷ö÷)ãGÛ©À‚rs:<‘èßìàaÆ2£ŸfmÏ”9…<˚Eyì«Â€¥í˝ﬁ1˛∂uz™É÷—l†N±ﬂ≥¯Q{V+·DÁ≠â≈fÌ‚n$õ^æäÒíê	¶cQ≈¨ ÄC~—L¸>R"òÌ9@˘ŸYöx@ÓìGÅõLΩb6&œSÌt|∑hHâµö≈{‹zÌƒU
+‘≤)X‰Ò9≠RJÇÅÿ2≤Ãz£∆"e:çCíf»˘Rıy|ôπÇ≈æ‹/pVÆ‹.îÁ˙∞ú·høhRvDƒ€"L∆¢¬î–/®Õ¢“úÔ¡÷`_VgI4èfÄô≠6∞È‘bftõ·Œ ÷eÚh·Í5Å5ô~üïˆ’=Î†çÑ*÷’æhóÁ‰°JÕ˝±¿H√ñ]-·E“sz*2Q¯ÆaÎ¶öÍævfÊMeç–ÑŒÁõã*6 ÁÂô√#Uö˛◊Å±=3'ŒÀÛ;√-ıì≈ç3Án:z™q©zw˝'h.˛ü†Èˇ
+™ﬁÖó—∏¨,∏1Œ90;z	k@ãzµƒhaiú+˘∂:ŒY÷8Á¿èóñUTmyk;€ö˜D˛¸Ç… Häõ(mº(~:!rÕê∂J†(∑⁄¡öPƒ˝y‹ﬂÙ®^>FU…B√5˚ïL†˚Ñ∫ü™P«¯5€íãøQ™W∑•˜……#øÙRææpIîª¨ÓV¸÷˙SÄ Bª©“
+endstream
+endobj
+56 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+57 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+58 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 32
+/FontBBox [-166 -225 1000 931]
+/FontName /Helvetica
+/ItalicAngle 0
+/StemV 88
+/XHeight 523
+/StemH 88
+>>
+endobj
+59 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+60 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+61 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 653
+/Descent -250
+/Flags 98
+/FontBBox [-169 -217 1010 883]
+/FontName /Times-Italic
+/ItalicAngle -15
+/StemV 76
+/XHeight 441
+/StemH 76
+>>
+endobj
+62 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+63 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+64 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 653
+/Descent -250
+/Flags 98
+/FontBBox [-169 -217 1010 883]
+/FontName /Times-Italic
+/ItalicAngle -15
+/StemV 76
+/XHeight 441
+/StemH 76
+>>
+endobj
+65 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+26 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-BoldOblique
+>>
+endobj
+27 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /MacRomanEncoding
+/BaseFont /Helvetica-Oblique
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 122
+/Widths [278 0 0 0 0 0 0 0 0 0 389 0 0 333 278 278 
+0 556 556 556 556 556 556 556 0 0 333 0 584 0 0 0 
+0 722 722 722 722 667 0 778 0 278 0 0 611 833 0 778 
+667 0 722 667 611 722 0 944 0 0 0 0 0 0 0 0 
+0 556 611 556 611 556 333 611 611 278 278 556 278 889 611 611 
+611 0 389 556 333 611 556 778 556 556 500 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 56 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [611 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 57 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [278 0 0 0 0 0 0 0 333 333 0 584 278 333 278 0 
+556 556 556 556 556 556 556 556 556 556 278 0 0 584 0 0 
+0 667 0 722 722 667 0 778 0 0 500 0 556 833 722 778 
+667 0 722 667 0 722 0 944 0 0 0 0 0 0 0 556 
+0 556 556 500 556 556 278 556 556 222 0 500 222 833 556 556 
+556 0 333 500 278 556 500 722 500 500 500 334 0 334 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica
+/FontDescriptor 58 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 31
+/LastChar 246
+/Widths [722 250 722 722 722 722 833 778 722 333 333 500 564 250 333 250 
+278 500 500 500 500 500 500 500 500 500 500 278 278 564 564 564 
+722 921 722 667 667 722 611 556 722 722 333 389 722 611 889 722 
+722 556 722 667 556 611 722 722 944 722 722 611 333 722 333 722 
+500 722 444 500 444 500 444 333 500 500 278 278 500 278 778 500 
+500 500 500 333 389 278 500 500 722 500 500 444 480 722 480 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 333 444 444 350 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 722 
+722 722 722 722 722 722 722 500 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 59 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 223
+/Widths [556 556 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 60 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 151
+/Widths [250 0 0 0 0 0 0 0 333 333 500 675 250 333 250 0 
+500 500 500 500 500 500 500 500 500 500 333 0 0 0 675 0 
+0 611 611 667 722 611 611 722 722 333 0 0 556 833 667 722 
+611 0 0 500 556 722 0 833 0 0 0 0 0 0 0 500 
+0 500 500 444 500 444 278 500 500 278 278 444 278 722 500 500 
+500 0 389 389 278 500 444 667 444 444 389 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 333 0 0 0 0 889 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Italic
+/FontDescriptor 61 0 R
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 40
+/LastChar 121
+/Widths [600 600 0 600 0 0 600 0 0 0 0 600 0 0 0 0 
+0 0 0 0 0 0 0 0 600 0 0 0 0 0 0 600 
+600 0 0 0 0 0 0 0 0 0 0 600 600 0 600 0 
+0 0 0 0 0 0 0 0 0 600 600 600 600 600 600 600 
+600 600 0 600 600 0 600 600 0 0 600 600 600 0 0 600 
+0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 62 0 R
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 65
+/LastChar 122
+/Widths [722 667 0 0 0 0 778 778 0 0 0 0 0 0 0 0 
+0 0 556 667 0 722 0 0 0 0 0 0 0 0 500 0 
+500 556 444 556 444 333 500 556 278 0 0 278 833 556 500 556 
+0 444 389 333 0 0 722 0 0 444 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 63 0 R
+>>
+endobj
+31 0 obj
+<<
+/Type /Font
+/Subtype /Type0
+/BaseFont /ABJNLM+Symbol
+/Encoding /Identity-H
+/DescendantFonts [ 66 0 R ]
+/ToUnicode 67 0 R
+>>
+endobj
+66 0 obj
+<<
+/Type /Font
+/Subtype /CIDFontType2
+/BaseFont /ABJNLM+Symbol
+/FontDescriptor 54 0 R
+/CIDSystemInfo<<
+/Registry (Adobe)
+/Ordering (Identity)
+/Supplement 0
+>>
+/DW 1000
+/W [
+68 [712]
+70 [768]
+146 [823]
+]
+>>
+endobj
+32 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [500 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Italic
+/FontDescriptor 64 0 R
+>>
+endobj
+39 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [556 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 65 0 R
+>>
+endobj
+67 0 obj
+<<
+/Filter /FlateDecode
+/Length 235
+>>
+stream
+HâTPMOƒ ºÛ+ﬁQ„ÅªFìÜƒ¨ó¸à≠ﬁYx≠$»+=Ùﬂl]„»Ã0√¯±{Íúç¿ﬂ»Î#å÷¬≈Ø§N8Yµ cu‹QŸı¨dÓ∑%‚‹π—C€2˛ûƒ%“W√Pn™k‡Ødê¨õ’àèœƒÙkﬂ8£ãPÅî`pd¸¯¨¬ãö¯Ÿ˘«[@◊˚Îﬁ‡îFRnBh´™id>ÑtÊøŒnœÆ”®ø±ﬂ€BT˜≤†ªÇƒcA9"k…R“Ó…ô˘«óíz%J˝ÀXJ…\œ:ºL.¯êõ‰≈~ 2DpY
+endstream
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+13 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 15 0 R
+/Contents 14 0 R
+>>
+endobj
+17 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 19 0 R
+/Contents 18 0 R
+>>
+endobj
+20 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 22 0 R
+/Contents 21 0 R
+>>
+endobj
+23 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 25 0 R
+/Contents 24 0 R
+>>
+endobj
+28 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 30 0 R
+/Contents 29 0 R
+>>
+endobj
+33 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 35 0 R
+/Contents 34 0 R
+>>
+endobj
+36 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 38 0 R
+/Contents 37 0 R
+>>
+endobj
+40 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 42 0 R
+/Contents 41 0 R
+>>
+endobj
+43 0 obj
+<<
+/Type /Page
+/Parent 12 0 R
+/Resources 45 0 R
+/Contents 44 0 R
+>>
+endobj
+46 0 obj
+<<
+/Type /Page
+/Parent 50 0 R
+/Resources 48 0 R
+/Contents 47 0 R
+>>
+endobj
+51 0 obj
+<<
+/Type /Page
+/Parent 50 0 R
+/Resources 53 0 R
+/Contents 52 0 R
+>>
+endobj
+68 0 obj
+<<
+/S /D
+>>
+endobj
+69 0 obj
+<<
+/Nums [0 68 0 R ]
+>>
+endobj
+12 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 13 0 R 17 0 R 20 0 R 23 0 R 28 0 R 33 0 R 36 0 R 40 0 R 43 0 R]
+/Count 10
+/Parent 49 0 R
+>>
+endobj
+50 0 obj
+<<
+/Type /Pages
+/Kids [46 0 R 51 0 R]
+/Count 2
+/Parent 49 0 R
+>>
+endobj
+49 0 obj
+<<
+/Type /Pages
+/Kids [12 0 R 50 0 R ]
+/Count 12
+/MediaBox [0 0 612 792]
+>>
+endobj
+70 0 obj
+<<
+/CreationDate (D:20041230112417-06'00')
+/ModDate (D:20041230112417-06'00')
+/Producer (PSNormalizer.framework)
+>>
+endobj
+71 0 obj
+<<
+/Type /Catalog
+/Pages 49 0 R
+/PageLabels 69 0 R
+>>
+endobj
+xref
+0 72
+0000000000 65535 f 
+0000149183 00000 n 
+0000000016 00000 n 
+0000005796 00000 n 
+0000144570 00000 n 
+0000145034 00000 n 
+0000145207 00000 n 
+0000145684 00000 n 
+0000146725 00000 n 
+0000146899 00000 n 
+0000147443 00000 n 
+0000138792 00000 n 
+0000150256 00000 n 
+0000149264 00000 n 
+0000005961 00000 n 
+0000017252 00000 n 
+0000147831 00000 n 
+0000149348 00000 n 
+0000017398 00000 n 
+0000031169 00000 n 
+0000149432 00000 n 
+0000031313 00000 n 
+0000039665 00000 n 
+0000149516 00000 n 
+0000039820 00000 n 
+0000046843 00000 n 
+0000144353 00000 n 
+0000144463 00000 n 
+0000149600 00000 n 
+0000047033 00000 n 
+0000059547 00000 n 
+0000148168 00000 n 
+0000148533 00000 n 
+0000149684 00000 n 
+0000059750 00000 n 
+0000083688 00000 n 
+0000149768 00000 n 
+0000083878 00000 n 
+0000105040 00000 n 
+0000148705 00000 n 
+0000149852 00000 n 
+0000105230 00000 n 
+0000113850 00000 n 
+0000149936 00000 n 
+0000113992 00000 n 
+0000121580 00000 n 
+0000150020 00000 n 
+0000121723 00000 n 
+0000128720 00000 n 
+0000150474 00000 n 
+0000150393 00000 n 
+0000150104 00000 n 
+0000128864 00000 n 
+0000138661 00000 n 
+0000138933 00000 n 
+0000139123 00000 n 
+0000142357 00000 n 
+0000142563 00000 n 
+0000142769 00000 n 
+0000142964 00000 n 
+0000143161 00000 n 
+0000143358 00000 n 
+0000143558 00000 n 
+0000143749 00000 n 
+0000143951 00000 n 
+0000144151 00000 n 
+0000148311 00000 n 
+0000148875 00000 n 
+0000150188 00000 n 
+0000150216 00000 n 
+0000150566 00000 n 
+0000150698 00000 n 
+trailer
+<<
+/Size 72
+/Root 71 0 R
+/Info 70 0 R
+/ID [<315e6542527eeb6db9041766f0924c4d><315e6542527eeb6db9041766f0924c4d>]
+>>
+startxref
+150768
+%%EOF

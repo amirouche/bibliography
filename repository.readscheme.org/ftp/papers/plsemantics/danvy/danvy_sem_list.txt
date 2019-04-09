@@ -1,0 +1,269 @@
+﻿Olivier Danvy - semantics stuff:
+
+RS-01-23 
+PostScript, PDF, DVI. 
+Olivier Danvy and Lasse R. Nielsen. 
+Defunctionalization at Work. 
+June 2001. 
+45 pp. Extended version of an article appearing in Søndergaard, editor, 3rd International Conference on Principles and Practice of Declarative Programming, PPDP '01 Proceedings, 2001, pages 162-174. 
+Abstract: We study practical applications of Reynolds's defunctionalization technique, which is a whole-program transformation from higher-order to first-order functional programs. This study leads us to discover new connections between seemingly unrelated higher-order and first-order specifications and their correctness proofs. We thus perceive defunctionalization both as a springboard and as a bridge: as a springboard for discovering new connections between the first-order world and the higher-order world; and as a bridge for transferring existing results between first-order and higher-order settings. 
+
+
+RS-03-13 
+PostScript, PDF, DVI. 
+Mads Sig Ager, Dariusz Biernacki, Olivier Danvy, and Jan Midtgaard. 
+A Functional Correspondence between Evaluators and Abstract Machines. 
+March 2003. 
+28 pp. 
+Abstract: We bridge the gap between functional evaluators and abstract machines for the lambda-calculus, using closure conversion, transformation into continuation-passing style, and defunctionalization of continuations.
+
+We illustrate this bridge by deriving Krivine's abstract machine from an ordinary call-by-name evaluator and by deriving an ordinary call-by-value evaluator from Felleisen et al.'s CEK machine. The first derivation is strikingly simpler than what can be found in the literature. The second one is new. Together, they show that Krivine's abstract machine and the CEK machine correspond to the call-by-name and call-by-value facets of an ordinary evaluator for the lambda-calculus.
+
+We then reveal the denotational content of Hannan and Miller's CLS machine and of Landin's SECD machine. We formally compare the corresponding evaluators and we illustrate some relative degrees of freedom in the design spaces of evaluators and of abstract machines for the lambda-calculus with computational effects.
+
+For the purpose of this work, we distinguish between virtual machines, which have an instruction set, and abstract machines, which do not. The Categorical Abstract Machine, for example, has an instruction set, but Krivine's machine, the CEK machine, the CLS machine, and the SECD machine do not; they directly operate on lambda-terms instead. We present the abstract machine that corresponds to the Categorical Abstract Machine. 
+
+
+
+RS-03-14 
+PostScript, PDF, DVI. 
+Mads Sig Ager, Dariusz Biernacki, Olivier Danvy, and Jan Midtgaard. 
+From Interpreter to Compiler and Virtual Machine: A Functional Derivation. 
+March 2003. 
+36 pp. 
+Abstract: We show how to derive a compiler and a virtual machine from a compositional interpreter. We first illustrate the derivation with two evaluation functions and two normalization functions. We obtain Krivine's machine, Felleisen et al.'s CEK machine, and a generalization of these machines performing strong normalization, which is new. We observe that several existing compilers and virtual machines--e.g., the Categorical Abstract Machine (CAM), Schmidt's VEC machine, and Leroy's Zinc abstract machine--are already in derived form and we present the corresponding interpreter for the CAM and the VEC machine. We also consider Hannan and Miller's CLS machine and Landin's SECD machine.
+
+We derived Krivine's machine via a call-by-name CPS transformation and the CEK machine via a call-by-value CPS transformation. These two derivations hold both for an evaluation function and for a normalization function. They provide a non-trivial illustration of Reynolds's warning about the evaluation order of a meta-language.
+
+
+
+RS-03-33 
+PostScript, PDF, DVI. 
+Olivier Danvy. 
+A Rational Deconstruction of Landin's SECD Machine. 
+October 2003. 
+32 pp. This report supersedes the earlier BRICS report RS-02-53. 
+Abstract: Landin's SECD machine was the first abstract machine for the -calculus viewed as a programming language. Both theoretically as a model of computation and practically as an idealized implementation, it has set the tone for the subsequent development of abstract machines for functional programming languages. However, and even though variants of the SECD machine have been presented, derived, and invented, the precise rationale for its architecture and modus operandi has remained elusive. In this article, we deconstruct the SECD machine into a -interpreter, i.e., an evaluation function, and we reconstruct -interpreters into a variety of SECD-like machines. The deconstruction and reconstructions are transformational: they are based on equational reasoning and on a combination of simple program transformations--mainly closure conversion, transformation into continuation-passing style, and defunctionalization.
+
+The evaluation function underlying the SECD machine provides a precise rationale for its architecture: it is an environment-based eval-apply evaluator with a callee-save strategy for the environment, a data stack of intermediate results, and a control delimiter. Each of the components of the SECD machine (stack, environment, control, and dump) is therefore rationalized and so are its transitions.
+
+The deconstruction and reconstruction method also applies to other abstract machines and other evaluation functions. It makes it possible to systematically extract the denotational content of an abstract machine in the form of a compositional evaluation function, and the (small-step) operational content of an evaluation function in the form of an abstract machine.
+
+
+
+On Evaluation Contexts, Continuations, and the Rest of the Computation 
+Olivier Danvy (University of Aarhus)
+CW'04 Program and on-line proceedings
+Venice, Italy, January 17th, 2004
+
+
+
+
+RS-04-3 
+PostScript, PDF, DVI. 
+Mads Sig Ager, Olivier Danvy, and Jan Midtgaard. 
+A Functional Correspondence between Call-by-Need Evaluators and Lazy Abstract Machines. 
+February 2004. 
+17 pp. This report supersedes the earlier BRICS report RS-03-24. Extended version of an article appearing in Information Processing Letters, 90(5):223-232, 2004. 
+Abstract: We bridge the gap between compositional evaluators and abstract machines for the lambda-calculus, using closure conversion, transformation into continuation-passing style, and defunctionalization of continuations. This article is a followup of our article at PPDP 2003, where we consider call by name and call by value. Here, however, we consider call by need.
+
+We derive a lazy abstract machine from an ordinary call-by-need evaluator that threads a heap of updatable cells. In this resulting abstract machine, the continuation fragment for updating a heap cell naturally appears as an `update marker', an implementation technique that was invented for the Three Instruction Machine and subsequently used to construct lazy variants of Krivine's abstract machine. Tuning the evaluator leads to other implementation techniques such as unboxed values. The correctness of the resulting abstract machines is a corollary of the correctness of the original evaluators and of the program transformations used in the derivation.
+
+
+RS-04-5 
+PostScript, PDF, DVI. 
+Dariusz Biernacki and Olivier Danvy. 
+From Interpreter to Logic Engine by Defunctionalization. 
+March 2004. 
+20 pp. Appears in Bruynooghe, editor, International Symposium on Logic Based Program Development and Transformation, LOPSTR '03 Proceedings, Revised Selected Papers, LNCS 3018, 2004, pages 143-159. This report supersedes the earlier BRICS report RS-03-25. 
+Abstract: Starting from a continuation-based interpreter for a simple logic programming language, propositional Prolog with cut, we derive the corresponding logic engine in the form of an abstract machine. The derivation originates in previous work (our article at PPDP 2003) where it was applied to the lambda-calculus. The key transformation here is Reynolds's defunctionalization that transforms a tail-recursive, continuation-passing interpreter into a transition system, i.e., an abstract machine. Similar denotational and operational semantics were studied by de Bruin and de Vink (their article at TAPSOFT 1989), and we compare their study with our derivation. Additionally, we present a direct-style interpreter of propositional Prolog expressed with control operators for delimited continuations.
+
+
+
+RS-04-26 
+PostScript, PDF, DVI. 
+Olivier Danvy and Lasse R. Nielsen. 
+Refocusing in Reduction Semantics. 
+November 2004. 
+iii+44 pp. This report supersedes BRICS report RS-02-04. A preliminary version appears in the informal proceedings of the Second International Workshop on Rule-Based Programming, RULE 2001, Electronic Notes in Theoretical Computer Science, Vol. 59.4. 
+Abstract: The evaluation function of a reduction semantics (i.e., a small-step operational semantics with an explicit representation of the reduction context) is canonically defined as the transitive closure of (1) decomposing a term into a reduction context and a redex, (2) contracting this redex, and (3) plugging the contractum in the context. Directly implementing this evaluation function therefore yields an interpreter with a worst-case overhead, for each step, that is linear in the size of the input term. 
+
+We present sufficient conditions over the constituents of a reduction semantics to circumvent this overhead, by replacing the composition of (3) plugging and (1) decomposing by a single ``refocus'' function mapping a contractum and a context into a new context and a new redex, if any. We also show how to construct such a refocus function, we prove the correctness of this construction, and we analyze the complexity of the resulting refocus function. 
+
+The refocused evaluation function of a reduction semantics implements the transitive closure of the refocus function, i.e., a ``pre-abstract machine.'' Fusing the refocus function with the trampoline function computing the transitive closure gives a state-transition function, i.e., an abstract machine. This abstract machine clearly separates between the transitions implementing the congruence rules of the reduction semantics and the transitions implementing its reduction rules. The construction of a refocus function therefore shows how to mechanically obtain an abstract machine out of a reduction semantics, which was done previously on a case-by-case basis. 
+
+We illustrate refocusing by mechanically constructing Felleisen et al.'s CK machine from a call-by-value reduction semantics of the lambda-calculus, and by constructing a substitution-based version of Krivine's machine from a call-by-name reduction semantics of the lambda-calculus. We also mechanically construct three one-pass CPS transformers from three quadratic context-based CPS transformers for the lambda-calculus.
+
+
+
+RS-04-28 
+PostScript, PDF, DVI. 
+Mads Sig Ager, Olivier Danvy, and Jan Midtgaard. 
+A Functional Correspondence between Monadic Evaluators and Abstract Machines for Languages with Computational Effects. 
+December 2004. 
+44 pp. Extended version of an article to appear in Theoretical Computer Science. 
+Abstract: We extend our correspondence between evaluators and abstract machines from the pure setting of the lambda-calculus to the impure setting of the computational lambda-calculus. We show how to derive new abstract machines from monadic evaluators for the computational lambda-calculus. Starting from (1) a generic evaluator parameterized by a monad and (2) a monad specifying a computational effect, we inline the components of the monad in the generic evaluator to obtain an evaluator written in a style that is specific to this computational effect. We then derive the corresponding abstract machine by closure-converting, CPS-transforming, and defunctionalizing this specific evaluator. We illustrate the construction first with the identity monad, obtaining the CEK machine, and then with a lifting monad, a state monad, and with a lifted state monad, obtaining variants of the CEK machine with error handling, state and a combination of error handling and state. 
+
+In addition, we characterize the tail-recursive stack inspection presented by Clements and Felleisen as a lifted state monad. This enables us to combine this stack-inspection monad with other monads and to construct abstract machines for languages with properly tail-recursive stack inspection and other computational effects. The construction scales to other monads--including one more properly dedicated to stack inspection than the lifted state monad--and other monadic evaluators.
+
+
+RS-04-30 
+PostScript, PDF, DVI. 
+Olivier Danvy. 
+From Reduction-Based to Reduction-Free Normalization. 
+December 2004. 
+27 pp. Invited talk at the 4th International Workshop on Reduction Strategies in Rewriting and Programming, WRS 2004 (Aachen, Germany, June 2, 2004). To appear in ENTCS. 
+Abstract: We present a systematic construction of a reduction-free normalization function. Starting from a reduction-based normalization function, i.e., the transitive closure of a one-step reduction function, we successively subject it to refocusing (i.e., deforestation of the intermediate reduced terms), simplification (i.e., fusing auxiliary functions), refunctionalization (i.e., Church encoding), and direct-style transformation (i.e., the converse of the CPS transformation). We consider two simple examples and treat them in detail: for the first one, arithmetic expressions, we construct an evaluation function; for the second one, terms in the free monoid, we construct an accumulator-based flatten function. The resulting two functions are traditional reduction-free normalization functions.
+
+The construction builds on previous work on refocusing and on a functional correspondence between evaluators and abstract machines. It is also reversible.
+
+
+
+RS-05-24 
+PostScript, PDF, DVI. 
+Magorzata Biernacka, Dariusz Biernacki, and Olivier Danvy. 
+An Operational Foundation for Delimited Continuations in the CPS Hierarchy. 
+August 2005. 
+iv+43 pp. To appear in the journal Logical Methods in Computer Science. This version supersedes BRICS RS-05-11. 
+Abstract: We present an abstract machine and a reduction semantics for the -calculus extended with control operators that give access to delimited continuations in the CPS hierarchy. The abstract machine is derived from an evaluator in continuation-passing style (CPS); the reduction semantics (i.e., a small-step operational semantics with an explicit representation of evaluation contexts) is constructed from the abstract machine; and the control operators are the shift and reset family. At level  of the CPS hierarchy, programs can use the control operators shift and reset for , the evaluator has  layers of continuations, the abstract machine has  layers of control stacks, and the reduction semantics has  layers of evaluation contexts.
+
+We also present new applications of delimited continuations in the CPS hierarchy: finding list prefixes and normalization by evaluation for a hierarchical language of units and products.
+
+
+
+
+RS-05-38 
+PostScript, PDF, DVI. 
+Magorzata Biernacka and Olivier Danvy. 
+A Syntactic Correspondence between Context-Sensitive Calculi and Abstract Machines. 
+December 2005. 
+iii+39 pp. Revised version of BRICS RS-05-22. 
+Abstract: We present a systematic construction of environment-based abstract machines from context-sensitive calculi of explicit substitutions, and we illustrate it with ten calculi and machines for applicative order with an abort operation, normal order with generalized reduction and call/cc, the lambda-mu-calculus, delimited continuations, stack inspection, proper tail-recursion, and lazy evaluation. Most of the machines already exist but have been obtained independently and are only indirectly related to the corresponding calculi. All of the calculi are new and they make it possible to directly reason about the execution of the corresponding machines.
+
+In connection with the functional correspondence between evaluation functions and abstract machines initiated by Reynolds, the present syntactic correspondence makes it possible to construct reduction-free normalization functions out of reduction-based ones, which was an open problem in the area of normalization by evaluation.
+
+
+
+RS-06-3 
+PostScript, PDF, DVI. 
+Magorzata Biernacka and Olivier Danvy. 
+A Concrete Framework for Environment Machines. 
+February 2006. 
+ii+29 pp. To appear in the ACM Transactions on Computational Logic. Supersedes BRICS RS-05-15. 
+Abstract: We materialize the common understanding that calculi with explicit substitutions provide an intermediate step between an abstract specification of substitution in the lambda-calculus and its concrete implementations. To this end, we go back to Curien's original calculus of closures (an early calculus with explicit substitutions), we extend it minimally so that it can also express one-step reduction strategies, and we methodically derive a series of environment machines from the specification of two one-step reduction strategies for the lambda-calculus: normal order and applicative order. The derivation extends Danvy and Nielsen's refocusing-based construction of abstract machines with two new steps: one for coalescing two successive transitions into one, and the other for unfolding a closure into a term and an environment in the resulting abstract machine. The resulting environment machines include both the Krivine machine and the original version of Krivine's machine, Felleisen et al.'s CEK machine, and Leroy's Zinc abstract machine.
+
+
+
+
+
+RS-06-17 
+PostScript, PDF, DVI. 
+Olivier Danvy and Kevin Millikin. 
+A Rational Deconstruction of Landin's J Operator. 
+December 2006. 
+ii+37 pp. Revised version of BRICS RS-06-4. A preliminary version appears in the proceedings of IFL 2005, LNCS 4015:55-73. 
+Abstract: Landin's J operator was the first control operator for functional languages. It was specified with an extension of the SECD machine, which was the first abstract machine for functional languages. We present a family of compositional evaluation functions corresponding to this extension of the SECD machine, using a series of elementary transformations (transformation into continuation-passing style (CPS) and defunctionalization, chiefly) and their left inverses (transformation into direct style and refunctionalization). To this end, we modernize the SECD machine into a bisimilar one that operates in lock step with the original one but that (1) does not use a data stack and (2) uses the caller-save rather than the callee-save convention for environments. We then characterize the J operator in terms of CPS and in terms of delimited-control operators in the CPS hierarchy. As a byproduct, we also present a reduction semantics for applicative expressions with the J operator, based on Curien's original calculus of explicit substitutions. This reduction semantics mechanically corresponds to the modernized version of the SECD machine and to the best of our knowledge, it provides the first syntactic theory of applicative expressions with the J operator.
+
+The present work is concluded by a motivated wish to see Landin's name added to the list of co-discoverers of continuations. Methodologically, however, it mainly illustrates the value of Reynolds's defunctionalization and of refunctionalization as well as the expressive power of the CPS hierarchy (a) to account for the first control operator and the first abstract machine for functional languages and (b) to connect them to their successors.
+
+
+
+RS-07-8 
+PostScript, PDF, DVI. 
+Olivier Danvy and Kevin Millikin. 
+A Simple Application of Lightweight Fusion to Proving the Equivalence of Abstract Machines. 
+March 2007. 
+ii+6 pp. 
+Abstract: We show how Ohori and Sasano's recent lightweight fusion by fixed-point promotion provides a simple way to prove the equivalence of the two standard styles of specification of abstract machines: (1) as a transition function together with a `driver loop' implementing the iteration of this transition function; and (2) as a function directly iterating upon a configuration until reaching a final state, if ever. The equivalence hinges on the fact that the latter style of specification is a fused version of the former one. The need for such a simple proof is motivated by our recent work on syntactic correspondences between reduction semantics and abstract machines, using refocusing.
+
+
+
+RS-08-4 
+PostScript, PDF. 
+Olivier Danvy and Kevin Millikin. 
+Refunctionalization at Work. 
+June 2008. 
+ii+25 pp. To appear in Science of Computer Programming. A preliminary version is available as the research report BRICS RS-07-7. 
+Abstract: We present the left inverse of Reynolds's defunctionalization and we show its relevance to programming and to programming languages. We propose two methods to transform a program that is almost in defunctionalized form into one that is actually in defunctionalized form, and we illustrate them with a recognizer for Dyck words and with Dijkstra's shunting-yard algorithm.
+
+
+
+
+RS-08-5 
+PostScript, PDF, DVI. 
+Olivier Danvy and Jacob Johannsen. 
+Inter-Deriving Semantic Artifacts for Object-Oriented Programming. 
+June 2008. 
+ii+13 pp. Extended version of a paper to appear in WoLLIC 2008. 
+Abstract: We present a new abstract machine for Abadi and Cardelli's untyped calculus of objects. What is special about this semantic artifact (i.e., man-made construct) is that is mechanically corresponds to both the reduction semantics (i.e., small-step operational semantics) and the natural semantics (i.e., big-step operational semantics) specified in Abadi and Cardelli's monograph. This abstract machine therefore embodies the soundness of Abadi and Cardelli's reduction semantics and natural semantics relative to each other. 
+
+To move closer to actual implementations, which use environments rather than actual substitutions, we then represent object methods as closures and in the same inter-derivational spirit, we present three new semantic artifacts: a reduction semantics for a version of Abadi and Cardelli's untyped calculus of objects with explicit substitutions, an environment-based abstract machine, and a natural semantics (i.e., an interpreter) with environments. These three new semantic artifacts mechanically correspond to each other, and furthermore, they are coherent with the previous ones since as we show, the two abstract machines are bisimilar. Overall, though, the significance of these artifacts lies in them not having been designed from scratch and then proved correct: instead, they were mechanically inter-derived.
+
+
+
+RS-08-6 
+PostScript, PDF, DVI. 
+Jacob Johannsen. 
+An Investigation of Abadi and Cardelli's Untyped Calculus of Objects. 
+June 2008. 
+xii+87 pp. 
+Abstract: We study the relationship between the natural (big-step) semantics and the reduction (small-step) semantics of Abadi and Cardelli's untyped calculus of objects. By applying Danvy et al.'s functional correspondence to the natural semantics, we derive an abstract machine for this calculus, and by applying Danvy et al.'s syntactic correspondence to the reduction semantics, we also derive an abstract machines for this calculus. These two abstract machines are identical. The fact that the machines are identical, and the fact that they have been derived using meaning-preserving program transformations, entail that the derivation constitutes a proof of equivalence between natural semantics and the reduction semantics. The derivational nature of our proof contrasts with Abadi and Cardelli's soundness proof, which was carried out by pen and paper. We also note that the abstract machine is new.
+
+To move closer to actual language implementations, we reformulate the calculus to use explicit substitutions. The reformulated calculus is new. By applying the functional and syntactic correspondences to natural and reduction semantics of this new calculus, we again obtain two abstract machines. These two machines are also identical, and as such, they establish the equivalence of the natural semantics and the reduction semantics of the new calculus.
+
+Finally, we prove that the two abstract machines are strongly bisimilar. Therefore, the two calculi are computationally equivalent.
+
+
+
+Olivier Danvy. "Towards compatible and interderivable semantic specifications for the Scheme programming language, part I: abstract machines, natural semantics, and denotational semantics". 2008 Workshop on Scheme and Functional Programming. September 2008. Available online: pdf.
+Małgorzata Biernacka and Olivier Danvy. "Towards compatible and interderivable semantic specifications for the Scheme programming language, part II: reduction semantics and abstract machines". 2008 Workshop on Scheme and Functional Programming. September 2008. Available online: pdf.
+
+
+Olivier Danvy. Defunctionalized Interpreters for Programming Languages. International Conference on Functional Programming 2008 (ICFP08). September 2008. Available online: ACM Digital Library.
+
+
+
+Defunctionalized Interpreters for Call-by-Need Evaluation
+Joint work with Olivier Danvy, Kevin Millikin and Johan Munk.
+
+Abstract
+Starting from the standard call-by-need reduction for the λ-calculus that is common to Ariola, Felleisen, Maraist, Odersky, and Wadler, we inter-derive a series of hygienic semantic artifacts: a reduction-free stateless abstract machine, a continuation-passing evaluation function, and what appears to be the first heapless natural semantics for call-by-need evaluation. Furthermore we observe that a data structure and a judgment in this natural semantics are in defunctionalized form. The refunctionalized counterpart of this evaluation function is an extended direct semantics in the sense of Cartwright and Felleisen.
+
+Overall, the semantic artifacts presented here are simpler than many other such artifacts that have been independently worked out, and which require ingenuity, skill, and independent soundness proofs on a case-by-case basis. They are also simpler to inter-derive because the inter-derivational tools (e.g., refocusing and defunctionalization) already exist.
+
+References
+Olivier Danvy, Kevin Millikin, Johan Munk, and Ian Zerny. Defunctionalized Interpreters for Call-by-Need Evaluation. Functional and Logic Programming, 10th International Symposium, FLOPS 2010. Matthias Blume, Naoki Kobayashi and Germán Vidal. LNCS 6009, Springer, April 2010, 240–256. DOI, BIB, PDF.
+
+
+
+A Walk in the Semantic Park
+Joint work with Olivier Danvy and Jacob Johannsen.
+
+Abstract
+To celebrate the 20th anniversary of PEPM, we are inviting you to a walk in the semantic park and to inter-derive reduction-based and reduction-free negational normalization functions.
+
+References
+Olivier Danvy, Jacob Johannsen and Ian Zerny. A Walk in the Semantic Park. Proceedings of the 2011 ACM SIGPLAN Workshop on Partial Evaluation and Semantics-Based Program Manipulation (PEPM 2011). Siau-Cheng Khoo and Jeremy Siek. ACM Press, January 2011, 1–12. Invited talk. DOI, BIB, PDF.
+
+
+Olivier Danvy, Kevin Millikin, Johan Munk, and Ian Zerny. On Inter-deriving Small-step and Big-step Semantics: A Case Study for Storeless Call-by-need Evaluation. Theoretical Computer Science. Elsevier, To appear. PDF.
+
+
+
+
+
+Ian Zerny. On Graph Rewriting, Reduction and Evaluation. Trends in Functional Programming Volume 10. Zoltán Horváth, Viktória Zsók, Peter Achten, and Pieter Koopman. Intellect Books, 2011, 81–112. Granted the best student-paper award of TFP 2009. BIB, PDF.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7009 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3115
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(1)Tj
+/TT4 1 Tf
+18 0 0 18 124.84 708 Tm
+[(Specialization of Imperative Pr)16.6(ograms thr)18.5(ough)]TJ
+2.7256 -1.3333 TD
+[(Analysis of Relational Expr)18.2(essions)]TJ
+/TT2 1 Tf
+14 0 0 14 248.66 630.67 Tm
+(Alexander Sakharov)Tj
+12 0 0 12 283.67 609 Tm
+(Motorola)Tj
+-2.37 -1.1667 TD
+[(1501 W)92.2(.)0( Shure Drive)]TJ
+-2.7408 -1.1667 TD
+(Arlington Heights, IL 60004, USA)Tj
+2.2058 -1.1667 TD
+(sakharov@cig.mot.com)Tj
+1.5167 -1.1667 TD
+(1-708-435-9465)Tj
+/TT4 1 Tf
+14 0 0 14 278.2 495.67 Tm
+( Abstract)Tj
+/TT2 1 Tf
+12 0 0 12 72 476 Tm
+-0.0292 Tw
+[(An analysis method for specialization of imperative programs is described in this paper)52.9(. This anal-)]TJ
+T*
+-0.0183 Tw
+[(ysis is an inter)18.7(-procedural data )]TJ
+/TT5 1 Tf
+12.4131 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0183 Tw
+(ow method operating on control )Tj
+/TT5 1 Tf
+12.9889 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0183 Tw
+(ow graphs and collecting infor-)Tj
+-26.5143 -1.1667 TD
+-0.0392 Tw
+(mation about program expressions. It applies to various procedural languages. The set of analyzed)Tj
+T*
+0 Tw
+[(formulas includes equivalences between program expressions and constants, linear)16.8(-ordering ine-)]TJ
+T*
+(qualities between program expressions and constants, equalities originating from some program)Tj
+T*
+-0.0133 Tw
+(assignments, and atomic constituents of controlling expressions of program branches. Analysis is)Tj
+T*
+-0.0458 Tw
+(executed by a worklist-based )Tj
+/TT5 1 Tf
+11.7014 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0458 Tw
+(xpoint algorithm which interprets conditional branches and ignores)Tj
+-12.2576 -1.1667 TD
+-0.03 Tw
+(some impossible paths. This analysis algorithm incorporates a simple inference procedure that uti-)Tj
+T*
+-0.0058 Tw
+(lizes both positive and negative information. The analysis algorithm is shown to be conservative;)Tj
+T*
+-0.0275 Tw
+(its asymptotic time complexity is cubic. A polyvariant specialization of imperative programs, that)Tj
+T*
+-0.0492 Tw
+(is based on the information collected by the analysis, is also de)Tj
+/TT5 1 Tf
+24.6198 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0492 Tw
+(ned at the level of nodes and edges)Tj
+-25.176 -1.1667 TD
+-0.0633 Tw
+(of control )Tj
+/TT5 1 Tf
+4.0389 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0633 Tw
+(ow graphs. The specialization incorporates a further re)Tj
+/TT5 1 Tf
+21.3809 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0633 Tw
+(nement of analysis information)Tj
+-26.5321 -1.1667 TD
+-0.0433 Tw
+(through local propagation. Multiple variants are produced by replicating disjoint subgraphs whose)Tj
+T*
+0 Tw
+(in-links are limited to one node.)Tj
+/TT4 1 Tf
+1.5 -2.75 TD
+(Keywords:)Tj
+/TT2 1 Tf
+4.6658 0 TD
+( imperative languages, program specialization, control )Tj
+/TT5 1 Tf
+21.9922 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graphs, data )Tj
+/TT5 1 Tf
+6.5537 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow)Tj
+-34.324 -1.1667 TD
+(analysis, )Tj
+/TT5 1 Tf
+3.7217 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(xpoint algorithms, interpretation of conditional branches, polyvariant)Tj
+-4.2778 -1.1667 TD
+(specialization.)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 5644
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(2)Tj
+/TT4 1 Tf
+14 0 0 14 72 710.67 Tm
+[(1)-785.7(Intr)17.9(oduction)]TJ
+/TT2 1 Tf
+12 0 0 12 72 691 Tm
+-0.0733 Tw
+(Despite wide usage of procedural languages, only few successful attempts have been made to apply)Tj
+0 -1.1667 TD
+-0.06 Tw
+(partial evaluation to these languages. One of the reasons of the limited success of partial evaluation)Tj
+T*
+-0.0375 Tw
+(in this domain is due to the fact that advanced data )Tj
+/TT5 1 Tf
+20.109 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0375 Tw
+(ow analysis techniques created for imperative)Tj
+-20.6651 -1.1667 TD
+0 Tw
+(languages have not been employed to support specialization.)Tj
+0 -1.5833 TD
+(Partial evaluation is called on-line if analysis is done during specialization. Partial evaluation is)Tj
+0 -1.1667 TD
+[(called of)16.9(f-line if analysis is done before specialization. Of)15.3(f-line techniques, that are considered)]TJ
+T*
+(more appropriate [An, BGZ], employ binding time analysis as the source of information for spe-)Tj
+T*
+-0.0292 Tw
+(cialization. Binding time analysis annotates each statement as either static or dynamic by dividing)Tj
+T*
+0 Tw
+(variables into static or dynamic [JGS]. In application to imperative languages, binding time anal-)Tj
+T*
+-0.0233 Tw
+(ysis is inferior to sophisticated data )Tj
+/TT5 1 Tf
+14.2462 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0233 Tw
+(ow analysis techniques of compiler optimization technology)Tj
+-14.8024 -1.1667 TD
+0 Tw
+([ASU].)Tj
+0 -1.5833 TD
+-0.015 Tw
+(This paper advocated the use of data )Tj
+/TT5 1 Tf
+14.75 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.015 Tw
+(ow analysis as the source of information for specialization.)Tj
+-15.3061 -1.1667 TD
+0 Tw
+(An original data )Tj
+/TT5 1 Tf
+6.748 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow analysis method that collects information for specialization of imperative)Tj
+-7.3042 -1.1667 TD
+-0.0292 Tw
+[(programs is presented in this paper)53.8(. This analysis annotates each program point with a set of static)]TJ
+T*
+-0.0408 Tw
+(expressions. The analysis reaches far beyond detection of static variables. Expressions whose vari-)Tj
+T*
+0 Tw
+(ables are not static can be classi)Tj
+/TT5 1 Tf
+12.7168 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ed as static by this analysis.)Tj
+-13.273 -1.5833 TD
+(The control )Tj
+/TT5 1 Tf
+4.8872 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graph [ASU] is probably the most adequate, useful, and generic model for anal-)Tj
+-5.4434 -1.1667 TD
+-0.0467 Tw
+(ysis and optimization of programs in procedural languages. Data )Tj
+/TT5 1 Tf
+25.684 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0467 Tw
+(ow analyses operate on environ-)Tj
+-26.2402 -1.1667 TD
+0 Tw
+(ments that are associated with nodes or edges of control )Tj
+/TT5 1 Tf
+22.6045 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graphs. In our analysis framework,)Tj
+-23.1606 -1.1667 TD
+(environments represent relational expressions and other propositions. If analysis of programs in)Tj
+T*
+-0.0567 Tw
+(imperative languages is done at the level of control )Tj
+/TT5 1 Tf
+20.1775 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0567 Tw
+(ow graphs, it is natural to also specialize these)Tj
+-20.7337 -1.1667 TD
+-0.0158 Tw
+(programs at the same level. An original polyvariant specialization [Bu, JGS] operating on control)Tj
+/TT5 1 Tf
+T*
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(ow graphs is presented in this paper)54.6(. V)110.5(ariants are generated by non-recursive code replication.)]TJ
+-0.5562 -1.5833 TD
+-0.0183 Tw
+(Analysis of relational expressions and other propositions expands partial evaluation horizons: not)Tj
+0 -1.1667 TD
+-0.0458 Tw
+(only static values of variables but also other assertions may serve as pre-conditions for partial eval-)Tj
+T*
+-0.0392 Tw
+(uation of imperative programs. In addition to usage for partial evaluation, our analysis and special-)Tj
+T*
+0 Tw
+[(ization can be viewed as general purpose analysis and optimization methods, respectively)60.1(.)]TJ
+0 -1.5833 TD
+(The following example illustrates our partial evaluation technique. The C code fragment below)Tj
+0 -1.1667 TD
+(implements a few transitions of a )Tj
+/TT5 1 Tf
+13.5522 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(nite state machine.)Tj
+/TT7 1 Tf
+11 0 0 11 72 255.67 Tm
+(#de)Tj
+/TT8 1 Tf
+1.6685 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ne TRANS\(A,B,C\) { if \(state==A\) { if \(event==B\) { state=C;)Tj
+-2.1685 -1.1818 TD
+(#de)Tj
+/TT8 1 Tf
+1.6685 0 TD
+(ﬁ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ne END_TR continue; } } })Tj
+-2.1685 -1.1818 TD
+(...)Tj
+T*
+[(do { TRANS\(of)18.1(f,on_of)18.1(f,on\) toggle\(\); END_TR)]TJ
+T*
+[(if \( vol_trg \) { TRANS\(of)17.7(f,vol_up,on\) toggle\(\); volume=1; END_TR })]TJ
+T*
+(... } ...)Tj
+/TT2 1 Tf
+12 0 0 12 72 172 Tm
+-0.0008 Tw
+(If no other transition applies to state)Tj
+/TT7 1 Tf
+11 0 0 11 248.26 172 Tm
+0 Tw
+[(of)18.5(f,)]TJ
+/TT2 1 Tf
+12 0 0 12 266.4 172 Tm
+(procedure)Tj
+/TT7 1 Tf
+11 0 0 11 317.36 172 Tm
+(toggle)Tj
+/TT2 1 Tf
+12 0 0 12 347.33 172 Tm
+-0.0008 Tw
+[( does not af)17.7(fect variables from this frag-)]TJ
+-22.9442 -1.1667 TD
+0 Tw
+(ment)Tj
+/TT7 1 Tf
+11 0 0 11 96 158 Tm
+(,)Tj
+/TT2 1 Tf
+12 0 0 12 102.01 158 Tm
+(and)Tj
+/TT7 1 Tf
+11 0 0 11 122.23 158 Tm
+(vol_trg)Tj
+/TT2 1 Tf
+12 0 0 12 155.24 158 Tm
+-0.0092 Tw
+[( is a static variable \(not equal 0\), then the partial evaluation technique presented)]TJ
+-6.9367 -1.1667 TD
+0 Tw
+(in this paper makes it possible to transform this loop into more ef)Tj
+/TT5 1 Tf
+26.0917 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(cient code:)Tj
+/TT7 1 Tf
+11 0 0 11 72 125.67 Tm
+[(do { if \(state==of)18.2(f\))]TJ
+1.6364 -1.1818 TD
+[({ if \(event==on_of)18.4(f\))]TJ
+1.6364 -1.1818 TD
+({ state=on; toggle\(\); })Tj
+-1.6364 -1.1818 TD
+(else if \(event==vol_up\))Tj
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT7 12 0 R
+/TT8 13 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+15 0 obj
+<<
+/Length 5595
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(3)Tj
+/TT7 1 Tf
+11 0 0 11 108 712.67 Tm
+({ state=on; toggle\(\); volume=1; } })Tj
+-3.2727 -1.1818 TD
+(else ... } ...)Tj
+/TT2 1 Tf
+12 0 0 12 72 681 Tm
+(Here is yet another example \(in C\) showing capabilities of our partial evaluation technique.)Tj
+/TT7 1 Tf
+11 0 0 11 72 662.67 Tm
+(int p\(int a[], int n, int b\) { int s=0; int i=0; int )Tj
+/TT8 1 Tf
+18.8989 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag=1; )Tj
+/TT8 1 Tf
+2.8081 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(oat t; )Tj
+/TT8 1 Tf
+2.5015 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(oat t0=0.01;)Tj
+-25.7085 -1.1818 TD
+(do { if \( )Tj
+/TT8 1 Tf
+3.3906 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag==1 \) { if \( b>=0 \) t=1+2*t0; else t=1+2*v; })Tj
+-2.2543 -1.1818 TD
+(else if \( a[i]*u>= 0 \) { { if \( a[i]*u+b>=0 \) t=1; else t=1+4*v; } t=\(t-0.01\)*\(1-t0\); })Tj
+T*
+(else t=1+2*v;)Tj
+T*
+(s+=a[i]*t; t0*=0.985; )Tj
+/TT8 1 Tf
+9.0898 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag=0;)Tj
+-11.2262 -1.1818 TD
+(} while \( ++i<=n \); return s; })Tj
+/TT2 1 Tf
+12 0 0 12 72 579 Tm
+(If)Tj
+/TT7 1 Tf
+11 0 0 11 82.54 579 Tm
+(n=100)Tj
+/TT2 1 Tf
+12 0 0 12 113.43 579 Tm
+-0.0375 Tw
+[( and)]TJ
+/TT7 1 Tf
+11 0 0 11 135.85 579 Tm
+0 Tw
+(b)Tj
+ET
+0 G
+0 J 0 j 0.84 w 3.86 M []0 d
+1 i 
+141.97 577.93 m
+148.39 577.93 l
+B*
+BT
+11 0 0 11 141.97 579 Tm
+-0.0003 Tc
+(>1)Tj
+/TT2 1 Tf
+12 0 0 12 154.51 579 Tm
+0 Tc
+-0.0375 Tw
+[( are pre-conditions for partial evaluation of procedure)]TJ
+/TT7 1 Tf
+11 0 0 11 411.49 579 Tm
+0 Tw
+(p)Tj
+/TT2 1 Tf
+12 0 0 12 417.6 579 Tm
+-0.0375 Tw
+(, then our method in com-)Tj
+-28.8 -1.1667 TD
+-0.0192 Tw
+(bination with traditional optimizations gives residual code that can be represented in C as follows:)Tj
+/TT7 1 Tf
+11 0 0 11 72 546.67 Tm
+0 Tw
+(int p\(int a[], int n, int b\) { int s=0; int i=0; int )Tj
+/TT8 1 Tf
+18.8989 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag=1; )Tj
+/TT8 1 Tf
+2.8081 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(oat t; )Tj
+/TT8 1 Tf
+2.5015 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(oat t0=0.01;)Tj
+-25.7085 -1.1818 TD
+(t=1.02; s+=a[i]*t; t0*=0.985; ++i;)Tj
+T*
+(do { if \( a[i]*u>= 0 \) t=0.99*\(1-t0\); else t=1+2*v;)Tj
+T*
+(s+=a[i]*t; t0*=0.985;)Tj
+T*
+(} while \( ++i<=100 \); return s; })Tj
+/TT2 1 Tf
+12 0 0 12 72 476 Tm
+-0.0033 Tw
+(The control )Tj
+/TT5 1 Tf
+4.8805 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0033 Tw
+(ow graphs employed here have four types of nodes: assignments, calls, returns, and)Tj
+-5.4367 -1.1667 TD
+-0.0425 Tw
+(conditional branches. The environments assigned to nodes and edges are basically conjunctions of)Tj
+T*
+0 Tw
+(certain predicate formulas. These predicate formulas include: atomic constituents of controlling)Tj
+T*
+(expressions of program branches and their negations; equalities originating from program assign-)Tj
+T*
+(ments and equality negations; equivalences between program expressions and constants of the)Tj
+T*
+-0.0392 Tw
+[(respective types as well as negations of the equivalences; linear)17.2(-ordering inequalities between pro-)]TJ
+T*
+-0.0158 Tw
+(gram expressions and constants. Other atomic predicate expressions may serve as additional envi-)Tj
+T*
+0 Tw
+(ronment constituents. Note that some environment constituents may represent formulas whose)Tj
+T*
+-0.0417 Tw
+(predicate symbols or other operations are missing from the language. Binary relations that express)Tj
+T*
+0 Tw
+(aliasing information are an example [LR].)Tj
+0 -1.5833 TD
+-0.0017 Tw
+(The environments are designed to capture relevant program properties while remaining compact.)Tj
+0 -1.1667 TD
+-0.055 Tw
+(Note that most predicate symbols in procedural languages are either equivalence relations or linear)Tj
+T*
+-0.0075 Tw
+(orderings. Our analysis takes advantage of tracking various properties of all program expressions)Tj
+T*
+-0.0233 Tw
+[(\(and possibly others\) simultaneously)64.5(. T)35(ransfer functions [ASU], which are determined by the con-)]TJ
+T*
+-0.0258 Tw
+(structs of the respective language, are not )Tj
+/TT5 1 Tf
+16.6458 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0258 Tw
+(xed in the framework. Because of this, this framework)Tj
+-17.202 -1.1667 TD
+0 Tw
+(is applicable to various languages. For instance, the language may include arrays, pointers, and)Tj
+T*
+(their relevant operations.)Tj
+0 -1.5833 TD
+-0.0708 Tw
+(The analysis is done by a worklist-based )Tj
+/TT5 1 Tf
+15.9729 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0708 Tw
+(xpoint algorithm that interprets conditional branches and)Tj
+-16.5291 -1.1667 TD
+0 Tw
+(involves a simple and fast inference procedure. The analysis algorithm presented here is an)Tj
+T*
+-0.045 Tw
+(advanced version of the algorithm from [Sk]. The asymptotic time complexity of the analysis algo-)Tj
+T*
+0 Tw
+(rithm is proportional to the square of program size times the complexity of the transfer functions)Tj
+T*
+(in use. Thus, the complexity of this analysis is almost the same as that of conventional constant)Tj
+T*
+(propagation [WZ].)Tj
+0 -1.5833 TD
+-0.0125 Tw
+(The inference procedure serves to derive additional propositions. It is repeatedly invoked as prop-)Tj
+0 -1.1667 TD
+-0.0325 Tw
+[(agation progresses. A special treatment of equivalences and linear)17.9(-ordering inequalities facilitates)]TJ
+T*
+0 Tw
+(the inference. The inference procedure exploits both positive atomic propositions and their nega-)Tj
+T*
+-0.0083 Tw
+(tions. The inference procedure employs pre-de)Tj
+/TT5 1 Tf
+18.617 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0083 Tw
+(ned evaluation rules. They are determined by lan-)Tj
+-19.1732 -1.1667 TD
+0 Tw
+(guage operations and are not )Tj
+/TT5 1 Tf
+11.7456 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(xed in the framework. Though the inference is incomplete, the)Tj
+ET
+endstream
+endobj
+16 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT5 6 0 R
+/TT7 12 0 R
+/TT8 13 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+18 0 obj
+<<
+/Length 5533
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(4)Tj
+12 0 0 12 72 712 Tm
+-0.0175 Tw
+(inference procedure is an analysis core that distinguishes this analysis algorithm from others. The)Tj
+0 -1.1667 TD
+-0.0467 Tw
+(choice of an inference procedure is driven by the goal to derive as much as possible without impos-)Tj
+T*
+0 Tw
+[(ing a burden in terms of analysis time complexity)62.4(. Of course, this goal is achieved at expense of)]TJ
+T*
+(theoretical soundness.)Tj
+0 -1.5833 TD
+-0.0458 Tw
+(Specialization of imperative programs represented as control )Tj
+/TT5 1 Tf
+24.2534 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0458 Tw
+(ow graphs is accomplished through)Tj
+-24.8095 -1.1667 TD
+-0.0642 Tw
+(the following steps: disjoint subgraphs whose in-links are limited to one node are selected; selected)Tj
+T*
+-0.0658 Tw
+(subgraphs are replicated; local propagation of analysis information is done within subgraphs; static)Tj
+T*
+0 Tw
+(expressions are replaced by the respective constants. The number of specialization variants for a)Tj
+T*
+(subgraph is limited by the number of its in-links. This non-recursive generation of specialization)Tj
+T*
+-0.0092 Tw
+(variants results in smaller size of specialized programs. The specialization process is followed by)Tj
+T*
+0 Tw
+(traditional optimizations on control )Tj
+/TT5 1 Tf
+14.3862 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graphs.)Tj
+-14.9424 -1.5833 TD
+-0.0308 Tw
+(Section 2 of this paper outlines control )Tj
+/TT5 1 Tf
+15.5312 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0308 Tw
+(ow graphs in use as well as environments associated with)Tj
+-16.0874 -1.1667 TD
+0 Tw
+(graph elements. Section 3 gives the analysis algorithm and its properties. Program specialization)Tj
+T*
+-0.005 Tw
+(is presented in section 4. Section 5 surveys related work. Pseudo-code of the inference procedure)Tj
+T*
+0 Tw
+(is given in Appendix A. Proofs are given in Appendix B.)Tj
+/TT4 1 Tf
+14 0 0 14 72 476.67 Tm
+[(2)-785.7(Analysis Framework)]TJ
+/TT2 1 Tf
+12 0 0 12 72 457 Tm
+-0.0142 Tw
+(Let us distinguish four types of nodes in the graphs: conditional branches, assignments, calls, and)Tj
+T*
+-0.0008 Tw
+(returns. Each conditional branch has two out-edges. The branch node is controlled by a predicate)Tj
+T*
+-0.0125 Tw
+(expression. Control is transferred to either the ìtrueî or the ìfalseî edge according to the value of)Tj
+T*
+-0.0133 Tw
+(the expression. Assignments embody calculations and variable updates. Each assignment has one)Tj
+T*
+0 Tw
+(out-edge. Each call node also has one out-edge leading to the callee and one out-edge leading to)Tj
+T*
+-0.0308 Tw
+(the following node. Return nodes have multiple out-edges leading to all return points. Neither call)Tj
+T*
+-0.0175 Tw
+(nor return nodes update any variable values. Calculations of parameter and return values are mod-)Tj
+T*
+0 Tw
+(eled by assignments in control )Tj
+/TT5 1 Tf
+12.4146 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graphs. Zero, one, or several expressions are associated with)Tj
+-12.9707 -1.1667 TD
+-0.035 Tw
+(every node. It is assumed that the size of each of the expressions associated with nodes is bounded)Tj
+T*
+-0.0583 Tw
+(by a constant. There are two distinguished dummy nodes: the start node and the end node. The start)Tj
+T*
+0 Tw
+(node has no in-edges and one out-edge. The end node has no out-edges.)Tj
+0 -1.5833 TD
+[(W)79.7(e)0( assume that every procedure has one return node. Predicate expressions controlling branches)]TJ
+0 -1.1667 TD
+-0.0683 Tw
+(are supposed to be atomic, i.e. they do not contain propositional connectives [CL]. Branches whose)Tj
+T*
+-0.0217 Tw
+(controlling expressions contain propositional connectives can be reduced to nested branches with-)Tj
+T*
+-0.015 Tw
+[(out propositional connectives by application of so-called short-circuit rules [FL]. W)73.6(e)0( also assume)]TJ
+T*
+0 Tw
+(that assignments do not contain calls and that controlling expressions of conditional branches do)Tj
+T*
+-0.0183 Tw
+[(not have side ef)18.2(fects. Conditional branches with side ef)18.3(fects and assignments containing calls can)]TJ
+T*
+-0.0425 Tw
+(be eliminated through introduction of new variables and inclusion of additional assignments. Note)Tj
+T*
+0 Tw
+(that this transformation of the program control )Tj
+/TT5 1 Tf
+18.8564 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graph can be done in linear time.)Tj
+-19.4126 -1.5833 TD
+[(W)79.7(e)0( do not )]TJ
+/TT5 1 Tf
+4.3358 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(x data types and operations permitted in expressions. They depend on the language.)Tj
+-4.892 -1.1667 TD
+-0.0367 Tw
+(For instance, expressions may include array subscripting, operations on pointers, etc. Equivalence)Tj
+T*
+-0.0058 Tw
+(relations and linear orderings are preferable for our analysis. When possible, other predicate sym-)Tj
+T*
+0 Tw
+(bols should be expressed through these. Major constructs of imperative programming languages)Tj
+T*
+-0.0658 Tw
+(fall into this control )Tj
+/TT5 1 Tf
+7.9022 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0658 Tw
+(ow graph model. Note that recursive procedures are allowed. Jump tables and)Tj
+-8.4583 -1.1667 TD
+0 Tw
+[(dynamic calls/returns are not included in the model for reducing technicality)59.8(.)]TJ
+0 -1.5833 TD
+(Let)Tj
+/TT9 1 Tf
+1.5642 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+-0.0183 Tw
+[( denote a set of non-predicate expressions without side ef)18.8(fects. It includes all arithmetic and)]TJ
+-2.305 -1.1667 TD
+0 Tw
+(language-speci)Tj
+/TT5 1 Tf
+5.9971 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(c expressions originating from the program and all their subexpressions \(except)Tj
+ET
+endstream
+endobj
+19 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+22 0 obj
+<<
+/Length 8172
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(5)Tj
+12 0 0 12 72 712 Tm
+(constants\). The cardinal number of)Tj
+/TT9 1 Tf
+14.2192 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+( should be proportional to program size. Let)Tj
+/TT9 1 Tf
+17.8592 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7675 0 TD
+( be a set of)Tj
+-33.5867 -1.1667 TD
+-0.0083 Tw
+[(atomic predicate expressions without side ef)14.6(fects. It includes the set of controlling expressions of)]TJ
+T*
+-0.055 Tw
+(program branches and equalities originating from program assignments whose left- and right-hand)Tj
+T*
+-0.0183 Tw
+(sides belong to)Tj
+/TT9 1 Tf
+6.195 0 TD
+0 Tw
+<004f>Tj
+/TT2 1 Tf
+0.7417 0 TD
+-0.0183 Tw
+[( and which do not refer to one object in both states: before and after assignment.)]TJ
+-6.9367 -1.1667 TD
+-0.0333 Tw
+(The cardinal number of)Tj
+/TT9 1 Tf
+9.53 0 TD
+0 Tw
+<0057>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0333 Tw
+[( should be proportional to program size. Although, the only result of not)]TJ
+-10.2983 -1.1667 TD
+0 Tw
+(complying with the limitations on the cardinal numbers of)Tj
+/TT9 1 Tf
+23.5267 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7417 0 TD
+( and)Tj
+/TT9 1 Tf
+1.9433 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7683 0 TD
+( is a higher complexity of the)Tj
+-26.98 -1.1667 TD
+(analysis.)Tj
+0 -1.5833 TD
+-0.0583 Tw
+[(For the sake of reducing technicality)63(, we do not allow predicate expressions be subexpressions. W)78.5(e)]TJ
+0 -1.1667 TD
+0 Tw
+(assume that one element of)Tj
+/TT9 1 Tf
+11.1367 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7417 0 TD
+( or)Tj
+/TT9 1 Tf
+1.3325 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7683 0 TD
+[( corresponds to all textually identical expressions. Moreover)37.7(,)]TJ
+-13.9792 -1.1667 TD
+[(expressions which dif)17.4(fer because of inversion of operands of commutative operations are identi-)]TJ
+/TT5 1 Tf
+T*
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ed, and a single specimen is kept in)Tj
+/TT9 1 Tf
+14.4147 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+( or)Tj
+/TT9 1 Tf
+1.3333 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.6567 0 TD
+(. This identi)Tj
+/TT5 1 Tf
+4.8052 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(cation can be done by a recursive algo-)Tj
+-23.063 -1.1667 TD
+(rithm operating on pairs of expressions. A more sophisticated identi)Tj
+/TT5 1 Tf
+27.1611 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(cation of equal expressions)Tj
+-27.7173 -1.1667 TD
+(could be based on further developments of ideas of Knuth and Bendix [KB].)Tj
+0 -1.5833 TD
+-0.0092 Tw
+(Let us de)Tj
+/TT5 1 Tf
+3.6472 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0092 Tw
+(ne the domain of environments -)Tj
+/TT9 1 Tf
+13.2217 0 TD
+0 Tw
+<0031>Tj
+/TT2 1 Tf
+0.6758 0 TD
+-0.0092 Tw
+[(. T)70(wo special values - undef and none - will be used)]TJ
+-18.1008 -1.1667 TD
+0 Tw
+(as values of environment constituents. Every environment V from)Tj
+/TT9 1 Tf
+26.6633 0 TD
+<0031>Tj
+/TT2 1 Tf
+0.7675 0 TD
+[( is triplet \(V)127.9(.s,V)129.7(.t,V)129.2(.u\). The)]TJ
+-27.4308 -1.1667 TD
+(formulas given by equivalence relations \(i.e. re)Tj
+/TT5 1 Tf
+18.8262 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(exive, symmetric, transitive, total relations\) con-)Tj
+-19.3823 -1.1667 TD
+(necting expressions from)Tj
+/TT9 1 Tf
+10.3042 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+( and constants of the respective types are represented by)Tj
+-11.045 -1.1667 TD
+[(\(V)129.3(.s[1],...,V)129(.s[k]\). For every equivalence predicate p from the language and every expression e)]TJ
+T*
+(from)Tj
+/TT9 1 Tf
+2.1942 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+[(, one element of array V)127.8(.s represents assertions p\(e,_\), and one element of V)127.8(.s represents)]TJ
+-2.935 -1.1667 TD
+(assertions)Tj
+/TT10 1 Tf
+4.1675 0 TD
+(¨)Tj
+/TT2 1 Tf
+0.7125 0 TD
+-0.0267 Tw
+[(p\(e,_\). Here and below)64.6(, _ stands for a constant of the respective type. Every V)127.7(.s[i] is a)]TJ
+-4.88 -1.1667 TD
+-0.0075 Tw
+[(constant that takes underscoreí)53.9(s position, undef, or none. At minimum, equality is represented by)]TJ
+T*
+0 Tw
+[(V)128.8(.s elements.)]TJ
+0 -1.5833 TD
+(The formulas given by linear orderings \(i.e. re)Tj
+/TT5 1 Tf
+18.4658 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(exive, antisymmetric, transitive, total relations\))Tj
+-19.022 -1.1667 TD
+-0.0467 Tw
+(connecting expressions from)Tj
+/TT9 1 Tf
+11.6067 0 TD
+0 Tw
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+-0.0467 Tw
+[( and constants are represented by \(V)129.8(.t[1],...,V)129.4(.t[h]\). For every linear)]TJ
+-12.3475 -1.1667 TD
+0 Tw
+(ordering p from the language and every expression e from)Tj
+/TT9 1 Tf
+23.4942 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+[(, one element of array V)127.8(.t represents)]TJ
+-24.235 -1.1667 TD
+-0.0358 Tw
+[(assertions p\(e,_\), and one element of V)125(.t represents assertions p\(_,e\). Every V)126.8(.t[i] is a constant that)]TJ
+T*
+0 Tw
+[(takes underscoreí)54.4(s position, undef, or none.)]TJ
+0 -1.5833 TD
+(The predicate expressions of)Tj
+/TT9 1 Tf
+11.7192 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7675 0 TD
+[( are represented by \(V)127.6(.u[1],...,V)129.8(.u[m]\). One element of V)128.1(.u corre-)]TJ
+-12.4867 -1.1667 TD
+(sponds to every predicate expression from)Tj
+/TT9 1 Tf
+17.1633 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.6567 0 TD
+[(. Each V)129(.u[i] is undef, none, true, or false.)]TJ
+-17.82 -1.5833 TD
+(Environments serve to represent assertions about program points. Every environment V from)Tj
+/TT9 1 Tf
+37.5217 0 TD
+<0031>Tj
+/TT2 1 Tf
+-37.5217 -1.1667 TD
+(maps to formula)Tj
+/TT9 1 Tf
+6.805 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(V\) if V does not contain undef:)Tj
+/TT9 1 Tf
+-5.8308 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(V\))Tj
+/TT10 1 Tf
+1.3883 0 TD
+-0.0125 Tw
+[( = )]TJ
+/TT9 1 Tf
+1.0238 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7628 0 TD
+[(\(V)129.3(.s[1]\))]TJ
+/TT10 1 Tf
+3.0642 0 TD
+-0.0125 Tw
+[( &...& )]TJ
+/TT9 1 Tf
+2.7807 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7635 0 TD
+[(\(V)129.3(.s[k]\))]TJ
+/TT10 1 Tf
+3.0633 0 TD
+-0.0125 Tw
+[( & )]TJ
+/TT9 1 Tf
+1.2528 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.763 0 TD
+-0.0125 Tw
+[(\(V)129.3(.t[1]\) &)]TJ
+/TT10 1 Tf
+3.9683 0 TD
+0 Tw
+(...& )Tj
+/TT9 1 Tf
+1.7653 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.763 0 TD
+-0.0125 Tw
+[(\(V)129.3(.t[h]\) &)]TJ
+/TT9 1 Tf
+4.2058 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+[(\(V)129.3(.u[1]\))]TJ
+/TT10 1 Tf
+3.4125 0 TD
+(&...& )Tj
+/TT9 1 Tf
+2.5432 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7627 0 TD
+[(\(V)128.5(.u[m]\))]TJ
+/TT9 1 Tf
+-35.5467 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+[(\(V)129.3(.u[i]\) is the respective predicate from)]TJ
+/TT9 1 Tf
+16.005 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7675 0 TD
+[( if V)128.8(.u[i] is true, its negation if V)127.6(.u[i] is false, or pred-)]TJ
+-17.5358 -1.1667 TD
+[(icate constant ìtrueî if V)126.8(.u[i] is none. If V)129.5(.s[i] representing p\(e,_\) is constant c, then)]TJ
+/TT9 1 Tf
+33.7342 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+[(\(V)128.5(.s[i]\) is)]TJ
+-34.4967 -1.1667 TD
+-0.03 Tw
+[(expression p\(e,c\). If V)128.7(.s[i] representing)]TJ
+/TT10 1 Tf
+15.7158 0 TD
+0 Tw
+(¨)Tj
+/TT2 1 Tf
+0.7125 0 TD
+-0.03 Tw
+(p\(e,_\) is constant c, then)Tj
+/TT9 1 Tf
+9.8758 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.03 Tw
+[(\(V)129.3(.s[i]\) is expression)]TJ
+/TT10 1 Tf
+8.4458 0 TD
+0 Tw
+(¨)Tj
+/TT2 1 Tf
+0.7125 0 TD
+(p\(e,c\).)Tj
+-36.2258 -1.1667 TD
+[(If V)129(.s[i] is none, then)]TJ
+/TT9 1 Tf
+8.675 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+[(\(V)129.3(.s[i]\) is ìtrueî. If V)128.6(.t[i] representing p\(e,_\) \(p\(_,e\)\) is constant c, then)]TJ
+/TT9 1 Tf
+-9.4383 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+[(\(V)129.3(.t[i]\) is expression p\(e,c\) \(p\(c,e\)\). If V)128.5(.t[i] is none,)]TJ
+/TT9 1 Tf
+21.0408 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+[(\(V)128.5(.t[i]\) is ìtrueî.)]TJ
+-22.5667 -1.5833 TD
+(Let us de)Tj
+/TT5 1 Tf
+3.6655 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ne a binary operation called)Tj
+/TT10 1 Tf
+11.3583 0 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+( on)Tj
+/TT9 1 Tf
+1.5 0 TD
+<0031>Tj
+/TT2 1 Tf
+0.7683 0 TD
+( as follows:)Tj
+/TT10 1 Tf
+-18.4242 -1.5833 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+[(\(V)129.3(,Ví\) =)-1296.2(\()0(V)129.3(.s[1]^Ví.s[1],...,V)129.4(.s[k]^Ví.s[k],)]TJ
+4.6742 -1.1667 TD
+[(V)128.8(.t[1]^Ví.t[1],...,V)129.3(.t[h]^Ví.t[h],)]TJ
+T*
+[(V)128.8(.u[1]^Ví.u[1],...,V)130.3(.u[m]^Ví.u[m]\))]TJ
+-5.25 -1.5833 TD
+(The following rules de)Tj
+/TT5 1 Tf
+9.0811 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(ne ^ for V)128.5(.s, V)129.7(.t, and V)128.8(.u elements:)]TJ
+-8.1372 -1.5833 TD
+[(For any v:)-1889.2(undef ^ v = v ^ undef = v;)-1602.1(none ^ v = v ^ none = none;)]TJ
+ET
+endstream
+endobj
+23 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+26 0 obj
+<<
+/Length 6249
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(6)Tj
+12 0 0 12 90 712 Tm
+[(v ^ v = v;)-2189(true ^ false = false ^ true = none.)]TJ
+0 -1.5833 TD
+[(Let V)128.9(.s[i] and Ví.s[i] represent p\(e,_\) \(or)]TJ
+/TT10 1 Tf
+16.5317 0 TD
+(¨)Tj
+/TT2 1 Tf
+0.7133 0 TD
+(p\(e,_\)\), and)Tj
+-17.245 -1.1667 TD
+[(V)128.8(.s[i] and Ví.s[i] are constants of the respective type:)]TJ
+T*
+[(If p\(V)129.5(.s[i],Ví.s[i]\) then V)128.9(.s[i] ^ Ví.s[i] = V)129.1(.s[i], otherwise V)129.5(.s[i] ^ Ví.s[i] = none.)]TJ
+0 -1.5833 TD
+[(Let V)128.9(.t[i] and Ví.t[i] represent p\(_,e\), and)]TJ
+0 -1.1667 TD
+[(V)128.8(.t[i] and Ví.t[i] are constants of the respective type:)]TJ
+T*
+[(If p\(V)129.5(.t[i],Ví.t[i]\) then V)127.9(.t[i] ^ Ví.t[i] = V)128.9(.t[i], otherwise V)129(.t[i] ^ Ví.t[i] = none.)]TJ
+0 -1.5833 TD
+[(Let V)128.9(.t[i] and Ví.t[i] represent p\(e,_\), and)]TJ
+0 -1.1667 TD
+[(V)128.8(.t[i] and Ví.t[i] are constants of the respective type:)]TJ
+T*
+[(If p\(Ví.t[i],V)128.9(.t[i]\) then V)128.5(.t[i] ^ Ví.t[i] = V)128.9(.t[i], otherwise V)129(.t[i] ^ Ví.t[i] = none.)]TJ
+-1.5 -1.5833 TD
+(Operation)Tj
+/TT10 1 Tf
+4.2192 0 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+-0.03 Tw
+[( plays the role of ìmeetî, but it is not commutative. Non-commutativity is due to ^ for)]TJ
+-4.795 -1.1667 TD
+0 Tw
+[(V)128.8(.t elements. This operation is basically widening [CC, Bo]. W)77.4(e)0( will use notation x)]TJ
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+471.8 536.69 m
+478.57 536.69 l
+B*
+BT
+12 0 0 12 471.8 538 Tm
+(<y if the for-)Tj
+-33.3167 -1.1667 TD
+(mula x=)Tj
+/TT10 1 Tf
+3.3142 0 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\) holds. The same notation will be also used in application to environment constitu-)Tj
+-3.89 -1.1667 TD
+(ents: a)Tj
+ET
+103 508.69 m
+109.76 508.69 l
+B*
+BT
+12 0 0 12 103 510 Tm
+[(<b if)17.5(f a=a^b.)]TJ
+/TT4 1 Tf
+-2.5833 -1.5833 TD
+[(Pr)18(oposition 1.)]TJ
+/TT2 1 Tf
+5.9267 0 TD
+( Relation)Tj
+ET
+189.79 489.69 m
+196.56 489.69 l
+B*
+BT
+12 0 0 12 189.79 491 Tm
+[(< is a partial ordering, i.e. for any x,y)63.4(,z:)]TJ
+-8.3158 -1.1667 TD
+(x)Tj
+ET
+96 475.69 m
+102.77 475.69 l
+B*
+BT
+12 0 0 12 96 477 Tm
+0.0002 Tc
+(<x)Tj
+-0.5 -1.1667 TD
+0 Tc
+(x)Tj
+ET
+96 461.69 m
+102.77 461.69 l
+B*
+BT
+12 0 0 12 96 463 Tm
+(<y & y)Tj
+ET
+130.1 461.69 m
+136.87 461.69 l
+B*
+BT
+12 0 0 12 130.1 463 Tm
+(<z ==> x)Tj
+ET
+174.5 461.69 m
+181.27 461.69 l
+B*
+BT
+12 0 0 12 174.5 463 Tm
+0.0002 Tc
+(<z)Tj
+-8.5417 -1.5833 TD
+0 Tc
+(\(Sometimes, antisymmetry is also postulated in de)Tj
+/TT5 1 Tf
+20.1362 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(nition of partial ordering.\))Tj
+-20.6924 -1.5833 TD
+(For any x and y:)Tj
+/TT10 1 Tf
+1.5 -1.1667 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+119.9 409.69 m
+126.67 409.69 l
+B*
+BT
+12 0 0 12 119.9 411 Tm
+0.0002 Tc
+(<x)Tj
+/TT10 1 Tf
+-2.4917 -1.1667 TD
+0 Tc
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+119.9 395.69 m
+126.67 395.69 l
+B*
+BT
+12 0 0 12 119.9 397 Tm
+0.0002 Tc
+(<y)Tj
+/TT4 1 Tf
+-3.9917 -1.5833 TD
+0 Tc
+[(Pr)18(oposition 2.)]TJ
+/TT2 1 Tf
+5.9267 0 TD
+( If x)Tj
+ET
+163.12 376.69 m
+169.88 376.69 l
+B*
+BT
+12 0 0 12 163.12 378 Tm
+[(<y)65(, neither x nor y contains undef, then)]TJ
+/TT9 1 Tf
+15.9408 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(y\) implies)Tj
+/TT9 1 Tf
+4.6117 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\).)Tj
+-29.6708 -1.5833 TD
+-0.0225 Tw
+(It is assumed that transfer function f)Tj
+9.6 0 0 9.6 243.71 356 Tm
+0 Tw
+(N)Tj
+12 0 0 12 250.64 359 Tm
+(:)Tj
+/TT9 1 Tf
+0.5058 0 TD
+<0031>Tj
+/TT2 1 Tf
+0.7675 0 TD
+-0.0225 Tw
+[( ->)]TJ
+/TT9 1 Tf
+1.3525 0 TD
+0 Tw
+<0031>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0225 Tw
+[( is de)]TJ
+/TT5 1 Tf
+2.0658 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0225 Tw
+(ned for every assignment node N [ASU, KU,)Tj
+-20.9028 -1.1667 TD
+-0.0042 Tw
+[(He]. T)34.9(ransfer functions depend on the language in use. In presence of pointers, transfer functions)]TJ
+T*
+0 Tw
+[(should subsume approximation of alias ef)16.4(fects [ASU]. Consider a sample transfer function for)]TJ
+T*
+-0.0308 Tw
+(assignment v:=e where v is an integer variable and e is an arithmetic expression. First, the transfer)Tj
+T*
+0 Tw
+[(function sets to none all V)127.5(.s, V)129.7(.t, and V)128.8(.u elements which contain v)63.1(.)0( Second, the transfer function)]TJ
+T*
+[(sets V)128.8(.s and V)129.3(.t elements representing v to the respective elements representing e. Third, if v=e)]TJ
+T*
+(belongs to)Tj
+/TT9 1 Tf
+4.3892 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.6567 0 TD
+[(, then the transfer function sets V)127.6(.u[i] representing v=e to true.)]TJ
+/TT4 1 Tf
+14 0 0 14 72 245.67 Tm
+[(3)-785.7(Analysis Algorithm)]TJ
+/TT2 1 Tf
+12 0 0 12 72 226 Tm
+[(W)79.7(e)0( use a worklist-based )]TJ
+/TT5 1 Tf
+9.9726 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(xpoint algorithm \(BC\) to propagate environments. This algorithm)Tj
+-10.5287 -1.1667 TD
+-0.0208 Tw
+(updates the worklist by symbolically interpreting the program. It starts with an optimistic assump-)Tj
+T*
+-0.055 Tw
+(tion about propagated values and proceeds by changing the values until it reaches a )Tj
+/TT5 1 Tf
+32.7744 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.055 Tw
+(xed point. BC)Tj
+-33.3306 -1.1667 TD
+-0.0017 Tw
+(utilizes algorithm R which does an incomplete inference. Results of this paper apply to any other)Tj
+T*
+-0.0158 Tw
+(more advanced inference algorithm while that other algorithm satis)Tj
+/TT5 1 Tf
+26.7527 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0158 Tw
+(es the statement of Lemma 1)Tj
+-27.3089 -1.1667 TD
+0 Tw
+[(\(see below\) and while its time complexity is the same, i.e. linear)50.7(.)]TJ
+0 -1.5833 TD
+-0.0075 Tw
+(Elements of the worklist W employed by the algorithm are pairs: the pair comprises a value from)Tj
+/TT9 1 Tf
+0 -1.1667 TD
+0 Tw
+<0031>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0183 Tw
+[( and an edge. Also, nodes are placed on W to serve as marks. The marks enable usage of W as a)]TJ
+-0.7683 -1.1667 TD
+-0.0442 Tw
+(stack. The value from)Tj
+/TT9 1 Tf
+8.7942 0 TD
+0 Tw
+<0031>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0442 Tw
+[( assigned to node N is denoted AN\(N\). The value from)]TJ
+/TT9 1 Tf
+21.735 0 TD
+0 Tw
+<0031>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0442 Tw
+[( assigned to edge)]TJ
+-32.0658 -1.1667 TD
+-0.02 Tw
+(E is denoted AE\(E\). The sets AN and AE for nodes and edges of the control )Tj
+/TT5 1 Tf
+30.366 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.02 Tw
+(ow graph constitute)Tj
+-30.9222 -1.1667 TD
+0 Tw
+(the output of BC.)Tj
+ET
+endstream
+endobj
+27 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+29 0 obj
+<<
+/Length 7220
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(7)Tj
+12 0 0 12 72 712 Tm
+-0.0667 Tw
+(D\(N\) denotes the sole descendant of assignment/start/call node N. If N is a branch node, then D)Tj
+9.6 0 0 9.6 518.47 709 Tm
+0 Tw
+(t)Tj
+12 0 0 12 521.14 712 Tm
+(\(N\))Tj
+-37.4283 -1.1667 TD
+-0.0717 Tw
+(and D)Tj
+9.6 0 0 9.6 100.14 695 Tm
+0 Tw
+(f)Tj
+12 0 0 12 105.05 698 Tm
+-0.0717 Tw
+[(\(N\) denote the ìtrueî and ìfalseî descendants of N, respectively)59.8(. D)]TJ
+9.6 0 0 9.6 418.25 695 Tm
+0 Tw
+(c)Tj
+12 0 0 12 422.52 698 Tm
+-0.0717 Tw
+(\(N\) is the callee for node)Tj
+-29.21 -1.1667 TD
+-0.0642 Tw
+(N, and D)Tj
+9.6 0 0 9.6 114.11 681 Tm
+0 Tw
+(r)Tj
+12 0 0 12 117.31 684 Tm
+-0.0642 Tw
+(\(N\) is the return node of the callee. S is the start node. The transfer function of assignment)Tj
+-3.7758 -1.1667 TD
+-0.05 Tw
+(node N is denoted f)Tj
+9.6 0 0 9.6 163.57 667 Tm
+0 Tw
+(N)Tj
+12 0 0 12 170.5 670 Tm
+-0.05 Tw
+(. Let I stand for the entire program input including initial variable values. A\(I\))Tj
+-8.2083 -1.1667 TD
+0 Tw
+(will denote an environment whose constituents are none except for constants representing equali-)Tj
+T*
+(ties for static variables or other pre-conditions.)Tj
+0 -1.5833 TD
+-0.0217 Tw
+(Algorithm R is given in the Appendix. R evaluates expressions from both)Tj
+/TT9 1 Tf
+29.43 0 TD
+0 Tw
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+-0.0217 Tw
+[( and)]TJ
+/TT9 1 Tf
+1.9 0 TD
+0 Tw
+<0057>Tj
+/TT2 1 Tf
+0.6567 0 TD
+-0.0217 Tw
+(. It also derives)Tj
+-32.7275 -1.1667 TD
+-0.0633 Tw
+[(equivalences and their negations, linear)16.8(-ordering inequalities, and assertions from other assertions,)]TJ
+T*
+0 Tw
+(equivalences, and inequalities.)Tj
+0 -1.5833 TD
+[(W)79.7(e)0( assume that elements of arrays s and t in environments are ordered by the size of expressions)]TJ
+0 -1.1667 TD
+(from)Tj
+/TT9 1 Tf
+2.1792 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+-0.015 Tw
+(. Loops in R \(including application of evaluation rules\) should iterate from smaller expres-)Tj
+-2.92 -1.1667 TD
+0 Tw
+[(sions to bigger ones. W)79.7(e)0( assume that two tables - one for elements of)]TJ
+/TT9 1 Tf
+27.8883 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+( and one for elements of)Tj
+-28.6292 -1.1667 TD
+(both)Tj
+/TT9 1 Tf
+2.015 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7417 0 TD
+-0.0125 Tw
+[( and)]TJ
+/TT9 1 Tf
+1.9183 0 TD
+0 Tw
+<0057>Tj
+/TT2 1 Tf
+0.7683 0 TD
+-0.0125 Tw
+[( - are created before running BC. Each entry of the )]TJ
+/TT5 1 Tf
+20.4089 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0125 Tw
+(rst table contains indices of the)Tj
+-26.4084 -1.1667 TD
+0 Tw
+(s and t elements that represent properties of the respective expression from)Tj
+/TT9 1 Tf
+30.16 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+(. Each entry of the)Tj
+-30.9008 -1.1667 TD
+(second table contains references to the )Tj
+/TT5 1 Tf
+15.6597 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(rst table for all immediate subexpressions of the expres-)Tj
+-16.2158 -1.1667 TD
+(sion from)Tj
+/TT9 1 Tf
+4.1108 0 TD
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+( or)Tj
+/TT9 1 Tf
+1.3333 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.6567 0 TD
+(. These tables make it possible to execute R in linear time.)Tj
+-6.8417 -1.5833 TD
+(One or several links may be established for an expressions from)Tj
+/TT9 1 Tf
+25.8558 0 TD
+<0057>Tj
+/TT2 1 Tf
+0.7683 0 TD
+( to other expressions from)Tj
+/TT9 1 Tf
+10.6925 0 TD
+<0057>Tj
+/TT2 1 Tf
+-37.3167 -1.1667 TD
+-0.0458 Tw
+(before running BC. If p)Tj
+9.6 0 0 9.6 182.79 456 Tm
+0 Tw
+(1)Tj
+12 0 0 12 187.59 459 Tm
+-0.0458 Tw
+[( has a link to p)]TJ
+9.6 0 0 9.6 255.18 456 Tm
+0 Tw
+(2)Tj
+12 0 0 12 259.98 459 Tm
+-0.0458 Tw
+(, then p)Tj
+9.6 0 0 9.6 294.55 456 Tm
+0 Tw
+(1)Tj
+12 0 0 12 299.35 459 Tm
+-0.0458 Tw
+[( is equal to p)]TJ
+9.6 0 0 9.6 358.5 456 Tm
+0 Tw
+(2)Tj
+12 0 0 12 363.3 459 Tm
+-0.0458 Tw
+[( after substituting constants for some)]TJ
+-24.275 -1.1667 TD
+0 Tw
+(of p)Tj
+9.6 0 0 9.6 91 442 Tm
+(1)Tj
+12 0 0 12 95.8 445 Tm
+[(í)55.5(s)0( subexpressions.)]TJ
+-1.9833 -1.5833 TD
+[(Evaluation rules serve to propagate equivalence and linear)16.1(-ordering formulas connecting expres-)]TJ
+0 -1.1667 TD
+(sions and constants over arithmetic and other non-predicate operations of the language. Given)Tj
+T*
+(these formulas for immediate subexpressions, the evaluation rule postulates another formula for)Tj
+T*
+-0.0225 Tw
+[(the expression. Evaluation rules may vary for dif)14.8(ferent languages. One class of evaluation rules is)]TJ
+T*
+0 Tw
+(common for all languages, though. Any rule of this class applies an arithmetic operation whose)Tj
+T*
+[(ar)17.7(guments equal constants:)]TJ
+0 -1.5833 TD
+({e)Tj
+9.6 0 0 9.6 83.09 334 Tm
+(1)Tj
+12 0 0 12 87.89 337 Tm
+(=c)Tj
+9.6 0 0 9.6 99.98 334 Tm
+(1)Tj
+12 0 0 12 104.78 337 Tm
+(},{e)Tj
+9.6 0 0 9.6 124.63 334 Tm
+(2)Tj
+12 0 0 12 129.43 337 Tm
+(=c)Tj
+9.6 0 0 9.6 141.53 334 Tm
+(2)Tj
+12 0 0 12 146.33 337 Tm
+(} ==> {e)Tj
+9.6 0 0 9.6 189.48 334 Tm
+(1)Tj
+/TT9 1 Tf
+12 0 0 12 197.28 337 Tm
+<006f>Tj
+/TT2 1 Tf
+0.4392 0 TD
+( e)Tj
+9.6 0 0 9.6 210.88 334 Tm
+(2)Tj
+12 0 0 12 215.68 337 Tm
+( = c)Tj
+9.6 0 0 9.6 233.77 334 Tm
+(1)Tj
+/TT9 1 Tf
+12 0 0 12 241.57 337 Tm
+<006f>Tj
+/TT2 1 Tf
+0.4392 0 TD
+( c)Tj
+9.6 0 0 9.6 255.17 334 Tm
+(2)Tj
+12 0 0 12 259.97 337 Tm
+(})Tj
+-15.6642 -1.5833 TD
+(Here,)Tj
+/TT9 1 Tf
+2.4433 0 TD
+<006f>Tj
+/TT2 1 Tf
+0.4383 0 TD
+( is a binary arithmetic operation. All evaluation rules ought to be valid formulas if the)Tj
+-2.8817 -1.1667 TD
+-0.0633 Tw
+(comma is treated as conjunction [CL]. Interval arithmetic gives other examples of evaluation rules.)Tj
+T*
+0 Tw
+(Here is one of them:)Tj
+0 -1.5833 TD
+({e)Tj
+9.6 0 0 9.6 83.09 268 Tm
+(1)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+87.89 269.69 m
+94.66 269.69 l
+B*
+BT
+12 0 0 12 87.89 271 Tm
+0.0002 Tc
+(<c)Tj
+9.6 0 0 9.6 99.98 268 Tm
+0 Tc
+(1)Tj
+12 0 0 12 104.78 271 Tm
+(},{e)Tj
+9.6 0 0 9.6 124.63 268 Tm
+(2)Tj
+ET
+129.43 269.69 m
+136.2 269.69 l
+B*
+BT
+12 0 0 12 129.43 271 Tm
+0.0002 Tc
+(<c)Tj
+9.6 0 0 9.6 141.53 268 Tm
+0 Tc
+(2)Tj
+12 0 0 12 146.33 271 Tm
+(} ==> {e)Tj
+9.6 0 0 9.6 189.48 268 Tm
+(1)Tj
+12 0 0 12 194.28 271 Tm
+(+e)Tj
+9.6 0 0 9.6 206.38 268 Tm
+(2)Tj
+ET
+211.18 269.69 m
+217.94 269.69 l
+B*
+BT
+12 0 0 12 211.18 271 Tm
+-0.0006 Tc
+(<c)Tj
+9.6 0 0 9.6 223.27 268 Tm
+0 Tc
+(1)Tj
+12 0 0 12 228.07 271 Tm
+(+c)Tj
+9.6 0 0 9.6 240.17 268 Tm
+(2)Tj
+12 0 0 12 244.97 271 Tm
+(})Tj
+/TT4 1 Tf
+-13.6917 -1.5833 TD
+(Algorithm BC)Tj
+/TT7 1 Tf
+11 0 0 11 72 233.67 Tm
+(set AN\(S\) <- A\(I\);)Tj
+0 -1.1818 TD
+(set W <- { \( A\(I\),\(S,D\(S\) \) };)Tj
+T*
+(for every AN\(N\) except AN\(S\) do)Tj
+1.6364 -1.1818 TD
+(set AN\(N\) <- \(undef,...,undef\);)Tj
+-1.6364 -1.1818 TD
+(for every AE\(N,M\) do)Tj
+1.6364 -1.1818 TD
+(set AE\(N,M\) <- \(undef,...,undef\);)Tj
+-1.6364 -1.1818 TD
+(while W is not empty do begin)Tj
+1.6364 -1.1818 TD
+(if there is pair \( B,\(M,N\) \) in W after the last mark K then begin)Tj
+1.6364 -1.2427 TD
+(set AE\(M,N\) <-)Tj
+/TT10 1 Tf
+12 0 0 12 184.04 129 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 190.95 129 Tm
+(\(AE\(M,N\),B\);)Tj
+-7.5409 -1.2727 TD
+(set AN\(N\) <-)Tj
+/TT10 1 Tf
+12 0 0 12 172.48 115 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 179.39 115 Tm
+(\(AN\(N\),AE\(M,N\)\);)Tj
+-6.49 -1.2118 TD
+(if N is an assignment and)Tj
+/TT10 1 Tf
+12 0 0 12 108 88 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 114.91 88 Tm
+(\(AE\(N,D\(N\)\),R\(f)Tj
+8.8 0 0 8.8 192.51 85.25 Tm
+(N)Tj
+11 0 0 11 198.86 88 Tm
+[(\(AE\(M,N\)\)\),\(N,D\(N\)\)\) is dif)18.7(ferent from AE\(N,D\(N\)\) then)]TJ
+ET
+endstream
+endobj
+30 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT7 12 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+32 0 obj
+<<
+/Length 6833
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(8)Tj
+/TT7 1 Tf
+11 0 0 11 126 712.67 Tm
+(add \( R\(f)Tj
+8.8 0 0 8.8 168.79 709.92 Tm
+(N)Tj
+11 0 0 11 175.14 712.67 Tm
+[(\(AE\(M,N\)\)\),\(N,D\(N\)\) \) to W)16.9(;)]TJ
+-6.1036 -1.1818 TD
+(else if N is a call and)Tj
+/TT10 1 Tf
+12 0 0 12 108 686 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 114.91 686 Tm
+(\(AE\(N,D)Tj
+8.8 0 0 8.8 155.85 683.25 Tm
+(c)Tj
+11 0 0 11 160.25 686 Tm
+[(\(N\)\),AN\(N\)\) is dif)17.9(ferent from AE\(N,D)]TJ
+8.8 0 0 8.8 335.45 683.25 Tm
+(c)Tj
+11 0 0 11 339.85 686 Tm
+(\(N\)\) then begin)Tj
+-19.4409 -1.2118 TD
+(put N on W as a mark;)Tj
+0 -1.1818 TD
+(add \( AE\(M,N\),\(N,D)Tj
+8.8 0 0 8.8 221.95 656.92 Tm
+(c)Tj
+11 0 0 11 226.35 659.67 Tm
+(\(N\)\) \) to W end)Tj
+-10.7591 -1.1818 TD
+(else if N is a branch controlled by an expression represented by u[i] then)Tj
+1.6364 -1.1818 TD
+(if AE\(M,N\).u[i] = true and)Tj
+/TT10 1 Tf
+12 0 0 12 126 620 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 132.91 620 Tm
+(\(AE\(N,D)Tj
+8.8 0 0 8.8 173.85 617.25 Tm
+(t)Tj
+11 0 0 11 176.3 620 Tm
+[(\(N\)\),AE\(M,N\)\) is dif)18.1(ferent from AE\(N,D)]TJ
+8.8 0 0 8.8 363.11 617.25 Tm
+(t)Tj
+11 0 0 11 365.56 620 Tm
+(\(N\)\) then)Tj
+-20.1418 -1.2118 TD
+(add \( AE\(M,N\),\(N,D)Tj
+8.8 0 0 8.8 239.95 603.92 Tm
+(t)Tj
+11 0 0 11 242.4 606.67 Tm
+(\(N\)\) \) to W)Tj
+-10.5818 -1.1818 TD
+(else if AE\(M,N\).u[i] = false and)Tj
+/TT10 1 Tf
+12 0 0 12 126 580 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 132.91 580 Tm
+(\(AE\(N,D)Tj
+8.8 0 0 8.8 173.85 577.25 Tm
+(f)Tj
+11 0 0 11 176.3 580 Tm
+[(\(N\)\),AE\(M,N\)\) is dif)18.1(ferent from AE\(N,D)]TJ
+8.8 0 0 8.8 363.11 577.25 Tm
+(f)Tj
+11 0 0 11 365.56 580 Tm
+(\(N\)\) then)Tj
+-20.1418 -1.2118 TD
+(add \( AE\(M,N\),\(N,D)Tj
+8.8 0 0 8.8 239.95 563.92 Tm
+(f)Tj
+11 0 0 11 242.4 566.67 Tm
+(\(N\)\) \) to W)Tj
+-10.5818 -1.1818 TD
+(else if AE\(M,N\).u[i] = none then begin)Tj
+1.6364 -1.2427 TD
+(if)Tj
+/TT10 1 Tf
+12 0 0 12 152.5 540 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 159.41 540 Tm
+(\(AE\(N,D)Tj
+8.8 0 0 8.8 200.35 537.25 Tm
+(t)Tj
+11 0 0 11 202.8 540 Tm
+(\(N\)\),R\(\(AE\(M,N\).s[1],...,true,...,AE\(M,N\).u[m]\)\)\))Tj
+-5.3455 -1.2118 TD
+[(is dif)18(ferent from AE\(N,D)]TJ
+8.8 0 0 8.8 259.94 523.92 Tm
+(t)Tj
+11 0 0 11 262.39 526.67 Tm
+(\(N\)\) then)Tj
+-9.1264 -1.1818 TD
+(add \( R\(\(AE\(M,N\).s[1],...,true,...,AE\(M,N\).u[m]\)\),\(N,D)Tj
+8.8 0 0 8.8 417.49 510.92 Tm
+(t)Tj
+11 0 0 11 419.93 513.67 Tm
+(\(N\)\) \) to W)Tj
+-25.0845 -1.2427 TD
+(if)Tj
+/TT10 1 Tf
+12 0 0 12 152.5 500 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 159.41 500 Tm
+(\(AE\(N,D)Tj
+8.8 0 0 8.8 200.35 497.25 Tm
+(f)Tj
+11 0 0 11 202.8 500 Tm
+(\(N\)\),R\(\(AE\(M,N\).s[1],...,false,...,AE\(M,N\).u[m]\)\)\))Tj
+-5.3455 -1.2118 TD
+[(is dif)18(ferent from AE\(N,D)]TJ
+8.8 0 0 8.8 259.94 483.92 Tm
+(f)Tj
+11 0 0 11 262.39 486.67 Tm
+(\(N\)\) then)Tj
+-9.1264 -1.1818 TD
+(add \( R\(\(AE\(M,N\).s[1],...,false,...,AE\(M,N\).u[m]\)\),\(N,D)Tj
+8.8 0 0 8.8 421.77 470.92 Tm
+(f)Tj
+11 0 0 11 424.21 473.67 Tm
+(\(N\)\) \) to W)Tj
+-25.4736 -1.1818 TD
+(\(true and false are the i-th elements of u\) end)Tj
+-4.9091 -1.1818 TD
+(end else begin)Tj
+1.6364 -1.1818 TD
+[(remove K from W)17.9(;)]TJ
+0 -1.2427 TD
+(if)Tj
+/TT10 1 Tf
+12 0 0 12 116.5 421 Tm
+(µ)Tj
+/TT7 1 Tf
+11 0 0 11 123.41 421 Tm
+(\(AE\(D)Tj
+8.8 0 0 8.8 153.35 418.25 Tm
+(r)Tj
+11 0 0 11 156.28 421 Tm
+(\(K\),D\(K\)\),AN\(D)Tj
+8.8 0 0 8.8 230.21 418.25 Tm
+(r)Tj
+11 0 0 11 233.15 421 Tm
+[(\(K\)\) is dif)18.2(ferent from AE\(D)]TJ
+8.8 0 0 8.8 359.47 418.25 Tm
+(r)Tj
+11 0 0 11 362.4 421 Tm
+(\(K\),D\(K\)\) then)Tj
+-21.4909 -1.2118 TD
+(add \( AN\(D)Tj
+8.8 0 0 8.8 181.01 404.92 Tm
+(r)Tj
+11 0 0 11 183.94 407.67 Tm
+(\(K\)\),\(D)Tj
+8.8 0 0 8.8 216.93 404.92 Tm
+(r)Tj
+11 0 0 11 219.86 407.67 Tm
+(\(K\),D\(K\)\) \) to W)Tj
+-11.8055 -1.1818 TD
+(end)Tj
+-1.6364 -1.1818 TD
+(end)Tj
+/TT2 1 Tf
+12 0 0 12 72 363 Tm
+-0.0333 Tw
+(Let A\(I,S...N\) denote an environment whose constituents are true, false, or constants. A\(I,S...N\) is)Tj
+0 -1.1667 TD
+-0.0058 Tw
+(calculated for actual values of program expressions at the end of execution of path S...N which is)Tj
+T*
+-0.0625 Tw
+(exercised for input I. A\(I,S...N\).u[j] is the boolean value of the respective predicate expression. For)Tj
+T*
+0 Tw
+(s[j] representing p\(e,_\), A\(I,S...N\).s[j] is the value of e. For s[j] representing)Tj
+/TT10 1 Tf
+30.715 0 TD
+(¨)Tj
+/TT2 1 Tf
+0.7133 0 TD
+(p\(e,_\),)Tj
+-31.4283 -1.1667 TD
+(A\(I,S...N\).s[j] is some value of the respective type: neq)Tj
+9.6 0 0 9.6 336.95 304 Tm
+(p)Tj
+12 0 0 12 341.75 307 Tm
+[(\(e\). It is not equivalent \(w)64.1(.r)54.7(.t. p\) to the)]TJ
+-22.4792 -1.1667 TD
+(value of e. For t[j] representing p\(e,_\) or p\(_,e\), A\(I,S...N\).t[j] is the value of expression e.)Tj
+0 -1.5833 TD
+-0.0308 Tw
+(Let g be the number of edges in the program control )Tj
+/TT5 1 Tf
+20.7932 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0308 Tw
+(ow graph.)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+378.53 283.42 m
+395.86 283.42 l
+B*
+BT
+12 0 0 12 378.53 274 Tm
+(AN\(N\) and)Tj
+ET
+435.11 283.42 m
+451.11 283.42 l
+B*
+BT
+12 0 0 12 435.11 274 Tm
+(AE\(N,M\) will denote)Tj
+-30.2592 -1.1667 TD
+-0.0208 Tw
+(AN\(N\) and AE\(N,M\) after BC termination. Let t stand for the maximum time of transfer function)Tj
+T*
+0 Tw
+[(execution. Apparently)64.1(, t is at least O\(g\). When calculating time complexity)60.5(, we assume that the)]TJ
+T*
+-0.0483 Tw
+(time of executing assignments and operations from expressions under consideration is bounded by)Tj
+T*
+-0.0017 Tw
+(a constant. Note that this typical assumption about language operations can be relaxed at the cost)Tj
+T*
+0 Tw
+[(of a higher analysis complexity)63.1(.)]TJ
+/TT4 1 Tf
+0 -1.5833 TD
+[(Theor)17.5(em 1.)]TJ
+/TT2 1 Tf
+5.12 0 TD
+(Algorithm BC will eventually terminate on any control )Tj
+/TT5 1 Tf
+22.2734 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graph. The asymptotic)Tj
+-27.9496 -1.1667 TD
+(time complexity of BC is O\(g)Tj
+9.6 0 0 9.6 215 175.8 Tm
+(2)Tj
+12 0 0 12 219.8 171 Tm
+(*t\).)Tj
+-12.3167 -1.5833 TD
+-0.045 Tw
+[(Note that the worst case is rarely achieved because AN\(N\) and AE\(M,N\) rapidly conver)15.8(ge to )]TJ
+/TT5 1 Tf
+36.795 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(xed)Tj
+-37.3512 -1.1667 TD
+(points \(likewise other optimistic propagation algorithms behave\). Actual running time is close to)Tj
+T*
+-0.0275 Tw
+(the best-case running time. The best-case running time of BC is O\(g*t\). The asymptotic time com-)Tj
+T*
+-0.0542 Tw
+[(plexity of preliminary actions - construction of tables and links - is not higher that BCí)45.8(s asymptotic)]TJ
+T*
+0 Tw
+[(complexity)64(.)]TJ
+/TT4 1 Tf
+0 -1.5833 TD
+(De)Tj
+/TT11 1 Tf
+1.166 0 TD
+(ﬁ)Tj
+/TT4 1 Tf
+0.5562 0 TD
+(nition 1.)Tj
+/TT2 1 Tf
+3.5012 0 TD
+[( T)35(ransfer function f)]TJ
+9.6 0 0 9.6 227.89 74 Tm
+(N)Tj
+12 0 0 12 234.82 77 Tm
+( is called safe if)Tj
+/TT9 1 Tf
+6.5267 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.8575 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\) implies that)Tj
+ET
+endstream
+endobj
+33 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT7 12 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+/TT11 34 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+36 0 obj
+<<
+/Length 7068
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 303.5 36 Tm
+0 g
+0 Tc
+0 Tw
+(9)Tj
+/TT9 1 Tf
+12 0 0 12 72 712 Tm
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NNî\)\) ==>)Tj
+/TT9 1 Tf
+8.0225 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(f)Tj
+9.6 0 0 9.6 194.58 709 Tm
+(N)Tj
+12 0 0 12 201.51 712 Tm
+(\(x\)\) for any x, any input I, and any execution path S...NNî resulting)Tj
+-10.7925 -1.1667 TD
+(from the input.)Tj
+/TT4 1 Tf
+0 -1.5833 TD
+(Lemma 1.)Tj
+/TT9 1 Tf
+4.5267 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.3583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(R\(x\)\) holds for any x without undef.)Tj
+/TT4 1 Tf
+-9.4108 -1.5833 TD
+[(Theor)17.5(em 2.)]TJ
+/TT2 1 Tf
+4.87 0 TD
+( If all transfer functions are safe, then all)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+328.38 669.41 m
+345.71 669.41 l
+B*
+BT
+12 0 0 12 328.38 660 Tm
+(AN and)Tj
+ET
+369.04 669.41 m
+385.03 669.41 l
+B*
+BT
+12 0 0 12 369.04 660 Tm
+(AE are conservative, that is,)Tj
+/TT9 1 Tf
+-24.7533 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.8567 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+176.59 655.41 m
+193.92 655.41 l
+B*
+BT
+12 0 0 12 176.59 646 Tm
+(AN\(N\)\) for any input I and execution path S...N resulting from I, and)Tj
+/TT9 1 Tf
+-8.7158 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NNî\)\) ==>)Tj
+/TT9 1 Tf
+8.0225 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+190.58 641.41 m
+206.58 641.41 l
+B*
+BT
+12 0 0 12 190.58 632 Tm
+(AE\(N,Nî\)\) for any input I and execution path S...NNî resulting from I.)Tj
+/TT4 1 Tf
+14 0 0 14 72 602.67 Tm
+[(4)-690.7(Specialization)]TJ
+/TT2 1 Tf
+12 0 0 12 72 583 Tm
+-0.0417 Tw
+(Specialization is done on the control )Tj
+/TT5 1 Tf
+14.5796 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0417 Tw
+(ow graph representations of imperative programs. It utilizes)Tj
+ET
+72 578.41 m
+88 578.41 l
+B*
+BT
+12 0 0 12 72 569 Tm
+0.0001 Tc
+-0.0001 Tw
+(AE and)Tj
+ET
+111.32 578.41 m
+128.65 578.41 l
+B*
+BT
+12 0 0 12 111.32 569 Tm
+0 Tc
+0 Tw
+(AN values. The specialization is accomplished by the following steps.)Tj
+-2.5542 -1.5833 TD
+(1. Disjoint subgraphs are segregated. A subgraph is selected for every conditional branch and)Tj
+-0.7225 -1.1667 TD
+(every assignment which have multiple in-edges. These subgraphs are recursively de)Tj
+/TT5 1 Tf
+33.5723 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ned. The)Tj
+-34.1284 -1.1667 TD
+(above node is the top node of the respective subgraph. All assignments and conditional branches)Tj
+T*
+-0.0142 Tw
+(that are immediate successors of any node from the subgraph and that have one in-edge belong to)Tj
+T*
+0 Tw
+(the respective subgraph along with their in-edges.)Tj
+0.8333 -1.5833 TD
+-0.0517 Tw
+[(2. Each selected subgraph is replicated as many times as there are in-edges with dif)19.3(ferent)]TJ
+ET
+502.97 484.41 m
+518.97 484.41 l
+B*
+BT
+12 0 0 12 502.97 475 Tm
+0.0001 Tc
+-0.0518 Tw
+[(AE val-)]TJ
+-35.9142 -1.1667 TD
+0 Tc
+-0.0008 Tw
+(ues for in-edges of its top node before this replication process starts. Then, out-links are added to)Tj
+T*
+-0.0467 Tw
+[(each replicated copy)62.3(. These edges lead to the same nodes as the original out-links do. The in-edges)]TJ
+T*
+0 Tw
+(of subgraphs are distributed among copies so that all edges with the same)Tj
+ET
+427.62 442.41 m
+443.62 442.41 l
+B*
+BT
+12 0 0 12 427.62 433 Tm
+(AE value lead to one)Tj
+-29.635 -1.1667 TD
+[(copy)64.7(. \(Note that all in-edges which are also out-edges for a dif)15.7(ferent subgraph lead to one copy)63.6(.\))]TJ
+0.7775 -1.5833 TD
+(3.)Tj
+ET
+93.06 409.41 m
+109.06 409.41 l
+B*
+BT
+12 0 0 12 93.06 400 Tm
+-0.0225 Tw
+[(AE value for the in-edge of the top node of every subgraph copy is propagated across the sub-)]TJ
+-1.755 -1.1667 TD
+0 Tw
+(graph to update)Tj
+ET
+149.65 395.41 m
+165.65 395.41 l
+B*
+BT
+12 0 0 12 149.65 386 Tm
+0.0001 Tc
+-0.0001 Tw
+(AE and)Tj
+ET
+188.98 395.41 m
+206.3 395.41 l
+B*
+BT
+12 0 0 12 188.98 386 Tm
+0 Tc
+0 Tw
+(AN values within the subgraph.)Tj
+ET
+344.29 395.41 m
+360.29 395.41 l
+B*
+BT
+12 0 0 12 344.29 386 Tm
+0.0001 Tc
+-0.0001 Tw
+(AE and)Tj
+ET
+383.62 395.41 m
+400.94 395.41 l
+B*
+BT
+12 0 0 12 383.62 386 Tm
+0 Tc
+0 Tw
+(AN are set by applying transfer)Tj
+-25.9683 -1.1667 TD
+-0.0217 Tw
+(functions and then R to propagate environments across assignments and by setting one .u element)Tj
+T*
+-0.0258 Tw
+(to true/false and then applying R to propagate environments across conditional branches. It is sim-)Tj
+T*
+0 Tw
+(ilar to what BC does.)Tj
+0.8333 -1.5833 TD
+-0.03 Tw
+(4. Expressions from)Tj
+/TT9 1 Tf
+8.1858 0 TD
+0 Tw
+<004f>Tj
+/TT2 1 Tf
+0.7408 0 TD
+-0.03 Tw
+[( occurring in nodes are replaced by constants if their respective equalities)]TJ
+-9.76 -1.1667 TD
+0 Tw
+(represented by .s elements of)Tj
+ET
+214.63 320.41 m
+231.96 320.41 l
+B*
+BT
+12 0 0 12 214.63 311 Tm
+(AN are set to constants. This replacement is executed top-down.)Tj
+-11.8858 -1.5833 TD
+-0.0142 Tw
+(Figure 2 exhibits the result of transforming the control )Tj
+/TT5 1 Tf
+21.8959 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0142 Tw
+(ow graph fragment in Figure 1 in the pro-)Tj
+-22.4521 -1.1667 TD
+-0.0333 Tw
+(cess of its specialization. Rectangles in )Tj
+/TT5 1 Tf
+15.6564 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0333 Tw
+[(gures depict assignments, calls, or their sequences. T)28.2(rian-)]TJ
+-16.2126 -1.1667 TD
+0 Tw
+(gles depict conditional branches.)Tj
+0 -13.5833 TD
+(It is assumed that this specialization is followed by traditional optimizations on control )Tj
+/TT5 1 Tf
+35.0215 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow)Tj
+-35.5776 -1.1667 TD
+(graphs. These traditional optimizations include: elimination of conditional branches whose con-)Tj
+ET
+1 g
+2 J 
+171.67 180.87 m
+153.67 180.87 l
+162.67 191.67 l
+b*
+150.33 228.33 25.2 -14.4 re
+B*
+305 228.33 25.2 -14.4 re
+B*
+377 228.33 25.2 -14.4 re
+B*
+326.33 180.87 m
+308.33 180.87 l
+317.33 191.67 l
+b*
+397.66 180.87 m
+379.66 180.87 l
+388.66 191.67 l
+b*
+0 J 
+159.82 233.48 m
+162.91 228.33 l
+165.82 233.58 l
+S
+2 J 
+162.91 228.58 m
+162.65 243.33 l
+S
+0 J 
+159.67 197.53 m
+162.67 192.33 l
+165.67 197.53 l
+S
+2 J 
+162.67 192.58 m
+162.67 213.93 l
+S
+0 J 
+150.43 168.59 m
+153.33 163.33 l
+156.43 168.47 l
+S
+2 J 
+153.34 163.58 m
+153.67 180.87 l
+S
+0 J 
+314.33 197.53 m
+317.33 192.33 l
+320.33 197.53 l
+S
+2 J 
+317.33 192.58 m
+317.33 213.93 l
+S
+0 J 
+385.66 197.53 m
+388.66 192.33 l
+391.66 197.53 l
+S
+2 J 
+388.66 192.58 m
+388.66 213.93 l
+S
+0 J 
+314.48 233.48 m
+317.57 228.33 l
+320.48 233.58 l
+S
+2 J 
+317.58 228.58 m
+317.31 243.33 l
+195.33 180.67 m
+171.67 180.87 l
+195.33 220.67 m
+195.33 181.07 l
+S
+0 J 
+180.73 224.13 m
+175.53 221.13 l
+180.73 218.13 l
+S
+2 J 
+175.78 221.13 m
+195.33 221.13 l
+422.66 180.67 m
+399 180.87 l
+422.66 220.67 m
+422.66 181.07 l
+S
+0 J 
+408.06 224.13 m
+402.86 221.13 l
+408.06 218.13 l
+S
+2 J 
+403.11 221.13 m
+422.66 221.13 l
+350 180.67 m
+326.33 180.87 l
+350 220.67 m
+350 181.07 l
+S
+0 J 
+371.8 218.13 m
+377 221.13 l
+371.8 224.13 l
+S
+2 J 
+376.75 221.13 m
+350 221.13 l
+S
+0 J 
+343.36 162.03 m
+349.33 162.67 l
+345.8 167.52 l
+S
+2 J 
+349.11 162.77 m
+308.33 180.87 l
+S
+0 J 
+352.24 167.91 m
+349.33 162.67 l
+355.33 162.77 l
+S
+2 J 
+349.55 162.79 m
+379.66 180.87 l
+S
+BT
+12 0 0 12 148.67 140 Tm
+0 g
+[(Figure 1)-12666.7(Figure 2)]TJ
+ET
+endstream
+endobj
+37 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+39 0 obj
+<<
+/Length 5649
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(10)Tj
+12 0 0 12 72 712 Tm
+[(trolling expressions are static; mer)15.6(gence of identical nodes whose out-edges lead to the same)]TJ
+0 -1.1667 TD
+(nodes; elimination of unreachable code; dead-store elimination; loop unrolling; procedure in-lin-)Tj
+T*
+-0.0217 Tw
+(ing; copy propagation [ASU]. Note that nodes whose)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+328.21 693.41 m
+345.54 693.41 l
+B*
+BT
+12 0 0 12 328.21 684 Tm
+[(AN contain undef and edges whose)]TJ
+ET
+499.94 693.41 m
+515.94 693.41 l
+B*
+BT
+12 0 0 12 499.94 684 Tm
+0.0001 Tc
+[(AE con-)]TJ
+-35.6617 -1.1667 TD
+0 Tc
+0 Tw
+(tain undef are unreachable.)Tj
+/TT4 1 Tf
+0 -1.5833 TD
+-0.0192 Tw
+[(Theor)17.5(em 3.)]TJ
+ET
+132.98 660.41 m
+150.31 660.41 l
+B*
+BT
+/TT2 1 Tf
+12 0 0 12 132.98 651.0001 Tm
+[(AN and)]TJ
+ET
+173.18 660.41 m
+189.17 660.41 l
+B*
+BT
+12 0 0 12 173.18 651.0001 Tm
+[(AE remain conservative in the specialized program. The number of nodes in)]TJ
+-8.4317 -1.1667 TD
+0 Tw
+(the specialized program is O\(g)Tj
+9.6 0 0 9.6 219.3 641.8 Tm
+(2)Tj
+12 0 0 12 224.1 637 Tm
+(\) at most.)Tj
+-12.675 -1.5833 TD
+(In practice, the number of nodes in the specialized program is not too big. This happens because)Tj
+0 -1.1667 TD
+(the subgraphs are usually small and few edges lead into most subgraphs \(see proof of Theorem 3)Tj
+T*
+[(in Appendix B\). Normally)64.2(, the number of edges leading to a subgraph is re)]TJ
+/TT5 1 Tf
+29.9011 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ective of the level of)Tj
+-30.4573 -1.1667 TD
+(nesting conditional branches and loops. Since the nesting level is normally bounded by a small)Tj
+T*
+(constant, the number of nodes in specialized programs is linear in practice. Application of the)Tj
+T*
+(aforementioned traditional optimizations after the specialization would further reduce the size of)Tj
+T*
+(the specialized program)Tj
+0 -1.5833 TD
+(Let us look at the )Tj
+/TT5 1 Tf
+7.1929 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(rst example from the Introduction section again. Figure 3 below depicts the)Tj
+-7.749 -1.1667 TD
+(control )Tj
+/TT5 1 Tf
+3.0825 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow graph of this code fragment. The following table gives numbering for nodes in the)Tj
+-3.6387 -1.1667 TD
+(graph:)Tj
+/TT7 1 Tf
+11 0 0 11 72 473.67 Tm
+[(1: state==of)18.1(f)-3458.5(2: event==on_of)18.5(f)-3148.5(3: state=on;)-4564.3(4: toggle\(\);)]TJ
+0 -1.1818 TD
+[(4: vol_trg)-4886.7(5: event==vol_up)-2963.5(6: volume=1;)]TJ
+/TT2 1 Tf
+12 0 0 12 72 442 Tm
+(Figure 4 illustrates specialization outcome. Figure 5 shows the same code fragment after elimina-)Tj
+0 -1.1667 TD
+-0.0375 Tw
+(tion of static conditional branches \(lower 4 and 1 in Figure 4\) and elimination of unreachable code)Tj
+T*
+0 Tw
+(\(left lower 5 and 3-4-6\). Copies of node 1 in the lower part of Figure 2 are static because asser-)Tj
+T*
+(tions)Tj
+/TT10 1 Tf
+2.195 0 TD
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 106.9 400 Tm
+[(state==of)18.1(f)]TJ
+/TT2 1 Tf
+12 0 0 12 155.63 400 Tm
+( and)Tj
+/TT7 1 Tf
+11 0 0 11 178.95 400 Tm
+[(state==of)17.2(f)]TJ
+/TT2 1 Tf
+12 0 0 12 227.68 400 Tm
+( are propagated into the left- and right-hand-side subgraphs,)Tj
+-12.9733 -1.1667 TD
+-0.01 Tw
+[(respectively)64.4(, during the specialization. Note that this is a simple example that under)10(-utilizes BCí)53.2(s)]TJ
+T*
+0 Tw
+(capabilities. The power of inference procedure R is not used here at all. Evaluation rules and)Tj
+T*
+[(expression links are not needed for this example either)52(.)]TJ
+0 -1.5833 TD
+-0.0017 Tw
+(The second example from the Introduction section exhibits more power of our partial evaluation.)Tj
+0 -1.1667 TD
+-0.0067 Tw
+(In order to get the residual code shown in Introduction, the aforementioned evaluation rules from)Tj
+T*
+0 Tw
+(the Analysis Algorithm section should be utilized. R derives that the proposition)Tj
+/TT7 1 Tf
+11 0 0 11 460.99 311 Tm
+(b>=0)Tj
+/TT2 1 Tf
+12 0 0 12 486.07 311 Tm
+( is always)Tj
+-34.5058 -1.1667 TD
+(true. The interval arithmetic evaluation rule helps to derive that)Tj
+/TT7 1 Tf
+11 0 0 11 378.95 297 Tm
+(a[i]*u+b>=0)Tj
+/TT2 1 Tf
+12 0 0 12 435.52 297 Tm
+( is always true. The)Tj
+-30.2933 -1.1667 TD
+(fact that the environment of the loop back edge is propagated to the ìfalseî edge of)Tj
+/TT7 1 Tf
+11 0 0 11 473.9 283 Tm
+(if \( )Tj
+/TT8 1 Tf
+1.3887 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag==1 \))Tj
+/TT2 1 Tf
+12 0 0 12 72 269 Tm
+-0.0183 Tw
+(only helps to eliminate one check for loop termination. The assignments)Tj
+/TT7 1 Tf
+11 0 0 11 419.5 269 Tm
+0 Tw
+(t=1;)Tj
+/TT2 1 Tf
+12 0 0 12 438.15 269 Tm
+-0.0183 Tw
+[( and)]TJ
+/TT8 1 Tf
+11 0 0 11 461.04 269 Tm
+0 Tw
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag=0;)Tj
+/TT2 1 Tf
+12 0 0 12 494.36 269 Tm
+-0.0183 Tw
+[( are dead)]TJ
+-35.1967 -1.1667 TD
+0 Tw
+(after the specialization. The three following code pieces are replicated in the process of special-)Tj
+T*
+(ization:)Tj
+/TT7 1 Tf
+11 0 0 11 72 222.67 Tm
+(if \( )Tj
+/TT8 1 Tf
+1.3887 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag==1 \) { if \( b>=0 \) t=1+2*t0; else t=1+2*v; })Tj
+-1.8887 -1.1818 TD
+(else if \( a[i]*u>= 0 \) { { if \( a[i]*u+b>=0 \) t=1; else t=1+4*v; } ... })Tj
+T*
+(else t=1+2*v;)Tj
+T*
+(---)Tj
+T*
+(t=\(t-0.01\)*\(1-t0\);)Tj
+T*
+(---)Tj
+T*
+(s+=a[i]*t; t0*=0.985; )Tj
+/TT8 1 Tf
+9.0898 0 TD
+(ﬂ)Tj
+/TT7 1 Tf
+0.5 0 TD
+(ag=0; } while \( ++i<=n \);)Tj
+/TT2 1 Tf
+12 0 0 12 72 126 Tm
+-0.0192 Tw
+(It is assumed that the following traditional optimizations are applied after the specialization: elim-)Tj
+0 -1.1667 TD
+0 Tw
+[(ination of conditional branches whose controlling expressions are static; mer)14.4(gence of identical)]TJ
+T*
+-0.0017 Tw
+(nodes whose out-edges lead to the same nodes; elimination of unreachable code; dead-store elim-)Tj
+T*
+0 Tw
+(ination.)Tj
+ET
+endstream
+endobj
+40 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT7 12 0 R
+/TT8 13 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+42 0 obj
+<<
+/Length 8201
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(11)Tj
+/TT4 1 Tf
+14 0 0 14 72 394.27 Tm
+[(5)-785.7(Related W)54.7(ork)]TJ
+/TT2 1 Tf
+12 0 0 12 72 374.6 Tm
+(Meyer studied on-line partial evaluation for a Pascal-like language [Me]. Andersen developed a)Tj
+0 -1.1667 TD
+[(partial evaluator for a substantial subset of C [An]. Baier)37(, Glueck, and Zochling created a partial)]TJ
+T*
+-0.0283 Tw
+[(evaluator for Fortran [BGZ]. The two latter partial evaluators utilize of)10.6(f-line methods that employ)]TJ
+T*
+0 Tw
+(binding time analysis. The analysis of [An] is based on type inference and constraint set solving.)Tj
+T*
+-0.0592 Tw
+(The analysis of [BGZ] is a )Tj
+/TT5 1 Tf
+10.5312 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0592 Tw
+(xpoint iteration over the static/dynamic division of variables. Our anal-)Tj
+-11.0874 -1.1667 TD
+0 Tw
+(ysis iterates over the static/dynamic division not only for variables but also for other program)Tj
+T*
+-0.0583 Tw
+[(expressions. Moreover)39.7(, our analysis exploits other relational expressions as an additional source of)]TJ
+T*
+-0.07 Tw
+(information for )Tj
+/TT5 1 Tf
+6.2472 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.07 Tw
+(nding static expressions. It incorporates inference capabilities. In contrast to other)Tj
+-6.8034 -1.1667 TD
+0 Tw
+(partial evaluation techniques for imperative languages, our specialization is done at the level of)Tj
+T*
+(control )Tj
+/TT5 1 Tf
+3.0825 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(ow graphs. A dif)18.2(ferent method for limiting the number of specialization variants is)]TJ
+-3.6387 -1.1667 TD
+(applied.)Tj
+0 -1.5833 TD
+(Our framework does not )Tj
+/TT5 1 Tf
+10.0527 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(t the mold of existing static analysis formalisms. It cumulates much)Tj
+-10.6089 -1.1667 TD
+(more information than binding time analysis [JGS] does. It is not a monotone data )Tj
+/TT5 1 Tf
+33.1333 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ow analysis)Tj
+-33.6895 -1.1667 TD
+-0.0442 Tw
+(framework [KU,He] because the monotone framework requires commutative ìmeetî operation on)Tj
+T*
+-0.0433 Tw
+(a semilattice and because interpretation of conditional branches is not expressible in the monotone)Tj
+T*
+0 Tw
+[(frameworks. The formalism from [W)78.3(e] is also based on commutative operations. ìMeetî of our)]TJ
+T*
+(framework is not commutative. Our framework is not cast in the mold of the classical abstract)Tj
+T*
+-0.055 Tw
+(interpretation [CC] because some controlling expressions of conditional branches may not be spec-)Tj
+T*
+0 Tw
+(i)Tj
+/TT5 1 Tf
+0.2778 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0133 Tw
+(ed by binding program variables to values. The environments tracked in our framework are rep-)Tj
+-0.834 -1.1667 TD
+0 Tw
+(resentable in the frameworks from [Sg] \(extended to handle conditions\) only if all conditions of)Tj
+T*
+(program branches are expressed by equalities.)Tj
+ET
+1 g
+0 G
+2 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+151.33 552 m
+133.33 552 l
+142.33 562.8 l
+b*
+169.33 526.8 m
+151.33 526.8 l
+160.33 537.6 l
+b*
+156.53 508.8 25.2 -14.4 re
+B*
+0 J 
+155.03 540.42 m
+160.33 537.6 l
+160.12 543.6 l
+S
+2 J 
+160.2 537.81 m
+151.33 552 l
+S
+0 J 
+166.33 514 m
+169.33 508.8 l
+172.33 514 l
+S
+2 J 
+169.33 509.05 m
+169.33 526.8 l
+S
+133.2 578.54 m
+115.2 578.54 l
+124.2 589.34 l
+b*
+0 J 
+137.04 566.42 m
+142.33 563.6 l
+142.12 569.6 l
+S
+2 J 
+142.2 563.81 m
+133.33 578 l
+S
+275.33 552 m
+257.33 552 l
+266.33 562.8 l
+b*
+293.33 526.8 m
+275.33 526.8 l
+284.33 537.6 l
+b*
+280.53 508.8 25.2 -14.4 re
+B*
+0 J 
+279.03 540.42 m
+284.33 537.6 l
+284.12 543.6 l
+S
+2 J 
+284.2 537.81 m
+275.33 552 l
+S
+0 J 
+290.33 514 m
+293.33 508.8 l
+296.33 514 l
+S
+2 J 
+293.33 509.05 m
+293.33 526.8 l
+S
+257.2 578.53 m
+239.2 578.53 l
+248.2 589.33 l
+b*
+0 J 
+261.03 566.42 m
+266.33 563.6 l
+266.12 569.6 l
+S
+2 J 
+266.2 563.81 m
+257.33 578 l
+S
+359.33 552 m
+341.33 552 l
+350.33 562.8 l
+b*
+377.33 526.8 m
+359.33 526.8 l
+368.33 537.6 l
+b*
+364.53 508.8 25.2 -14.4 re
+B*
+0 J 
+363.03 540.42 m
+368.33 537.6 l
+368.12 543.6 l
+S
+2 J 
+368.2 537.81 m
+359.33 552 l
+S
+0 J 
+374.33 514 m
+377.33 508.8 l
+380.33 514 l
+S
+2 J 
+377.33 509.05 m
+377.33 526.8 l
+S
+341.2 578.53 m
+323.2 578.53 l
+332.2 589.33 l
+b*
+0 J 
+345.03 566.42 m
+350.33 563.6 l
+350.12 569.6 l
+S
+2 J 
+350.2 563.81 m
+341.33 578 l
+S
+333.2 666 m
+315.2 666 l
+324.2 676.8 l
+b*
+350 642 m
+332 642 l
+341 652.8 l
+b*
+337.2 624 25.2 -14.4 re
+B*
+0 J 
+335.45 655.11 m
+340.99 652.8 l
+340.22 658.75 l
+S
+2 J 
+340.85 653 m
+330.01 667.2 l
+S
+0 J 
+347 629.2 m
+350 624 l
+353 629.2 l
+S
+2 J 
+350 624.25 m
+350 642 l
+S
+BT
+2 0 0 2 78 706 Tm
+0 g
+(a)Tj
+ET
+0 J 
+119.9 595.58 m
+123.34 590.67 l
+125.87 596.11 l
+S
+2 J 
+123.32 590.92 m
+116.68 666 l
+S
+0 J 
+121.32 596.32 m
+123.35 590.67 l
+127.23 595.24 l
+S
+2 J 
+123.39 590.91 m
+132.68 642 l
+S
+0 J 
+112.35 477.86 m
+115.35 472.67 l
+118.35 477.86 l
+S
+2 J 
+115.35 472.92 m
+115.35 578 l
+S
+0 J 
+113.68 478.43 m
+115.35 472.67 l
+119.51 476.99 l
+S
+2 J 
+115.4 472.91 m
+134.68 550.67 l
+S
+0 J 
+115.66 478.66 m
+115.35 472.67 l
+120.69 475.39 l
+S
+2 J 
+115.48 472.88 m
+150.01 526 l
+S
+0 J 
+237.01 477.86 m
+240.01 472.67 l
+243.01 477.86 l
+S
+2 J 
+240.01 472.92 m
+240.01 578 l
+S
+0 J 
+238.35 478.43 m
+240.01 472.67 l
+244.17 476.99 l
+S
+2 J 
+240.07 472.91 m
+259.34 550.67 l
+S
+0 J 
+240.32 478.66 m
+240.01 472.67 l
+245.35 475.39 l
+S
+2 J 
+240.15 472.88 m
+274.68 526 l
+S
+0 J 
+320.34 477.86 m
+323.34 472.67 l
+326.34 477.86 l
+S
+2 J 
+323.34 472.92 m
+323.34 578 l
+S
+0 J 
+321.68 478.43 m
+323.34 472.67 l
+327.5 476.99 l
+S
+2 J 
+323.4 472.91 m
+342.68 550.67 l
+S
+0 J 
+323.66 478.66 m
+323.34 472.67 l
+328.69 475.39 l
+S
+2 J 
+323.48 472.88 m
+358.01 526 l
+S
+0 J 
+289.68 485.2 m
+292.68 480 l
+295.68 485.2 l
+S
+2 J 
+292.68 480.25 m
+292.68 493.33 l
+S
+0 J 
+373.68 485.21 m
+376.68 480.01 l
+379.68 485.21 l
+S
+2 J 
+376.68 480.26 m
+376.68 493.33 l
+S
+0 J 
+329.01 595.2 m
+332.01 590 l
+335.01 595.2 l
+S
+2 J 
+332.01 590.25 m
+332.01 641.33 l
+S
+0 J 
+249.87 595.88 m
+248.68 590 l
+254.37 591.91 l
+S
+2 J 
+248.84 590.19 m
+315.35 665.33 l
+S
+1 g
+481.73 665.46 m
+463.73 665.46 l
+472.73 676.26 l
+b*
+498.53 641.46 m
+480.53 641.46 l
+489.53 652.26 l
+b*
+485.73 623.46 25.2 -14.4 re
+B*
+0 J 
+495.53 628.66 m
+498.53 623.46 l
+501.53 628.66 l
+S
+2 J 
+498.53 623.71 m
+498.53 641.46 l
+S
+489.2 578.8 m
+471.2 578.8 l
+480.2 589.6 l
+b*
+476.4 560.8 25.2 -14.4 re
+B*
+0 J 
+486.2 565.99 m
+489.2 560.8 l
+492.2 565.99 l
+S
+2 J 
+489.2 561.05 m
+489.2 578.8 l
+S
+0 J 
+477.2 594.79 m
+480.2 589.6 l
+483.2 594.79 l
+S
+2 J 
+480.2 589.85 m
+480.2 641.46 l
+S
+0 J 
+460.99 542.53 m
+464 537.34 l
+466.99 542.54 l
+S
+2 J 
+464.01 537.58 m
+463.73 665.46 l
+S
+0 J 
+461.94 542.97 m
+464.01 537.34 l
+467.85 541.94 l
+S
+2 J 
+464.05 537.58 m
+471.2 578.8 l
+S
+0 J 
+166.35 485.86 m
+169.35 480.67 l
+172.35 485.86 l
+S
+2 J 
+169.35 480.92 m
+169.35 494 l
+S
+0 J 
+147.01 601.19 m
+150.01 596 l
+153.01 601.19 l
+S
+2 J 
+150.01 596.25 m
+150.01 609.33 l
+S
+0 J 
+346.35 601.19 m
+349.35 596 l
+352.35 601.19 l
+S
+2 J 
+349.35 596.25 m
+349.35 609.33 l
+S
+0 J 
+495.68 601.19 m
+498.68 596 l
+501.68 601.19 l
+S
+2 J 
+498.68 596.25 m
+498.68 609.33 l
+S
+0 J 
+486.34 538.53 m
+489.34 533.33 l
+492.34 538.53 l
+S
+2 J 
+489.34 533.58 m
+489.34 546.66 l
+S
+BT
+/TT4 1 Tf
+8 0 0 8 322.68 668.67 Tm
+0 g
+(1)Tj
+2.1663 -3.1675 TD
+(2)Tj
+0.6675 -3.6663 TD
+(3-4)Tj
+15.8163 6.6663 TD
+(1)Tj
+2.0163 -2.9838 TD
+(2)Tj
+0.75 -3.6825 TD
+(3-4)Tj
+-46.4163 -4.1662 TD
+15 Tc
+[(44)5000(4)]TJ
+2.25 -3.3338 TD
+14.9163 Tc
+[(11)4916.3(1)]TJ
+2.25 -3.1663 TD
+15 Tc
+[(55)5000(5)]TJ
+40 6.5163 TD
+0 Tc
+(5)Tj
+-39.75 -10.1838 TD
+(3-4-6)Tj
+15.5 0.0838 TD
+(3-4-6)Tj
+10.5 -0.0838 TD
+(3-4-6)Tj
+14 6.5 TD
+(3-4-6)Tj
+/TT2 1 Tf
+10 0 0 10 156.67 590.67 Tm
+(B)Tj
+2 -11.6 TD
+(B)Tj
+18 11.733 TD
+(B)Tj
+-5.867 -11.933 TD
+(B)Tj
+8.533 0.133 TD
+(B)Tj
+12.134 11.533 TD
+(B)Tj
+-0.867 -6.266 TD
+(B)Tj
+-37.4 -6.134 TD
+(A)Tj
+12.533 0.067 TD
+(A)Tj
+8.267 -0.067 TD
+(A)Tj
+13.867 6.467 TD
+(A)Tj
+ET
+0 J 
+136.44 654.93 m
+142 652.67 l
+141.18 658.61 l
+S
+2 J 
+141.85 652.86 m
+132.67 664.67 l
+S
+0 J 
+483.26 656.34 m
+488.52 653.45 l
+488.39 659.45 l
+S
+2 J 
+488.4 653.67 m
+481.33 665.33 l
+S
+1 g
+133.2 666 m
+115.2 666 l
+124.2 676.8 l
+b*
+150 642 m
+132 642 l
+141 652.8 l
+b*
+137.2 624 25.2 -14.4 re
+B*
+0 J 
+147 629.2 m
+150 624 l
+153 629.2 l
+S
+2 J 
+150 624.25 m
+150 642 l
+S
+BT
+/TT4 1 Tf
+8 0 0 8 123 669 Tm
+0 g
+(1)Tj
+2 -3.125 TD
+(2)Tj
+0.8337 -3.75 TD
+(3-4)Tj
+/TT2 1 Tf
+12 0 0 12 115.67 444 Tm
+[(Figure 3)-11555.8(Figure 4)-10472.5(Figure 5)]TJ
+ET
+endstream
+endobj
+43 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+47 0 obj
+<<
+/Length 5322
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(12)Tj
+12 0 0 12 72 712 Tm
+(The closest analysis frameworks to ours are the constant and assertion propagation framework)Tj
+0 -1.1667 TD
+-0.0233 Tw
+(from [Sk] and the framework utilizing logical expressions whose constituents are equalities about)Tj
+T*
+0 Tw
+(value numbers [Jo]. The class of formulas tracked in the framework of [Sk] is substantially nar-)Tj
+T*
+[(rower)55.4(. An inter)19.7(-procedural analysis is presented here. Algorithm BC ignores impossible pairs in-)]TJ
+T*
+-0.025 Tw
+(edge/out-edge for conditional branches. Inference capabilities of the analysis algorithm from [Sk])Tj
+T*
+-0.0567 Tw
+[(are much weaker)54.9(. The framework from [Jo] does not include interpretation of conditional branches)]TJ
+T*
+-0.0467 Tw
+(and does not incorporate any inference mechanism. The analysis presented here subsumes binding)Tj
+T*
+-0.0225 Tw
+(time analysis [JGS, BGZ], conditional constant propagation [WZ, CH], and number interval prop-)Tj
+T*
+0 Tw
+(agation with widening [CC, Bo] \(widening is embedded into ìmeetî\).)Tj
+0 -1.5833 TD
+(Our approach to generation of specialization variants results in smaller programs than those pro-)Tj
+0 -1.1667 TD
+(duced by the polyvariant program point specialization [Bu, JGS]. The total number of specializa-)Tj
+T*
+(tion variants for any node is limited by the number of the in-links of its subgraph \(as opposed to)Tj
+T*
+(the number of static memory states\). The number of in-links is normally bounded by a small con-)Tj
+T*
+(stant.)Tj
+0 -1.5833 TD
+[(Analysis and optimization algorithms for elimination of conditional branches in R)55.5(TL are pro-)]TJ
+0 -1.1667 TD
+(posed in [MW]. The analysis algorithm from [MW] operates on basic blocks of a single loop.)Tj
+T*
+-0.0142 Tw
+[(Once inner loops have been processed, the ef)14.2(fects of their blocks are united before processing the)]TJ
+T*
+0 Tw
+(outer loop. Thus, that method applies to well-structured programs. The analysis from [MW])Tj
+T*
+(incorporates 1-step inference which is substantially weaker than algorithm R. The analysis algo-)Tj
+T*
+[(rithm from [MW] is a pessimistic algorithm. Generally)61.8(, pessimistic algorithms are less powerful)]TJ
+T*
+[(than optimistic ones. Y)98.5(et another advantage of BC over the analysis from [MW] is that BC)]TJ
+T*
+(ignores impossible pairs of in/out-edges for conditional branches. The optimization algorithm)Tj
+T*
+(from [MW], that is based on code replication, may lead to exponential growth of code size. The)Tj
+T*
+(specialization described in this paper may lead to quadratic code growth at most.)Tj
+/TT4 1 Tf
+14 0 0 14 273.48 350.67 Tm
+[(Refer)18.1(ences)]TJ
+/TT2 1 Tf
+11 0 0 11 72 331.67 Tm
+-0.02 Tw
+[([ASU])-606.2(A.V. Aho, R. Sethi, J. D. Ullman,)]TJ
+/TT13 1 Tf
+16.8855 0 TD
+(Compilers. Principles, Techniques, and Tools)Tj
+/TT2 1 Tf
+18.2282 0 TD
+(, Addison-Wesley)Tj
+-31.8409 -1.1818 TD
+0 Tw
+(Publ. Co., 1986.)Tj
+-3.2727 -1.4545 TD
+[([An])-1384.5(L. O. Andersen. Partial Evaluation of C and Automatic Compiler Generation.)]TJ
+/TT13 1 Tf
+34.5191 0 TD
+(Lecture Notes in)Tj
+-31.2464 -1.1818 TD
+(Computer Science,)Tj
+/TT2 1 Tf
+7.8036 0 TD
+(v. 641, 1992, 251-257.)Tj
+-11.0764 -1.4545 TD
+[([BGZ])-606.7(R. Baier, R. Glueck, R. Zochling. Partial Evaluation of Numerical Programs in Fortran.)]TJ
+/TT13 1 Tf
+38.4918 0 TD
+(ACM)Tj
+-35.2191 -1.1818 TD
+(SIGPLAN Workshop on Partial Evaluation and Semantics-Based Program Manipulation,)Tj
+/TT2 1 Tf
+35.9164 0 TD
+( 1994.)Tj
+-39.1891 -1.4545 TD
+[([Bo])-1439.7(F)79.8(.)0( Bourdoncle. Abstract Debugging of Higher)19.7(-Order Imperative Languages.)]TJ
+/TT13 1 Tf
+33.9155 0 TD
+[(Pr)36.4(oceedings of the)]TJ
+-30.6427 -1.1818 TD
+-0.0391 Tw
+[(ACM SIGPLAN Confer)36.9(ence on Pr)36.1(ogramming Language Design and Implementation,)]TJ
+/TT2 1 Tf
+33.8064 0 TD
+[( 1993, 47-55.)]TJ
+-37.0791 -1.4545 TD
+0 Tw
+[([Bu])-1439.7(M. A. Boulyonkov)65.2(. Polyvariant Mixed Computation for Analyzer Programs.)]TJ
+/TT13 1 Tf
+34.1227 0 TD
+(Acta Informatica,)Tj
+/TT2 1 Tf
+7.0555 0 TD
+-0.0654 Tc
+0.0654 Tw
+[( v.)]TJ
+-37.9054 -1.1818 TD
+0 Tc
+0 Tw
+(21, 1984, 473-484.)Tj
+-3.2727 -1.4545 TD
+[([CH])-1217.6(P)111.6(.R. Carini, M. Hind. Flow-Sensitive Interprocedural Constant Propagation.)]TJ
+/TT13 1 Tf
+33.8827 0 TD
+[(Pr)37.3(oceedings of the)]TJ
+-30.61 -1.1818 TD
+[(SIGPLAN Symposium on Pr)37(ogramming Language Design and Implementation,)]TJ
+/TT2 1 Tf
+31.7391 0 TD
+( 1995, 23-31.)Tj
+-35.0118 -1.4545 TD
+[([CL])-1328.9(C.-L. Chang, R. C.-T)73.1(. Lee.)]TJ
+/TT13 1 Tf
+14.1982 0 TD
+[(Symbolic Logic and Mechanical Theor)36.4(em Pr)36.9(oving)]TJ
+/TT2 1 Tf
+20.1173 0 TD
+(, Academic Press,)Tj
+-31.0427 -1.1818 TD
+(1973.)Tj
+-3.2727 -1.4545 TD
+[([CC])-1272.7(P)111.6(.)0( Cousot, R. Cousot. Abstract Interpretation: A Uni)]TJ
+/TT5 1 Tf
+24.1318 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(ed Lattice Model for Static Analysis of Pro-)Tj
+-21.4153 -1.1818 TD
+(grams by Construction or Approximation of Fixpoints.)Tj
+/TT13 1 Tf
+22.1673 0 TD
+[(Pr)37.3(oceedings of the 4-th ACM Symposium)]TJ
+-22.1673 -1.1818 TD
+[(on Principles of Pr)36.4(ogramming Languages,)]TJ
+/TT2 1 Tf
+17.1018 0 TD
+( 1977, 238-252.)Tj
+-20.3745 -1.4545 TD
+[([FL])-1439.7(C.N. Fisher)40.1(, R.J. LeBlanc, Jr)54.6(.)]TJ
+/TT13 1 Tf
+15.2327 0 TD
+(Crafting A Compiler)Tj
+/TT2 1 Tf
+8.2391 0 TD
+(, The Benjamin/Cummings Publ. Co., 1988.)Tj
+ET
+endstream
+endobj
+48 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT13 49 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+51 0 obj
+<<
+/Length 3412
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(13)Tj
+11 0 0 11 72 712.67 Tm
+[([He])-1440.7(M.S. Hecht.)]TJ
+/TT13 1 Tf
+8.3555 0 TD
+[(Flow Analysis of Computer Pr)35.8(ograms)]TJ
+/TT2 1 Tf
+15.1864 0 TD
+(, Elsevier North-Holland, 1977.)Tj
+-23.5418 -1.4545 TD
+[([Jo])-1717.6(H. Johnson. Data Flow Analysis for 'Intractable' System Software.)]TJ
+/TT13 1 Tf
+30.0736 0 TD
+[(Pr)37.3(oceedings of the ACM SIG-)]TJ
+-26.8009 -1.1818 TD
+[(PLAN Confer)36.3(ence on Pr)37(ogramming Language Design and Implementation,)]TJ
+/TT2 1 Tf
+30.2018 0 TD
+[( 1986, 109-1)36.6(17.)]TJ
+-33.4745 -1.4545 TD
+[([JGS])-939.2(N.D. Jones, C. K. Gomard, P)111.4(.)0( Sestoft.)]TJ
+/TT13 1 Tf
+18.5782 0 TD
+[(Partial Evaluation and Automatic Pr)35.7(ogram Generation)]TJ
+/TT2 1 Tf
+22.2127 0 TD
+(,)Tj
+-37.5182 -1.1818 TD
+(Prentice Hall, 1993.)Tj
+-3.2727 -1.4546 TD
+-0.0091 Tw
+[([KU])-1162.4(J.B. Kam, J.D. Ullman. Monotone Data Flow Analysis Frameworks.)]TJ
+/TT13 1 Tf
+30.8527 0 TD
+(Acta Informatica,)Tj
+/TT2 1 Tf
+7.0455 0 TD
+[( v)65.5(.)0( 7, 1977,)]TJ
+-34.6255 -1.1818 TD
+0 Tw
+(305-317.)Tj
+-3.2727 -1.4546 TD
+[([KB])-1217.6(D.E. Knuth, P)111(.B. Bendix. Simple W)79.4(ord Problems in Universal Algebras. In: Computational Prob-)]TJ
+3.2727 -1.1818 TD
+[(lems in Abstract Algebra \(J. Leech, Ed.\), Per)16.3(gamon Press, 1970.)]TJ
+-3.2727 -1.4545 TD
+[([LR])-1328.9(W)92(.)0( Landi, B.G. R)39.6(yder)55(. A Safe Approximate Algorithm for Interprocedural Pointer Aliasing.)]TJ
+/TT13 1 Tf
+40.2464 0 TD
+[(Pr)36.4(o-)]TJ
+-36.9736 -1.1818 TD
+[(ceedings of the ACM SIGPLAN Confer)35.8(ence on Pr)36.1(ogramming Language Design and Implementa-)]TJ
+T*
+(tion,)Tj
+/TT2 1 Tf
+1.8064 0 TD
+( 1992, 235-248.)Tj
+-5.0791 -1.4545 TD
+-0.0055 Tw
+[([Me])-1273.7(U. Meyer)54.8(. T)69.9(echniques for Partial Evaluation of Imperative Languages.)]TJ
+/TT13 1 Tf
+31.6464 0 TD
+(ACM SIGPLAN Workshop)Tj
+-28.3736 -1.1818 TD
+0 Tw
+(on Partial Evaluation and Semantics-Based Program Manipulation,)Tj
+/TT2 1 Tf
+27.3609 0 TD
+( 1991, 94-105.)Tj
+-30.6336 -1.4545 TD
+-0.0482 Tw
+[([MW])-773.7(F)79.8(.)0( Mueller)39.2(, D.B. Whalley)64.5(. A)74(voiding Conditional Branches by Code Replication.)]TJ
+/TT13 1 Tf
+34.9773 0 TD
+[(Pr)37.3(oceedings of the)]TJ
+-31.7045 -1.1818 TD
+0 Tw
+[(SIGPLAN Symposium on Pr)37(ogramming Language Design and Implementation,)]TJ
+/TT2 1 Tf
+31.7391 0 TD
+( 1995, 56-66.)Tj
+-35.0118 -1.4545 TD
+[([Sg])-1550.6(S. Sagiv et al. A Logic-Based Approach to Data Flow Analysis Problems.)]TJ
+/TT13 1 Tf
+33.0755 0 TD
+(Lecture Notes in Com-)Tj
+-29.8027 -1.1818 TD
+(puter Science,)Tj
+/TT2 1 Tf
+5.6655 0 TD
+( v. 456, 1990, 52-65.)Tj
+-8.9382 -1.4545 TD
+[([Sk])-1550.6(A. Sakharov)65.4(. Propagation of Constants and Assertions.)]TJ
+/TT13 1 Tf
+25.4836 0 TD
+(SIGPLAN Notices,)Tj
+/TT2 1 Tf
+7.5 0 TD
+[( v)64.5(.)0( 29, 1994, #5, 3-6.)]TJ
+-32.9836 -1.4545 TD
+[([W)79.6(e])-1298.6(B. W)79.9(egbreit. Property Extraction in W)77.8(ell-Founded Property Sets.)]TJ
+/TT13 1 Tf
+29.5264 0 TD
+[(IEEE T)54.4(ransactions on Softwar)37(e)]TJ
+-26.2536 -1.1818 TD
+(Engineering,)Tj
+/TT2 1 Tf
+5.1936 0 TD
+( 1\(1977\), #3, 270-285.)Tj
+-8.4664 -1.4545 TD
+-0.0364 Tw
+[([WZ])-1052(M.N. W)79.7(egman, F)79.9(.K. Zadeck. Constant Propagation with Conditional Branches.)]TJ
+/TT13 1 Tf
+34.8391 0 TD
+[(ACM T)55.2(ransactions)]TJ
+-31.5664 -1.1818 TD
+0 Tw
+[(on Pr)37.3(ogramming Languages and Systems,)]TJ
+/TT2 1 Tf
+16.8791 0 TD
+[( v)65.5(.)0( 13, 1991, #2, 181-210.)]TJ
+ET
+endstream
+endobj
+52 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT13 49 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+54 0 obj
+<<
+/Length 4536
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(14)Tj
+/TT4 1 Tf
+15 0 0 15 267.45 710 Tm
+(Appendix A)Tj
+12 0 0 12 81 690 Tm
+(Algorithm R\(V\))Tj
+/TT7 1 Tf
+11 0 0 11 72 671.67 Tm
+[(set R\(V\) <- V)36.6(;)]TJ
+0 -1.1818 TD
+(for every R\(V\).u[j] which is true and represents p\(e1,e2\))Tj
+T*
+(where p is an equivalence relation do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c or R\(V\).s[i1] representing p\(e1,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i2] representing p\(e2,_\) is none then set R\(V\).s[i2] <- c;)Tj
+-1.6364 -1.1818 TD
+(if e2 is constant c or R\(V\).s[i2] representing p\(e2,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i1] representing p\(e1,_\) is none then set R\(V\).s[i1] <- c;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).s[i1] representing)Tj
+/TT10 1 Tf
+12 0 0 12 211.65 580.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 220.21 580.67 Tm
+(p\(e1,_\) is constant c then)Tj
+-10.2009 -1.1818 TD
+(if R\(V\).s[i2] representing)Tj
+/TT10 1 Tf
+12 0 0 12 229.65 567.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 238.21 567.67 Tm
+(p\(e2,_\) is none then set R\(V\).s[i2] <- c;)Tj
+-13.4736 -1.1818 TD
+(if R\(V\).s[i2] representing)Tj
+/TT10 1 Tf
+12 0 0 12 211.65 554.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 220.21 554.67 Tm
+(p\(e2,_\) is constant c then)Tj
+-10.2009 -1.1818 TD
+(if R\(V\).s[i1] representing)Tj
+/TT10 1 Tf
+12 0 0 12 229.65 541.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 238.21 541.67 Tm
+(p\(e1,_\) is none then set R\(V\).s[i1] <- c end)Tj
+-15.11 -1.1818 TD
+(INEQ)Tj
+T*
+[(EV)74(AL)]TJ
+T*
+(for every R\(V\).u[j] which is false and represents p\(e1,e2\))Tj
+T*
+(where p is an equivalence relation do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c or R\(V\).s[i1] representing p\(e1,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i2] representing)Tj
+/TT10 1 Tf
+12 0 0 12 229.65 463.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 238.21 463.67 Tm
+(p\(e2,_\) is none then set R\(V\).s[i2] <- c;)Tj
+-13.4736 -1.1818 TD
+(if e2 is constant c or R\(V\).s[i2] representing p\(e2,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i1] representing)Tj
+/TT10 1 Tf
+12 0 0 12 229.65 437.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 238.21 437.67 Tm
+(p\(e1,_\) is none then set R\(V\).s[i1] <- c end)Tj
+-15.11 -1.1818 TD
+[(EV)74(AL)]TJ
+T*
+(for every R\(V\).u[j] which represents p\(e1,e2\) where p is a linear ordering do begin)Tj
+1.6364 -1.1818 TD
+(if R\(V\).u[j] is true, e1 is constant c or R\(V\).t[i1] representing p\(_,e1\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).t[i2] representing p\(_,e2\) is none then set R\(V\).t[i2] <- c;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).u[j] is true, e2 is constant c or R\(V\).t[i2] representing p\(e2,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).t[i1] representing p\(e1,_\) is none then set R\(V\).t[i1] <- c;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).u[j] is false, e1 is constant c or R\(V\).t[i1] representing p\(e1,_\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).t[i2] representing p\(e2,_\) is none then set R\(V\).t[i2] <- c;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).u[j] is false, e2 is constant c or R\(V\).t[i2] representing p\(_,e2\) is c then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).t[i1] representing p\(_,e1\) is none then set R\(V\).t[i1] <- c end)Tj
+-3.2727 -1.1818 TD
+[(EV)74(AL)]TJ
+T*
+(for every R\(V\).t[j1] and R\(V\).t[j2] which represent p\(e,_\) and p\(_,e\) respectively do)Tj
+1.6364 -1.1818 TD
+(if R\(V\).t[j1] and R\(V\).t[j2] are constants and R\(V\).t[j1] = R\(V\).t[j2] then)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i] representing e=_ is none then set R\(V\).s[i] <- R\(V\).t[j1];)Tj
+-3.2727 -1.1818 TD
+(INEQ)Tj
+T*
+[(EV)74(AL)]TJ
+T*
+(for every R\(V\).u[j] which is none and represents p\(e1,e2\))Tj
+T*
+(where p is an equivalence relation do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).s[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).s[i2] representing p\(e2,_\) is c2 then)Tj
+1.6364 -1.1818 TD
+(if p\(c1,c2\) then set R\(V\).u[j] <- true else set R\(V\).u[j] <- false;)Tj
+-1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).s[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(R\(V\).s[i2] representing)Tj
+/TT10 1 Tf
+12 0 0 12 203.09 138.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 211.65 138.67 Tm
+(p\(e2,_\) is constant c2, and p\(c1,c2\) then)Tj
+-9.4227 -1.1818 TD
+(set R\(V\).u[j] <- false;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).s[i1] representing)Tj
+/TT10 1 Tf
+12 0 0 12 211.65 112.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 220.21 112.67 Tm
+(p\(e1,_\) is constant c1,)Tj
+-11.8373 -1.1818 TD
+(e2 is constant c2 or R\(V\).s[i2] representing p\(e2,_\) is c2, and p\(c1,c2\) then)Tj
+1.6364 -1.1818 TD
+(set R\(V\).u[j] <- false end)Tj
+ET
+endstream
+endobj
+55 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT7 12 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+57 0 obj
+<<
+/Length 4072
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(15)Tj
+/TT7 1 Tf
+11 0 0 11 72 712.67 Tm
+(for every R\(V\).u[j] which is none and represents p\(e1,e2\))Tj
+0 -1.1818 TD
+(where p is a linear ordering do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).t[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).t[i2] representing p\(_,e2\) is c2,)Tj
+T*
+(and p\(c1,c2\) then)Tj
+1.6364 -1.1818 TD
+(set R\(V\).u[j] <- true;)Tj
+-1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).t[i1] representing p\(_,e1\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).t[i2] representing p\(e2,_\) is constant c2,)Tj
+0 -1.2427 TD
+(p\(c2,c1\), and c1)Tj
+/TT9 1 Tf
+12 0 0 12 168.87 608 Tm
+<0026>Tj
+/TT7 1 Tf
+11 0 0 11 175.46 608 Tm
+(c2 then)Tj
+-6.1327 -1.2118 TD
+(set R\(V\).u[j] <- false end)Tj
+-3.2727 -1.1818 TD
+(for every R\(V\).u[j] which is none and represents e1=e2 and)Tj
+T*
+(for every linear ordering p do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).t[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).t[i2] representing p\(_,e2\) is c2,)Tj
+0 -1.2427 TD
+(p\(c1,c2\), and c1)Tj
+/TT9 1 Tf
+12 0 0 12 168.87 529 Tm
+<0026>Tj
+/TT7 1 Tf
+11 0 0 11 175.46 529 Tm
+(c2 then)Tj
+-6.1327 -1.2118 TD
+(set R\(V\).u[j] <- false;)Tj
+-1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).t[i3] representing p\(_,e1\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).t[i4] representing p\(e2,_\) is c2,)Tj
+0 -1.2427 TD
+(p\(c2,c1\), and c1)Tj
+/TT9 1 Tf
+12 0 0 12 168.87 476 Tm
+<0026>Tj
+/TT7 1 Tf
+11 0 0 11 175.46 476 Tm
+(c2 then)Tj
+-6.1327 -1.2118 TD
+(set R\(V\).u[j] <- false end)Tj
+-3.2727 -1.1818 TD
+(for every R\(V\).u[j] which is none and represents e1=e2 and)Tj
+T*
+(for every equivalence relation p do begin)Tj
+1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).s[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(e2 is constant c2 or R\(V\).s[i2] representing p\(e2,_\) is c2, and)Tj
+/TT10 1 Tf
+12 0 0 12 389.57 410.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 398.13 410.67 Tm
+(p\(c1,c2\) then)Tj
+-26.3755 -1.1818 TD
+(set R\(V\).u[j] <- false;)Tj
+-1.6364 -1.1818 TD
+(if e1 is constant c1 or R\(V\).s[i1] representing p\(e1,_\) is c1,)Tj
+T*
+(R\(V\).s[i2] representing)Tj
+/TT10 1 Tf
+12 0 0 12 203.09 371.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 211.65 371.67 Tm
+(p\(e2,_\) is constant c2, and p\(c1,c2\) then)Tj
+-9.4227 -1.1818 TD
+(set R\(V\).u[j] <- false;)Tj
+-1.6364 -1.1818 TD
+(if R\(V\).s[i1] representing)Tj
+/TT10 1 Tf
+12 0 0 12 211.65 345.67 Tm
+(¨)Tj
+/TT7 1 Tf
+11 0 0 11 220.21 345.67 Tm
+(p\(e1,_\) is constant c1,)Tj
+-11.8373 -1.1818 TD
+(e2 is constant c2 or R\(V\).s[i2] representing p\(e2,_\) is c2, and p\(c1,c2\) then)Tj
+1.6364 -1.1818 TD
+(set R\(V\).u[j] <- false end)Tj
+-3.2727 -1.1818 TD
+(for every R\(V\).u[j] which is none and represents p\(e1,..,ek\) where)Tj
+T*
+(e1 is constant c1 or R\(V\).s[i1] representing e1=_ is c1 ,...,)Tj
+T*
+(ek is constant ck or R\(V\).s[ik] representing ek=_ is ck do)Tj
+1.6364 -1.1818 TD
+(set R\(V\).u[j] <- p\(c1,...,ck\))Tj
+-1.6364 -1.1818 TD
+(for every R\(V\).u[j1] which is none and represents p1 and for every its link to p2 do)Tj
+1.6364 -1.1818 TD
+(if R\(V\).u[j2] representing p2 is true or false and p1 equals p2 after subsituting constants)Tj
+T*
+[(for all p1í)18.5(s and p2í)18.6(s subexpressions whose R\(V\).s[...] representing equality relation)]TJ
+T*
+(are constants then)Tj
+1.6364 -1.1818 TD
+(set R\(V\).u[j1] <- R\(V\).u[j2])Tj
+/TT2 1 Tf
+12 0 0 12 72 184 Tm
+(Here, INEQ is a shorthand notation for:)Tj
+/TT7 1 Tf
+11 0 0 11 72 165.67 Tm
+(for every R\(V\).t[j] which is none and represents p\(e,_\) \(or p\(_,e\)\) do)Tj
+1.6364 -1.1818 TD
+(if R\(V\).s[i] representing e=_ is constant c then)Tj
+1.6364 -1.1818 TD
+(set R\(V\).t[j] <- c;)Tj
+/TT2 1 Tf
+12 0 0 12 72 121 Tm
+[(EV)128.8(AL stands for the following:)]TJ
+/TT7 1 Tf
+11 0 0 11 72 102 Tm
+(for every expression from)Tj
+/TT9 1 Tf
+12 0 0 12 199.09 102 Tm
+<004f>Tj
+/TT7 1 Tf
+11 0 0 11 210.98 102 Tm
+(and every relevant evaluation rule do)Tj
+-10.9982 -1.2118 TD
+(apply the rule and update the respective s and t elements if they raise from none;)Tj
+ET
+endstream
+endobj
+58 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT7 12 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+60 0 obj
+<<
+/Length 8731
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(16)Tj
+/TT4 1 Tf
+15 0 0 15 267.86 710 Tm
+(Appendix B)Tj
+12 0 0 12 72 690 Tm
+[(Pr)18(oposition 1.)]TJ
+/TT2 1 Tf
+5.9267 0 TD
+( Relation)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+189.79 688.69 m
+196.56 688.69 l
+B*
+BT
+12 0 0 12 189.79 690 Tm
+[(< is a partial ordering, i.e. for any x, y)63.4(,)0( z:)]TJ
+-8.3158 -1.1667 TD
+(x)Tj
+ET
+96 674.69 m
+102.77 674.69 l
+B*
+BT
+12 0 0 12 96 676 Tm
+0.0002 Tc
+(<x)Tj
+-0.5 -1.1667 TD
+0 Tc
+(x)Tj
+ET
+96 660.69 m
+102.77 660.69 l
+B*
+BT
+12 0 0 12 96 662 Tm
+(<y & y)Tj
+ET
+130.1 660.69 m
+136.87 660.69 l
+B*
+BT
+12 0 0 12 130.1 662 Tm
+(<z ==> x)Tj
+ET
+174.5 660.69 m
+181.27 660.69 l
+B*
+BT
+12 0 0 12 174.5 662 Tm
+0.0002 Tc
+(<z)Tj
+-8.5417 -1.5833 TD
+0 Tc
+(For any x and y:)Tj
+/TT10 1 Tf
+1.5 -1.1667 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+119.9 627.69 m
+126.67 627.69 l
+B*
+BT
+12 0 0 12 119.9 629 Tm
+0.0002 Tc
+(<x)Tj
+/TT10 1 Tf
+-2.4917 -1.1667 TD
+0 Tc
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+119.9 613.69 m
+126.67 613.69 l
+B*
+BT
+12 0 0 12 119.9 615 Tm
+0.0002 Tc
+(<y)Tj
+/TT4 1 Tf
+-3.9917 -1.5833 TD
+0 Tc
+[(Pr)18(oof.)]TJ
+/TT2 1 Tf
+2.62 0 TD
+-0.0108 Tw
+[( Re)]TJ
+/TT5 1 Tf
+1.35 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0108 Tw
+(exivity is obvious. If x)Tj
+ET
+234.12 594.69 m
+240.89 594.69 l
+B*
+BT
+12 0 0 12 234.12 596 Tm
+[(<y and y)]TJ
+ET
+275.96 594.69 m
+282.73 594.69 l
+B*
+BT
+12 0 0 12 275.96 596 Tm
+[(<z, then x.u[i]=x.u[i]^y)64.8(.u[i] and y)65.2(.u[i]=y)64.5(.u[i]^z.u[i] for)]TJ
+-16.9967 -1.1667 TD
+0 Tw
+[(i=1,...,m. Similar equalities hold for the s and t components of x, y)62.1(,)0( and z. The fact that the afore-)]TJ
+T*
+-0.0083 Tw
+(mentioned equalities imply equalities x.s[i]=x.s[i]^z.s[i], x.t[i]=x.t[i]^z.t[i], x.u[i]=x.u[i]^z.u[i] is)Tj
+T*
+-0.0158 Tw
+[(proven by considering all possible cases for constituents of x, y)65.1(,)0( and z: undef, none, true, false for)]TJ
+T*
+0 Tw
+[(u[i]; undef, none, constants for s[i] and t[i] \(including cases with dif)15.8(ferently related constants\).)]TJ
+0 -1.5833 TD
+(The inequality)Tj
+/TT10 1 Tf
+6.055 0 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+174.56 519.69 m
+181.33 519.69 l
+B*
+BT
+12 0 0 12 174.56 521 Tm
+(<x is proven by checking that the following equalities hold for any x and y:)Tj
+-8.5467 -1.1667 TD
+[(\(x.u[i]^y)65.3(.u[i]\)^x.u[i] = x.u[i]^y)64.5(.u[i]; \(x.t[i]^y)64.8(.t[i]\)^x.t[i] = x.t[i]^y)64.7(.t[i]; \(x.s[i]^y)64.8(.s[i]\)^x.s[i] =)]TJ
+T*
+[(x.s[i]^y)65.6(.s[i]. The inequality)]TJ
+/TT10 1 Tf
+11.125 0 TD
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+(\(x,y\))Tj
+ET
+235.4 491.69 m
+242.17 491.69 l
+B*
+BT
+12 0 0 12 235.4 493 Tm
+(<y is proven by the same method.)Tj
+/TT4 1 Tf
+-13.6167 -1.5833 TD
+[(Pr)18(oposition 2.)]TJ
+/TT2 1 Tf
+5.9267 0 TD
+( If x)Tj
+ET
+163.12 472.69 m
+169.88 472.69 l
+B*
+BT
+12 0 0 12 163.12 474 Tm
+[(<y)65(, neither x nor y contains undef, then)]TJ
+/TT9 1 Tf
+15.9408 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(y\) implies)Tj
+/TT9 1 Tf
+4.6117 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\).)Tj
+/TT4 1 Tf
+-29.6708 -1.5833 TD
+[(Pr)18(oof.)]TJ
+/TT2 1 Tf
+2.62 0 TD
+-0.0725 Tw
+[( Clearly)64.2(, the inequality x.s[i])]TJ
+ET
+237.16 453.69 m
+243.93 453.69 l
+B*
+BT
+12 0 0 12 237.16 455 Tm
+[(<y)65(.s[i] implies that)]TJ
+/TT9 1 Tf
+7.5592 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+-0.0725 Tw
+[(\(y)64.7(.s[i]\) ==>)]TJ
+/TT9 1 Tf
+4.7308 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.0725 Tw
+(\(x.s[i]\). Similar implications)Tj
+-27.5792 -1.1667 TD
+0 Tw
+[(hold for pairs \(x.t[i],y)64.1(.t[i]\) and \(x.u[i],y)64.6(.u[i]\). Therefore,)]TJ
+/TT9 1 Tf
+22.5583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+[(\(y)64.7(.s[1]\))]TJ
+/TT10 1 Tf
+2.9058 0 TD
+( &...& )Tj
+/TT9 1 Tf
+2.8057 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7635 0 TD
+[(\(y)64.7(.s[k]\))]TJ
+/TT10 1 Tf
+2.9058 0 TD
+( & )Tj
+/TT9 1 Tf
+1.2778 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7638 0 TD
+[(\(y)65.5(.t[1]\))]TJ
+-34.7433 -1.1667 TD
+(&)Tj
+/TT10 1 Tf
+0.7783 0 TD
+(...& )Tj
+/TT9 1 Tf
+1.742 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.763 0 TD
+-0.0358 Tw
+[(\(y)64.7(.t[h]\) &)]TJ
+/TT9 1 Tf
+4.0025 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+[(\(y)64.7(.u[1]\))]TJ
+/TT10 1 Tf
+3.2317 0 TD
+(&...& )Tj
+/TT9 1 Tf
+2.5198 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7635 0 TD
+-0.0358 Tw
+[(\(y)64.7(.u[m]\) implies)]TJ
+/TT9 1 Tf
+6.6692 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x.s[1]\))Tj
+/TT10 1 Tf
+2.9717 0 TD
+-0.0358 Tw
+[( &...& )]TJ
+/TT9 1 Tf
+2.734 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7635 0 TD
+(\(x.s[k]\))Tj
+/TT10 1 Tf
+2.9708 0 TD
+-0.0358 Tw
+[( & )]TJ
+/TT9 1 Tf
+1.2062 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7638 0 TD
+-0.0358 Tw
+(\(x.t[1]\) &)Tj
+/TT10 1 Tf
+3.8525 0 TD
+0 Tw
+(...&)Tj
+/TT9 1 Tf
+-37.2575 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x.t[h]\) &)Tj
+/TT9 1 Tf
+4.1375 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x.u[1]\))Tj
+/TT10 1 Tf
+3.3317 0 TD
+(&...& )Tj
+/TT9 1 Tf
+2.5557 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7635 0 TD
+(\(x.u[m]\) if x)Tj
+ET
+279.43 411.69 m
+286.2 411.69 l
+B*
+BT
+12 0 0 12 279.43 413 Tm
+0.0002 Tc
+[(<y)65.2(.)]TJ
+/TT4 1 Tf
+-17.2858 -1.5833 TD
+0 Tc
+-0.0142 Tw
+[(Theor)17.5(em 1.)]TJ
+/TT2 1 Tf
+5.0917 0 TD
+(Algorithm BC will eventually terminate on any program )Tj
+/TT5 1 Tf
+22.7153 0 TD
+0 Tw
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+-0.0142 Tw
+(ow graph. The asymptotic)Tj
+-28.3631 -1.1667 TD
+0 Tw
+(time complexity of BC is O\(g)Tj
+9.6 0 0 9.6 215 384.8 Tm
+(2)Tj
+12 0 0 12 219.8 380 Tm
+(*t\).)Tj
+/TT4 1 Tf
+-12.3167 -1.5833 TD
+[(Pr)18(oof.)]TJ
+/TT2 1 Tf
+2.62 0 TD
+( The time to execute initialization steps of BC is proportional to the total number of nodes)Tj
+-2.62 -1.1667 TD
+-0.0433 Tw
+[(and edges in the program graph. Algorithm BC terminates when worklist W is empty)62.8(. At most two)]TJ
+T*
+0 Tw
+[(new elements can be added to W at each iteration of BCí)51.4(s main loop. This happen only when)]TJ
+T*
+-0.0258 Tw
+(AE\(E\) changes. AE\(E\).u[i] can only drop twice: from undef to true or false and then to none. Sim-)Tj
+T*
+-0.0558 Tw
+[(ilarly)64.5(, AE\(E\).s[i] and AE\(E\).t[i] can drop twice at most: from undef to a constant, and then to none.)]TJ
+T*
+0 Tw
+[(V)111.3(alues k, l, and m are proportional to g. Hence, the main loop may add O\(g)]TJ
+9.6 0 0 9.6 433.61 295.8 Tm
+(2)Tj
+12 0 0 12 438.41 291 Tm
+(\) elements to W at)Tj
+-30.5342 -1.1667 TD
+(most. Therefore, BC will terminate.)Tj
+0 -1.5833 TD
+-0.0417 Tw
+(The time of executing operation)Tj
+/TT10 1 Tf
+12.8725 0 TD
+0 Tw
+(µ)Tj
+/TT2 1 Tf
+0.5758 0 TD
+-0.0417 Tw
+[( and that of assigning an environment to AN\(N\) or AE\(N\) is pro-)]TJ
+-13.4483 -1.1667 TD
+0 Tw
+(portional to g. Hence the running time of the initialization phase of BC is proportional to g)Tj
+9.6 0 0 9.6 506.98 248.8 Tm
+(2)Tj
+12 0 0 12 511.78 244 Tm
+(. The)Tj
+-36.6483 -1.1667 TD
+-0.0217 Tw
+(time complexity of algorithm R is O\(g\) because the time of a single execution of the body of each)Tj
+T*
+-0.0425 Tw
+(loop in R is bounded by a constant if the two tables are utilized. Since t is at least O\(g\), the running)Tj
+T*
+-0.0258 Tw
+(time of a single iteration of the main loop of BC is proportional to t. The overall time of executing)Tj
+T*
+0 Tw
+(the main loop of BC is proportional to g)Tj
+9.6 0 0 9.6 264.67 192.8 Tm
+(2)Tj
+12 0 0 12 269.47 188 Tm
+(*t. The asymptotic time complexity of BC is O\(g)Tj
+9.6 0 0 9.6 505.14 192.8 Tm
+(2)Tj
+12 0 0 12 509.94 188 Tm
+(*t\).)Tj
+/TT4 1 Tf
+-36.495 -1.5833 TD
+(Lemma 1.)Tj
+/TT9 1 Tf
+4.5267 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.3583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(R\(x\)\) holds for any x without undef.)Tj
+/TT4 1 Tf
+-9.4108 -1.5833 TD
+[(Pr)18(oof.)]TJ
+/TT2 1 Tf
+2.62 0 TD
+( If x.u[i] is none and R\(x\).u[i] is set up to true or false by R, then)Tj
+/TT9 1 Tf
+26.1633 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.3583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(R\(x\).u[i]\))Tj
+-33.6667 -1.1667 TD
+(holds. If s[i] is raised to a constant from none by R, then)Tj
+/TT9 1 Tf
+22.8033 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.3583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+[(\(R\(x\).s[i]\) holds. Similarly)63.7(,)]TJ
+-27.6867 -1.1667 TD
+-0.0617 Tw
+(if t[i] is raised to a constant from none by R, then)Tj
+/TT9 1 Tf
+19.2333 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+-0.0617 Tw
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.235 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.0617 Tw
+(\(R\(x\).t[i]\) holds. If s[i] or t[i] is raised)Tj
+-23.9942 -1.1667 TD
+0 Tw
+(by an evaluation rule, then the above implication is guaranteed by validity of evaluation rules.)Tj
+T*
+(Therefore,)Tj
+/TT9 1 Tf
+4.4417 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x\) ==>)Tj
+/TT9 1 Tf
+3.3583 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(R\(x\)\) holds because)Tj
+/TT9 1 Tf
+8.5808 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(R\(x\)\) is conjunction of)Tj
+/TT9 1 Tf
+9.7208 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(x\) and formulas which)Tj
+-29.1542 -1.1667 TD
+(are implications of)Tj
+/TT9 1 Tf
+7.7492 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(x\).)Tj
+ET
+endstream
+endobj
+61 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+63 0 obj
+<<
+/Length 11276
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(17)Tj
+/TT4 1 Tf
+12 0 0 12 72 712 Tm
+[(Theor)17.5(em 2.)]TJ
+/TT2 1 Tf
+4.87 0 TD
+( If all transfer functions are safe, then all)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+328.38 721.41 m
+345.71 721.41 l
+B*
+BT
+12 0 0 12 328.38 712 Tm
+(AN and)Tj
+ET
+369.04 721.41 m
+385.03 721.41 l
+B*
+BT
+12 0 0 12 369.04 712 Tm
+(AE are conservative, that is,)Tj
+/TT9 1 Tf
+-24.7533 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.8567 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+176.59 707.41 m
+193.92 707.41 l
+B*
+BT
+12 0 0 12 176.59 698 Tm
+(AN\(N\)\) for any input I and execution path S...N resulting from I, and)Tj
+/TT9 1 Tf
+-8.7158 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NNî\)\) ==>)Tj
+/TT9 1 Tf
+8.0225 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+190.58 693.41 m
+206.58 693.41 l
+B*
+BT
+12 0 0 12 190.58 684 Tm
+(AE\(N,Nî\)\) for any input I and execution path S...NNî resulting from I.)Tj
+/TT4 1 Tf
+-9.8817 -1.5833 TD
+[(Pr)18(oof.)]TJ
+/TT2 1 Tf
+2.62 0 TD
+[( Suppose to the contrary)64.4(. Consider a shortest execution path S...N such that: implications)]TJ
+/TT9 1 Tf
+-2.62 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...M\)\) ==>)Tj
+/TT9 1 Tf
+7.0233 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+178.6 660.41 m
+195.92 660.41 l
+B*
+BT
+12 0 0 12 178.6 651.0001 Tm
+-0.0001 Tc
+0.0001 Tw
+(AN\(M\)\) and)Tj
+/TT9 1 Tf
+5.2758 0 TD
+0 Tc
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,S...MíM\)\) ==>)Tj
+/TT9 1 Tf
+8.2467 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+363.17 660.41 m
+379.16 660.41 l
+B*
+BT
+12 0 0 12 363.17 651.0001 Tm
+(AE\(Mí,M\)\) hold for any node M on)Tj
+-24.2642 -1.1667 TD
+-0.0192 Tw
+(path S...N except N; either one or both of these implications are not valid formulas for N. N is not)Tj
+T*
+0 Tw
+(the start node because)Tj
+ET
+180.64 632.41 m
+197.96 632.41 l
+B*
+BT
+12 0 0 12 180.64 623 Tm
+(AN\(S\) = A\(I\) and A\(I\))Tj
+ET
+290.03 621.69 m
+296.8 621.69 l
+B*
+BT
+12 0 0 12 290.03 623 Tm
+(<A\(I,S\).)Tj
+-18.1692 -1.5833 TD
+-0.0008 Tw
+[(Suppose S...N has an edge which has never belonged to any pair from W)87.5(.)0( Let \(M,Mî\) be the )]TJ
+/TT5 1 Tf
+37.1929 0 TD
+0 Tw
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+(rst)Tj
+-37.7491 -1.1667 TD
+[(such edge on S...N. M is not the start node because \(S,D\(S\)\) is placed on W)90.7(.)0( Let Mí be the)]TJ
+T*
+(predecessor of M on S...N. By our assumption,)Tj
+/TT9 1 Tf
+19.0258 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...MíM\)\) implies)Tj
+/TT9 1 Tf
+9.4992 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+436.61 585.41 m
+452.6 585.41 l
+B*
+BT
+12 0 0 12 436.61 576 Tm
+(AE\(Mí,M\)\). Thus)Tj
+ET
+72 571.41 m
+88 571.41 l
+B*
+BT
+12 0 0 12 72 562 Tm
+-0.0617 Tw
+[(AE\(Mí,M\) does not contain undef. If M is an assignment node, then a pair containing Mí)53.8(s out-edge)]TJ
+0 -1.1667 TD
+0 Tw
+(is placed on W each time when AE\(Mí,M\) changes. AE\(Mí,M\) changes at least once because)Tj
+ET
+72 543.41 m
+88 543.41 l
+B*
+BT
+12 0 0 12 72 534 Tm
+[(AE\(Mí,M\) does not contain undef. In particular)39.1(, a pair containing \(M,Mî\) is placed on W when)]TJ
+ET
+72 529.41 m
+88 529.41 l
+B*
+BT
+12 0 0 12 72 520 Tm
+[(AE\(Mí,M\) is attained. Similarly)64(, if M is a call node, then a pair containing \(M,Mî\), where Mî is)]TJ
+T*
+(D)Tj
+9.6 0 0 9.6 80.66 503 Tm
+(c)Tj
+12 0 0 12 84.93 506 Tm
+(\(M\), is placed on W when)Tj
+ET
+213.23 515.41 m
+229.23 515.41 l
+B*
+BT
+12 0 0 12 213.23 506 Tm
+(AE\(Mí,M\) is attained. If M is a return node, then a pair containing)Tj
+-11.7692 -1.1667 TD
+(\(M,Mî\) is placed on W when a mark in W is reached after attaining)Tj
+ET
+400.25 501.41 m
+416.24 501.41 l
+B*
+BT
+12 0 0 12 400.25 492 Tm
+-0.0001 Tc
+(AE\(Mí,M\).)Tj
+/TT9 1 Tf
+-27.3542 -1.5833 TD
+0 Tc
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.0742 Tw
+(\(A\(I,S...M\)\) is a consistent formula [CL]: it is true for the values obtained after execution of S...M)Tj
+-0.7633 -1.1667 TD
+0 Tw
+(on input I. If M is a branch controlled by the expression represented by u[i], then)Tj
+ET
+463.26 468.41 m
+479.26 468.41 l
+B*
+BT
+12 0 0 12 463.26 459 Tm
+(AE\(Mí,M\).u[i])Tj
+-32.605 -1.1667 TD
+(is either equal to A\(I,S...M\).u[i] or none. In both cases, a pair containing \(M,Mî\) is placed on W)Tj
+T*
+(when)Tj
+ET
+100.12 440.41 m
+116.11 440.41 l
+B*
+BT
+12 0 0 12 100.12 431 Tm
+-0.0733 Tw
+(AE\(Mí,M\) is attained. Hence every edge \(M,Mî\) from S...N belongs to a pair which is placed)Tj
+-2.3433 -1.1667 TD
+0 Tw
+(on W after)Tj
+ET
+126.31 426.41 m
+142.31 426.41 l
+B*
+BT
+12 0 0 12 126.31 417 Tm
+(AE\(Mí,M\) is attained.)Tj
+-4.5258 -1.5833 TD
+(Let Ní stand for the predecessor of N on S...N. If Ní is the start node, then)Tj
+ET
+431.26 407.41 m
+447.25 407.41 l
+B*
+BT
+12 0 0 12 431.26 398 Tm
+(AE\(S,N\) = A\(I\) and)Tj
+ET
+72 393.41 m
+89.33 393.41 l
+B*
+BT
+12 0 0 12 72 384 Tm
+(AN\(N\))Tj
+ET
+108.98 382.69 m
+115.75 382.69 l
+B*
+BT
+12 0 0 12 108.98 384 Tm
+(<A\(I\). Hence both)Tj
+/TT9 1 Tf
+7.6175 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,SN\)\) ==>)Tj
+/TT9 1 Tf
+6.1075 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+295.98 393.41 m
+313.31 393.41 l
+B*
+BT
+12 0 0 12 295.98 384 Tm
+(AN\(N\)\) and)Tj
+/TT9 1 Tf
+5.1092 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,SN\)\) ==>)Tj
+/TT9 1 Tf
+6.1075 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+452.88 393.41 m
+468.88 393.41 l
+B*
+BT
+12 0 0 12 452.88 384 Tm
+(AE\(S,N\)\) hold,)Tj
+-31.74 -1.1667 TD
+(which contradicts our assumption. Let Nî be the predecessor of Ní on S...N. By our assumption,)Tj
+/TT9 1 Tf
+T*
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NîN'\)\) implies)Tj
+/TT9 1 Tf
+9.4558 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+207.78 365.41 m
+223.78 365.41 l
+B*
+BT
+12 0 0 12 207.78 356 Tm
+(AE\(Nî,Ní\)\). If Ní is a call or return node, then)Tj
+-11.315 -1.1667 TD
+-0.0592 Tw
+(A\(I,S...NîN'\)=A\(I,S...NîNíN\). If Ní is a call node, then \()Tj
+ET
+341.14 351.41 m
+357.13 351.41 l
+B*
+BT
+12 0 0 12 341.14 342 Tm
+[(AE\(Nî,Ní\),\(NíN\)\) has been placed on W)93.3(.)]TJ
+-22.4283 -1.1667 TD
+0 Tw
+(If Ní is a return node, then \()Tj
+ET
+206.63 337.41 m
+227.95 337.41 l
+B*
+BT
+12 0 0 12 206.63 328 Tm
+[(ANí\(Ní\),\(NíN\)\) has been placed on W)91.5(,)0( and)]TJ
+ET
+418.44 337.41 m
+439.76 337.41 l
+B*
+BT
+12 0 0 12 418.44 328 Tm
+-0.0001 Tc
+(ANí\(Ní\))Tj
+ET
+460.42 326.69 m
+467.18 326.69 l
+B*
+BT
+12 0 0 12 460.42 328 Tm
+0 Tc
+(<)Tj
+ET
+467.18 337.41 m
+483.18 337.41 l
+B*
+BT
+12 0 0 12 467.18 328 Tm
+(AE\(Nî,Ní\) by)Tj
+-32.9317 -1.1667 TD
+(Proposition 1. If Ní is an assignment node, then \(R\(f)Tj
+9.6 0 0 9.6 324.31 311 Tm
+(Ní)Tj
+12 0 0 12 334.44 314 Tm
+(\()Tj
+ET
+338.44 323.41 m
+354.43 323.41 l
+B*
+BT
+12 0 0 12 338.44 314 Tm
+[(AE\(Nî,Ní\)\)\),\(Ní,N\)\) has been on W)91.6(,)0( and)]TJ
+/TT9 1 Tf
+-22.2033 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NíN\)\) ==>)Tj
+/TT9 1 Tf
+7.9117 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(f)Tj
+9.6 0 0 9.6 193.25 297 Tm
+(Ní)Tj
+12 0 0 12 203.38 300 Tm
+(\()Tj
+ET
+207.37 309.41 m
+223.37 309.41 l
+B*
+BT
+12 0 0 12 207.37 300 Tm
+(AE\(Nî,Ní\)\)\) since all transfer functions are safe. By Lemma 1,)Tj
+/TT9 1 Tf
+-11.2808 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(f)Tj
+9.6 0 0 9.6 89.15 283 Tm
+(Ní)Tj
+12 0 0 12 99.28 286 Tm
+(\()Tj
+ET
+103.27 295.41 m
+119.27 295.41 l
+B*
+BT
+12 0 0 12 103.27 286 Tm
+(AE\(Nî,Ní\)\)\) implies)Tj
+/TT9 1 Tf
+8.5808 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(R\(f)Tj
+9.6 0 0 9.6 235.39 283 Tm
+(Ní)Tj
+12 0 0 12 245.52 286 Tm
+(\()Tj
+ET
+249.51 295.41 m
+265.51 295.41 l
+B*
+BT
+12 0 0 12 249.51 286 Tm
+(AE\(Nî,Ní\)\)\)\).)Tj
+-14.7925 -1.5833 TD
+(If Ní is a branch node, let u[i] represent the controlling expression of Ní. If \(Ní,N\) is the ìtrueî)Tj
+0 -1.1667 TD
+(out-edge of Ní, then either \()Tj
+ET
+206.63 262.41 m
+222.62 262.41 l
+B*
+BT
+12 0 0 12 206.63 253 Tm
+(AE\(Nî,Ní\),\(Ní,N\)\) or)Tj
+-11.2192 -1.1667 TD
+(\(R\(\()Tj
+ET
+91.99 248.41 m
+107.99 248.41 l
+B*
+BT
+12 0 0 12 91.99 239 Tm
+(AE\(Nî,Ní\).s[1],...,true,...,)Tj
+ET
+215.95 248.41 m
+231.95 248.41 l
+B*
+BT
+12 0 0 12 215.95 239 Tm
+-0.0317 Tw
+[(AE\(Nî,Ní\).u[m]\)\), \(Ní,N\)\) has been on W)91.3(.)]TJ
+ET
+422.84 248.41 m
+438.83 248.41 l
+B*
+BT
+12 0 0 12 422.84 239 Tm
+(AE\(Nî,Ní\).u[i] is either)Tj
+-29.2367 -1.1667 TD
+0 Tw
+(true or none since)Tj
+/TT9 1 Tf
+7.3867 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...Ní\)\) is a consistent formula. Note that)Tj
+/TT9 1 Tf
+18.7192 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,S...NíN\)\) =)Tj
+/TT9 1 Tf
+-27.6317 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.06 Tw
+(\(A\(I,S...Ní\)\). Henceforth, implications)Tj
+/TT9 1 Tf
+15.5117 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.06 Tw
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.7375 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+370.46 220.41 m
+386.46 220.41 l
+B*
+BT
+12 0 0 12 370.46 211 Tm
+-0.06 Tw
+(AE\(Nî,Ní\)\) and)Tj
+/TT10 1 Tf
+6.4375 0 TD
+0 Tw
+( )Tj
+/TT9 1 Tf
+0.19 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.06 Tw
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+-32.2625 -1.1667 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(\()Tj
+ET
+89.15 206.41 m
+105.14 206.41 l
+B*
+BT
+12 0 0 12 89.15 197 Tm
+(AE\(Nî,Ní\).s[1],...,true,...,)Tj
+ET
+213.11 206.41 m
+229.1 206.41 l
+B*
+BT
+12 0 0 12 213.11 197 Tm
+(AE\(Nî,Ní\).u[m]\)\) hold. By Lemma 1,)Tj
+/TT9 1 Tf
+-11.7592 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(\()Tj
+ET
+89.15 192.41 m
+105.14 192.41 l
+B*
+BT
+12 0 0 12 89.15 183 Tm
+(AE\(Nî,Ní\).s[1],...,true,...,)Tj
+ET
+213.11 192.41 m
+229.1 192.41 l
+B*
+BT
+12 0 0 12 213.11 183 Tm
+(AE\(Nî,Ní\).u[m]\)\) implies)Tj
+/TT9 1 Tf
+-11.7592 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(R\(\()Tj
+ET
+101.15 178.41 m
+117.14 178.41 l
+B*
+BT
+12 0 0 12 101.15 169 Tm
+(AE\(Nî,Ní\).s[1],...,true,...,)Tj
+ET
+225.11 178.41 m
+241.1 178.41 l
+B*
+BT
+12 0 0 12 225.11 169 Tm
+(AE\(Nî,Ní\).u[m]\)\)\).)Tj
+-12.7592 -1.5833 TD
+(If \(Ní,N\) is the ìfalseî out-edge, then either \()Tj
+ET
+289.26 159.41 m
+305.26 159.41 l
+B*
+BT
+12 0 0 12 289.26 150 Tm
+(AE\(Nî,Ní\),\(Ní,N\)\) or)Tj
+-18.105 -1.1667 TD
+(\(R\(\()Tj
+ET
+91.99 145.41 m
+107.99 145.41 l
+B*
+BT
+12 0 0 12 91.99 136 Tm
+(AE\(Nî,Ní\).s[1],...,false,...,)Tj
+ET
+219.95 145.41 m
+235.94 145.41 l
+B*
+BT
+12 0 0 12 219.95 136 Tm
+-0.0458 Tw
+[(AE\(Nî,Ní\).u[m]\)\),\(Ní,N\)\) has been on W)91.3(.)]TJ
+ET
+423.35 145.41 m
+439.35 145.41 l
+B*
+BT
+12 0 0 12 423.35 136 Tm
+(AE\(Nî,Ní\).u[i] is either)Tj
+-29.2792 -1.1667 TD
+0 Tw
+(false or none. Again, implications)Tj
+/TT9 1 Tf
+13.8042 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.8575 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+342.24 131.41 m
+358.24 131.41 l
+B*
+BT
+12 0 0 12 342.24 122 Tm
+(AE\(Nî,Ní\)\) and)Tj
+/TT10 1 Tf
+6.4967 0 TD
+( )Tj
+/TT9 1 Tf
+0.25 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+-30.03 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(\()Tj
+ET
+89.15 117.41 m
+105.14 117.41 l
+B*
+BT
+12 0 0 12 89.15 108 Tm
+(AE\(Nî,Ní\).s[1],...,false,...,)Tj
+ET
+217.1 117.41 m
+233.1 117.41 l
+B*
+BT
+12 0 0 12 217.1 108 Tm
+(AE\(Nî,Ní\).u[m]\)\) hold. By Lemma 1,)Tj
+/TT9 1 Tf
+-12.0917 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(\()Tj
+ET
+89.15 103.41 m
+105.14 103.41 l
+B*
+BT
+12 0 0 12 89.15 94 Tm
+(AE\(Nî,Ní\).s[1],...,false,...,)Tj
+ET
+217.1 103.41 m
+233.1 103.41 l
+B*
+BT
+12 0 0 12 217.1 94 Tm
+(AE\(Nî,Ní\).u[m]\)\) implies)Tj
+/TT9 1 Tf
+-12.0917 -1.1667 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(R\(\()Tj
+ET
+101.15 89.41 m
+117.14 89.41 l
+B*
+BT
+12 0 0 12 101.15 80 Tm
+(AE\(Nî,Ní\).s[1],...,false,...,)Tj
+ET
+229.1 89.41 m
+245.1 89.41 l
+B*
+BT
+12 0 0 12 229.1 80 Tm
+(AE\(Nî,Ní\).u[m]\)\)\).)Tj
+ET
+endstream
+endobj
+64 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+/TT9 20 0 R
+/TT10 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+66 0 obj
+<<
+/Length 7256
+>>
+stream
+1 g
+/GS1 gs
+0 792 612 -791.94 re
+f
+BT
+/TT2 1 Tf
+10 0 0 10 301 36 Tm
+0 g
+0 Tc
+0 Tw
+(18)Tj
+12 0 0 12 72 712 Tm
+-0.0392 Tw
+[(In all cases, such \(V)128.1(,\(Ní,N\)\) has been on W that)]TJ
+/TT9 1 Tf
+19.0033 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+-0.0392 Tw
+(\(A\(I,S...N\)\) ==>)Tj
+/TT9 1 Tf
+6.7792 0 TD
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+-0.0392 Tw
+(\(V\). The second statement of)Tj
+-27.3083 -1.1667 TD
+-0.0317 Tw
+(Proposition 1 guarantees that successive values AN\(M\) and AE\(E\) form decreasing sequences for)Tj
+T*
+0 Tw
+(any given node M and edge E. Proposition 1 also guarantees that)Tj
+ET
+0 G
+0 J 0 j 0.6 w 3.86 M []0 d
+1 i 
+386.29 693.41 m
+403.62 693.41 l
+B*
+BT
+12 0 0 12 386.29 684 Tm
+(AN\(N\))Tj
+ET
+420.28 682.69 m
+427.04 682.69 l
+B*
+BT
+12 0 0 12 420.28 684 Tm
+(<)Tj
+ET
+427.04 693.41 m
+443.04 693.41 l
+B*
+BT
+12 0 0 12 427.04 684 Tm
+(AE\(Ní,N\). Thus,)Tj
+ET
+72 679.41 m
+88 679.41 l
+B*
+BT
+12 0 0 12 72 670 Tm
+(AE\(Ní,N\))Tj
+ET
+120.31 668.69 m
+127.08 668.69 l
+B*
+BT
+12 0 0 12 120.31 670 Tm
+(<V and)Tj
+ET
+159.07 679.41 m
+176.4 679.41 l
+B*
+BT
+12 0 0 12 159.07 670 Tm
+(AN\(N\))Tj
+ET
+193.06 668.69 m
+199.82 668.69 l
+B*
+BT
+12 0 0 12 193.06 670 Tm
+-0.0001 Tc
+0.0001 Tw
+[(<V)128.7(. By proposition 2,)]TJ
+/TT9 1 Tf
+8.88 0 TD
+0 Tc
+0 Tw
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(V\) implies)Tj
+/TT9 1 Tf
+4.8333 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+379.92 679.41 m
+397.25 679.41 l
+B*
+BT
+12 0 0 12 379.92 670 Tm
+(AN\(N\)\) and)Tj
+/TT9 1 Tf
+5.1092 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+454.38 679.41 m
+470.38 679.41 l
+B*
+BT
+12 0 0 12 454.38 670 Tm
+(AE\(Ní,N\)\). This)Tj
+-31.865 -1.1667 TD
+(contradicts the assumption.)Tj
+/TT4 1 Tf
+0 -1.75 TD
+-0.0192 Tw
+[(Theor)17.5(em 3.)]TJ
+ET
+132.98 644.41 m
+150.31 644.41 l
+B*
+BT
+/TT2 1 Tf
+12 0 0 12 132.98 635 Tm
+[(AN and)]TJ
+ET
+173.18 644.41 m
+189.17 644.41 l
+B*
+BT
+12 0 0 12 173.18 635 Tm
+[(AE remain conservative in the specialized program. The number of nodes in)]TJ
+-8.4317 -1.1667 TD
+0 Tw
+(the specialized program is O\(g)Tj
+9.6 0 0 9.6 219.3 625.8 Tm
+(2)Tj
+12 0 0 12 224.1 621 Tm
+(\) at most.)Tj
+/TT4 1 Tf
+-12.675 -1.75 TD
+[(Pr)18(oof.)]TJ
+ET
+106.27 609.41 m
+123.6 609.41 l
+B*
+BT
+/TT2 1 Tf
+12 0 0 12 106.27 600 Tm
+-0.0142 Tw
+[(AN values for calls, returns, and other nodes with multiple in-edges in the source program)]TJ
+-2.8558 -1.1667 TD
+0 Tw
+(and)Tj
+ET
+92.33 595.41 m
+108.32 595.41 l
+B*
+BT
+12 0 0 12 92.33 586 Tm
+(AE values for edges leading to the above nodes remain unchanged in the specialized pro-)Tj
+-1.6942 -1.1667 TD
+(gram. Consider a shortest path S...N such that)Tj
+ET
+294.65 581.41 m
+311.98 581.41 l
+B*
+BT
+12 0 0 12 294.65 572 Tm
+(AN and)Tj
+ET
+335.3 581.41 m
+351.3 581.41 l
+B*
+BT
+12 0 0 12 335.3 572 Tm
+(AE are conservative for all nodes on the)Tj
+-21.9417 -1.1667 TD
+(path but N. N should be an internal node of one of the replicated subgraphs, i.e. it is either an)Tj
+T*
+(assignment or a conditional branch with one in-edge, because the path is the same as it would be)Tj
+T*
+(in the source program, and)Tj
+ET
+203.3 539.41 m
+220.63 539.41 l
+B*
+BT
+12 0 0 12 203.3 530 Tm
+(AN and)Tj
+ET
+243.96 539.41 m
+259.96 539.41 l
+B*
+BT
+12 0 0 12 243.96 530 Tm
+(AE are not changed for other nodes.)Tj
+-14.33 -1.5833 TD
+-0.0283 Tw
+(Let Ní be the immediate predecessor of N on the path, and let Nî be the immediate predecessor of)Tj
+0 -1.1667 TD
+0 Tw
+(Ní. By the assumption,)Tj
+/TT9 1 Tf
+9.5 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NîNí\)\) ==>)Tj
+/TT9 1 Tf
+8.3558 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+308.58 506.41 m
+324.58 506.41 l
+B*
+BT
+12 0 0 12 308.58 497 Tm
+(AE\(Nî,Ní\)\). If Ní is an assignment, then)Tj
+ET
+72 492.41 m
+88 492.41 l
+B*
+BT
+12 0 0 12 72 483 Tm
+(AE\(Ní,N\)=)Tj
+ET
+127.08 492.41 m
+144.41 492.41 l
+B*
+BT
+12 0 0 12 127.08 483 Tm
+(AN\(N\)=R\(f)Tj
+9.6 0 0 9.6 183.83 480 Tm
+(Ní)Tj
+12 0 0 12 193.96 483 Tm
+(\()Tj
+ET
+197.95 492.41 m
+213.95 492.41 l
+B*
+BT
+12 0 0 12 197.95 483 Tm
+(AE\(Nî,Ní\)\)\). If Ní is a conditional branch and \(Ní,N\) is the ìtrueî)Tj
+-10.4958 -1.1667 TD
+(edge, then)Tj
+ET
+124.32 478.41 m
+140.32 478.41 l
+B*
+BT
+12 0 0 12 124.32 469 Tm
+(AE\(Ní,N\)=)Tj
+ET
+179.4 478.41 m
+196.73 478.41 l
+B*
+BT
+12 0 0 12 179.4 469 Tm
+(AN\(N\)=R\(\()Tj
+ET
+236.15 478.41 m
+252.14 478.41 l
+B*
+BT
+12 0 0 12 236.15 469 Tm
+(AE\(Nî,Ní\).s[1],...,true,...,)Tj
+ET
+360.11 478.41 m
+376.1 478.41 l
+B*
+BT
+12 0 0 12 360.11 469 Tm
+(AE\(Nî,Ní\).u[m]\)\). If \(Ní,N\) is the)Tj
+-24.0092 -1.1667 TD
+(ìfalseî edge, then)Tj
+ET
+160.63 464.41 m
+176.63 464.41 l
+B*
+BT
+12 0 0 12 160.63 455 Tm
+(AE\(Ní,N\)=)Tj
+ET
+215.71 464.41 m
+233.04 464.41 l
+B*
+BT
+12 0 0 12 215.71 455 Tm
+(AN\(N\)=R\(\()Tj
+ET
+272.46 464.41 m
+288.46 464.41 l
+B*
+BT
+12 0 0 12 272.46 455 Tm
+(AE\(Nî,Ní\).s[1],...,false,...,)Tj
+ET
+400.42 464.41 m
+416.41 464.41 l
+B*
+BT
+12 0 0 12 400.42 455 Tm
+(AE\(Nî,Ní\).u[m]\)\). The)Tj
+-27.3683 -1.1667 TD
+-0.0183 Tw
+[(above equalities hold because \(Ní,N\) is the only in-edge of N. Now)59.2(, Theorem 2 reasoning applies)]TJ
+T*
+0 Tw
+(to derive the following:)Tj
+/TT9 1 Tf
+9.6658 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\(A\(I,S...NíN\)\) ==>)Tj
+/TT9 1 Tf
+7.9117 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7633 0 TD
+(\()Tj
+ET
+305.24 436.41 m
+321.24 436.41 l
+B*
+BT
+12 0 0 12 305.24 427 Tm
+(AE\(Ní,N\)\);)Tj
+/TT9 1 Tf
+4.8875 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\(A\(I,S...NíN\)\) ==>)Tj
+/TT9 1 Tf
+7.9125 0 TD
+<005c>Tj
+/TT2 1 Tf
+0.7625 0 TD
+(\()Tj
+ET
+481.14 436.41 m
+498.47 436.41 l
+B*
+BT
+12 0 0 12 481.14 427 Tm
+(AN\(N\)\).)Tj
+-34.095 -1.1667 TD
+(This contradicts our assumption.)Tj
+0 -1.5833 TD
+(Let e)Tj
+9.6 0 0 9.6 96.32 391 Tm
+(i)Tj
+12 0 0 12 98.99 394 Tm
+( be the number of in-edges for the top node of the i-th subgraph, and n)Tj
+9.6 0 0 9.6 436.26 391 Tm
+(i)Tj
+12 0 0 12 438.93 394 Tm
+( be the number of)Tj
+-30.5775 -1.1667 TD
+(nodes in this subgraph. The number of added nodes is less than e)Tj
+9.6 0 0 9.6 383.63 377 Tm
+(1)Tj
+12 0 0 12 388.43 380 Tm
+(*n)Tj
+9.6 0 0 9.6 400.43 377 Tm
+(1)Tj
+12 0 0 12 405.23 380 Tm
+(+...+e)Tj
+9.6 0 0 9.6 433.09 377 Tm
+(r)Tj
+12 0 0 12 436.29 380 Tm
+(*n)Tj
+9.6 0 0 9.6 448.29 377 Tm
+(r)Tj
+12 0 0 12 451.01 380 Tm
+(, where r is the)Tj
+-31.5842 -1.1667 TD
+[(number of the replicated subgraphs. Apparently)63.3(, the following inequalities hold: e)]TJ
+9.6 0 0 9.6 465.17 363 Tm
+(1)Tj
+12 0 0 12 469.97 366 Tm
+(+...+e)Tj
+9.6 0 0 9.6 497.83 363 Tm
+(r)Tj
+ET
+501.03 364.69 m
+507.8 364.69 l
+B*
+BT
+12 0 0 12 501.03 366 Tm
+0.0001 Tc
+(<g;)Tj
+-35.7525 -1.1667 TD
+0 Tc
+(n)Tj
+9.6 0 0 9.6 78 349 Tm
+(1)Tj
+12 0 0 12 82.8 352 Tm
+(+...+n)Tj
+9.6 0 0 9.6 111.34 349 Tm
+(r)Tj
+ET
+114.53 350.69 m
+121.3 350.69 l
+B*
+BT
+12 0 0 12 114.53 352 Tm
+-0.035 Tw
+(<g. Since e)Tj
+9.6 0 0 9.6 167.46 349 Tm
+0 Tw
+(1)Tj
+12 0 0 12 172.26 352 Tm
+(*n)Tj
+9.6 0 0 9.6 184.26 349 Tm
+(1)Tj
+12 0 0 12 189.06 352 Tm
+(+...+e)Tj
+9.6 0 0 9.6 216.92 349 Tm
+(r)Tj
+12 0 0 12 220.12 352 Tm
+(*n)Tj
+9.6 0 0 9.6 232.12 349 Tm
+(r)Tj
+ET
+235.31 350.69 m
+242.08 350.69 l
+B*
+BT
+12 0 0 12 235.31 352 Tm
+0.0001 Tc
+(<\(e)Tj
+9.6 0 0 9.6 251.41 349 Tm
+0 Tc
+(1)Tj
+12 0 0 12 256.21 352 Tm
+(+...+e)Tj
+9.6 0 0 9.6 284.07 349 Tm
+(r)Tj
+12 0 0 12 287.27 352 Tm
+(\)*\(n)Tj
+9.6 0 0 9.6 307.26 349 Tm
+(1)Tj
+12 0 0 12 312.06 352 Tm
+(+...+n)Tj
+9.6 0 0 9.6 340.6 349 Tm
+(r)Tj
+12 0 0 12 343.79 352 Tm
+-0.035 Tw
+(\), the number of added nodes is not more)Tj
+-22.6492 -1.1667 TD
+0 Tw
+(than g)Tj
+9.6 0 0 9.6 101.66 342.8 Tm
+(2)Tj
+12 0 0 12 106.46 338 Tm
+(.)Tj
+ET
+endstream
+endobj
+67 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT9 20 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+68 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 701
+/CapHeight 0
+/Descent -298
+/Flags 4
+/FontBBox [-167 -299 1063 827]
+/FontName /EIAKML+Symbol
+/ItalicAngle 0
+/StemV 0
+/FontFile2 69 0 R
+>>
+endobj
+69 0 obj
+<<
+/Filter /FlateDecode
+/Length 3842
+/Length1 6592
+>>
+stream
+HâºóxWU«ﬂÁû{Ôw¬ƒ±H%X€Ç9i,úi"6hBöHÁ⁄`åeåæ¸‘åo®DSà¢Eã–t)˘‡BD2#‚DCÕï§aFDh—2#‚A‰ˆ>Ô}I´ˇ|¸Ó˘ºŒÁ«˘˘9Á‹{ ùëU]S3'zÀ˛
+0√È03>w\fQ2kÒ¬¨y◊%|⁄w ﬁÄŸãƒÈüÿ6ñ~mM|÷∏Åyó”ﬁL˚í⁄Ÿ’{€€Áâ‘⁄∆9ı’4¶—>HªeŒ‹eµ˜æV
+Ù_
+u≥´kv_;öˆ@ˆèÀÎËH}⁄€¿ÆÁ“ZWøpÈö;ß£Ωñ}æyQ|°â≠∏à=»¯‹π≥™ÔKo?8ﬂ≠am}ı“∆îgÕmÏØéÒ¨y’ı≥Øï∏∏∞Üq€∏`vcÂóﬁ§\HIm\––∏ÃﬁT§e|Ë¢˙/‘æÏ=¬Xˇ∑û(¬œ){(OPˆRûÏ]ﬂ˚Î¡~å∆Ìﬁjå≈tt¢“√6≥kL>V3:[±]îQ»Gïmgù”Ë∆Nt{xÜV-
+ºÅ,ß`kµyûóÅEË4–ÈıÛ∆ö±…k3À±3êÈÁ≤Êqî€Ì®G°w?*˝õΩU1 Ó›ÉE&qTzW{SŒÒ–Íü¿®`"*8:–nÎΩ£±JõìÏΩØ‡Fz£0-ﬁLŒtóÈ6;Ãsÿ+√sfè9mˆ%˙´Â*/@O–âﬁ Ã«⁄É0÷˙…∏Àq&Üq˛NjÕ˙‡≥âÎü ’˜† ±é˛ç¨◊Å€ä|Àô„uîÚoòm•ß0HPﬂÉªPtcÜi√¢∞âπbÃÓ0€Ph[ÉÑÈí›™s$Ã@ëüÌÂÜï∏ØﬁÔ ñ ·ù`ÕÌx5hÒ⁄ôèÙ†ÕKòôΩ9¡î†kÇ`f≤YVpG2É„(3èy˘H≥ÌfÀŸ‹˚º£^j85¡1”cNÜ#¬≥-8È	”éƒs:,4ª¬¢∞[$ò«]∑ÆZa%.—›Í=_¡í9u∫KKj÷πíWs°44∆oA*0ØzÆÀØy˜yﬂz√≥“:ºúkj:∆}∂<Î©≤Ûáø«ÃJãeu`j«πÀ≤vF—‘rPpCG0∏√Ê§t¯9C˝ø‡°¸·ì¶ñgÌ4±	≈…n'T”y]9Ug—MˇÑ‚|=F∏ê∂∑˘¨Hô~fÀ[SöˇÎˆt˘˚Q+Ìü0,º-x≈Gt*‹ÇÊ∞U¥+)U~f0^NYÌEoÚ°4ö≤ô2&©RÚ(”(Eî2 dØõ)ÀÿﬁıQÓJ€Ç&ˆ9Õ	«Í±∞…lƒfW⁄B,≥[±ïı*ﬁ7n≤]πﬂÜˆ8ñ”_n‡∏5‚D%ajÈ˚µ_f«ËœÙè /x…µcõ–0aÊ'˚™WŸm2bGw‚ÙîÈxê˝åb≠NÇ&Ø,h¬]AWt"òéø#˝√Ê$ËB^–√|lAı±¨óÀ`ŸÖ‹`Ê≥úŒ>F¯q „HgõÏ`ÖÉ0ë±Åaº 9è’∂ÁXB…ÂÈ~s~⁄ÎÁ÷HˆMdSøö“ƒ:%6Åi6=Á∑E'/§@–ù‰<&∫=2ßê`øÎ√qJ6e?•ôÎ€ß7D8ø'.n›Ôé≥çπ)v‚tÊß)(Fi2÷NπóÌ[¬£f2˜c™ÀW∏¡‰⁄tÏJJ≥÷/·•<Î∏ÆëN∏ˆÙ`{tÇ}å·\ÍYßÄu[íí„$vƒåµ«ÕÊeFo)ΩˆlÈü‡^w{˘)àñ'€qLsö≤ü{=”I,”ådY")E'ÛS…‹ª≥ì…µ4Ò)2SÁ˛HÚ∂Ù/ì3ÑÂÌ7,{cñæ¡ÿÀ∑9"˛N´˜˛<uiŒ÷à¢›Ô.Õ¯»[aúÅ5æh—Dz“çGD‚ÒmÒ¥¯ñxJ<)˛K<!˛S<.˛C|S¸ª¯Ü¯7±G¸´xL¸ã÷˘gÈØ„5‘ `È,ß[ï˛'Òà¯GÒ∞¯Òê¯™¯;Ò†¯[ÒeÒ%Ò7‚ÒE|ÌE°ıÇ|/P˜ÒKÈœ'È<œIV¸Ö¯û"üñæO|JÏü‘‹˜JB‹#vä?wâ?">Ü„ZŒÎ±^+zû„;èÂ◊¡£Ë«»Nú/k#èÚÕ“Á"ñGﬂù§Gp)πùÔ;>¬√¸R(dΩá˘~≥§´∑M#¸HsÌ¿C1`È|Ò˚d1-Ásñik≤±§Î·áòD}ã⁄< ﬁ/˛@}∂„
+Ú>È˜ ˇ}ç~è<w'˚ªõﬂHŒr˝9è≈˜‘n∆ìﬂÂûX¥©ıw4⁄FÈﬂ[›9∆∑IrÉ<ﬂø°÷+˙uqù∆\´Ë]<…w™Nã¢_◊hOø™:´≈;p±cÙÁvª<∑â´íggÆ¢ÂtÀ∑˝J≠'°	Ì€J≠ßô˘;»H≥"ÕÿÕ»
+,Á®Å"ñt^é/„J˙\ƒí.#Œ„n´k˘%ÒV‹¢Z∑ˆZÁ’Z&œRqâ∏X´^4æ˜^«± ÿ2ﬁk©•ÛX~ø5j˜Á+“àÌ~£vøQsk¿<\D_ÉvøAssã/™Mù8Gú-Œ?/Vä7â‚ç¸nuw˝FY34œ§óãüßã◊ã”ƒÎ¥Se“ßä◊äSƒœàì≈IbIÙ{ŒÙ”Í¢<≈∫—üí~µ8^ß’åï~ï8FºR-^!±µÂôs˙(Ò2±PºT,†œÚ´œÈ#ƒOà˘‚pîêy“?./F.«X:+W'Ù"È9‚PúG·ó∂≈«x‚-≤Âœbé,ø∑]˝è ì!}∞8h|Ô9¯à8Pc_®ZàÁãN2çŸÄ˛1`È|B:≥∞t#¶'cÈ∫çN∑lsFtmœ”ÌÍ'œπb™ÿWÏ#û#¶à1å$C>]-ÙéÇﬁQ∞¢ßªÂ©g£˘WqıUÙÆ`Ôk)õ)î›îåôº™≈ƒÛ>ê>òaﬁœ_∆æ‹˜∆pf-‡yxÁ{£ÛÏsØ‹;%`>˘O$˜)•_ÓŸ9ô}ÔC_˛≈òÔ‘S_Ì±MUa¸ú˚Ïz◊Óﬁ>÷≠Îm◊vÌV(Îv∑≤-l¨(∞ç!∞ a0≥a‹dô.FhsÂ°SÅ?ˇêå”aÖâ3®îàëh"e—ÑîGÊ‚£;ÛªóA"ëƒˇ1_œΩø{Œ…È˘ﬁﬂ{mZÊ… ‚¡∂2a≈éÏ&¥îÿÅN¥%v"'ú„B.8'H Îu√Nê VÌÖù9@,XæfÚÄXõ ‡t‡QxñZ/Õ ª¿;À5* ∑†òﬂ$†≠£Ùm€ o◊¢Ÿaàå‰ô#0ˇ1‰ xWπBê´œ"·Å*K}Ê©†Ô±¶wÀ6œjÌ]Aó~Q≈û]Ä)‘H∫ôF∂W≥g[$ÖÅ¶@«R
+_.Dbl86\`ñ‹íœ-πî‹Bg%Øìnﬁ¯€ùV.†˛◊J®ïuÙ;‡e≥">]äÖ3õ¿Í˜)=∑'ïŸmëho6ı):•≤8M∞à±Ú®b+É„ìÂ7î´0ƒO $SYY.≤∫y7å‹oÿ]‚Üa£û!‡s„ÉwÍ{>ƒE›§Ñä‹^NùÏ‹ﬂygyèˆTÔ;¿6Ç‘Î#”Ãº!œ~‹ÎIßÌË=œfkœ≤YEîG3zôÒâ≤’ÂÀÛqÆ,üyäªÖüÅüT&©w1¡ıBÂ#cpS1°ﬁMÇÎ˘îÈ%E åô8\Ly=î’ínÉœ"'ûÅ√~.FÓldµ ﬁ l®‚C„óùæı≈Ö[}G∆/Ö∏™…;d?ããqo'c∑˚k6êºŸıÁÈo1E&Æú˘=õÏ√Áµq˙◊c8Hbc_ë_Çmjvô∏∆vwf∞√©hadä» π◊oÎÕFFNüΩŸﬂÙ1ådÙ§Òåáµ§Ÿ-≤◊.Çb,ããüâó¿ä"iÇè«cQeXL Eª∆ò7O≈é˜™±¢ °$öäŒFí®ÚO™˜Ëö[X»VÆ=∫.¬2jSbË¬ÕõÜd‚V≤óƒ»7d/ﬁB˝QÚ$©_TZ∫]T∫ªq=9F~ ?í„x)}çtêArñt‡]∏®¥ﬁ¬∂¸®.r•[ç&õ÷Ò“€^‘ïs¿ë©ß˘.ªN2e¶8Y<r–ôkÌÕr∏Ï~q4ÆDG„‚ue,ÍRò∞)c	%L`#∂J†0´;˙ìä˝*Øü…ªY“^∑`«¯˛∂'ñÓ‹≥¨Æ}¸µÍ⁄Ÿã¨ã≠ﬁò‹÷\EtÌFzCKMMKÚç¶yÍwU3Ω{c5¥∏Z∂FÏe‡ÄÉ8B˚"´2=éå)íëGá¶àâ2M3vÂ!oeF]ïë¿ÂËígÎfß÷rµ‘›í‘‹
+™)∑—¢gd´”Åå¢1€HH/˚ù öñÊt9CN⁄Èx¯¶ÚxÉWïıet§∞Ö H¨°\”∏ˆV-XÛ0Õx˝>p2ëq*@ÜµﬁD®0\ú„kÚ†€Nıù"[˚˚˙˙Ò¡Á¬ˆJ2@Fñl}˚rù|Ñ#ÿπ∞ÉjbJí?Ü˙˚ÜL¶°æ˛siGÕ]+Ën[“™®@Ä™Y#Zn|~S/<5áRc«ƒ≈â[Ù:˙<ƒ Âë¢îìünÁÇπynÉ(∞“} àr˝<wè∏%$;Õ˘Ö©πy∫@∫9¿ÕŒêç%£‡¨6ï9’¨G£Ò®x.!i‹J⁄J∂úå-Èöë[-ú◊„óäßóxr˝^’ÿgÇı´k∏H]ÀÖûîõRZ5ó-lﬂ˘RÒ¢V^ˆtÍT˛ß w3V5Z_ï+©§Ë∫∫˙Òì+∑>Ø{˜ÕlD;(Æ¥¯ïVÉ,S≠å~›ˇ!≠ˇGä=:·ÍËÿ=¢*ˇù¯ëV4ﬁØ˜≥%ÿ0âUüµ√*bR`∆˘¸.¶†Vò5â’z¥n3Äõ&1∏sNÕ¨⁄Ûß.nkY˚LÛ√?†y©Åk°ü·|1¥@-h-§˛fh÷C;≤–≠…yÿæGY—∏<]5•UßµR‚F'`kÎ0Ætxø_ïV˛+∆:M,Gæ|yÁΩzÇK˜wPì÷]©°ø 0j¢
+endstream
+endobj
+70 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+71 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+72 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+73 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 32
+/FontBBox [-166 -225 1000 931]
+/FontName /Helvetica
+/ItalicAngle 0
+/StemV 88
+/XHeight 523
+/StemH 88
+>>
+endobj
+74 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 32
+/FontBBox [-166 -225 1000 931]
+/FontName /Helvetica
+/ItalicAngle 0
+/StemV 88
+/XHeight 523
+/StemH 88
+>>
+endobj
+75 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 701
+/CapHeight 0
+/Descent -298
+/Flags 32
+/FontBBox [-167 -299 1063 827]
+/FontName /EIAMAH+Symbol
+/ItalicAngle 0
+/StemV 0
+/FontFile2 76 0 R
+>>
+endobj
+76 0 obj
+<<
+/Filter /FlateDecode
+/Length 3466
+/Length1 6452
+>>
+stream
+Hâºó|ïU«?Á9œÛ‹iÁZ ¡bÊƒ±tNƒâË†9hMúkÉ1ñ1v·m¡º°L4ä-B3RÚÖ7D$#b°ND‘\âfDD.3"^à‹>Á≥K˙≤˙œówØÔ˚|úüﬂsŒÛ<ÉêE¯S[W7'˘∂˝5`&:ÔÃÿ‹ypqò¢lVcm4Îˆí–w}u≥5ÁÃõ˜©ﬂxY≥-à±ﬁ$¿Ó`È◊◊≈fçÈ_p9Ì]¥/©ü]€‹€ü}ìHØèŒi¨ÌÕ†}äv€úπKÍ/üpm_‡ºv˙.jò][∑kÚ»r‡|øºÅéÙßΩµÏzÌ!çÕ7Øºs“P⁄	÷x”¬X≥â,ªà<√¯‹πM≥jWæ±äÌ≥ÁÔj¨Ω9öˆ¨πù˝`<g^m„Ï‚+ßV˝^b‹FõbÕ∞n~˝∂ªxt¡ÏhıórmiWP“£ö¢KÏçÃEF)ÎYÿ¯≈˙WºGŒÁ|‹˙íI¸í≤õÚ8Â	 ìΩÎ˝ ~=ÿáë∏√[Å—òéNTõ£ÿb÷`•)ƒ
+FGb3∂†ã2Ö®±YÁ∫±›^ˆ“™Gë◊üÂ$Lc≠œÛ≤±ùf-:Ω>ﬁhÛ ÷{f)6`˘˘¨yïv+QÏ›èjˇ&o9∑>Ê›ãÖ&1T{◊xìŒÚ–Ó«à`<™∞	l¥çﬁëH5JÕ	ˆﬁÄWq√Ωòâ6o&g∫”tõmfø9‰U‡9≥€ú2˚Ç2˝’ªƒ£'Ëƒ6o ÊcÌm˝Tºåˆ Â¸ù‘õ5¡^≥ûÎü¬’˜†Îp7˝ÎX/Å"€éBÀô„uîÛo®mßß8àSﬂç’®∫1√t`aÿ¬\1f∑ô-(∂ÌA‹t…Ê	D¶9f£ƒœıÚ√j‹Å◊ÉÑ7 €è≈à{«Ys+^⁄ºçÃGf–·≈ÕÃﬁú`RPÅïA≤òô\ñU‹ëA¡1Tò«ºBdÿçf”ô‹{º#^z8u¡Q”cNÑáyfKp¬‚¶3éQÊTXlvÜ%a∂à3è;o]æ4â€pâÓZÔ˘
+œi–›Z\◊‹‡J^›fhä∆nA:0ØvÆÀØyÔy	ﬂz√r2^ﬁuuâ1ü≠ÃyÍ˙‹¬aÔ3s2"9	LIú≥$g{29•“\ü&l^Z¬œ|ˇõ0•2gªâå+Mu;Æ¶îŒ©ïTùE7˝„Jıò·B:ﬁÈ‡]õ~z”€“ZˇÎˆt˘˚P/Ì$ü8,ºMx’GÚd∏	≠a	jhWSj¸:Ã`ºí≤¬+Iæ≈á‘H  ®î^L)†L£îP*(Ωl†,a{◊G•+mZÿÁ4'´«Ó«z≥\iã±ƒn∆f÷´
+xW‹∏©vï~÷⁄cXJy∏ñ„÷a∞Wî,ÛPOﬂo¸∫‰!ˆwî˛A˛a§/ªvlf ¨¿¸T_ç*ªMv‰0bNúû6≤üÏØ›I–‚U-Xt%è”Q‰wc∏Cù](zòèM(°>öı≤#Ÿ,ªê≈|ñ”Ÿ«≈~å≤ôlì,«Äp ∆3÷?¨Ç§c<Á±¬ñ√„À(˘#”/`ŒÔEc}‹i√æÖ\Í◊PZXßÃ∆1Õ∆ìœ˘…å”ü¥$Op„›ôìà≥ﬂ5aà%ó≤è“ ıÌ—#é,Œ/œâÀÖ[˜˚Ö„lanJù8ù˘i	JQûäm§‹«ˆm·3ë˚1≈Â+\kÚm&v¶§’	ÎóqårûáªπÆ·N∏ˆÃ`kÚ8˚≈π4≤NÎ∂•$œI‰∞mèômÃÀåﬁRz˝ô“?ŒΩÓˆ
+”ê\öj«1Õ) >ÓıL'ëAf8À2I9:ôüjÊﬁùùA\Kü"3uÓˇá§nÀŸ‚erÜ|ü•”¶bñæÅxÇo{$˘√ª≠ﬁˇÛ‘•9S#ô‹ıﬁ“åMzÀLÄ”∞∆-ZHO∫·à§xZ|G<%æ-ûOàˇèãˇèâˇﬂˇ.æ)˛MÏﬂèä’:ˇ"˝u¸uX:ÀÈG§ˇI<,˛Q<$˛A<(æ&˛N< ˛V|E|Y|I‹/æàØ"õ£Ωà¡¥^êÔÍ>~%˝˘ùÁ9Èœäœà{Ò˘¥Ù=‚Sbó¯§Ê˛ÑÙ«≈›bß¯qß¯sqá¯3Ò1¸ì9Ø«z≠‰Ûﬂy,øEF∂£Ø¨eå< 7oHüãXr}€tí¡•‰Væ{Ïÿ$ÊóB1Î=Ã˜õ%]Ω-·'ökqƒÄ•Û=ƒÔìE¥úœYn§Õ©\ƒíÆácıMjÛÄxø¯#ıπWí?î~ü¸?–Ë˜ sO™ø{¯ç‰,◊üÛX|_Ì÷c,˘=ÓâEáZW£≠ì˛±›ùc|WêkÂ˘ñ¯Mı∞F—oàwkÃª]ÕìlqßÍ¥)∫J\©=˝∫Í¨øÜìornw»sª∏<uvñ„jZN∑|€ﬂ¶ıƒU#Æ}ªMÎie˛0“™H+v1≤K9j†à%]Üó‚+∏ä>±§ÀàÛ∏€ÍZ~Yº∑®÷≠Ωñ∆πEµñ»s≥∏X\§U/€{ØcXÄqlÎµ‘“y,øﬂ¢⁄˝˘äD—§›èj˜£ö[Ê·˙ö¥˚MöõÛX|Imƒ9‚lqñ¯±ZºQ¨o‡w´ªÎ7»ö°y^/ΩR¸º8]¸ú8Mú™ù™ê>Eú,N?#N'àe…ﬂs¶üVˇ„Â)’çæV˙5‚XqåV3Z˙’‚(Ò*q§x•X¬÷ñgŒÈ#ƒÀƒbÒR±à>ÀØ>ß_,~J,á°å,ê~ë8Tº˘#`È¨|ù–§ÁâCp.9ò_⁄ü‰â∑»ï?á9≤¸ﬁvı?!O∂ÙÅ‚Ä±ΩÁ‡„bç}æjı˚äK1ÉŸ…¬y1`È|E&≥∞t#f¶bô∫çN∑lsZtmœ’ÌÍ#œ9b∫¯ÒlÒ,1Må`8ÚÈj°wÙéÇ=›-O=ÕøÜ´Ø°w{øã≤Åí†Ï¢D`ÃƒÂm&V°¸·ÛA˛≤ˇÛ•‡æ7Ü1kœ√ªﬂg3œ>˜ ΩSÊìˇD˛õ˝™çi´
+√ÁÙﬁﬁ∂‹“/Ëä-î~X()Î≠¨°`qïØ9ùcshÊ¯R6D˘û…¢»6ù≈cFàQ≥-ö4Qc∂˘c∆∞‘Ø§˙´31¡%s,—§1∆†ÒG◊˙‹€Bƒ81f?ΩOÔÈsœ===Á}ﬁsﬁÛB'πñáfärÔPœ2ÿ[â∂1Úî 2¯÷mxc$FïL‡•§‘ÃC≠2p31£ürRé~, Ôµ¢•‡·’v¥ºê¬Û®qR¨õ*pÄ, +ä« ŒKu´3,Œ†|ê¥¢˛	Ä'£ÿ£Ú∂1	q7;ÖùëGú9ç˙OÉxÃ]ò˝"@´/˛/ß,°t
+‰¬]˝'s«6[ó¯]œl?,p€s‡“óôc˚§oä˛là(X$r©Ñ%ûƒR¬G4…D2·-“Zµ´÷⁄«íÙcJ_œÃ…Tøˇ2ÃU	∂Ô ^óÆH{0.Ê1	ª%ÕzeµøN·$VÛ—rù”√i|*Ëôn3ô£Æjõ√¢¨kP8J¢DÔofå•öâ*‘≤-\õ&Ωúå„O„Zù!§Ö¥π[@√YˆØ§4ü}˝ÕO˛ê÷Ú“TÿmúæxìLEQ÷¯Ô®uS©X_¥ÍÌ6âÃLÖZÉä⁄mïb≠P÷¯7Èã9¥êúzz[t€˝∂''FﬂöºÛxhté>øª3ÿ@gùW;Ô}ßis4d⁄ÒÚÉ-g;ˆ]=≥∏¯≠√t!66u|°ÊfgÌ©éΩ{≥◊Êªüã÷Õ¸º4îàV9•.W¶rﬂcï[Ì√›=ù?Ú·+/~7–{®Ó•ã£˝ÉoÔŸˇ‘:ñ˝ëN‡t«}§Ä9°Qrj¢RjVRòÚ ≤∑vu†˙±fØØ©ŸÎmÓÚ¥4˘|M-–∞ÉXï‰}Q√“H!7√íILŒ)ïkí·Ñ›§SK)/µE∞™ts^∏©!6<f.≥ãù`Ê·©{"n‚„å¨L≠∞0%sVSfÒÀÊù∑ÕÁ∞ÿå⁄bµQŒ©ãπj9©v¯öd<ïL	íÖ÷>ÇXq®éß¸PJ'à%®£jk¥¢Lı¥∆Lss âR	uπ
+(H–îÓ
+µçø˙qÖ”µŸEiw«˛‘Û˙‰C„…¥€È©ísih∂ó∂f(£kÔª€KÂE∫·CÔ}p~·ÒEïSô≈2ß{Î=∫/w∂Qeò˛&ÃÙ2U±1…GXAÜHëÃ∞UÜ”$ìÇπìÈ∏ó⁄µÇëb±ÙeXHEÀcπl≈∫ó÷˝?Å≤‡‡:ú¸ˇ‚~ñ€Ôä·˘`‘àõ˚€<s›≈à•,ˇ§\ˇ“¥ÒÔoÂÂ_%Æ[ÿ)ã∏B›‰b¨¥‡$ÊFúyóú£ƒ∫ÁÏµÏ’Ï‡hv<oÕ?_ÃÜˇ%'}kQ∏ê¨F º0œ90£†´@ç12«%acûgº˚ÚúÔœs|˙Ó÷∆Ìç-ÆˆÉÉ=C7@B–ä∑„nÅ9€ëVíÑ”ª≈¨[Ln÷Óøºg˘92æ#O|¡πd? ◊§"ƒ6%üûËÔTá•T.öÂÙW/<+|1:≥p„5˘˜Üh≠º
+0 ∏ÎÄ
+endstream
+endobj
+77 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+78 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 653
+/Descent -250
+/Flags 98
+/FontBBox [-169 -217 1010 883]
+/FontName /Times-Italic
+/ItalicAngle -15
+/StemV 76
+/XHeight 441
+/StemH 76
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 148
+/Widths [250 0 0 500 0 0 778 180 333 333 500 564 250 333 250 278 
+500 500 500 500 500 500 500 500 500 500 278 278 564 564 564 0 
+921 722 667 667 722 611 556 722 722 333 389 722 611 889 722 722 
+556 722 667 556 611 722 722 944 0 722 611 333 0 333 469 500 
+0 444 500 444 500 444 333 500 500 278 278 500 278 778 500 500 
+500 500 333 389 278 500 500 722 500 500 444 480 0 480 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 333 444 444 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 70 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 122
+/Widths [250 0 0 0 0 0 0 0 333 333 0 0 0 333 250 0 
+0 500 500 500 500 500 500 0 0 0 333 0 0 0 0 0 
+0 722 667 722 722 667 611 0 0 389 0 778 667 0 0 0 
+611 0 722 556 667 0 722 1000 0 0 0 0 0 0 0 0 
+0 500 556 444 556 444 333 500 556 278 0 556 278 833 556 500 
+556 0 444 389 333 556 500 722 500 500 444 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 71 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 223
+/Widths [556 556 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 72 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 146
+/Widths [278 0 0 556 0 0 0 0 333 333 389 584 278 333 278 0 
+556 556 556 556 556 556 556 0 556 556 278 278 584 584 584 0 
+0 667 667 722 722 667 0 0 0 278 0 667 556 833 722 0 
+0 778 722 667 611 0 667 944 0 0 0 278 0 278 0 556 
+0 556 556 500 556 556 278 556 556 222 222 500 222 833 556 556 
+556 556 333 500 278 556 500 722 500 500 0 334 0 334 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 222 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica
+/FontDescriptor 73 0 R
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 223
+/Widths [500 500 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Helvetica
+/FontDescriptor 74 0 R
+>>
+endobj
+20 0 obj
+<<
+/Type /Font
+/Subtype /Type0
+/BaseFont /EIAKML+Symbol
+/Encoding /Identity-H
+/DescendantFonts [ 79 0 R ]
+/ToUnicode 80 0 R
+>>
+endobj
+79 0 obj
+<<
+/Type /Font
+/Subtype /CIDFontType2
+/BaseFont /EIAKML+Symbol
+/FontDescriptor 68 0 R
+/CIDSystemInfo<<
+/Registry (Adobe)
+/Ordering (Identity)
+/Supplement 0
+>>
+/DW 1000
+/W [
+38 [548]
+49 [768]
+79 [741]
+87 [768]
+92 [763]
+111 [438]
+]
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 181
+/Widths [250 0 0 0 0 0 778 0 0 0 0 0 0 0 250 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 549 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 713 0 0 0 
+0 0 0 0 0 576 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /EIAMAH+Symbol
+/FontDescriptor 75 0 R
+>>
+endobj
+34 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [556 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 77 0 R
+>>
+endobj
+49 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 250 333 250 0 
+0 0 0 0 500 0 0 0 0 0 0 0 0 0 0 0 
+0 611 611 667 722 611 611 722 0 333 0 0 556 833 667 0 
+611 0 0 500 556 0 0 833 0 0 0 0 0 0 0 0 
+0 500 500 444 500 444 278 500 500 278 0 444 278 722 500 500 
+500 500 389 389 278 500 444 667 0 444 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Italic
+/FontDescriptor 78 0 R
+>>
+endobj
+80 0 obj
+<<
+/Filter /FlateDecode
+/Length 254
+>>
+stream
+HâTêÀNƒ Ü˜<≈Yj\–2ùÍ$â©õ.ºƒV˜*â•Ñ“≈ºΩ@Î@æˇ‹¯mªßŒö ÙÕœ≤« ⁄XÂqôW/Œ8%edÿ)ﬂrh,Ó/K¿©≥zÜ¶!Ù=ó‡/p3ßª‚Ë´WËç£R±èœ®Ù´sﬂ8°P Á†P⁄>˜"&öˇƒ·‚XÊrü=+\úêËÖö¢`5OO≠9†Uˇ„§ﬁ™ŒZ~	O~≥´ûËP&*£ò®“©”·ÙêÈxüÈqÀ< ç∂ÃzÀl+N‚ÃΩ{öû6su#WÔ£—ºæl'1Øv≥KNá¸0 øx˚
+endstream
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+14 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 16 0 R
+/Contents 15 0 R
+>>
+endobj
+17 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 19 0 R
+/Contents 18 0 R
+>>
+endobj
+21 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 23 0 R
+/Contents 22 0 R
+>>
+endobj
+25 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 27 0 R
+/Contents 26 0 R
+>>
+endobj
+28 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 30 0 R
+/Contents 29 0 R
+>>
+endobj
+31 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 33 0 R
+/Contents 32 0 R
+>>
+endobj
+35 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 37 0 R
+/Contents 36 0 R
+>>
+endobj
+38 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 40 0 R
+/Contents 39 0 R
+>>
+endobj
+41 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 43 0 R
+/Contents 42 0 R
+>>
+endobj
+46 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 48 0 R
+/Contents 47 0 R
+>>
+endobj
+50 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 52 0 R
+/Contents 51 0 R
+>>
+endobj
+53 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 55 0 R
+/Contents 54 0 R
+>>
+endobj
+56 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 58 0 R
+/Contents 57 0 R
+>>
+endobj
+59 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 61 0 R
+/Contents 60 0 R
+>>
+endobj
+62 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 64 0 R
+/Contents 63 0 R
+>>
+endobj
+65 0 obj
+<<
+/Type /Page
+/Parent 45 0 R
+/Resources 67 0 R
+/Contents 66 0 R
+>>
+endobj
+81 0 obj
+<<
+/S /D
+>>
+endobj
+82 0 obj
+<<
+/Nums [0 81 0 R ]
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R 14 0 R 17 0 R 21 0 R 25 0 R 28 0 R 31 0 R 35 0 R 38 0 R]
+/Count 10
+/Parent 44 0 R
+>>
+endobj
+45 0 obj
+<<
+/Type /Pages
+/Kids [41 0 R 46 0 R 50 0 R 53 0 R 56 0 R 59 0 R 62 0 R 65 0 R]
+/Count 8
+/Parent 44 0 R
+>>
+endobj
+44 0 obj
+<<
+/Type /Pages
+/Kids [8 0 R 45 0 R ]
+/Count 18
+/MediaBox [0 0 612 792]
+>>
+endobj
+83 0 obj
+<<
+/CreationDate (D:20041229084330-06'00')
+/ModDate (D:20041229084330-06'00')
+/Producer (PSNormalizer.framework)
+>>
+endobj
+84 0 obj
+<<
+/Type /Catalog
+/Pages 44 0 R
+/PageLabels 82 0 R
+>>
+endobj
+xref
+0 85
+0000000000 65535 f 
+0000130413 00000 n 
+0000000016 00000 n 
+0000003183 00000 n 
+0000126678 00000 n 
+0000127259 00000 n 
+0000127712 00000 n 
+0000117285 00000 n 
+0000131979 00000 n 
+0000130493 00000 n 
+0000003300 00000 n 
+0000008997 00000 n 
+0000127886 00000 n 
+0000128426 00000 n 
+0000130575 00000 n 
+0000009139 00000 n 
+0000014787 00000 n 
+0000130658 00000 n 
+0000014918 00000 n 
+0000020504 00000 n 
+0000128599 00000 n 
+0000130741 00000 n 
+0000020634 00000 n 
+0000028859 00000 n 
+0000128991 00000 n 
+0000130824 00000 n 
+0000028991 00000 n 
+0000035293 00000 n 
+0000130907 00000 n 
+0000035436 00000 n 
+0000042709 00000 n 
+0000130990 00000 n 
+0000042864 00000 n 
+0000049750 00000 n 
+0000129479 00000 n 
+0000131073 00000 n 
+0000049918 00000 n 
+0000057039 00000 n 
+0000131156 00000 n 
+0000057169 00000 n 
+0000062871 00000 n 
+0000131239 00000 n 
+0000063026 00000 n 
+0000071280 00000 n 
+0000132237 00000 n 
+0000132114 00000 n 
+0000131323 00000 n 
+0000071398 00000 n 
+0000076773 00000 n 
+0000129649 00000 n 
+0000131407 00000 n 
+0000076904 00000 n 
+0000080369 00000 n 
+0000131491 00000 n 
+0000080478 00000 n 
+0000085067 00000 n 
+0000131575 00000 n 
+0000085199 00000 n 
+0000089324 00000 n 
+0000131659 00000 n 
+0000089457 00000 n 
+0000098241 00000 n 
+0000131743 00000 n 
+0000098384 00000 n 
+0000109714 00000 n 
+0000131827 00000 n 
+0000109857 00000 n 
+0000117166 00000 n 
+0000117425 00000 n 
+0000117615 00000 n 
+0000121545 00000 n 
+0000121742 00000 n 
+0000121944 00000 n 
+0000122141 00000 n 
+0000122336 00000 n 
+0000122531 00000 n 
+0000122722 00000 n 
+0000126276 00000 n 
+0000126478 00000 n 
+0000128742 00000 n 
+0000130086 00000 n 
+0000131911 00000 n 
+0000131939 00000 n 
+0000132328 00000 n 
+0000132460 00000 n 
+trailer
+<<
+/Size 85
+/Root 84 0 R
+/Info 83 0 R
+/ID [<5400e1edc1e91d213a0c6814f568f865><5400e1edc1e91d213a0c6814f568f865>]
+>>
+startxref
+132530
+%%EOF

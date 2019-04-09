@@ -1,0 +1,358 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 5895
+>>
+stream
+BT
+/TT2 1 Tf
+17.2154 0 0 17.2154 238.92 729.42 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Rehabilitating)-230(CPS)]TJ
+11.9552 0 0 11.9552 275.28 699.0601 Tm
+[(Olin)-240.9(Shi)20.1(v)10(ers)]TJ
+-5.1794 -1.1644 TD
+[(MIT)-240.9(Arti)]TJ
+/TT3 1 Tf
+3.6847 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(cial)-250.9(Intelligence)-240.9(Laboratory)]TJ
+/TT5 1 Tf
+-1.9624 -1.1643 TD
+(shivers@ai.mit.edu)Tj
+/TT2 1 Tf
+10.9091 0 0 10.9091 142.68 630.1801 Tm
+[(In)-308(the)-319(eighties,)-330(if)-308(one)-308(set)-319(out)-308(to)-308(write)-308(a)-297(compiler)-330(for)-308(a)-297(lambda-calculus)-352(based)]TJ
+-1.551 -1.232 TD
+[(language,)-242(the)-220(odds)-220(are)-220(one)-209(w)11(ould)-220(ha)22(v)11(e)-220(chosen)-231(an)-209(intermediate)-242(representation)-253(based)]TJ
+0 -1.243 TD
+[(on)-374(continuation-pass)-11(ing)-440(styleóìCPS.)66(î)-363(Compilers)-385(such)-385(as)-363(Orbit,)-407(K)22(else)11(yí)55(s)-374(trans-)]TJ
+T*
+[(formational)-407(compiler)44(,)-418(and)-385(SML/NJ)-352(all)-374(traced)-396(their)-385(heritage)-396(back)-385(to)-374(the)-374(seminal)]TJ
+T*
+(in)Tj
+/TT3 1 Tf
+0.7778 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(uence)-297(of)-264(Steeleí)55(s)-286(Rabbit)-286(compiler)44(,)-286(which)-275(established)-308(the)-275(CPS-as-intermediate-)]TJ
+-1.334 -1.243 TD
+[(representation)-286(thesis.)-319(While)-242(CPS)-209(by)-231(no)-231(means)-242(had)-242(an)-231(e)11(xclusi)22(v)11(e)-253(franchise,)-264(it)-231(stak)11(ed)]TJ
+T*
+[(out)-385(a)-374(lar)22(ge)-396(niche)-396(in)-385(the)-374(functional-langua)-11(ge)-440(arenaóat)-396(man)11(y)-385(institutions,)-440(it)-385(w)11(a)0(s)]TJ
+T*
+[(simply)-275(the)-253(accepted)-286(and)-264(e)11(xpected)-286(representational)-308(frame)22(w)11(ork.)]TJ
+1.551 -1.243 TD
+[(Ho)22(we)22(v)11(e)0(r)44(,)-341(at)-330(the)-330(turn)-330(of)-330(the)-330(decade,)-352(researchers)-363(be)11(gan)-330(increasingly)-363(to)-330(e)11(xperi-)]TJ
+-1.551 -1.243 TD
+[(ment)-308(with)-297(alternati)22(v)11(e)-319(lo)22(w-le)22(v)11(el,)-319(lambda-based)-330(frame)22(w)11(orks.)-451(Representations)-341(such)]TJ
+T*
+[(as)-297(nqCPS)-275(and)-286(A-normal)-297(form)-297(allo)22(wed)-297(compiler)-297(writers)-297(to)-286(f)11(actor)-308(the)-286(features)-319(pro-)]TJ
+T*
+[(vided)-308(by)-308(CPS,)-264(such)-308(as)-297(serialisation)-330(of)-297(primiti)22(v)11(e)-308(operations,)-341(and)-297(the)-297(naming)-308(of)-297(all)]TJ
+0 -1.232 TD
+[(intermediate)-418(results,)-418(without)-396(ha)22(ving)-396(to)-385(commit)-385(to)-374(the)-385(e)11(xplicit)-396(machinery)-407(of)-374(e)11(x)0(-)]TJ
+0 -1.243 TD
+[(posed)-396(continuations.)-715(The)-374(ne)22(w)-374(and)-385(interesting)-407(compilers,)-418(such)-396(as)-374(Morrisett)-396(and)]TJ
+T*
+[(T)77(arditií)55(s)-275(TIL)-253(compiler)44(,)-286(were)-264(written)-275(using)-275(ìdirect)-286(styleî)-275(lambda-calculus)-308(interme-)]TJ
+T*
+[(diate)-363(representations.)-627(CPS)-319(has)-352(f)11(aded)-363(from)-341(vie)22(w)-341(some)22(what;)-396(I)-341(a)0(m)-341(not)-352(a)11(w)11(are)-341(of)-352(a)]TJ
+T*
+[(serious)-286(CPS-based)-253(compiler)-275(being)-275(written)-264(in)-264(the)-253(last)]TJ
+/TT3 1 Tf
+21.3528 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5342 0 TD
+[(v)11(e)-253(to)-253(eight)-275(years.)]TJ
+-20.3359 -1.243 TD
+[(P)11(art)-308(of)-308(the)-319(reason)-330(academeí)55(s)-330(attention)-341(turned)-319(a)11(w)11(a)0(y)-308(from)-319(CPS)-286(w)11(a)0(s)-308(a)-308(series)-319(of)]TJ
+-1.551 -1.243 TD
+(in)Tj
+/TT3 1 Tf
+0.7778 0 TD
+(ﬂ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(uential)-352(papers)-352(by)-330(Felleisen)-341(and)-341(Sabry)-330(establishing)-374(some)-330(deep)-341(formal)-330(connec-)]TJ
+-1.334 -1.243 TD
+[(tions)-363(between)-374(the)-352(analytic)-374(po)22(wer)-352(of)-352(the)-352(tw)11(o)-352(frame)22(w)11(orks.)-605(The)-352(message)-363(of)-352(these)]TJ
+T*
+[(papers)-418(w)11(a)0(s)-396(that)-396(introducing)-440(e)11(xplicit)-407(continuations)-440(pro)11(vided)-429(no)-396(e)11(xtra)-396(theoretical)]TJ
+T*
+(bene)Tj
+/TT3 1 Tf
+1.8877 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(tóso)-275(why)-253(bother)-275(with)-253(them?)]TJ
+-0.8928 -1.243 TD
+[(As)-330(another)-363(decade)-352(prepares)-352(to)-341(turn)-341(o)11(v)11(e)0(r)44(,)-352(we)-330(ha)22(v)11(e)-341(the)-341(adv)22(antage)-363(of)-330(ten)-341(years)]TJ
+-1.551 -1.232 TD
+[(of)-308(e)11(xperience)-319(w)11(orking)-319(with)-297(these)-319(alternati)22(v)11(e)-319(frame)22(w)11(orks.)-462(I)-286(suggest)-330(that)-308(it)-297(is)-297(no)22(w)]TJ
+0 -1.243 TD
+[(time)-264(to)-253(ree)11(xamine)-275(the)-264(bene)]TJ
+/TT3 1 Tf
+10.8736 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(ts)-264(of)-264(CPS,)-231(in)-264(the)-253(light)-275(of)-253(these)-275(lessons)-275(learned.)]TJ
+-9.8788 -1.243 TD
+[(In)-297(this)-308(talk,)-308(I)-286(will)-286(discuss)-319(the)-297(bene)]TJ
+/TT3 1 Tf
+14.0156 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.5562 0 TD
+[(ts)-308(of)-297(CPS)-275(from)-286(a)-297(modern)-308(perspecti)22(v)11(e)0(.)-451(I)0(í)11(l)0(l)]TJ
+-16.1227 -1.243 TD
+[(sho)22(w)-297(some)-297(interesting)-319(e)11(xamples)-308(of)-297(recent)-308(w)11(ork)-286(on)-297(operating-system)-341(concurrenc)11(y)]TJ
+T*
+[(and)-308(transducer)-319(composition)-330(that)-308(rely)-297(critically)-319(on)-297(the)-308(ability)-308(to)-297(represent)-319(continu-)]TJ
+T*
+[(ations)-363(e)11(xplicitly)66(.)-605(I)-341(will)-341(discuss)-363(ho)22(w)-341(w)0(e)-341(can)-352(apply)-363(the)-341(lessons)-374(of)-341(the)-352(last)-352(decade)]TJ
+T*
+[(to)-418(CPS,)-385(and)]TJ
+/TT7 1 Tf
+5.472 0 TD
+[(vice)-418(ver)11(sa.)]TJ
+/TT2 1 Tf
+5.2354 0 TD
+[(Ií)11(ll)-418(address)-429(the)-418(issue)-429(of)-407(formal)-418(equi)22(v)22(alences)-451(between)]TJ
+-10.7074 -1.243 TD
+[(continuation-base)-11(d)-297(and)-231(direct-style)-275(representations,)-286(and)-242(point)-242(out)-242(limits)-242(in)-231(our)-242(cur)22(-)]TJ
+T*
+[(rent)-264(understanding)-308(and)-264(use)-264(of)-264(continuation-based)-319(compiler)-275(frame)22(w)11(orks.)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT3 5 0 R
+/TT5 6 0 R
+/TT7 7 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+8 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+10 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+11 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 653
+/Descent -250
+/Flags 98
+/FontBBox [-169 -217 1010 883]
+/FontName /Times-Italic
+/ItalicAngle -15
+/StemV 76
+/XHeight 441
+/StemH 76
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 44
+/LastChar 151
+/Widths [250 333 250 278 0 0 0 0 0 0 0 0 0 0 0 278 
+0 0 0 444 0 722 0 667 0 0 556 0 722 333 389 722 
+611 889 722 722 556 0 667 556 611 0 0 944 0 0 0 0 
+0 0 0 0 0 444 500 444 500 444 333 500 500 278 0 500 
+278 778 500 500 500 500 333 389 278 500 500 722 500 500 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 333 444 444 0 0 1000 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 10 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 223
+/Widths [556 556 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 11 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 118
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 600 0 0 600 600 0 0 600 600 0 0 0 600 
+0 0 0 0 600 600 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 12 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 118
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 500 0 444 0 444 0 0 0 278 0 0 0 0 
+0 0 0 0 389 389 0 0 444 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Italic
+/FontDescriptor 13 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+14 0 obj
+<<
+/S /D
+>>
+endobj
+15 0 obj
+<<
+/Nums [0 14 0 R ]
+>>
+endobj
+9 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 612 792]
+>>
+endobj
+16 0 obj
+<<
+/CreationDate (D:20041230124335-06'00')
+/ModDate (D:20041230124335-06'00')
+/Producer (PSNormalizer.framework)
+>>
+endobj
+17 0 obj
+<<
+/Type /Catalog
+/Pages 9 0 R
+/PageLabels 15 0 R
+>>
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000008344 00000 n 
+0000000016 00000 n 
+0000005963 00000 n 
+0000007016 00000 n 
+0000007503 00000 n 
+0000007677 00000 n 
+0000008013 00000 n 
+0000006091 00000 n 
+0000008492 00000 n 
+0000006231 00000 n 
+0000006428 00000 n 
+0000006625 00000 n 
+0000006816 00000 n 
+0000008424 00000 n 
+0000008452 00000 n 
+0000008573 00000 n 
+0000008705 00000 n 
+trailer
+<<
+/Size 18
+/Root 17 0 R
+/Info 16 0 R
+/ID [<094b18c897acd1e174629d95fe2e4c9f><094b18c897acd1e174629d95fe2e4c9f>]
+>>
+startxref
+8774
+%%EOF

@@ -1,0 +1,12684 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 2344
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(1)Tj
+/F2 1 Tf
+14 0 0 14 17 819 Tm
+( )Tj
+18.1357 -21.6986 TD
+-0.0002 Tc
+(Abstract)Tj
+/F1 1 Tf
+12 0 0 12 21 819 Tm
+0 Tc
+( )Tj
+6.455 -26.955 TD
+-0.0001 Tc
+-0.0347 Tw
+[(This paper reports on an approach for)-249.9(improving the understanding of old programs)]TJ
+0 -1.33 TD
+0.0581 Tw
+[(which have become very complex due to)-249.9(numerous extensions. We have adapted)]TJ
+0 -1.34 TD
+0.0209 Tw
+[(partial evaluation techniques for)-249.9(program understanding. These techniques mainly)]TJ
+0 -1.33 TD
+0.1263 Tw
+[(use propagation through statements and)-249.9(simplifications of statements. We focus)]TJ
+T*
+0.0535 Tw
+[(here on the automatic interprocedural)-249.9(analysis and we specify both tasks for call-)]TJ
+0 -1.34 TD
+0.043 Tw
+[(statements, in terms of inference rules)-249.9(with notations taken from the specification)]TJ
+0 -1.33 TD
+-0.01 Tw
+[(languages B and VDM. We describe how we)-249.9(have implemented in a tool, and used)]TJ
+T*
+0.0525 Tw
+[(that interprocedural analysis to improve)-249.9(program understanding. The difficulty of)]TJ
+0 -1.34 TD
+0.0043 Tw
+[(that analysis is due to the lack of well)-249.9(defined interprocedural mechanisms and the)]TJ
+0 -1.33 TD
+0 Tw
+(complexity of visibility rules in Fortran.)Tj
+0 -1.75 TD
+-0.01 Tw
+[(Keywords: software maintenance of legacy)-249.9(code, program understanding, program)]TJ
+0 -1.33 TD
+0.0641 Tw
+[(specialization, interprocedural analysis,)-249.9(inference rules, natural semantics, formal)]TJ
+0 -1.34 TD
+0 Tw
+(specification, Fortran.)Tj
+ET
+1 g
+211.86 706.26 176.4 -99.48 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+0 Tc
+( )Tj
+17.2583 -10.065 TD
+-0.0001 Tc
+(Sandrine Blazy, Philippe Facon)Tj
+3.74 -1 TD
+(CEDRIC IIE)Tj
+-1.75 -1 TD
+(18 all)Tj
+/F3 1 Tf
+2.2495 0 TD
+0 Tc
+(È)Tj
+/F1 1 Tf
+0.4439 0 TD
+-0.0001 Tc
+(e Jean Rostand)Tj
+-2.2235 -1 TD
+0 Tc
+-0.0001 Tw
+(91 025 Evry Cedex)Tj
+2.51 -1 TD
+-0.0001 Tc
+0 Tw
+(France)Tj
+-4.19 -1 TD
+({blazy, facon}@iie.cnam.fr)Tj
+0.99 -1 TD
+0 Tc
+(fax: +33 1 69 36 73 05)Tj
+ET
+1 g
+48.42 759.78 509.28 -42.48 re
+f
+BT
+/F2 1 Tf
+18 0 0 18 17 819 Tm
+0 0 0 rg
+( )Tj
+3.2722 -3.9567 TD
+-0.0001 Tc
+0.0001 Tw
+[(An a)-5.6(ppr)22.3(oach f)25.3(or the understanding of scientif)27.1(ic application )]TJ
+3.5267 -1.3333 TD
+0.0001 Tc
+-0.0002 Tw
+[(pr)20(ograms based on pr)18.8(ogram specialization)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 5120
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(2)Tj
+/F2 1 Tf
+-24.0183 64.295 TD
+( )Tj
+4.4283 -4.655 TD
+-0.0001 Tc
+[(1)-210.1( Intr)21.4(oduction)]TJ
+/F1 1 Tf
+-4.1783 4.655 TD
+0 Tc
+( )Tj
+6.5383 -6.235 TD
+-0.0001 Tc
+0.0072 Tw
+[(Older software systems are inherently)-249.9(difficult to understand \(and to maintain\). Much of)]TJ
+-2.36 -1.34 TD
+0.0143 Tw
+[(the effort involved in software)-249.9(maintenance is in locating the relevant code fragments that im-)]TJ
+0 -1.33 TD
+-0.0314 Tw
+[(plement the concepts of the application)-249.9(domain. The maintainer is often faced with the problem)]TJ
+T*
+0.026 Tw
+[(of locating specific program features or)-249.9(functionalities within a large and partially understood)]TJ
+0 -1.34 TD
+0.0003 Tc
+0.0023 Tw
+(system [15].)Tj
+2.36 -1.75 TD
+-0.0001 Tc
+-0.0515 Tw
+[(First, there exists now a wide range of)-249.9(tools to support program understanding )47.7([13]. Either)]TJ
+-2.36 -1.33 TD
+-0.0119 Tw
+[(they transform programs given a)-249.9(criteria \(for instance they restructure programs\) or they repre-)]TJ
+T*
+0.0156 Tw
+[(sent programs according to various)-249.9(formalisms \(for instance graphic formalisms showing data)]TJ
+0 -1.34 TD
+-0.0061 Tw
+[(and control flows\). Hierarchies)-249.9(constructed by these tools should reflect semantics and not just)]TJ
+0 -1.33 TD
+0.0218 Tw
+[(pleasing graph layouts )-7.2([12])5.5(. Program understanding involves)-249.9(recognizing meaningfull entities)]TJ
+T*
+0.2195 Tw
+[(and their dependencies: calling)-249.9(relationships between subroutines, data flow relationships)]TJ
+0 -1.34 TD
+-0.0196 Tw
+[(between variables, definition)-249.9(relationships between variables and types. They are important for)]TJ
+0 -1.33 TD
+-0.0079 Tw
+[(understanding the code, but many of)-249.9(their code is difficult to find because it is often fairly dee-)]TJ
+T*
+0 Tw
+(ply embedded within the program.)Tj
+2.36 -1.75 TD
+-0.0416 Tw
+[(Next, such tools are fully automated)-249.9(and not customizable. But, there will always be users)]TJ
+-2.36 -1.34 TD
+-0.0032 Tw
+[(who will want something else. No tool)-249.9(can foresee all the situations a user will encounter; cus-)]TJ
+0 -1.33 TD
+0.1058 Tw
+[(tomizations, extensions and new)-249.9(applications inevitably become necessary. Thus, instead of)]TJ
+T*
+-0.0023 Tw
+[(supporting a non flexible)-249.9(builder-oriented approach, a program understanding tool should sup-)]TJ
+0 -1.34 TD
+0 Tw
+[(port diverse user tastes and preferences as)-249.9(the users)]TJ
+/F3 1 Tf
+20.5439 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(view of the code.)Tj
+-18.5168 -1.75 TD
+-0.0241 Tw
+[(Last, most market tools apply to whole)-249.9(programs or files. They do not gather all pertinent)]TJ
+-2.36 -1.33 TD
+-0.0431 Tw
+[(information to the user. For every)-249.9(large system, the information generated by a tool is often pro-)]TJ
+T*
+0.0038 Tw
+[(digious. Presenting the user with reams)-249.9(of data is insufficient. Only the knowledge of this data)]TJ
+0 -1.34 TD
+0.0393 Tw
+[(is important for the user. In a sense, a)-249.9(key to program understanding is deciding what to look)]TJ
+0 -1.33 TD
+0 Tw
+(and what to ignore.)Tj
+1 -1.75 TD
+0.2525 Tw
+[(Scientific programming is a good example)-249.9(that shows the difficulties of the program)]TJ
+-1 -1.33 TD
+0.0637 Tw
+[(understanding task. Many scientific)-249.9(application programs, written in Fortran for decades, are)]TJ
+0 -1.34 TD
+0.1643 Tw
+[(still vital in various domains)-249.9(\(management of nuclear power plants, of telecommunication)]TJ
+0 -1.33 TD
+-0.055 Tw
+[(satellites, etc.\), even though more)-249.9(modern languages are used to implement their user interfaces.)]TJ
+T*
+-0.0177 Tw
+[(It is not unusual to spend several)-249.9(months to understand such application programs before being)]TJ
+0 -1.34 TD
+0.0065 Tw
+[(able to maintain them. For example,)-249.9(understanding an application program of 120,000 lines of)]TJ
+0 -1.33 TD
+0.0388 Tw
+[(Fortran code took nine months. So,)-249.9(providing the maintainer with a tool, which finds parts of)]TJ
+T*
+0 Tw
+[(lost code semantics, allows to reduce this)-249.9(period of adaptation.)]TJ
+2.36 -1.75 TD
+0.0109 Tw
+[(Such observations in an industrial)-249.9(context \()-17.1([7])5.6(\) led us to develop a sofware)-249.9(maintenance)]TJ
+-2.36 -1.34 TD
+0.0408 Tw
+[(tool to help in understanding scientific)-249.9(application programs. The peculiarities of our tool are)]TJ
+0 -1.33 TD
+0 Tw
+(the following:)Tj
+/F3 1 Tf
+0 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0983 Tw
+[(the tool is adpated to scientific)-249.9(application programs. In such programs, the technological)]TJ
+-0.11 -1.33 TD
+-0.0187 Tw
+[(level of scientific knowledge \(linear)-249.9(systems resolution, turbulence simulation, etc.\) is higher)]TJ
+0 -1.34 TD
+0.3822 Tw
+[(than the knowledge usually necessary for)-249.9(data processing \(memory allocation, data)]TJ
+0 -1.33 TD
+0.0165 Tw
+[(representations\). The discrepancy is)-249.9(increased by the widespread use of Fortran, which is an)]TJ
+T*
+0.0241 Tw
+[(old-fashioned language. Furthermore, for)-249.9(large scientific applications, Fortran 77 )-19.3([6], which)]TJ
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+13 0 obj
+<<
+/Length 6297
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(3)Tj
+0 g
+-24.0183 64.295 TD
+( )Tj
+5.1683 -4.655 TD
+-0.0001 Tc
+0.0096 Tw
+[(is quite an old version of the language,)-249.9(is used exclusively to guarantee the portability of the)]TJ
+0 -1.33 TD
+0.2884 Tw
+[(applications between different machines)-249.9(\(mainframes, workstations, vector computers\).)]TJ
+0 -1.34 TD
+0.0119 Tw
+[(Furthermore, scientific application)-249.9(programs we have studied have been developed a decade)]TJ
+0 -1.33 TD
+-0.0341 Tw
+[(ago. During their evolution, they had to)-249.9(be reusable in new various contexts. For example, the)]TJ
+T*
+-0.0494 Tw
+[(same thermohydraulic code implements)-249.9(both general design surveys for a nuclear power plant)]TJ
+0 -1.34 TD
+0.0298 Tw
+[(component \(core, reactor, steam)-249.9(generator, etc.\) and subsequent improvements in electricity)]TJ
+0 -1.33 TD
+0.202 Tw
+[(production models. The result of this)-249.9(encapsulation of several models in a single large)]TJ
+T*
+-0.0333 Tw
+[(application domain increases program)-249.9(complexity, and thus amplifies the lack of structures in)]TJ
+0 -1.34 TD
+-0.039 Tw
+[(the Fortran programming language. This)-249.9(generality is implemented by Fortran input variables)]TJ
+0 -1.33 TD
+0.0199 Tw
+[(whose value does not vary in the context)-249.9(of the given application. We distinguish in )-17.2([4] two)]TJ
+T*
+0.0001 Tw
+(classes of such variables and we give in Fig.1 an example of such variables.)Tj
+/F2 1 Tf
+10 0 0 10 20 819 Tm
+0 0 0 rg
+0 Tc
+0 Tw
+( )Tj
+19.606 -59.598 TD
+-0.0001 Tc
+0.0005 Tw
+(Fig. 1. Some constraints on input data)Tj
+/F1 1 Tf
+12 0 0 12 23 819 Tm
+0 Tc
+0 Tw
+( )Tj
+/F3 1 Tf
+3.9283 -51.195 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.001 Tw
+[(the tool allows the user to formulate)-249.9(hypotheses about the code and investigate whether they)]TJ
+-0.11 -1.33 TD
+-0.0284 Tw
+[(hold or must be rejected. As detailed)-249.9(in )27.7([14])5.5( such a process is one of the major)-249.9(components of)]TJ
+0 -1.34 TD
+-0.0046 Tw
+[(dynamic code cognition behaviors. The)-249.9(tool helps to find parts of lost code semantics. A bug)]TJ
+0 -1.33 TD
+-0.0565 Tw
+[(is mentionned by a team maintaining a)-249.9(specific application program. For instance, it maintains)]TJ
+T*
+0.1438 Tw
+[(only the application program applied to)-249.9(the geometry detailed in Fig.)-141.1(1. The tool aims at)]TJ
+0 -1.34 TD
+0.027 Tw
+[(specializing the application program)-249.9(according to specific values of such variables. Another)]TJ
+0 -1.33 TD
+0.025 Tw
+[(example is the specialization of a)-249.9(3D-application program into a 2D-one by fixing the value)]TJ
+T*
+0 Tw
+(of a co-ordinate.)Tj
+ET
+0.938 g
+1 i 
+121.5 503.82 m
+192.3 549.18 l
+263.22 549.18 l
+192.3 503.82 l
+f*
+0 G
+2 J 0 j 0.492 w 10 M []0 d
+121.5 503.82 m
+192.3 549.18 l
+263.22 549.18 l
+192.3 503.82 l
+s
+192.3 478.26 m
+192.3 503.82 l
+266.1 549.18 l
+266.1 523.62 l
+f*
+192.3 478.26 m
+192.3 503.82 l
+266.1 549.18 l
+266.1 523.62 l
+s
+0 J 
+392.34 474.9 56.76 56.64 re
+S
+0 g
+406.5 517.38 14.16 -14.16 re
+f
+406.5 503.22 14.16 14.16 re
+S
+406.5 489.06 14.16 -14.16 re
+f
+406.5 474.9 14.16 14.16 re
+S
+434.94 489.06 14.16 -14.16 re
+f
+434.94 474.9 14.16 14.16 re
+S
+434.94 517.38 14.16 -14.16 re
+f
+434.94 503.22 14.16 14.16 re
+S
+2 J 
+392.34 503.22 m
+443.34 503.22 l
+420.66 531.54 m
+420.66 486.18 l
+S
+BT
+12 0 0 12 395.22 460.98 Tm
+0 Tc
+-0.0001 Tw
+(IPOR = 0.5)Tj
+ET
+285.66 481.62 m
+297.18 478.26 l
+285.66 474.9 l
+285.66 478.26 l
+f*
+121.5 478.26 m
+285.66 478.26 l
+S
+118.14 548.94 m
+121.5 560.46 l
+124.74 548.94 l
+121.5 548.94 l
+f*
+121.5 478.26 m
+121.5 548.94 l
+S
+260.22 568.5 m
+271.74 571.86 l
+263.7 562.86 l
+261.9 565.74 l
+f*
+234.9 549.18 m
+261.9 565.74 l
+S
+0.938 g
+121.5 503.82 70.8 -25.56 re
+f
+0 J 2.892 w 
+121.5 478.26 70.8 25.56 re
+S
+2 J 
+195.18 478.26 m
+266.1 523.62 l
+192.3 503.82 m
+263.22 549.18 l
+266.1 549.18 m
+266.1 523.62 l
+S
+0.492 w 
+121.5 503.82 m
+192.3 549.18 l
+S
+0 J 
+192.3 549.18 m
+263.22 549.18 l
+s
+2 J 
+146.94 503.82 m
+217.86 549.18 l
+169.62 503.82 m
+240.54 549.18 l
+146.94 478.26 m
+146.94 500.94 l
+169.62 478.26 m
+169.62 503.82 l
+220.74 520.74 m
+220.74 495.3 l
+243.42 534.9 m
+243.42 506.58 l
+220.74 523.62 m
+155.46 523.62 l
+240.54 537.78 m
+175.38 537.78 l
+S
+BT
+12 0 0 12 181.02 455.58 Tm
+0 g
+(IM = 3)Tj
+8.27 8.98 TD
+0 Tw
+(KM = 3)Tj
+-16.54 -4.02 TD
+(JM = 1)Tj
+ET
+1.932 w 
+181.031 526.438 m
+181.031 513.921 154.362 503.762 121.504 503.762 c
+181.055 526.438 m
+181.055 538.956 216.613 549.115 260.425 549.115 c
+S
+BT
+12 0 0 12 326.7 407.7 Tm
+-0.0001 Tc
+(THERMODYNAMICAL_MODEL = 2)Tj
+ET
+1 g
+73.02 421.62 99.24 -42.6 re
+f
+0 J 0.492 w 
+73.02 379.02 99.24 42.6 re
+S
+BT
+12 0 0 12 77.58 385.02 Tm
+0 g
+0 Tc
+(1.22)Tj
+2.69 -0.04 TD
+(.4178)Tj
+4.02 0.02 TD
+(12)Tj
+ET
+2 J 
+73.02 398.94 m
+172.26 398.94 l
+S
+BT
+12 0 0 12 84.3 407.34 Tm
+2.58 Tc
+[(12)-460(3)]TJ
+ET
+104.22 421.62 m
+104.22 379.02 l
+146.7 421.62 m
+146.7 379.02 l
+S
+BT
+12 0 0 12 180.78 398.94 Tm
+-0.0001 Tc
+(PRESSURE [2])Tj
+ET
+1 g
+75.54 357.06 445.08 -113.4 re
+f
+BT
+12 0 0 12 103.86 349.02 Tm
+0 g
+0.0734 Tw
+[(In this example we consider a liquid)-249.9(flow along the surface of a nuclear power plant)]TJ
+-2.36 -1.33 TD
+-0.0582 Tw
+[(component. That volume is partitioned)-249.9(along the three axes, with a number of partitions of res-)]TJ
+0 -1.34 TD
+0 Tw
+(pectively )Tj
+/F4 1 Tf
+0 0 0 rg
+3.87 0 TD
+-0.0003 Tc
+(IM)Tj
+/F1 1 Tf
+1.17 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.46 0 TD
+-0.0002 Tc
+(JM)Tj
+/F1 1 Tf
+1.28 0 TD
+0 Tc
+-0.0405 Tw
+[( and )]TJ
+/F4 1 Tf
+1.86 0 TD
+-0.0001 Tc
+0 Tw
+(KM)Tj
+/F1 1 Tf
+1.5 0 TD
+-0.0404 Tw
+[(. Moreover, the surface being porous,)-249.9(on a regular basis, )]TJ
+/F4 1 Tf
+22.36 0 TD
+-0.0002 Tc
+0 Tw
+(IPOR)Tj
+/F1 1 Tf
+2.28 0 TD
+-0.0001 Tc
+-0.0404 Tw
+[( is the)]TJ
+-34.78 -1.33 TD
+0.0062 Tw
+[(relative side length of the solid part for)-249.9(each elementary cubic partition. )]TJ
+/F4 1 Tf
+28.98 0 TD
+0 Tw
+(THERMODYNAMI-)Tj
+-28.98 -1.33 TD
+(CAL_MODEL)Tj
+/F1 1 Tf
+5.78 0 TD
+0.0052 Tw
+[( is the number of the law that)-249.9(characterizes the liquid. We have also )]TJ
+/F4 1 Tf
+27.42 0 TD
+0 Tw
+(PRESSU-)Tj
+-33.2 -1.34 TD
+-0.0002 Tc
+(RE)Tj
+/F1 1 Tf
+1.22 0 TD
+-0.0001 Tc
+0.0306 Tw
+[(, with integer values that correspond, by)-249.9(a table, to  real pressure values, each one with a)]TJ
+-1.22 -1.33 TD
+0 Tw
+(specific precision.)Tj
+ET
+0.972 w 
+81.18 368.34 m
+500.7 368.34 l
+S
+0 J 0.012 w 
+69.9 238.62 454.08 339.48 re
+S
+endstream
+endobj
+14 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+17 0 obj
+<<
+/Length 3557
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(4)Tj
+0 g
+-24.0183 64.295 TD
+( )Tj
+/F3 1 Tf
+4.4283 -4.655 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0101 Tw
+[(the tool does not change the original)-249.9(structure of the application program as explained in )10.2([3].)]TJ
+-0.11 -1.33 TD
+0.0767 Tw
+[(The tool is based on partial evaluation)-249.9(but we have adapted partial evaluation for program)]TJ
+0 -1.34 TD
+0.0207 Tw
+[(understanding. In traditional)-249.9(specialization, call statements are unfolded "on the fly": during)]TJ
+0 -1.33 TD
+0.005 Tw
+[(specialization the call is replaced by a)-249.9(copy of the statements of the called subroutine, where)]TJ
+T*
+0.0977 Tw
+[(every argument expression is substituted)-249.9(for the corresponding formal parameter )-99.7([9])5.6(. This)]TJ
+0 -1.34 TD
+0.3602 Tw
+[(strategy aims at improving efficiency of)-249.9(programs. As our goal is to facilitate the)]TJ
+0 -1.33 TD
+-0.0339 Tw
+[(comprehension of programs, we do not)-249.9(change their structure \(as explained in )30.5([3])5.6(\). We do not)]TJ
+T*
+0.0185 Tw
+[(unfold statements. With such a strategy,)-249.9(the size of the code does not increase. Thus, we are)]TJ
+0 -1.34 TD
+0.131 Tw
+[(neither faced with the problem of)-249.9(infinite unfolding and termination of the specialization)]TJ
+0 -1.33 TD
+0.0001 Tw
+[(process nor with the problem of duplication)-249.9(of code \(recursion does not exist in Fortran 77\).)]TJ
+1.62 -1.75 TD
+-0.0528 Tw
+[(We have presented in previous papers \()-7.3([3])5.6(-)-7.1([5])5.6(\) the development and experiments of)-249.9(a first)]TJ
+-2.36 -1.33 TD
+0.0183 Tw
+[(version of our tool. We give in  \(see next page\) an example of the)-249.9(program specialization per-)]TJ
+0 -1.34 TD
+0.0218 Tw
+[(formed by this version. In that first)-249.9(version, no interprocedural analysis was really performed:)]TJ
+0 -1.33 TD
+-0.0018 Tw
+[(at each procedure call, the most)-249.9(pessimistic hypothesis about possible changes of variables va-)]TJ
+T*
+-0.0152 Tw
+[(lues was applied and the user had to)-249.9(run the tool on each procedure. As most programs we ana-)]TJ
+0 -1.34 TD
+-0.0525 Tw
+[(lyze are large-scale Fortran programs,)-249.9(made of many procedures with complex interactions, that)]TJ
+0 -1.33 TD
+-0.0032 Tw
+[(limitation was really too severe. Thus)-249.9(we decided to extend the tool by a very precise interpro-)]TJ
+T*
+0 Tw
+(cedural analysis.)Tj
+2.36 -1.75 TD
+0.0179 Tw
+[(Our software maintenance tool must)-249.9(introduce absolutely no unforeseen changes in pro-)]TJ
+-2.36 -1.34 TD
+0.0287 Tw
+[(grams. Therefore, we have first)-249.9(specified the specializer, then we have proven the correctness)]TJ
+0 -1.33 TD
+-0.0359 Tw
+[(of that specification with respect to)-249.9(the standard semantics. )31.6([5])5.6( details this development process)]TJ
+T*
+0.0497 Tw
+[(in a general framework. This paper)-249.9(describes how we have specified, implemented, and used)]TJ
+0 -1.34 TD
+0.0196 Tw
+[(interprocedural analysis to improve our)-249.9(tool for a better program understanding. Section 2 ex-)]TJ
+0 -1.33 TD
+0.0636 Tw
+[(plains our interprocedural)-249.9(specialization strategy for Fortran programs. Section 3 gives some)]TJ
+T*
+-0.0154 Tw
+[(definitions and shows which data are)-249.9(needed for the specialization of procedures. Section 4 de-)]TJ
+0 -1.34 TD
+0.0512 Tw
+[(tails the interprocedural specialization)-249.9(process. Section 5 is devoted to the implementation of)]TJ
+0 -1.33 TD
+0 Tw
+[(that interprocedural analysis and section 6)-249.9(offers conclusions and future work.)]TJ
+ET
+endstream
+endobj
+18 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F3 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+20 0 obj
+<<
+/Length 5112
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(5)Tj
+0 g
+-24.0183 64.295 TD
+( )Tj
+6.7883 -49.295 TD
+( )Tj
+/F2 1 Tf
+10 0 0 10 20 819 Tm
+0 0 0 rg
+( )Tj
+11.626 -60.414 TD
+-0.0001 Tc
+[(Fig. 2. An example of code specialization)-249.9(\(without interprocedural analysis\))]TJ
+12 0 0 12 23 819 Tm
+0 Tc
+( )Tj
+3.9283 -52.295 TD
+-0.0001 Tc
+[(2)-210.1( )49.9(An inter)12(pr)19.8(ocedural specialization strategy)]TJ
+/F1 1 Tf
+-3.6783 52.295 TD
+0 Tc
+( )Tj
+6.0383 -53.875 TD
+0.1914 Tw
+[(Fortran )184.6(77 [6] characteristics for interprocedural)-249.8(specialization mainly concern static)]TJ
+-2.36 -1.33 TD
+-0.0001 Tc
+0.0053 Tw
+[(side-effects. Fortran procedures may be)-249.9(subroutines or functions and parameters are passed by)]TJ
+0 -1.34 TD
+-0.0377 Tw
+[(reference. In Fortran, variables are)-249.9(usually local entities. However, variables may be grouped in)]TJ
+0 -1.33 TD
+-0.0183 Tw
+[(common blocks \(a common block is a)-249.9(contiguous area of memory\) and thus shared in procedu-)]TJ
+T*
+-0.0258 Tw
+[(res. Common blocks may also be inherited)-249.9(in a procedure. They  have a scope in that procedure)]TJ
+0 -1.34 TD
+0 Tw
+(but they have not been declared in it.)Tj
+ET
+1 g
+74.82 771.18 444.24 -535.68 re
+f
+BT
+10 0 0 10 118.14 759.9 Tm
+0 0 0 rg
+(IF \( IREX .NE. 0 \) THEN)Tj
+/F4 1 Tf
+1.392 -1.176 TD
+0 Tc
+(DO 111 I = 1 , )Tj
+/F5 1 Tf
+6.204 0 TD
+-0.0001 Tc
+(IM)Tj
+/F4 1 Tf
+-4.632 -1.092 TD
+( X\(I\) = XMIN + FLOAT\(I-1\) * )Tj
+/F5 1 Tf
+12.54 0 TD
+(DXLU)Tj
+/F4 1 Tf
+-18.504 -1.104 TD
+0.0001 Tw
+(111 CONTINUE)Tj
+4.392 -1.104 TD
+0 Tw
+(DO 112 I = 1 , IM)Tj
+1.572 -1.092 TD
+( DX\(I\) = )Tj
+/F5 1 Tf
+3.756 0 TD
+(DXLU)Tj
+/F4 1 Tf
+2.724 0 TD
+0.0001 Tw
+( * I)Tj
+-12.444 -1.104 TD
+(112 CONTINUE)Tj
+/F1 1 Tf
+3 -1.104 TD
+0 Tw
+( ELSE)Tj
+1.392 -1.092 TD
+0.0001 Tw
+(READ \(NFIC11,*, ERR=1103\) X )Tj
+0 -1.104 TD
+0 Tc
+0 Tw
+(DO 121 I = 1 , IM)Tj
+1.572 -1.104 TD
+-0.0001 Tc
+(DX\(I\) = X\(I+1\) - X\(I\))Tj
+-5.964 -1.092 TD
+(121 CONTINUE)Tj
+3 -1.104 TD
+(ENDIF)Tj
+/F4 1 Tf
+T*
+(IF \( IMATSO .EQ. 0)Tj
+/F1 1 Tf
+8.16 0 TD
+0 Tc
+( .AND. IC .GE. 0)Tj
+/F4 1 Tf
+6.996 0 TD
+-0.0001 Tc
+(\) THEN )Tj
+/F1 1 Tf
+-13.764 -1.092 TD
+0 Tc
+( ZERO = 0.)Tj
+0 -1.104 TD
+-0.0001 Tc
+( IF \( IC .EQ. 0 \) THEN)Tj
+1.572 -1.104 TD
+0.0001 Tw
+( IREGU = 1)Tj
+-1.572 -1.092 TD
+0 Tw
+(ELSE IF \(IC .GE. IM\) THEN)Tj
+1.572 -1.104 TD
+0.0001 Tw
+(IREGU = 0)Tj
+-1.572 -1.104 TD
+0 Tw
+(ENDIF)Tj
+0 -1.092 TD
+(IF \( IREX .EQ.2 \) THEN)Tj
+1.572 -1.104 TD
+(READ \(NFIC11,)Tj
+/F3 1 Tf
+6.8318 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(\(A\))Tj
+/F3 1 Tf
+1.3877 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(,ERR=5,END=5\) L)Tj
+-8.8854 -1.104 TD
+(IF \( INDEX \(L,)Tj
+/F3 1 Tf
+6.2745 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+(I)Tj
+/F3 1 Tf
+0.3329 0 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(\) .NE. 0 \) THEN)Tj
+-5.8451 -1.092 TD
+(IDECRI = 1)Tj
+-1.428 -1.104 TD
+(ENDIF)Tj
+-1.572 -1.104 TD
+(ELSE)Tj
+1.572 -1.092 TD
+(IDECRI = 2)Tj
+-1.572 -1.104 TD
+(ENDIF)Tj
+T*
+(IF \( IDECRI .EQ. 1 \) THEN)Tj
+1.572 -1.092 TD
+(IF \( IREGU .EQ. 0 \) THEN)Tj
+1.428 -1.104 TD
+(IMIN = 2)Tj
+T*
+(IMAX = IM)Tj
+-1.428 -1.092 TD
+(ELSE)Tj
+1.428 -1.104 TD
+(IMIN = IM)Tj
+T*
+(IMAX = IM)Tj
+-1.428 -1.092 TD
+(ENDIF)Tj
+-1.572 -1.104 TD
+(ELSE IF \( IDECRI .EQ. 2 \) THEN)Tj
+1.572 -1.104 TD
+(IF \( IREGU .EQ. 0 \) THEN)Tj
+1.428 -1.092 TD
+0.0001 Tw
+(JMIN = 2)Tj
+0 -1.104 TD
+(JMAX = JM)Tj
+-1.428 -1.104 TD
+0 Tw
+(ELSE)Tj
+/F4 1 Tf
+1.428 -1.092 TD
+(JMIN = JM)Tj
+0 -1.104 TD
+(JMAX = JM)Tj
+/F1 1 Tf
+-1.428 -1.104 TD
+(ENDIF)Tj
+-1.572 -1.092 TD
+( ENDIF)Tj
+/F4 1 Tf
+-1.392 -1.104 TD
+(ENDIF)Tj
+ET
+q
+1 i 
+74 772 446 -537 re
+W n
+0 G
+0 J 0 j 0.492 w 10 M []0 d
+76.14 253.26 257.88 514.56 re
+S
+Q
+1 g
+338.34 413.94 176.16 -158.76 re
+f
+BT
+/F1 1 Tf
+10 0 0 10 360.42 395.94 Tm
+0 0 0 rg
+0 Tc
+(DO 111 I = 1 , 20)Tj
+1.596 -1.164 TD
+-0.0001 Tc
+( X\(I\) = XMIN + 0.5*FLOAT\(I-1\))Tj
+-3.24 -1.104 TD
+(111 CONTINUE)Tj
+1.644 -1.224 TD
+(DO)Tj
+12 0 0 12 374.82 361.02 Tm
+0 Tc
+( )Tj
+10 0 0 10 377.82 361.02 Tm
+(112 I = 1 , 20)Tj
+-0.144 -1.176 TD
+-0.0001 Tc
+(DX\(I\) = 0.5*I)Tj
+-3.24 -1.092 TD
+(112 CONTINUE)Tj
+1.644 -1.104 TD
+(IF \( IMATSO .EQ. 0 \) THEN )Tj
+1.596 -1.104 TD
+0.0001 Tw
+(ZERO = 0)Tj
+0 -1.092 TD
+(IREGU = 1)Tj
+0 -1.104 TD
+0 Tw
+(IDECRI = 2)Tj
+T*
+(JMIN = JM)Tj
+0 -1.092 TD
+0.0001 Tw
+(JMAX = JM)Tj
+-1.596 -1.104 TD
+0 Tw
+(ENDIF)Tj
+ET
+0 G
+0 J 0 j 0.492 w 10 M []0 d
+1 i 
+338.34 255.18 176.16 158.76 re
+S
+BT
+/F6 1 Tf
+10 0 0 10 349.86 691.14 Tm
+( Constraints on input variables)Tj
+ET
+1 g
+367.86 767.58 73.8 -63.6 re
+f
+BT
+/F1 1 Tf
+10 0 0 10 379.86 748.62 Tm
+0 0 0 rg
+(IREX )Tj
+/F7 1 Tf
+12 0 0 12 405.66 748.62 Tm
+0 Tc
+(=)Tj
+/F1 1 Tf
+10 0 0 10 412.26 748.62 Tm
+( 1)Tj
+-3.24 -1.308 TD
+-0.0001 Tc
+(IC )Tj
+/F7 1 Tf
+12 0 0 12 392.34 735.54 Tm
+0 Tc
+(=)Tj
+/F1 1 Tf
+10 0 0 10 398.94 735.54 Tm
+( 0)Tj
+-1.908 -1.296 TD
+-0.0001 Tc
+(IM )Tj
+/F7 1 Tf
+12 0 0 12 394.6201 722.58 Tm
+0 Tc
+(=)Tj
+/F1 1 Tf
+10 0 0 10 401.1 722.58 Tm
+( 20)Tj
+-2.124 -1.164 TD
+(DXLU = 0.5)Tj
+ET
+367.86 703.98 73.8 63.6 re
+S
+BT
+/F6 1 Tf
+10 0 0 10 154.62 243.42 Tm
+-0.0001 Tc
+( Initial code)Tj
+21.876 -0.084 TD
+(Specialized code)Tj
+2.784 42.336 TD
+0 Tc
+( )Tj
+ET
+q
+70.02 771.3 453.72 -700.32 re
+W n
+0.5 G
+0.972 w 
+74.82 235.5 444.24 535.68 re
+S
+Q
+endstream
+endobj
+21 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F5 22 0 R
+/F6 23 0 R
+/F7 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+26 0 obj
+<<
+/Length 5886
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(6)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+5.6383 -2.955 TD
+-0.0001 Tc
+0.0326 Tw
+[(Local variables in a procedure do not)-249.9(necessarily retain their values between invocations of that)]TJ
+-2.37 -1.33 TD
+0.0454 Tw
+[(procedure. At any instant in the)-249.9(execution of a program, if a common block is neither declared in the)]TJ
+0 -1.34 TD
+-0.0115 Tw
+[(currently executing procedure nor in any)-249.9(of the procedures in the chain of callers, all of the variables in)]TJ
+0 -1.33 TD
+-0.0233 Tw
+(that common block also become undefined. The only exceptions are variables that have been defined in)Tj
+T*
+0 Tw
+(a )Tj
+ET
+q
+1 i 
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 20 819 Tm
+0 0 0 rg
+0 Tc
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 65.22 719.58 Tm
+0 0 0 rg
+-0.0002 Tc
+(DATA)Tj
+/F1 1 Tf
+-3.185 8.285 TD
+0 Tc
+( )Tj
+5.585 -8.285 TD
+-0.0001 Tc
+0.0517 Tw
+[( statement \(this statement allows to)-249.9(initialize variables\) and never changed. Variables may be)]TJ
+-3.15 -1.34 TD
+-0.0054 Tw
+(made remanent by a )Tj
+ET
+q
+1 i 
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 30 819 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 155.94 703.5 Tm
+-0.0002 Tc
+0 Tw
+(SAVE)Tj
+/F1 1 Tf
+-9.9117 9.625 TD
+0 Tc
+( )Tj
+12.3117 -9.625 TD
+-0.0001 Tc
+-0.0054 Tw
+[( statement. It specifies that certain)-249.9(variables and common blocks retain their)]TJ
+-10.71 -1.33 TD
+0.0042 Tw
+[(values between invocations. Constants may)-249.9(also be defined by a )]TJ
+ET
+q
+1 i 
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 40.0001 819 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 367.62 687.54 Tm
+-0.0002 Tc
+0 Tw
+(PARAMETER)Tj
+/F1 1 Tf
+-26.7183 10.955 TD
+0 Tc
+( )Tj
+32.1183 -10.955 TD
+0.0001 Tc
+0.0039 Tw
+( statement \(for example,)Tj
+ET
+q
+1 i 
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 50 819 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 56.22 671.58 Tm
+-0.0002 Tc
+0 Tw
+(PARAMETER)Tj
+/F1 1 Tf
+0.065 12.285 TD
+0 Tc
+( )Tj
+5.335 -12.285 TD
+-0.0001 Tc
+[( pi=3.1416\). Once defined, a constant can)-249.9(not be redefined in another statement\).)]TJ
+-3.03 -1.75 TD
+-0.0249 Tw
+[(Program specialization processes are)-249.9(based on propagation of static data. As far as we are concer-)]TJ
+-2.37 -1.34 TD
+0.0417 Tw
+[(ned, these are variables, parameters or)-249.9(common blocks. Static data may be remanent data.  Procedure)]TJ
+0 -1.33 TD
+0.0047 Tw
+[(specialization aims at specializing a)-249.9(procedure with respect to static data: static variables \(as in)-249.9(specia-)]TJ
+T*
+0.0671 Tw
+[(lization of other statements\) and also)-249.9(static parameters and static common blocks. The specialization)]TJ
+0 -1.34 TD
+0.0183 Tw
+[(must proceed depth-first to preserve the)-249.9(order of side-effects )-25.1([2])5.6(. This means that a procedure must be)]TJ
+0 -1.33 TD
+0 Tw
+[(specialized before the statements following)-249.9(its call.)]TJ
+2.37 -1.75 TD
+-0.0448 Tw
+[(To improve the specialization,)-249.9(specialized procedures and their initial and final static data are)-249.9(kept)]TJ
+-2.37 -1.33 TD
+-0.0186 Tw
+[(and reused if necessary. Thus, in a)-249.9(program, when several calls to a same procedure are encountered, in)]TJ
+0 -1.34 TD
+0 Tw
+(the current call if the static data is:)Tj
+/F3 1 Tf
+0 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+(the )Tj
+/F4 1 Tf
+-0.535 26.875 TD
+0 Tc
+( )Tj
+2.015 -26.875 TD
+-0.0001 Tc
+(same)Tj
+/F1 1 Tf
+-1.765 26.875 TD
+0 Tc
+( )Tj
+3.815 -26.875 TD
+-0.0001 Tc
+[( as static data of a previous call, then the)-249.9(corresponding version is directly reused,)]TJ
+/F3 1 Tf
+-4.38 -1.75 TD
+0 Tc
+(Ä)Tj
+/F4 1 Tf
+0.815 28.625 TD
+( )Tj
+0.035 -28.625 TD
+-0.0001 Tc
+0.0755 Tw
+(strictly included)Tj
+/F1 1 Tf
+0.215 28.625 TD
+0 Tc
+0 Tw
+( )Tj
+6.335 -28.625 TD
+-0.0001 Tc
+0.0755 Tw
+[( in static data of a previous call,)-249.9(then the corresponding version is specialized and)]TJ
+-6.66 -1.33 TD
+0.0923 Tw
+[(added to the list of specialized)-249.9(versions. If several versions match, the most specialized version is)]TJ
+T*
+0.0488 Tw
+[(selected. It is the most restrictive)-249.9(\(default strategy\): its number of static data is the biggest. If)-249.9(again)]TJ
+0 -1.34 TD
+0 Tw
+[(several versions match, then the shortest)-249.9(version is selected.)]TJ
+1.63 -1.75 TD
+-0.042 Tw
+[(The number of versions of a procedure)-249.9(may theoretically grow exponentially, but our experiments)]TJ
+-2.37 -1.33 TD
+-0.0254 Tw
+[(showed that this seldom happens.)-249.9(However, as the number of specialized versions is finite \(an option)-249.9(of)]TJ
+T*
+0.0207 Tw
+[(the specializer allows to change it\),)-249.9(if a version must be removed \(from the list of versions\), either the)]TJ
+0 -1.34 TD
+-0.0175 Tw
+[(most restrictive or the most general one)-249.9(is removed. With a general strategy, specialized procedures are)]TJ
+0 -1.33 TD
+0.0138 Tw
+[(more often reused that in the general)-249.9(strategy, but more statements should also be specialized. In a ge-)]TJ
+T*
+0.0009 Tw
+[(neral framework and without any further)-249.9(analysis on the call graph, both strategies are worthwhile, de-)]TJ
+0 -1.34 TD
+-0.0428 Tw
+[(pending on the application to)-249.9(specialize. Thus, an option of the specializer allows to change this)-249.9(strategy)]TJ
+0 -1.33 TD
+0 Tw
+[(and to keep preferably the most general)-249.9(procedures.)]TJ
+2.37 -1.75 TD
+-0.024 Tw
+[(A version is characterized by its name,)-249.9(its statements and its initial and final static data. A version)]TJ
+-2.37 -1.33 TD
+-0.0103 Tw
+[(name is generated each time a new)-249.9(version is created. That name is added in the caller as a comment of)]TJ
+0 -1.34 TD
+-0.0007 Tw
+[(the call and in the declaration of the)-249.9(specialized procedure. Fig. 3 \(see next page\) shows an example of)]TJ
+0 -1.33 TD
+0 Tw
+[(interprocedural specialization. In this)-249.9(figure, ? stands for unknown values of \(dynamic\) variables.)]TJ
+ET
+endstream
+endobj
+27 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F3 6 0 R
+/F4 15 0 R
+/TT2 28 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+30 0 obj
+<<
+/Length 5613
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(7)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F2 1 Tf
+10 0 0 10 17 819 Tm
+0 0 0 rg
+( )Tj
+17.398 -71.214 TD
+-0.0001 Tc
+[(Fig. 3.  An example of interprocedural)-249.9(specialization)]TJ
+ET
+1 g
+389.1 604.5 117 -135 re
+f
+BT
+/F1 1 Tf
+10 0 0 10 389.1 597.78 Tm
+0 0 0 rg
+0.0001 Tw
+( PROGRAM prog)Tj
+0 -1.104 TD
+0 Tw
+( COMMON CA /\(q,w\))Tj
+0 -1.092 TD
+( COMMON CB /\(e,f\))Tj
+0 -1.104 TD
+0 Tc
+(  y = 5)Tj
+T*
+(x = 2)Tj
+0 -1.092 TD
+( e = 1)Tj
+0 -1.104 TD
+( w = 8)Tj
+T*
+-0.0001 Tc
+0.0001 Tw
+( CALL v1 \(x,y,b\);)Tj
+0 -1.092 TD
+0 Tc
+0 Tw
+( a = 9)Tj
+0 -1.104 TD
+-0.0001 Tc
+( CALL v3 \(a,b,x\);)Tj
+T*
+( CALL v4 \(y,w,a\);)Tj
+0 -1.092 TD
+0.0001 Tw
+( END prog)Tj
+ET
+0 G
+0 J 0 j 0.492 w 10 M []0 d
+1 i 
+389.1 469.5 117 135 re
+S
+1 g
+224.1 627.66 135 -72 re
+f
+BT
+10 0 0 10 224.1 620.94 Tm
+0 g
+0 Tw
+( SUBROUTINE sp1\(f,g,h\))Tj
+T*
+0.0001 Tw
+( COMMON CB /\(x,y\))Tj
+0 -1.104 TD
+0 Tc
+0 Tw
+(  d = 2)Tj
+T*
+( e = x)Tj
+0 -1.092 TD
+( h = e + f + d)Tj
+0 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+( END sp1)Tj
+ET
+0.75 G
+224.1 555.66 135 72 re
+S
+1 g
+77.22 410.82 270 -27 re
+f
+BT
+10 0 0 10 77.22 404.1 Tm
+0 g
+[(   Static Variables:    e=1   m=2   u=3  )-249.9(v=1   w=8   x=11  y=1)]TJ
+0 -1.092 TD
+[(  Common blocks:  a /\(q= unknown , w=8\)  )-249.9(b /\(e=1 , f=unknown\))]TJ
+ET
+0 G
+77.22 383.82 270 27 re
+S
+1 g
+224.1 708.66 117 -72 re
+f
+BT
+10 0 0 10 224.1 701.9401 Tm
+0 g
+0 Tw
+( SUBROUTINE sp2\(i,j,k\))Tj
+T*
+0.0001 Tw
+( COMMON CA /\(o,p\))Tj
+0 -1.104 TD
+0 Tc
+0 Tw
+( i = p)Tj
+T*
+-0.0001 Tc
+( CALL sp1 \(i,j,k\))Tj
+0 -1.092 TD
+0 Tc
+( j = 8 * i)Tj
+0 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+( END sp2)Tj
+ET
+0.75 G
+224.1 636.66 117 72 re
+S
+1 g
+224.1 789.66 117 -63 re
+f
+BT
+10 0 0 10 224.1 782.9401 Tm
+0 g
+0 Tw
+(  SUBROUTINE sp3\(i,j,k\))Tj
+0 -1.092 TD
+0.0001 Tw
+( COMMON CB /\(x,y\))Tj
+0 -1.104 TD
+0 Tc
+0 Tw
+( i = 9)Tj
+T*
+( j = x)Tj
+0 -1.092 TD
+-0.0001 Tc
+0.0001 Tw
+(  END)Tj
+ET
+q
+61 792 484 -679 re
+W n
+224.1 726.66 117 63 re
+S
+Q
+1 g
+89.1 601.62 90 -135.96 re
+f
+BT
+10 0 0 10 89.1 595.02 Tm
+0 g
+( PROGRAM prog)Tj
+0 -1.104 TD
+-0.0549 Tw
+[( COMMON CA /\(q,w\))]TJ
+T*
+0 Tw
+( COMMON CB /\(e,f\))Tj
+0 -1.092 TD
+0 Tc
+( x = 2)Tj
+0 -1.104 TD
+( e = 1)Tj
+T*
+( w = 8)Tj
+0 -1.092 TD
+-0.0001 Tc
+0.0001 Tw
+( CALL sp3 \(x,y,b\))Tj
+0 -1.104 TD
+0 Tc
+0 Tw
+( a = 8 + y)Tj
+T*
+-0.0001 Tc
+( CALL sp2 \(a,b,x\))Tj
+0 -1.092 TD
+( CALL sp1 \(y,w,a\))Tj
+0 -1.104 TD
+0.0001 Tw
+( END prog)Tj
+ET
+0 G
+1.932 w 
+89.1 465.66 90 135.96 re
+S
+BT
+10 0 0 10 530.1 780.66 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+1 g
+68.7 416.46 440.28 -300.48 re
+f
+BT
+10 0 0 10 95.7 409.86 Tm
+0 g
+-0.0001 Tc
+[(Initial static data)-6836.4(Final static data)-8968.9(Version)]TJ
+-2.7 -1.104 TD
+0.0001 Tw
+[(v1)-1700.1(i=2  j=5  x=1)-8252.5(i=9  j=1  x=1)-10052.5(SUBROUTINE v1 \(i,j,k\))]TJ
+T*
+[(\(sp3\))-645.6(COMMON CA/ \(?,8\))-4863.3(COMMON CA/ \(?,8\))-6663.3(COMMON CB /\(x,y\))]TJ
+2.7 -1.092 TD
+[(COMMON CB/ \(1, ?\))-4668.2(COMMON CB/ \(1, ?\))-6468.2(i = 9)]TJ
+28.8 -1.104 TD
+(j = )Tj
+/F2 1 Tf
+0 0 0 rg
+1.344 0 TD
+0 Tc
+0 Tw
+(1)Tj
+/F1 1 Tf
+-1.344 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+(END v1)Tj
+-31.5 -2.196 TD
+0 Tc
+0 Tw
+[(v2)-1700(f=8  h=9  x=1)-7975.3(d=2  e=1  f=8  h=11  x=1)-5203.6( SUBROUTINE v2 \(f,g,h\))]TJ
+0 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+[(\(sp1\))-645.6(COMMONCA/ \(?,8\))-5113.3(COMMON CA/ \(?,8\))-6663.3(COMMON CB /\(x,y\))]TJ
+2.7 -1.092 TD
+[(COMMON CB/ \(1, ?\))-4668.2(COMMON CB/ \(1, ?\))-6468.2(d = 2)]TJ
+28.8 -1.104 TD
+(e = )Tj
+/F2 1 Tf
+1.512 0 TD
+0 Tc
+0 Tw
+(1)Tj
+/F1 1 Tf
+-1.512 -1.104 TD
+(h = )Tj
+/F2 1 Tf
+1.572 0 TD
+(11)Tj
+/F1 1 Tf
+-1.572 -1.092 TD
+-0.0001 Tc
+0.0001 Tw
+[(END)-9.3( v2)]TJ
+-31.5 -2.208 TD
+0 Tc
+0 Tw
+[(v3)-1700(i=9  k=9  p=8)-8030.3(i=8  j=64  k=11  p=8)-6988.5(SUBROUTINE v3\(i,j,k\))]TJ
+0 -1.092 TD
+-0.0001 Tc
+0.0001 Tw
+[(\(sp2\))-645.6(COMMONCA/ \(?,8\))-5113.3(COMMON CA/ \(?,8\))-6663.3(COMMON CA /\(o,p\))]TJ
+2.7 -1.104 TD
+[(COMMON CB/ \(1, ?\))-4668.2(COMMONCB/ \(1, ?\))-6718.2(i = 8)]TJ
+28.8 -1.104 TD
+0 Tw
+(CALL v2 \(i,j,k\))Tj
+0 -1.092 TD
+0.0001 Tw
+(j = )Tj
+/F2 1 Tf
+1.344 0 TD
+0 Tc
+0 Tw
+(64)Tj
+/F1 1 Tf
+-1.344 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+(END v3)Tj
+-31.5 -2.196 TD
+0 Tc
+0 Tw
+[(v4)-1700(f=1  g=8  h=8  x=1)-5911.4(d=2  e=1  f=1  g=8  h=4  x=1)-3639.6(SUBROUTINE v4 \(f,g,h\))]TJ
+0 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+[(\(sp1\))-645.6(COMMON CA/ \(?,8\))-4863.3(COMMON CA/ \(?,8\))-6663.3(COMMUN CB /\(x,y\))]TJ
+2.7 -1.104 TD
+[(COMMON CB/ \(1, ?\))-4668.2(COMMON CB/ \(1, ?\))-6468.2(d = 2)]TJ
+28.8 -1.092 TD
+(e = )Tj
+/F2 1 Tf
+1.512 0 TD
+0 Tc
+0 Tw
+(1)Tj
+/F1 1 Tf
+-1.512 -1.104 TD
+(h = )Tj
+/F2 1 Tf
+1.572 0 TD
+(4)Tj
+/F1 1 Tf
+-1.572 -1.104 TD
+-0.0001 Tc
+0.0001 Tw
+(END v4)Tj
+ET
+0.492 w 
+68.7 115.98 440.28 300.48 re
+217.5 734.7 m
+224.1 744.66 l
+223.86 732.66 l
+S
+2 J 
+179.1 600.66 m
+224.1 744.42 l
+S
+0 J 
+215.58 655.26 m
+224.1 663.66 l
+221.34 652.02 l
+S
+2 J 
+179.1 582.66 m
+223.98 663.42 l
+S
+0 J 
+213.06 595.98 m
+224.1 600.66 l
+217.26 590.82 l
+S
+2 J 
+179.1 564.66 m
+223.98 600.54 l
+510.9 271.86 m
+68.7 271.86 l
+510.9 192.54 m
+68.7 192.54 l
+510.9 407.94 m
+68.7 407.94 l
+218.94 416.46 m
+218.94 115.98 l
+358.74 414.54 m
+358.74 116.94 l
+94.26 416.46 m
+95.1 116.94 l
+508.98 349.38 m
+69.54 349.38 l
+S
+0 J 1.932 w 
+369.78 524.34 m
+387.06 519.42 l
+369.78 514.5 l
+S
+2 J 
+180.18 519.42 m
+386.1 519.42 l
+S
+1 g
+72.42 465.54 270 -27 re
+f
+BT
+10 0 0 10 72.42 458.9401 Tm
+0 g
+(   Static Variables:    m=2   u=3   v=1  y=5)Tj
+T*
+[(  Common blocks:  CA /\(q=?  , w=8\)   CB)-250(/\(e=1 , f=?\))]TJ
+ET
+0 J 0.492 w 
+72.42 438.54 270 27 re
+S
+BT
+/F6 1 Tf
+10 0 0 10 127.02 428.1 Tm
+0 0 0 rg
+-0.0002 Tc
+( Constraints on input variables)Tj
+-1.212 20.304 TD
+-0.0001 Tc
+0 Tw
+( Initial code)Tj
+29.364 -17.568 TD
+(Specialized code)Tj
+ET
+endstream
+endobj
+31 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F6 23 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+33 0 obj
+<<
+/Length 17121
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(8)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F2 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+( )Tj
+3.2683 -2.955 TD
+-0.0002 Tc
+0.0001 Tw
+[(3)-210.2( Nota)-5.5(tions f)28.1(or specifying interpr)19.7(ocedural specialization)]TJ
+10 0 0 10 20 819 Tm
+0 Tc
+0 Tw
+( )Tj
+3.622 -5.214 TD
+-0.0001 Tc
+[(3.1)-454.1( Definitions)]TJ
+/F1 1 Tf
+12 0 0 12 23 819 Tm
+0 Tc
+( )Tj
+5.1383 -5.955 TD
+-0.0001 Tc
+-0.0429 Tw
+[(An expression is static if its)-249.9(subexpressions \(expressions, variables, function calls, etc.\) are all)-249.9(sta-)]TJ
+-2.37 -1.33 TD
+0.0584 Tw
+[(tic. These expressions can be represented)-249.9(by a so-called environment, namely a function  associating)]TJ
+0 -1.34 TD
+0.0267 Tw
+[(values to variables. For our)-249.9(interprocedural analysis, we need more information than such an)-249.9(environ-)]TJ
+0 -1.33 TD
+0 Tw
+[(ment to take into account side-effects due)-249.9(to parameters and common blocks.)]TJ
+2.37 -1.75 TD
+-0.0431 Tw
+[(We define in this section some useful)-249.9(notations and especially set operators to specify information)]TJ
+-2.37 -1.33 TD
+-0.0266 Tw
+[(that are useful for interprocedural)-249.9(specialization. In these specifications we use maps associating values)]TJ
+0 -1.34 TD
+0.0096 Tw
+[(to identifiers. A map is a finite)-249.9(function. It is represented by a set of pairs of the form )]TJ
+/F4 1 Tf
+-2.5183 14.375 TD
+0 Tc
+0 Tw
+( )Tj
+36.9983 -14.375 TD
+-0.0001 Tc
+(x )Tj
+/F7 1 Tf
+12 0 2.5507 12 29 819 Tm
+0 Tc
+( )Tj
+40.5038 -14.375 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 32 819 Tm
+( )Tj
+38.1883 -14.375 TD
+0.0095 Tc
+( y)Tj
+/F1 1 Tf
+-37.9383 14.375 TD
+0 Tc
+( )Tj
+38.6383 -14.375 TD
+-0.0001 Tc
+0.0096 Tw
+(, where no)Tj
+-36.87 -1.33 TD
+-0.0226 Tw
+[(two pairs have the same first elements.)-249.9(The set of all other possible values is noted )]TJ
+/F2 1 Tf
+-1.5183 15.705 TD
+0 Tc
+0 Tw
+( )Tj
+34.4583 -15.705 TD
+-0.0001 Tc
+(Values)Tj
+/F1 1 Tf
+-34.2083 15.705 TD
+0 Tc
+( )Tj
+37.0883 -15.705 TD
+(. )Tj
+/F2 1 Tf
+-36.8383 15.705 TD
+( )Tj
+37.3183 -15.705 TD
+-0.0001 Tc
+(Ident)Tj
+/F1 1 Tf
+-37.0683 15.705 TD
+0 Tc
+( )Tj
+39.3483 -15.705 TD
+-0.0001 Tc
+-0.0226 Tw
+[( deno-)]TJ
+-38.58 -1.33 TD
+0.0061 Tw
+(tes the set of all identifiers. The )Tj
+/F2 1 Tf
+-0.5183 17.035 TD
+0 Tc
+0 Tw
+( )Tj
+13.4483 -17.035 TD
+(Eval)Tj
+/F1 1 Tf
+-13.1983 17.035 TD
+( )Tj
+15.1483 -17.035 TD
+-0.0001 Tc
+0.0061 Tw
+[( function either yields the value of an)-249.9(expression \(if it is static\) or)]TJ
+-14.88 -1.34 TD
+0 Tw
+[(gives a residual expression \(if it is)-249.9(dynamic\).)]TJ
+2.37 -1.75 TD
+0.0722 Tw
+[(We introduce a data type constructor)-249.9(named composite type \(also called record\) and useful set)]TJ
+-2.37 -1.33 TD
+0 Tc
+0.0231 Tw
+[(operators, similar to those defined in)-249.8(the formal specification languages B )-25.8([1] and VDM )6.2([8]:  domain,)]TJ
+T*
+-0.0001 Tc
+0 Tw
+(range, )Tj
+/F7 1 Tf
+-0.0183 22.785 TD
+0 Tc
+( )Tj
+2.6883 -22.785 TD
+()Tj
+/F1 1 Tf
+-2.4383 22.785 TD
+( )Tj
+3.1983 -22.785 TD
+-0.0001 Tc
+-0.0599 Tw
+[(, override, various forms of)-249.9(restriction,  composition, and finally direct product. These operators)]TJ
+-3.43 -1.34 TD
+0 Tw
+(are written in bold in this paper.)Tj
+/F3 1 Tf
+0 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.013 Tw
+[(To create values of a composite type, a)-249.9("make" function is used, called )]TJ
+/F2 1 Tf
+-0.3683 25.875 TD
+0 Tc
+0 Tw
+( )Tj
+29.0983 -25.875 TD
+-0.0002 Tc
+(mk-)Tj
+/F4 1 Tf
+-28.8483 25.875 TD
+0 Tc
+( )Tj
+30.5683 -25.875 TD
+(T)Tj
+/F1 1 Tf
+-30.3183 25.875 TD
+( )Tj
+30.8683 -25.875 TD
+0.0129 Tc
+( \()Tj
+/F4 1 Tf
+-30.6183 25.875 TD
+0 Tc
+( )Tj
+31.2183 -25.875 TD
+(x)Tj
+10 0 0 10 74 819 Tm
+( )Tj
+37.69 -31.35 TD
+(1)Tj
+12 0 0 12 77 819 Tm
+( )Tj
+31.5783 -25.875 TD
+(, x)Tj
+10 0 0 10 80 819 Tm
+( )Tj
+38.722 -31.35 TD
+(2)Tj
+12 0 0 12 83 819 Tm
+( )Tj
+32.4383 -25.875 TD
+-0.0001 Tc
+0.0001 Tw
+(, ,…)Tj
+/F1 1 Tf
+-32.1883 25.875 TD
+0 Tc
+0 Tw
+( )Tj
+33.8283 -25.875 TD
+-0.0001 Tc
+0.013 Tw
+(\), where the)Tj
+/F4 1 Tf
+-33.5783 25.875 TD
+0 Tc
+0 Tw
+( )Tj
+-1.9917 -27.395 TD
+(x)Tj
+10 0 0 10 92 819 Tm
+( )Tj
+-2.15 -33.174 TD
+(i)Tj
+/F1 1 Tf
+12 0 0 12 94 819 Tm
+( )Tj
+-1.7283 -27.395 TD
+-0.0001 Tc
+( are the appropriate values for the fields )Tj
+/F4 1 Tf
+1.9783 27.395 TD
+0 Tc
+( )Tj
+14.1817 -27.395 TD
+(T)Tj
+10 0 0 10 100 819 Tm
+( )Tj
+17.378 -33.174 TD
+(i)Tj
+/F1 1 Tf
+12 0 0 12 103 819 Tm
+( )Tj
+14.4617 -27.395 TD
+-0.0001 Tc
+(  and the result is a value of type )Tj
+/F4 1 Tf
+-14.2117 27.395 TD
+0 Tc
+( )Tj
+27.4317 -27.395 TD
+(T)Tj
+/F1 1 Tf
+-27.1817 27.395 TD
+( )Tj
+27.7417 -27.395 TD
+(.)Tj
+/F3 1 Tf
+-32.14 -1.95 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0585 Tw
+(The domain \()Tj
+/F2 1 Tf
+3.7983 29.345 TD
+0 Tc
+0 Tw
+( )Tj
+1.7117 -29.345 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+-1.4617 29.345 TD
+0 Tc
+( )Tj
+3.3517 -29.345 TD
+-0.0001 Tc
+0.0585 Tw
+(\) \(resp. range \()Tj
+/F2 1 Tf
+-3.1017 29.345 TD
+0 Tc
+0 Tw
+( )Tj
+9.1617 -29.345 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+-8.9117 29.345 TD
+0 Tc
+( )Tj
+10.4117 -29.345 TD
+-0.0001 Tc
+0.0585 Tw
+[(\)\) operator applies to a map. It)-249.9(yields the set of the first \(resp.)]TJ
+-15.07 -1.33 TD
+0 Tw
+(second\) elements of the pairs in the map.)Tj
+/F3 1 Tf
+-0.74 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0123 Tw
+(The union operator )Tj
+/F7 1 Tf
+4.7983 32.425 TD
+0 Tc
+0 Tw
+( )Tj
+3.1617 -32.425 TD
+()Tj
+/F1 1 Tf
+-2.9117 32.425 TD
+( )Tj
+3.6717 -32.425 TD
+-0.0001 Tc
+0.0123 Tw
+[( is defined only on two maps whose)-249.9(domains are disjoint. Thus it yields a map)]TJ
+-8.83 -1.33 TD
+0 Tw
+(which contains all pairs of the maps.)Tj
+/F3 1 Tf
+-0.74 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0536 Tw
+(The map override operator )Tj
+/F2 1 Tf
+5.2983 35.505 TD
+0 Tc
+0 Tw
+( )Tj
+/F8 1 Tf
+5.8617 -35.505 TD
+(Å)Tj
+/F1 1 Tf
+-5.6117 35.505 TD
+( )Tj
+6.1117 -35.505 TD
+-0.0001 Tc
+0.0536 Tw
+[( whose operands are two maps, yields a)-249.9(map which contains all of the)]TJ
+-11.77 -1.34 TD
+-0.0061 Tw
+[(pairs from the second map and those)-249.9(pairs of the first map whose first elements are not in the domain)]TJ
+0 -1.33 TD
+0 Tw
+(of the second map.)Tj
+/F3 1 Tf
+-0.74 -1.86 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0303 Tw
+(The map restriction operator )Tj
+/F9 1 Tf
+14 0 0 14 136.0001 818.9999 Tm
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+5.1057 -34.3157 TD
+(r)Tj
+0.03 0 TD
+(r)Tj
+0 0.03 TD
+(r)Tj
+-0.03 0 TD
+(r)Tj
+/F1 1 Tf
+12 0 0 12 143 819 Tm
+( )Tj
+6.1683 -40.035 TD
+-0.0001 Tc
+0.0303 Tw
+[( \(resp. )]TJ
+/F9 1 Tf
+14 0 0 14 146 818.9999 Tm
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+7.4514 -34.3157 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 153 819 Tm
+( )Tj
+8.915 -40.035 TD
+-0.0001 Tc
+0.0303 Tw
+[(\) is defined with a first operand)-249.9(which is a set \(resp. a map\))]TJ
+-16.24 -1.39 TD
+-0.0279 Tw
+[(and a second operand which is a map)-249.9(\(resp. a set\); the result is all of those pairs in the map whose)-249.9(first)]TJ
+0 -1.33 TD
+0 Tw
+(\(resp. second\) elements are in the set. )Tj
+/F3 1 Tf
+-0.74 -1.87 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0028 Tw
+[(When applied to a set and a map, the map)-249.9(deletion operator )]TJ
+/F9 1 Tf
+14 0 0 14 156 818.9999 Tm
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+14.1943 -38.25 TD
+(y)Tj
+0.03 0 TD
+(y)Tj
+0 0.03 TD
+(y)Tj
+-0.03 0 TD
+(y)Tj
+/F1 1 Tf
+12 0 0 12 163 819 Tm
+( )Tj
+16.7717 -44.625 TD
+0.0002 Tc
+0.0024 Tw
+( \(resp. )Tj
+/F9 1 Tf
+-16.5217 44.625 TD
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+19.2417 -44.625 TD
+(u)Tj
+0.03 0 TD
+(u)Tj
+0 0.03 TD
+(u)Tj
+-0.03 0 TD
+(u)Tj
+/F1 1 Tf
+-18.7717 44.595 TD
+( )Tj
+19.4217 -44.625 TD
+-0.0001 Tc
+0.0028 Tw
+(\) yields those pairs in the map)Tj
+-28.33 -1.38 TD
+0 Tw
+[(whose first \(resp. second\) elements are)-249.9(not in the set.)]TJ
+/F3 1 Tf
+-0.74 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0572 Tw
+(The forward composition )Tj
+/F4 1 Tf
+9.0483 47.755 TD
+0 Tc
+0 Tw
+( )Tj
+1.5417 -47.755 TD
+(r)Tj
+/F2 1 Tf
+-1.2917 47.755 TD
+( )Tj
+1.6817 -47.755 TD
+(;)Tj
+/F4 1 Tf
+-1.4317 47.755 TD
+( )Tj
+1.7617 -47.755 TD
+(p)Tj
+/F1 1 Tf
+-1.5117 47.755 TD
+( )Tj
+2.0117 -47.755 TD
+-0.0001 Tc
+0.0573 Tw
+[( of two maps )]TJ
+/F4 1 Tf
+-1.7617 47.755 TD
+0 Tc
+0 Tw
+( )Tj
+7.4317 -47.755 TD
+(r)Tj
+/F1 1 Tf
+-7.1817 47.755 TD
+( )Tj
+7.5717 -47.755 TD
+0.0572 Tw
+[( and )]TJ
+/F4 1 Tf
+-7.3217 47.755 TD
+0 Tw
+( )Tj
+9.3817 -47.755 TD
+(p)Tj
+/F1 1 Tf
+-9.1317 47.755 TD
+( )Tj
+9.6317 -47.755 TD
+-0.0001 Tc
+0.0573 Tw
+[( the map made of pairs )]TJ
+/F4 1 Tf
+-9.3817 47.755 TD
+0 Tc
+0 Tw
+( )Tj
+19.1117 -47.755 TD
+(x)Tj
+/F1 1 Tf
+-18.8617 47.755 TD
+( )Tj
+19.3017 -47.755 TD
+( )Tj
+/F7 1 Tf
+-19.0517 47.755 TD
+( )Tj
+19.3617 -47.755 TD
+()Tj
+/F1 1 Tf
+-19.1117 47.755 TD
+( )Tj
+20.1017 -47.755 TD
+( )Tj
+/F4 1 Tf
+-19.8517 47.755 TD
+( )Tj
+20.1517 -47.755 TD
+(z)Tj
+/F1 1 Tf
+-19.9017 47.755 TD
+( )Tj
+20.2917 -47.755 TD
+-0.0001 Tc
+0.0572 Tw
+[( where there exists)]TJ
+-32.7 -1.45 TD
+0 Tw
+(some )Tj
+/F4 1 Tf
+12.6583 49.205 TD
+0 Tc
+( )Tj
+-10.2983 -49.205 TD
+(y)Tj
+/F1 1 Tf
+10.5483 49.205 TD
+( )Tj
+-10.0983 -49.205 TD
+-0.0001 Tc
+( such that )Tj
+/F4 1 Tf
+10.3483 49.205 TD
+0 Tc
+( )Tj
+-6.2683 -49.205 TD
+(x)Tj
+/F1 1 Tf
+6.5183 49.205 TD
+( )Tj
+-6.0783 -49.205 TD
+( )Tj
+/F7 1 Tf
+6.3283 49.205 TD
+( )Tj
+-6.0783 -49.205 TD
+()Tj
+/F1 1 Tf
+6.3283 49.205 TD
+( )Tj
+-5.3383 -49.205 TD
+( )Tj
+/F4 1 Tf
+5.5883 49.205 TD
+( )Tj
+-5.3383 -49.205 TD
+-0.0001 Tw
+(y  )Tj
+/F9 1 Tf
+14 0 0 14 238 818.9999 Tm
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+-4.0143 -42.1757 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F4 1 Tf
+12 0 0 12 245 819 Tm
+( )Tj
+-4.6017 -49.205 TD
+(  r )Tj
+/F1 1 Tf
+4.8517 49.205 TD
+( )Tj
+-3.7117 -49.205 TD
+(and )Tj
+/F4 1 Tf
+3.9617 49.205 TD
+( )Tj
+-2.2717 -49.205 TD
+(y)Tj
+/F1 1 Tf
+2.5217 49.205 TD
+( )Tj
+-2.0817 -49.205 TD
+( )Tj
+/F7 1 Tf
+2.3317 49.205 TD
+( )Tj
+-2.0817 -49.205 TD
+()Tj
+/F1 1 Tf
+2.3317 49.205 TD
+( )Tj
+-1.3417 -49.205 TD
+( )Tj
+/F4 1 Tf
+1.5917 49.205 TD
+( )Tj
+-1.3417 -49.205 TD
+(z)Tj
+/F9 1 Tf
+14 0 0 14 266 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-1.06 -42.1757 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.5 -0.03 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+12 0 0 12 273 819 Tm
+( )Tj
+-0.585 -49.205 TD
+( )Tj
+/F4 1 Tf
+0.835 49.205 TD
+( )Tj
+-0.585 -49.205 TD
+(p)Tj
+/F1 1 Tf
+0.835 49.205 TD
+( )Tj
+-0.335 -49.205 TD
+(.)Tj
+/F3 1 Tf
+-18.23 -1.92 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0073 Tw
+(The direct product )Tj
+/F9 1 Tf
+14 0 0 14 282 818.9999 Tm
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+-8.8971 -43.8214 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 289 819 Tm
+( )Tj
+-10.1883 -51.125 TD
+-0.0001 Tc
+-0.0072 Tw
+[( of two maps )]TJ
+/F4 1 Tf
+10.4383 51.125 TD
+0 Tc
+0 Tw
+( )Tj
+-5.0183 -51.125 TD
+(r)Tj
+/F1 1 Tf
+5.2683 51.125 TD
+( )Tj
+-4.8783 -51.125 TD
+-0.0073 Tw
+[( and )]TJ
+/F4 1 Tf
+5.1283 51.125 TD
+0 Tw
+( )Tj
+-3.1983 -51.125 TD
+(p)Tj
+/F1 1 Tf
+3.4483 51.125 TD
+( )Tj
+-2.9483 -51.125 TD
+-0.0001 Tc
+-0.0072 Tw
+[( is the map made of the pairs )]TJ
+/F4 1 Tf
+3.1983 51.125 TD
+0 Tc
+0 Tw
+( )Tj
+8.5117 -51.125 TD
+(x)Tj
+/F1 1 Tf
+-8.2617 51.125 TD
+( )Tj
+8.7017 -51.125 TD
+( )Tj
+/F7 1 Tf
+-8.4517 51.125 TD
+( )Tj
+8.7017 -51.125 TD
+()Tj
+/F1 1 Tf
+-8.4517 51.125 TD
+( )Tj
+9.4317 -51.125 TD
+-0.0074 Tc
+( \()Tj
+/F4 1 Tf
+-9.1817 51.125 TD
+0 Tc
+( )Tj
+9.7617 -51.125 TD
+(y)Tj
+/F1 1 Tf
+-9.5117 51.125 TD
+( )Tj
+9.9517 -51.125 TD
+( )Tj
+/F7 1 Tf
+-9.7017 51.125 TD
+( )Tj
+9.9517 -51.125 TD
+()Tj
+/F1 1 Tf
+-9.7017 51.125 TD
+( )Tj
+10.6817 -51.125 TD
+( )Tj
+/F4 1 Tf
+-10.4317 51.125 TD
+( )Tj
+10.6817 -51.125 TD
+(z)Tj
+/F1 1 Tf
+-10.4317 51.125 TD
+( )Tj
+10.8117 -51.125 TD
+-0.0001 Tc
+-0.0073 Tw
+(\) where )Tj
+/F4 1 Tf
+-10.5617 51.125 TD
+0 Tc
+0 Tw
+( )Tj
+13.8317 -51.125 TD
+(x)Tj
+/F7 1 Tf
+-13.5817 51.125 TD
+( )Tj
+14.0217 -51.125 TD
+( )Tj
+/F1 1 Tf
+-13.7717 51.125 TD
+( )Tj
+15.0117 -51.125 TD
+( )Tj
+/F4 1 Tf
+-14.7617 51.125 TD
+( )Tj
+15.0017 -51.125 TD
+(y)Tj
+/F1 1 Tf
+-14.7517 51.125 TD
+( )Tj
+15.1917 -51.125 TD
+-0.0072 Tc
+(  )Tj
+/F9 1 Tf
+14 0 0 14 349 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+13.1971 -43.8214 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+12 0 0 12 356.0001 819 Tm
+( )Tj
+15.4683 -51.125 TD
+( )Tj
+/F4 1 Tf
+-15.2183 51.125 TD
+( )Tj
+15.4583 -51.125 TD
+(r)Tj
+/F1 1 Tf
+-15.2083 51.125 TD
+( )Tj
+-24.7417 -52.625 TD
+(and )Tj
+/F4 1 Tf
+24.9917 52.625 TD
+( )Tj
+-23.2917 -52.625 TD
+(x)Tj
+/F1 1 Tf
+23.5417 52.625 TD
+( )Tj
+-23.1017 -52.625 TD
+( )Tj
+/F7 1 Tf
+23.3517 52.625 TD
+( )Tj
+-23.1017 -52.625 TD
+()Tj
+/F1 1 Tf
+23.3517 52.625 TD
+( )Tj
+-22.3617 -52.625 TD
+( )Tj
+/F4 1 Tf
+22.6117 52.625 TD
+( )Tj
+-22.3617 -52.625 TD
+(z)Tj
+/F1 1 Tf
+22.6117 52.625 TD
+( )Tj
+-22.2217 -52.625 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 383.0001 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-19.0771 -45.1071 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+12 0 0 12 390 819 Tm
+( )Tj
+-22.185 -52.625 TD
+( )Tj
+/F4 1 Tf
+22.435 52.625 TD
+( )Tj
+-22.185 -52.625 TD
+(p)Tj
+/F1 1 Tf
+22.435 52.625 TD
+( )Tj
+-21.935 -52.625 TD
+(.)Tj
+/F3 1 Tf
+-6.38 -1.8 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0478 Tw
+(Given two maps )Tj
+/F4 1 Tf
+27.715 54.425 TD
+0 Tc
+0 Tw
+( )Tj
+-21.045 -54.425 TD
+(m)Tj
+/F1 1 Tf
+21.295 54.425 TD
+( )Tj
+-20.575 -54.425 TD
+(, )Tj
+/F4 1 Tf
+20.825 54.425 TD
+( )Tj
+-20.375 -54.425 TD
+(n)Tj
+/F1 1 Tf
+20.625 54.425 TD
+( )Tj
+-20.125 -54.425 TD
+-0.0001 Tc
+-0.0478 Tw
+[( and a set of pairs of maps)]TJ
+/F4 1 Tf
+20.375 54.425 TD
+0 Tc
+0 Tw
+( )Tj
+-10.245 -54.425 TD
+-0.0479 Tc
+( s)Tj
+/F1 1 Tf
+10.495 54.425 TD
+0 Tc
+( )Tj
+-9.905 -54.425 TD
+-0.0001 Tc
+-0.0478 Tw
+[( we define )]TJ
+/F2 1 Tf
+10.155 54.425 TD
+0 Tc
+0 Tw
+( )Tj
+-5.885 -54.425 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+6.135 54.425 TD
+0 Tc
+( )Tj
+-3.185 -54.425 TD
+-0.048 Tc
+( \()Tj
+/F4 1 Tf
+3.435 54.425 TD
+0 Tc
+( )Tj
+-2.905 -54.425 TD
+(m,n)Tj
+/F1 1 Tf
+3.155 54.425 TD
+( )Tj
+-1.685 -54.425 TD
+-0.0001 Tc
+-0.0478 Tw
+(\) and )Tj
+/F2 1 Tf
+1.935 54.425 TD
+0 Tc
+0 Tw
+( )Tj
+0.245 -54.425 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+0.005 54.425 TD
+0 Tc
+( )Tj
+4.495 -54.425 TD
+-0.048 Tc
+( \()Tj
+/F4 1 Tf
+-4.245 54.425 TD
+0 Tc
+( )Tj
+4.785 -54.425 TD
+(s)Tj
+/F1 1 Tf
+-4.535 54.425 TD
+( )Tj
+4.925 -54.425 TD
+-0.0001 Tc
+-0.0478 Tw
+(\) such that:)Tj
+/F2 1 Tf
+-4.675 54.425 TD
+0 Tc
+0 Tw
+( )Tj
+-31.325 -55.875 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+31.575 55.875 TD
+0 Tc
+( )Tj
+-28.635 -55.875 TD
+-0.0555 Tc
+( \()Tj
+/F4 1 Tf
+28.885 55.875 TD
+0 Tc
+( )Tj
+-28.355 -55.875 TD
+(m,n)Tj
+/F1 1 Tf
+28.605 55.875 TD
+( )Tj
+-27.135 -55.875 TD
+-0.0001 Tc
+-0.0554 Tw
+(\) = )Tj
+/F2 1 Tf
+27.385 55.875 TD
+0 Tc
+0 Tw
+( )Tj
+-26.095 -55.875 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+26.345 55.875 TD
+0 Tc
+( )Tj
+-24.845 -55.875 TD
+-0.0555 Tc
+( \()Tj
+/F4 1 Tf
+25.095 55.875 TD
+0 Tc
+( )Tj
+-24.565 -55.875 TD
+(m)Tj
+/F9 1 Tf
+14 0 0 14 462 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-20.6829 -47.8929 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F4 1 Tf
+12 0 0 12 469 819 Tm
+( )Tj
+-23.9383 -55.875 TD
+(n)Tj
+/F1 1 Tf
+24.1883 55.875 TD
+( )Tj
+-23.6883 -55.875 TD
+-0.0001 Tc
+-0.0554 Tw
+(\) and )Tj
+/F2 1 Tf
+23.9383 55.875 TD
+0 Tc
+0 Tw
+( )Tj
+-21.7683 -55.875 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+22.0183 55.875 TD
+0 Tc
+( )Tj
+-17.5183 -55.875 TD
+-0.0555 Tc
+( \()Tj
+/F4 1 Tf
+17.7683 55.875 TD
+0 Tc
+( )Tj
+-17.2483 -55.875 TD
+(s)Tj
+/F1 1 Tf
+17.4983 55.875 TD
+( )Tj
+-17.1083 -55.875 TD
+-0.0001 Tc
+-0.0554 Tw
+(\) = )Tj
+/F7 1 Tf
+17.3583 55.875 TD
+0 Tc
+0 Tw
+( )Tj
+-16.0683 -55.875 TD
+()Tj
+/F1 1 Tf
+16.3183 55.875 TD
+( )Tj
+-15.5483 -55.875 TD
+({)Tj
+/F2 1 Tf
+15.7983 55.875 TD
+( )Tj
+-15.3183 -55.875 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+15.5683 55.875 TD
+0 Tc
+( )Tj
+-12.6283 -55.875 TD
+-0.0555 Tc
+( \()Tj
+/F4 1 Tf
+12.8783 55.875 TD
+0 Tc
+( )Tj
+-12.3483 -55.875 TD
+(m,n)Tj
+/F1 1 Tf
+12.5983 55.875 TD
+( )Tj
+-11.1283 -55.875 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 505 819 Tm
+0 Tc
+( )Tj
+-9.2986 -47.8929 TD
+(∆)Tj
+/F1 1 Tf
+12 0 0 12 512 819 Tm
+( )Tj
+-11.2917 -55.875 TD
+( )Tj
+/F4 1 Tf
+11.5417 55.875 TD
+( )Tj
+-11.3417 -55.875 TD
+(m)Tj
+/F1 1 Tf
+11.5917 55.875 TD
+( )Tj
+-10.8717 -55.875 TD
+( )Tj
+/F7 1 Tf
+12 0 2.5507 12 521 819 Tm
+( )Tj
+0.945 -55.875 TD
+()Tj
+/F1 1 Tf
+12 0 0 12 524 819 Tm
+( )Tj
+-10.1917 -55.875 TD
+( )Tj
+/F4 1 Tf
+10.4417 55.875 TD
+( )Tj
+-10.2517 -55.875 TD
+(n)Tj
+/F1 1 Tf
+10.5017 55.875 TD
+( )Tj
+-10.0017 -55.875 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 533 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-8.6457 -47.8929 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+12 0 0 12 540 819 Tm
+( )Tj
+-10.015 -55.875 TD
+( )Tj
+/F4 1 Tf
+10.265 55.875 TD
+( )Tj
+-10.065 -55.875 TD
+(s)Tj
+/F1 1 Tf
+10.315 55.875 TD
+( )Tj
+-9.925 -55.875 TD
+(}. )Tj
+/F2 1 Tf
+10.175 55.875 TD
+( )Tj
+-9.255 -55.875 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+9.505 55.875 TD
+0 Tc
+( )Tj
+-6.565 -55.875 TD
+-0.0555 Tw
+[( and )]TJ
+/F2 1 Tf
+6.815 55.875 TD
+0 Tw
+( )Tj
+-4.975 -55.875 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+5.225 55.875 TD
+0 Tc
+( )Tj
+-41.075 -57.255 TD
+-0.0001 Tc
+-0.0341 Tw
+[(are relations \(not necessary maps\))-249.9(but in this paper we use them only in contexts where they are maps.)]TJ
+/F2 1 Tf
+41.325 57.255 TD
+0 Tc
+0 Tw
+( )Tj
+-41.325 -58.595 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+41.575 58.595 TD
+0 Tc
+( )Tj
+-37.075 -58.595 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+37.325 58.595 TD
+0 Tc
+( )Tj
+-36.745 -58.595 TD
+(s)Tj
+/F1 1 Tf
+36.995 58.595 TD
+( )Tj
+-36.605 -58.595 TD
+-0.0001 Tc
+(\) is only applied to maps )Tj
+/F2 1 Tf
+36.855 58.595 TD
+0 Tc
+( )Tj
+-26.745 -58.595 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+26.995 58.595 TD
+0 Tc
+( )Tj
+-24.055 -58.595 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+0.59 0 TD
+0 Tc
+(m,n)Tj
+/F1 1 Tf
+1.47 0 TD
+-0.0001 Tc
+(\) with pairwise disjoint domains.)Tj
+ET
+endstream
+endobj
+34 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F8 35 0 R
+/F9 36 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+38 0 obj
+<<
+/Length 19151
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+24.0183 -64.295 TD
+(9)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+5.6383 -2.955 TD
+-0.0001 Tc
+-0.0271 Tw
+[(The two following examples show how both)-249.9(relations are used in the framework of an interproce-)]TJ
+-2.37 -1.33 TD
+0 Tw
+(dural analysis.)Tj
+/F2 1 Tf
+0 0 0 rg
+-3.0183 4.285 TD
+0 Tc
+( )Tj
+3.0183 -6.035 TD
+(Ex1)Tj
+/F1 1 Tf
+-2.7683 6.035 TD
+( )Tj
+4.4383 -6.035 TD
+-0.0001 Tc
+(. Let )Tj
+/F4 1 Tf
+-4.1883 6.035 TD
+0 Tc
+( )Tj
+6.2683 -6.035 TD
+-0.0001 Tc
+(Formal)Tj
+/F1 1 Tf
+-6.0183 6.035 TD
+0 Tc
+( )Tj
+9.0183 -6.035 TD
+( = )Tj
+/F4 1 Tf
+-8.7683 6.035 TD
+( )Tj
+9.8383 -6.035 TD
+({1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 35 819 Tm
+( )Tj
+12.0211 -6.035 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 38 819 Tm
+( )Tj
+11.4683 -6.035 TD
+( a, 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 41 819 Tm
+( )Tj
+14.5011 -6.035 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 44 819 Tm
+( )Tj
+13.9583 -6.035 TD
+( b})Tj
+/F1 1 Tf
+-13.7083 6.035 TD
+( )Tj
+14.8583 -6.035 TD
+( and )Tj
+/F4 1 Tf
+-14.6083 6.035 TD
+( )Tj
+16.5583 -6.035 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+-16.3083 6.035 TD
+0 Tc
+( )Tj
+19.5783 -6.035 TD
+( = )Tj
+/F4 1 Tf
+-19.3283 6.035 TD
+( )Tj
+20.3983 -6.035 TD
+({1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 59 819 Tm
+( )Tj
+22.5811 -6.035 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 62 819 Tm
+( )Tj
+22.0283 -6.035 TD
+-0.0001 Tw
+(  x+y, 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 65 819 Tm
+0 Tw
+( )Tj
+26.3811 -6.035 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 68 819 Tm
+( )Tj
+25.8283 -6.035 TD
+(  27})Tj
+/F1 1 Tf
+-25.5783 6.035 TD
+( )Tj
+27.4783 -6.035 TD
+(.)Tj
+-28.71 -1.86 TD
+-0.0001 Tc
+(Then, )Tj
+/F2 1 Tf
+1.4817 7.895 TD
+0 Tc
+( )Tj
+1.0783 -7.895 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+-0.8283 7.895 TD
+0 Tc
+( )Tj
+3.7683 -7.895 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-3.5183 7.895 TD
+0 Tc
+( )Tj
+4.0983 -7.895 TD
+-0.0001 Tc
+(Formal)Tj
+/F1 1 Tf
+-3.8483 7.895 TD
+0 Tc
+( )Tj
+6.8483 -7.895 TD
+(, )Tj
+/F4 1 Tf
+-6.5983 7.895 TD
+( )Tj
+7.0983 -7.895 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+-6.8483 7.895 TD
+0 Tc
+( )Tj
+10.1283 -7.895 TD
+-0.0001 Tc
+(\) = )Tj
+/F2 1 Tf
+-9.8783 7.895 TD
+0 Tc
+( )Tj
+11.2783 -7.895 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+-11.0283 7.895 TD
+0 Tc
+( )Tj
+12.5283 -7.895 TD
+-0.0001 Tc
+(\( )Tj
+/F4 1 Tf
+-12.2783 7.895 TD
+0 Tc
+( )Tj
+12.8583 -7.895 TD
+({1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 101 819 Tm
+( )Tj
+15.4365 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 104 819 Tm
+( )Tj
+14.4983 -7.895 TD
+-0.0001 Tc
+( \(a)Tj
+/F7 1 Tf
+12 0 2.5507 12 107 819 Tm
+0 Tc
+( )Tj
+17.0065 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 110 819 Tm
+( )Tj
+16.0683 -7.895 TD
+-0.0001 Tc
+(  x+y\), 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 113 819 Tm
+0 Tc
+( )Tj
+21.1365 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 116 819 Tm
+( )Tj
+20.1983 -7.895 TD
+-0.0001 Tc
+( \( b)Tj
+/F7 1 Tf
+12 0 2.5507 12 119 819 Tm
+0 Tc
+( )Tj
+22.9565 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 122 819 Tm
+( )Tj
+22.0183 -7.895 TD
+-0.0001 Tc
+( 27\)})Tj
+/F1 1 Tf
+-21.7683 7.895 TD
+0 Tc
+( )Tj
+23.7483 -7.895 TD
+-0.0001 Tw
+( \) = )Tj
+/F4 1 Tf
+-23.4983 7.895 TD
+0 Tw
+( )Tj
+25.1483 -7.895 TD
+({a )Tj
+/F7 1 Tf
+12 0 2.5507 12 131 819 Tm
+( )Tj
+27.7265 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 134 819 Tm
+( )Tj
+26.7883 -7.895 TD
+-0.0001 Tc
+( x+y, b )Tj
+/F7 1 Tf
+12 0 2.5507 12 137 819 Tm
+0 Tc
+( )Tj
+31.2765 -7.895 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 140 819 Tm
+( )Tj
+30.3283 -7.895 TD
+( 27})Tj
+/F1 1 Tf
+-30.0783 7.895 TD
+( )Tj
+31.7283 -7.895 TD
+(.)Tj
+/F9 1 Tf
+14 0 0 14 146 819 Tm
+( )Tj
+27.9929 -6.7671 TD
+(p)Tj
+/F2 1 Tf
+12 0 0 12 153 819 Tm
+( )Tj
+-8.065 -9.705 TD
+(Ex2)Tj
+/F1 1 Tf
+8.315 9.705 TD
+( )Tj
+-6.645 -9.705 TD
+-0.0001 Tc
+(. Let )Tj
+/F4 1 Tf
+6.895 9.705 TD
+0 Tc
+( )Tj
+-4.815 -9.705 TD
+-0.0001 Tc
+(ComDecl)Tj
+/F1 1 Tf
+5.065 9.705 TD
+0 Tc
+( )Tj
+-1.285 -9.705 TD
+( = )Tj
+/F4 1 Tf
+1.535 9.705 TD
+( )Tj
+-0.475 -9.705 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 168 819 Tm
+0 Tc
+( )Tj
+2.6079 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 171 819 Tm
+( )Tj
+1.275 -9.705 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 174 819 Tm
+( )Tj
+4.2379 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 177 819 Tm
+( )Tj
+2.915 -9.705 TD
+( e , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 180 819 Tm
+( )Tj
+6.6679 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 183 819 Tm
+( )Tj
+5.345 -9.705 TD
+( f }, D )Tj
+/F7 1 Tf
+12 0 2.5507 12 186 819 Tm
+( )Tj
+9.8079 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 189 819 Tm
+( )Tj
+8.485 -9.705 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 192 819 Tm
+( )Tj
+11.4479 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 195 819 Tm
+( )Tj
+10.115 -9.705 TD
+(l , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 198 819 Tm
+( )Tj
+13.4579 -9.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 201 819 Tm
+( )Tj
+12.135 -9.705 TD
+-0.0001 Tc
+(m}})Tj
+/F1 1 Tf
+-11.885 9.705 TD
+0 Tc
+( )Tj
+13.405 -9.705 TD
+-0.0001 Tw
+( and)Tj
+/F4 1 Tf
+-13.155 9.705 TD
+0 Tw
+( )Tj
+-12.565 -11.455 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+12.815 11.455 TD
+0 Tc
+( )Tj
+-9.535 -11.455 TD
+( = )Tj
+/F4 1 Tf
+9.785 11.455 TD
+( )Tj
+-8.715 -11.455 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 216 819 Tm
+0 Tc
+( )Tj
+-5.2702 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 219 819 Tm
+( )Tj
+-6.975 -11.455 TD
+( { 1)Tj
+/F7 1 Tf
+12 0 2.5507 12 222 819 Tm
+( )Tj
+-3.3902 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 225 819 Tm
+( )Tj
+-5.085 -11.455 TD
+( 2 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 228 819 Tm
+( )Tj
+-0.9002 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 231 819 Tm
+( )Tj
+-2.595 -11.455 TD
+( 4 }, B )Tj
+/F7 1 Tf
+12 0 2.5507 12 234 819 Tm
+( )Tj
+2.3498 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 237 819 Tm
+( )Tj
+0.655 -11.455 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 240 819 Tm
+( )Tj
+3.9898 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 243 819 Tm
+( )Tj
+2.285 -11.455 TD
+(8 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 246 819 Tm
+( )Tj
+6.2198 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 249 819 Tm
+( )Tj
+4.525 -11.455 TD
+(1}, D )Tj
+/F7 1 Tf
+12 0 2.5507 12 252 819 Tm
+( )Tj
+9.0798 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 255 819 Tm
+( )Tj
+7.385 -11.455 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 258 819 Tm
+( )Tj
+10.7198 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 261 819 Tm
+( )Tj
+9.015 -11.455 TD
+(5 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 264 819 Tm
+( )Tj
+12.9498 -11.455 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 267 819 Tm
+( )Tj
+11.255 -11.455 TD
+-0.0001 Tc
+(7}})Tj
+/F1 1 Tf
+-11.005 11.455 TD
+0 Tc
+( )Tj
+12.305 -11.455 TD
+(.)Tj
+-30.12 -1.86 TD
+-0.0001 Tc
+(Then, )Tj
+/F2 1 Tf
+18.065 13.315 TD
+0 Tc
+( )Tj
+-15.505 -13.315 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+15.755 13.315 TD
+0 Tc
+( )Tj
+-14.255 -13.315 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+14.505 13.315 TD
+0 Tc
+( )Tj
+-13.925 -13.315 TD
+-0.0001 Tc
+(ComDecl)Tj
+/F1 1 Tf
+14.175 13.315 TD
+0 Tc
+( )Tj
+-10.395 -13.315 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 285 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-8.94 -11.4128 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 292 819 Tm
+( )Tj
+-10.2383 -13.315 TD
+( )Tj
+/F4 1 Tf
+10.4883 13.315 TD
+( )Tj
+-10.2383 -13.315 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+10.4883 13.315 TD
+0 Tc
+( )Tj
+-7.2083 -13.315 TD
+-0.0001 Tc
+(\) =)Tj
+/F2 1 Tf
+7.4583 13.315 TD
+0 Tc
+( )Tj
+-15.6883 -15.125 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+15.9383 15.125 TD
+0 Tc
+( )Tj
+-14.4383 -15.125 TD
+(\()Tj
+/F4 1 Tf
+14.6883 15.125 TD
+( )Tj
+-14.3583 -15.125 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 310 819 Tm
+0 Tc
+( )Tj
+-10.1334 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 313 819 Tm
+( )Tj
+-12.6083 -15.125 TD
+-0.0001 Tc
+( \({1)Tj
+/F7 1 Tf
+12 0 2.5507 12 316 819 Tm
+0 Tc
+( )Tj
+-8.1634 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 319 819 Tm
+( )Tj
+-10.6383 -15.125 TD
+( e, 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 322 819 Tm
+( )Tj
+-5.9834 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 325 819 Tm
+( )Tj
+-8.4583 -15.125 TD
+-0.0001 Tc
+( f})Tj
+/F7 1 Tf
+12 0 2.5507 12 328 819 Tm
+0 Tc
+( )Tj
+-4.5734 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 331 819 Tm
+( )Tj
+-7.0483 -15.125 TD
+(  {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 334 819 Tm
+( )Tj
+-2.6834 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 337 819 Tm
+( )Tj
+-5.1583 -15.125 TD
+( 2 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 340 819 Tm
+( )Tj
+-0.1934 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 343 819 Tm
+( )Tj
+-2.6783 -15.125 TD
+-0.0001 Tw
+( 4 }\), D )Tj
+/F7 1 Tf
+12 0 2.5507 12 346 819 Tm
+0 Tw
+( )Tj
+3.4966 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 349 819 Tm
+( )Tj
+1.0217 -15.125 TD
+-0.0001 Tc
+( \({1)Tj
+/F7 1 Tf
+12 0 2.5507 12 352 819 Tm
+0 Tc
+( )Tj
+5.4666 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 355 819 Tm
+( )Tj
+2.9817 -15.125 TD
+(l , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 358 819 Tm
+( )Tj
+7.4766 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 361 819 Tm
+( )Tj
+5.0017 -15.125 TD
+-0.0001 Tc
+(m})Tj
+/F7 1 Tf
+12 0 2.5507 12 364 819 Tm
+0 Tc
+( )Tj
+9.0866 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 367 819 Tm
+( )Tj
+6.6117 -15.125 TD
+(  {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 370 819 Tm
+( )Tj
+10.9766 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 373 819 Tm
+( )Tj
+8.4917 -15.125 TD
+(5 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 376 819 Tm
+( )Tj
+13.2066 -15.125 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 379 819 Tm
+( )Tj
+10.7317 -15.125 TD
+-0.0001 Tc
+(7} \)})Tj
+/F1 1 Tf
+-10.4817 15.125 TD
+0 Tc
+( )Tj
+12.3617 -15.125 TD
+-0.0001 Tc
+(\) =)Tj
+/F4 1 Tf
+-12.1117 15.125 TD
+0 Tc
+( )Tj
+-22.6883 -16.875 TD
+-0.0001 Tw
+({ {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 388 819 Tm
+0 Tw
+( )Tj
+-17.8014 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 391 819 Tm
+( )Tj
+-20.6583 -16.875 TD
+( e , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 394 819 Tm
+( )Tj
+-15.3714 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 397 819 Tm
+( )Tj
+-18.2283 -16.875 TD
+-0.0001 Tc
+( f})Tj
+/F7 1 Tf
+12 0 2.5507 12 400 819 Tm
+0 Tc
+( )Tj
+-13.9614 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 403 819 Tm
+( )Tj
+-16.8083 -16.875 TD
+(  {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 406 819 Tm
+( )Tj
+-12.0714 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 409 819 Tm
+( )Tj
+-14.9283 -16.875 TD
+( 2 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 412 819 Tm
+( )Tj
+-9.5914 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 415 819 Tm
+( )Tj
+-12.4383 -16.875 TD
+( 4} , {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 418 819 Tm
+( )Tj
+-6.3014 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 421 819 Tm
+( )Tj
+-9.1483 -16.875 TD
+(l , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 424 819 Tm
+( )Tj
+-4.2814 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 427 819 Tm
+( )Tj
+-7.1383 -16.875 TD
+-0.0001 Tc
+(m})Tj
+/F7 1 Tf
+12 0 2.5507 12 430 819 Tm
+0 Tc
+( )Tj
+-2.6814 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 433 819 Tm
+( )Tj
+-5.5283 -16.875 TD
+(  {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 436 819 Tm
+( )Tj
+-0.7914 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 439 819 Tm
+( )Tj
+-3.6383 -16.875 TD
+(5 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 442 819 Tm
+( )Tj
+1.4486 -16.875 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 445 819 Tm
+( )Tj
+-1.4083 -16.875 TD
+(7} })Tj
+/F1 1 Tf
+1.6583 16.875 TD
+( )Tj
+-32.6483 -18.735 TD
+-0.0001 Tc
+(and)Tj
+/F4 1 Tf
+32.8983 18.735 TD
+0 Tc
+( )Tj
+-31.4483 -18.735 TD
+( )Tj
+/F2 1 Tf
+31.6983 18.735 TD
+( )Tj
+-31.4483 -18.735 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+31.6983 18.735 TD
+0 Tc
+( )Tj
+-27.1983 -18.735 TD
+-0.0001 Tc
+( \()Tj
+/F2 1 Tf
+27.4483 18.735 TD
+0 Tc
+( )Tj
+-26.8683 -18.735 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+27.1183 18.735 TD
+0 Tc
+( )Tj
+-25.6183 -18.735 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+25.8683 18.735 TD
+0 Tc
+( )Tj
+-25.2883 -18.735 TD
+-0.0001 Tc
+(ComDecl)Tj
+/F1 1 Tf
+25.5383 18.735 TD
+0 Tc
+( )Tj
+-21.7583 -18.735 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 472 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-18.68 -16.0586 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 479 819 Tm
+( )Tj
+-21.6017 -18.735 TD
+( )Tj
+/F4 1 Tf
+21.8517 18.735 TD
+( )Tj
+-21.6017 -18.735 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+21.8517 18.735 TD
+0 Tc
+( )Tj
+-18.5717 -18.735 TD
+-0.0001 Tc
+(\)\) =)Tj
+/F2 1 Tf
+18.8217 18.735 TD
+0 Tc
+( )Tj
+-31.2717 -20.645 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+31.5217 20.645 TD
+0 Tc
+( )Tj
+-28.5817 -20.645 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+28.8317 20.645 TD
+0 Tc
+( )Tj
+-28.2517 -20.645 TD
+({1)Tj
+/F7 1 Tf
+12 0 2.5507 12 497 819 Tm
+( )Tj
+-23.2134 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 500 819 Tm
+( )Tj
+-26.8617 -20.645 TD
+( e , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 503 819 Tm
+( )Tj
+-20.7834 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 506 819 Tm
+( )Tj
+-24.4317 -20.645 TD
+-0.0001 Tc
+( f}, {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 509 819 Tm
+0 Tc
+( )Tj
+-17.9634 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 512 819 Tm
+( )Tj
+-21.6217 -20.645 TD
+( 2 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 515 819 Tm
+( )Tj
+-15.4834 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 518 819 Tm
+( )Tj
+-19.1317 -20.645 TD
+( 4} )Tj
+/F1 1 Tf
+19.3817 20.645 TD
+( )Tj
+-17.9817 -20.645 TD
+(\))Tj
+/F9 1 Tf
+14 0 0 14 524 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-15.3743 -17.6957 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.5 -0.03 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 531 819 Tm
+( )Tj
+-17.175 -20.645 TD
+( )Tj
+/F4 1 Tf
+17.425 20.645 TD
+( )Tj
+-17.175 -20.645 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+17.425 20.645 TD
+0 Tc
+( )Tj
+-14.645 -20.645 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+14.895 20.645 TD
+0 Tc
+( )Tj
+-14.315 -20.645 TD
+({1)Tj
+/F7 1 Tf
+12 0 2.5507 12 543 819 Tm
+( )Tj
+-9.2768 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 546 819 Tm
+( )Tj
+-12.925 -20.645 TD
+(l , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 549 819 Tm
+( )Tj
+-7.2568 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 552 819 Tm
+( )Tj
+-10.915 -20.645 TD
+-0.0001 Tw
+(m}, {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 555 819 Tm
+0 Tw
+( )Tj
+-4.2468 -20.645 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 558 819 Tm
+( )Tj
+-7.905 -20.645 TD
+(5 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 561 819 Tm
+( )Tj
+-2.0168 -20.645 TD
+()Tj
+/F9 1 Tf
+2.2668 20.645 TD
+( )Tj
+-1.2768 -20.645 TD
+( )Tj
+/F4 1 Tf
+12 0 0 12 570 819 Tm
+( )Tj
+-5.665 -20.645 TD
+(7})Tj
+/F1 1 Tf
+5.915 20.645 TD
+( )Tj
+-5.015 -20.645 TD
+(\))Tj
+/F4 1 Tf
+5.265 20.645 TD
+( )Tj
+-38.605 -22.565 TD
+-0.0001 Tc
+(= { e )Tj
+/F7 1 Tf
+12 0 2.5507 12 139.86 548.22 Tm
+0 Tc
+()Tj
+/F4 1 Tf
+12 0 0 12 151.74 548.22 Tm
+( 2 , f)Tj
+/F7 1 Tf
+12 0 2.5507 12 173.1 548.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 184.98 548.22 Tm
+( 4 , l )Tj
+/F7 1 Tf
+12 0 2.5507 12 209.22 548.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 221.1 548.22 Tm
+( 5 , m )Tj
+/F7 1 Tf
+12 0 2.5507 12 250.74 548.22 Tm
+-0.0001 Tc
+( )Tj
+/F4 1 Tf
+12 0 0 12 265.62 548.22 Tm
+0 Tc
+(7}.)Tj
+/F9 1 Tf
+14 0 0 14 537.9 548.22 Tm
+(p)Tj
+/F2 1 Tf
+10 0 0 10 56.22 527.9401 Tm
+-0.0001 Tc
+[(3.2)-454.1( Propagated data)]TJ
+/F1 1 Tf
+12 0 0 12 84.66 508.5 Tm
+-0.0344 Tw
+[(During interprocedural specialization,)-249.9(data are propagated through statements in order to simplify)]TJ
+-2.37 -1.33 TD
+0.0564 Tw
+[(them. They mainly store definitions of)-249.9(Fortran objects \(formal parameters, common blocks, etc.\) and)]TJ
+T*
+-0.0096 Tw
+[(relations between variables and values.)-249.9(The values are related to a program point. First, this section de-)]TJ
+0 -1.34 TD
+0 Tw
+[(tails these data. Then, it specifies how)-249.9(they are modified during the specialization of procedures.)]TJ
+2.37 -1.75 TD
+[(Information associated to the current)-249.9(program point consist of:)]TJ
+/F3 1 Tf
+-2.37 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+( an environment \()Tj
+/F4 1 Tf
+7.09 0 TD
+(Env)Tj
+/F1 1 Tf
+1.55 0 TD
+[(\) providing information that do not change)-249.9(in the program. These are:)]TJ
+/F3 1 Tf
+-7.12 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0094 Tw
+(formal parameters \()Tj
+/F4 1 Tf
+7.9 0 TD
+0 Tw
+(Formal)Tj
+/F1 1 Tf
+3 0 TD
+0.0095 Tw
+[(\). It maps integers \(the positions in)-249.9(the list of formal parameters\) to)]TJ
+-11.04 -1.33 TD
+0.0253 Tw
+[(the names of the corresponding formal)-249.9(parameters. For instance, the map corresponding to the)]TJ
+T*
+0 Tw
+(declaration )Tj
+/TT2 1 Tf
+4.69 0 TD
+-0.0002 Tc
+(SUBROUTINE SP\(a,b,c\))Tj
+/F1 1 Tf
+11.99 0 TD
+-0.0001 Tc
+( is )Tj
+/F4 1 Tf
+1.17 0 TD
+0 Tc
+({1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 321.1801 365.58 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 333.06 365.58 Tm
+( a, 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 357.06 365.58 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 368.82 365.58 Tm
+( b, 3 )Tj
+/F7 1 Tf
+12 0 2.5507 12 392.82 365.58 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 404.7 365.58 Tm
+-0.0001 Tc
+( c})Tj
+/F1 1 Tf
+1.1 0 TD
+0 Tc
+(.)Tj
+/F3 1 Tf
+-27.77 -1.75 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.2367 Tw
+(declared common blocks \()Tj
+/F4 1 Tf
+11.29 0 TD
+0 Tw
+(ComDecl)Tj
+/F1 1 Tf
+3.77 0 TD
+0.2367 Tw
+[(\). They are similarly represented by a)-249.9(mapping from)]TJ
+-15.2 -1.34 TD
+-0.0104 Tw
+[(common block names to the maps of their)-249.9(variable names. For instance, the map corresponding)]TJ
+0 -1.33 TD
+0.004 Tw
+(to the declarations )Tj
+/TT2 1 Tf
+7.59 0 TD
+-0.0002 Tc
+0.0095 Tw
+(COMMON A/e,f)Tj
+/F1 1 Tf
+7.21 0 TD
+0.0008 Tc
+0.0032 Tw
+( and )Tj
+/TT2 1 Tf
+1.95 0 TD
+-0.0002 Tc
+0.0095 Tw
+(COMMON D/l,m )Tj
+/F1 1 Tf
+7.81 0 TD
+-0.0001 Tc
+0.004 Tw
+(is the following map:)Tj
+/F4 1 Tf
+8.54 0 TD
+0.0013 Tc
+0.0026 Tw
+( {A )Tj
+/F7 1 Tf
+12 0 2.5507 12 508.6201 312.54 Tm
+0 Tc
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 520.5 312.54 Tm
+0.001 Tc
+0.003 Tw
+( {1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 537.42 312.54 Tm
+0 Tc
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 93.18 296.58 Tm
+-0.045 Tw
+(e, 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 112.38 296.58 Tm
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 124.26 296.58 Tm
+-0.0001 Tc
+-0.045 Tw
+[( f}, D )]TJ
+/F7 1 Tf
+12 0 2.5507 12 151.38 296.58 Tm
+0 Tc
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 163.26 296.58 Tm
+-0.045 Tw
+[( {1 )]TJ
+/F7 1 Tf
+12 0 2.5507 12 178.98 296.58 Tm
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 190.74 296.58 Tm
+-0.045 Tw
+[( l, 2 )]TJ
+/F7 1 Tf
+12 0 2.5507 12 210.54 296.58 Tm
+0 Tw
+()Tj
+/F4 1 Tf
+12 0 0 12 222.3 296.58 Tm
+-0.0001 Tc
+-0.045 Tw
+[( m}})]TJ
+/F1 1 Tf
+1.73 0 TD
+[(. The order of variable names)-249.9(associated to common blocks must)]TJ
+-12.49 -1.34 TD
+-0.0332 Tw
+[(be kept in the map because of the)-249.9(correspondence between the variables of a common block: the)]TJ
+0 -1.33 TD
+-0.0349 Tw
+[(variable names of a same common block)-249.9(may vary from a procedure to another, and their values)]TJ
+T*
+0 Tw
+[(are passed solely thanks to the position of)-249.9(the variable in the declaration of the common block.)]TJ
+/F3 1 Tf
+-0.71 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.1482 Tw
+(saved data \()Tj
+/F4 1 Tf
+5.07 0 TD
+0 Tw
+(SavData)Tj
+/F1 1 Tf
+3.44 0 TD
+(\). )Tj
+/F4 1 Tf
+0.98 0 TD
+(SavData)Tj
+/F1 1 Tf
+3.45 0 TD
+0.1482 Tw
+[( is the set of variables and common)-249.9(block names that have)]TJ
+-13.08 -1.34 TD
+0.2649 Tw
+(become remanent after a )Tj
+/TT2 1 Tf
+11.16 0 TD
+-0.0002 Tc
+0 Tw
+(SAVE )Tj
+/F1 1 Tf
+3.63 0 TD
+-0.0001 Tc
+0.2649 Tw
+[(statement. For instance, the set)-249.9(corresponding to both)]TJ
+-14.79 -1.33 TD
+0 Tw
+(statements )Tj
+/TT2 1 Tf
+4.47 0 TD
+-0.0002 Tc
+(SAVE COMMON A)Tj
+/F1 1 Tf
+7.79 0 TD
+0 Tc
+( and )Tj
+/TT2 1 Tf
+1.95 0 TD
+-0.0002 Tc
+(SAVE X,Y)Tj
+/F1 1 Tf
+4.8 0 TD
+-0.0001 Tc
+( is )Tj
+/F4 1 Tf
+1.16 0 TD
+({A,X,Y})Tj
+/F1 1 Tf
+3.08 0 TD
+0 Tc
+(.)Tj
+/F3 1 Tf
+-23.96 -1.75 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0755 Tw
+(initialized data \()Tj
+/F4 1 Tf
+6.64 0 TD
+0 Tw
+(InitData)Tj
+/F1 1 Tf
+3.39 0 TD
+0.0755 Tw
+(\). Variables defined in a )Tj
+/TT2 1 Tf
+10.26 0 TD
+-0.0002 Tc
+0 Tw
+(DATA)Tj
+/F1 1 Tf
+2.4 0 TD
+-0.0001 Tc
+0.0755 Tw
+[( statement and constants defined in a)]TJ
+/TT2 1 Tf
+-22.83 -1.33 TD
+-0.0002 Tc
+0 Tw
+(PARAMETER)Tj
+/F1 1 Tf
+5.39 0 TD
+-0.0001 Tc
+-0.0315 Tw
+[( statement are intialized data. )]TJ
+/F4 1 Tf
+11.79 0 TD
+0 Tw
+(InitData)Tj
+/F1 1 Tf
+3.38 0 TD
+-0.0315 Tw
+[( maps their names to their initialized)-249.9(values.)]TJ
+/F3 1 Tf
+-21.27 -1.75 TD
+0 Tc
+0 Tw
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+(statements of the program \()Tj
+/F4 1 Tf
+10.99 0 TD
+(Stmts)Tj
+/F1 1 Tf
+2.17 0 TD
+(\).)Tj
+/F3 1 Tf
+-16.38 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0095 Tw
+(a state \()Tj
+/F4 1 Tf
+3.09 0 TD
+0 Tw
+(State)Tj
+/F1 1 Tf
+2 0 TD
+-0.0095 Tw
+[(\) representing relations between)-249.9(variables and values. The type of )]TJ
+/F4 1 Tf
+26.42 0 TD
+0 Tw
+(State)Tj
+/F1 1 Tf
+2 0 TD
+-0.0095 Tw
+[( is the composite)]TJ
+-33.62 -1.34 TD
+0 Tw
+(type )Tj
+/F4 1 Tf
+1.97 0 TD
+(TState)Tj
+/F1 1 Tf
+2.56 0 TD
+( which fields )Tj
+/F4 1 Tf
+5.41 0 TD
+(SV)Tj
+/F1 1 Tf
+1.11 0 TD
+0 Tc
+( and )Tj
+/F4 1 Tf
+1.95 0 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+3.28 0 TD
+-0.0001 Tw
+( are:)Tj
+ET
+endstream
+endobj
+39 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F9 36 0 R
+/TT2 28 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+41 0 obj
+<<
+/Length 13698
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(10)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+/F3 1 Tf
+5.6383 -2.955 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0516 Tw
+(the mapping )Tj
+/F4 1 Tf
+0 0 0 rg
+-6.2383 2.955 TD
+0 Tc
+0 Tw
+( )Tj
+11.3483 -2.955 TD
+-0.0002 Tc
+(\(SV\))Tj
+/F1 1 Tf
+-11.0983 2.955 TD
+0 Tc
+( )Tj
+12.8783 -2.955 TD
+-0.0001 Tc
+-0.0517 Tw
+[( from Static variables to their current)-249.9(Values. If interprocedural analysis would)]TJ
+-7.03 -1.33 TD
+-0.0125 Tw
+[(not have been performed, only this map)-249.9(would have been used to specialize programs, as it was)]TJ
+0 -1.34 TD
+-0.0008 Tw
+[(done in [4])5.6(.)]TJ
+/F3 1 Tf
+-0.71 -1.75 TD
+0 Tc
+0 Tw
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0378 Tw
+(the mapping \()Tj
+/F4 1 Tf
+-5.7383 7.375 TD
+0 Tc
+0 Tw
+( )Tj
+11.3683 -7.375 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+-11.1183 7.375 TD
+0 Tc
+( )Tj
+14.3883 -7.375 TD
+-0.0001 Tc
+0.0377 Tw
+[(\) between common block names and the)-249.9(values of their static variables.)]TJ
+-9.04 -1.33 TD
+-0.0102 Tw
+(For instance, in the map )Tj
+/F4 1 Tf
+-5.0983 8.705 TD
+0 Tc
+0 Tw
+( )Tj
+14.9283 -8.705 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+-14.6783 8.705 TD
+0 Tc
+( )Tj
+17.9583 -8.705 TD
+-0.0102 Tw
+[( = )]TJ
+/F4 1 Tf
+-17.7083 8.705 TD
+0 Tw
+( )Tj
+18.7483 -8.705 TD
+-0.0001 Tc
+-0.0101 Tw
+({ A )Tj
+/F7 1 Tf
+12 0 2.5507 12 41 819 Tm
+0 Tc
+0 Tw
+( )Tj
+21.8386 -8.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 44 819 Tm
+( )Tj
+20.7283 -8.705 TD
+-0.0102 Tw
+[( { 3 )]TJ
+/F7 1 Tf
+12 0 2.5507 12 47 819 Tm
+0 Tw
+( )Tj
+23.9486 -8.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 50 819 Tm
+( )Tj
+22.8383 -8.705 TD
+-0.0102 Tw
+[( 2} })]TJ
+/F1 1 Tf
+-22.5883 8.705 TD
+0 Tw
+( )Tj
+24.3683 -8.705 TD
+-0.0001 Tc
+-0.0101 Tw
+[( the common named )]TJ
+/F4 1 Tf
+-24.1183 8.705 TD
+0 Tc
+0 Tw
+( )Tj
+32.4583 -8.705 TD
+(A)Tj
+/F1 1 Tf
+-32.2083 8.705 TD
+( )Tj
+32.8183 -8.705 TD
+-0.0001 Tc
+-0.0102 Tw
+[( is such that its third)]TJ
+-29.97 -1.33 TD
+0 Tw
+(variable evaluates to )Tj
+/F4 1 Tf
+-2.5983 10.035 TD
+0 Tc
+( )Tj
+11.0583 -10.035 TD
+(2)Tj
+/F1 1 Tf
+-10.8083 10.035 TD
+( )Tj
+11.3083 -10.035 TD
+-0.0001 Tc
+( and its other variables are dynamic.)Tj
+/F3 1 Tf
+-12.04 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+(the mapping \()Tj
+/F4 1 Tf
+0.1317 11.785 TD
+0 Tc
+( )Tj
+5.4283 -11.785 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+-5.1783 11.785 TD
+0 Tc
+( )Tj
+7.8483 -11.785 TD
+-0.0001 Tc
+[(\) between names of called procedures and)-249.9(pairs. Such a pair consists of:)]TJ
+/F3 1 Tf
+-6.71 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+(the environment \()Tj
+/F4 1 Tf
+-1.7383 13.535 TD
+0 Tc
+( )Tj
+8.8483 -13.535 TD
+-0.0001 Tc
+(EnvCalled)Tj
+/F1 1 Tf
+-8.5983 13.535 TD
+0 Tc
+( )Tj
+12.8183 -13.535 TD
+-0.0001 Tc
+(\) of the called procedure,)Tj
+/F3 1 Tf
+-12.18 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0809 Tw
+(the specialized versions \()Tj
+/F4 1 Tf
+-1.2383 15.285 TD
+0 Tc
+0 Tw
+( )Tj
+11.5583 -15.285 TD
+-0.0001 Tc
+(Versions)Tj
+/F1 1 Tf
+-11.3083 15.285 TD
+0 Tc
+( )Tj
+14.8083 -15.285 TD
+-0.0001 Tc
+0.0809 Tw
+[(\) of the called procedure. This is a)-249.9(set made of quadruples)]TJ
+-13.96 -1.34 TD
+0 Tc
+0 Tw
+(\()Tj
+/F4 1 Tf
+-0.5983 16.625 TD
+( )Tj
+0.9283 -16.625 TD
+-0.0001 Tc
+-0.0446 Tw
+(Name, Input)Tj
+/F1 1 Tf
+-0.6783 16.625 TD
+0 Tc
+0 Tw
+( )Tj
+5.5783 -16.625 TD
+(, )Tj
+/F4 1 Tf
+-5.3283 16.625 TD
+( )Tj
+5.7783 -16.625 TD
+-0.0001 Tc
+-0.0446 Tw
+(Output, V)Tj
+/F1 1 Tf
+-5.5283 16.625 TD
+0 Tc
+0 Tw
+( )Tj
+9.3783 -16.625 TD
+-0.0001 Tc
+-0.0446 Tw
+(\), where the data type of )Tj
+/F4 1 Tf
+-9.1283 16.625 TD
+0 Tc
+0 Tw
+( )Tj
+18.8283 -16.625 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+-18.5783 16.625 TD
+0 Tc
+( )Tj
+20.6883 -16.625 TD
+-0.0446 Tw
+[( and )]TJ
+/F4 1 Tf
+-20.4383 16.625 TD
+0 Tw
+( )Tj
+22.2883 -16.625 TD
+-0.0001 Tc
+(Output)Tj
+/F1 1 Tf
+-22.0383 16.625 TD
+0 Tc
+( )Tj
+24.8183 -16.625 TD
+-0.0001 Tc
+-0.0445 Tw
+[( is )]TJ
+/F4 1 Tf
+-24.5683 16.625 TD
+0 Tc
+0 Tw
+( )Tj
+25.6483 -16.625 TD
+-0.0001 Tc
+(TState)Tj
+/F1 1 Tf
+-25.3983 16.625 TD
+0 Tc
+( )Tj
+27.9483 -16.625 TD
+(, )Tj
+/F4 1 Tf
+-27.6983 16.625 TD
+( )Tj
+28.1583 -16.625 TD
+(V)Tj
+/F1 1 Tf
+-27.9083 16.625 TD
+( )Tj
+28.5183 -16.625 TD
+-0.0001 Tc
+-0.0446 Tw
+[( denotes the whole)]TJ
+-30.67 -1.33 TD
+0.0195 Tw
+(specialized procedure and )Tj
+/F4 1 Tf
+2.4017 17.955 TD
+0 Tc
+0 Tw
+( )Tj
+8.2883 -17.955 TD
+-0.0001 Tc
+(Name)Tj
+/F1 1 Tf
+-8.0383 17.955 TD
+0 Tc
+( )Tj
+10.3683 -17.955 TD
+-0.0001 Tc
+0.0195 Tw
+[( denotes the name of the procedure )]TJ
+/F4 1 Tf
+-10.1183 17.955 TD
+0 Tc
+0 Tw
+( )Tj
+24.4983 -17.955 TD
+(V)Tj
+/F1 1 Tf
+-24.2483 17.955 TD
+( )Tj
+24.8583 -17.955 TD
+0.0194 Tw
+(. The )Tj
+/F2 1 Tf
+-24.6083 17.955 TD
+0 Tw
+( )Tj
+26.9483 -17.955 TD
+-0.0001 Tc
+(add)Tj
+/F1 1 Tf
+-26.6983 17.955 TD
+0 Tc
+( )Tj
+28.3183 -17.955 TD
+-0.0001 Tc
+0.0195 Tw
+[( primitive adds)]TJ
+-31.97 -1.33 TD
+0 Tw
+(a quadruple to a set of versions.)Tj
+/F3 1 Tf
+-3.08 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.1622 Tw
+[( the inherited common blocks of the)-249.9(cuurent precedure )]TJ
+/F4 1 Tf
+6.1317 21.035 TD
+0 Tc
+0 Tw
+( )Tj
+17.4583 -21.035 TD
+(P)Tj
+/F1 1 Tf
+-17.2083 21.035 TD
+( )Tj
+17.8183 -21.035 TD
+0.162 Tc
+( \()Tj
+/F4 1 Tf
+-17.5683 21.035 TD
+0 Tc
+( )Tj
+18.3183 -21.035 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+-18.0683 21.035 TD
+0 Tc
+( )Tj
+21.2883 -21.035 TD
+-0.0001 Tc
+0.1622 Tw
+(\). The common block names)Tj
+-28.28 -1.34 TD
+0 Tw
+[(belonging to this set are declared in one of)-249.9(the procedures of the chain of callers, but not in )]TJ
+/F4 1 Tf
+7.2417 22.375 TD
+0 Tc
+( )Tj
+29.3583 -22.375 TD
+(P)Tj
+/F1 1 Tf
+-29.1083 22.375 TD
+( )Tj
+29.7183 -22.375 TD
+(.)Tj
+/F2 1 Tf
+-29.4683 22.375 TD
+( )Tj
+-8.4817 -24.535 TD
+-0.0001 Tc
+[(4)-210.1( Inter)5.3(pr)19.8(ocedural specialization)]TJ
+/F1 1 Tf
+8.7317 24.535 TD
+0 Tc
+( )Tj
+-6.3617 -26.125 TD
+-0.0001 Tc
+-0.0185 Tw
+[(Our specializer performs two main)-249.9(tasks: data propagation through the code and simplification of)]TJ
+-2.37 -1.33 TD
+-0.0062 Tw
+[(statements. Both tasks are detailed in )-9.1([3])5.6(. In this section, we specify the)-249.9(propagation through a call-sta-)]TJ
+T*
+0 Tw
+[(tement and the simplification of a)-249.9(call-statement.)]TJ
+/F2 1 Tf
+10 0 0 10 164 819 Tm
+0 Tc
+( )Tj
+-10.778 -36.51 TD
+-0.0001 Tc
+[(4.1)-454.1( The propagation process)]TJ
+/F1 1 Tf
+12 0 0 12 167 819 Tm
+0 Tc
+( )Tj
+-6.8617 -32.035 TD
+-0.0001 Tc
+0.0497 Tw
+[(While encoutering a call-statement, the)-249.9(propagation process propagates first the current state of)]TJ
+-2.37 -1.34 TD
+-0.0454 Tw
+[(the caller through the called)-249.9(procedure. Then, a most specialized version is selected, yielding an)-249.9(updated)]TJ
+0 -1.33 TD
+0.0234 Tw
+[(state. Last, the code generation process)-249.9(is returned to the calling procedure and the state is propagated)]TJ
+T*
+0 Tw
+(through the caller, because of side-effects.)Tj
+2.37 -1.75 TD
+-0.0202 Tw
+(In the sequel of this paper,)Tj
+/F4 1 Tf
+7.1117 37.785 TD
+0 Tc
+0 Tw
+( )Tj
+3.3883 -37.785 TD
+-0.0001 Tc
+-0.0202 Tw
+[( EnvSP)]TJ
+/F1 1 Tf
+-3.1383 37.785 TD
+0 Tc
+0 Tw
+( )Tj
+6.0383 -37.785 TD
+-0.0001 Tc
+-0.0202 Tw
+[( denotes the environment of the)-249.9(current called procedure, that is)]TJ
+/F4 1 Tf
+-5.7883 37.785 TD
+0 Tc
+0 Tw
+( )Tj
+-9.9817 -39.125 TD
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+10.2317 39.125 TD
+0 Tc
+( )Tj
+-7.5617 -39.125 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 182 819 Tm
+( )Tj
+-9.134 -46.95 TD
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.54 w 10 M []0 d
+1 i 
+90.66 348.52 m
+96.778 348.52 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 185 819 Tm
+( )Tj
+-8.02 -42.6818 TD
+( )Tj
+12 0 0 12 187 819 Tm
+( )Tj
+-7.3283 -39.125 TD
+( )Tj
+/F4 1 Tf
+11 0 0 11 190 819 Tm
+( )Tj
+-8.0491 -42.6818 TD
+-0.0001 Tc
+(Called\(SP\).Env)Tj
+12 0 0 12 193 819 Tm
+0 Tc
+( )Tj
+-1.8983 -39.125 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.1483 39.125 TD
+0 Tc
+( )Tj
+0.5117 -39.125 TD
+-0.0001 Tc
+-0.0476 Tw
+[(. During the propagation through the)-249.9(called procedure formal parameters,)]TJ
+-12.16 -1.33 TD
+0 Tw
+[(local variables and common blocks of the)-249.9(called procedure )]TJ
+/F4 1 Tf
+11.8983 40.455 TD
+0 Tc
+( )Tj
+11.9017 -40.455 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+-11.6517 40.455 TD
+0 Tc
+( )Tj
+12.7617 -40.455 TD
+-0.0001 Tc
+( modifiy the current state:)Tj
+/F3 1 Tf
+-24.91 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0116 Tw
+(If a local variable )Tj
+/F4 1 Tf
+11.5483 42.205 TD
+0 Tc
+0 Tw
+( )Tj
+-4.2283 -42.205 TD
+(V)Tj
+/F1 1 Tf
+4.4783 42.205 TD
+( )Tj
+-3.8583 -42.205 TD
+-0.0001 Tc
+0.0117 Tw
+[( is initialized in )]TJ
+/F4 1 Tf
+4.1083 42.205 TD
+0 Tc
+0 Tw
+( )Tj
+2.3717 -42.205 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+-2.1217 42.205 TD
+0 Tc
+( )Tj
+3.2417 -42.205 TD
+-0.0001 Tc
+0.0117 Tw
+[( by a value, this value becomes the new)-250(value of )]TJ
+/F4 1 Tf
+-2.9917 42.205 TD
+0 Tc
+0 Tw
+( )Tj
+22.7217 -42.205 TD
+(V)Tj
+/F1 1 Tf
+-22.4717 42.205 TD
+( )Tj
+23.0817 -42.205 TD
+-0.0001 Tc
+0.0117 Tw
+[( whether )]TJ
+/F4 1 Tf
+-22.8317 42.205 TD
+0 Tc
+0 Tw
+( )Tj
+26.5717 -42.205 TD
+(V)Tj
+/F1 1 Tf
+-26.3217 42.205 TD
+( )Tj
+-13.4083 -43.535 TD
+-0.0001 Tc
+(had a value in the static variables )Tj
+/F4 1 Tf
+13.6583 43.535 TD
+0 Tc
+( )Tj
+-0.1383 -43.535 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+0.3883 43.535 TD
+0 Tc
+( )Tj
+2.9717 -43.535 TD
+( or not. Thus, )Tj
+/F4 1 Tf
+-2.7217 43.535 TD
+( )Tj
+8.3317 -43.535 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+-8.0817 43.535 TD
+0 Tc
+( )Tj
+11.4417 -43.535 TD
+-0.0001 Tc
+( becomes )Tj
+/F4 1 Tf
+11 0 0 11 241 819 Tm
+0 Tc
+( )Tj
+16.5727 -47.4927 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+-16.3 47.4927 TD
+0 Tc
+( )Tj
+19.66 -47.4927 TD
+( )Tj
+/F2 1 Tf
+-19.3873 47.4927 TD
+( )Tj
+/F8 1 Tf
+19.6382 -47.4927 TD
+(Å)Tj
+/F1 1 Tf
+-19.4564 47.4927 TD
+( )Tj
+19.9582 -47.4927 TD
+( )Tj
+/F4 1 Tf
+-19.6855 47.4927 TD
+( )Tj
+19.9364 -47.4927 TD
+-0.0001 Tc
+(EnvSP.InitData)Tj
+/F1 1 Tf
+-19.6636 47.4927 TD
+0 Tc
+( )Tj
+25.9691 -47.4927 TD
+(.)Tj
+12 0 0 12 258 819 Tm
+( )Tj
+/F3 1 Tf
+-16.815 -45.285 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0598 Tw
+[(Due to correspondences between actual)-249.9(and formal parameters and also between variables of same)]TJ
+-0.11 -1.34 TD
+0.0212 Tw
+[(common blocks, formal parameters and)-249.9(variables of declared common blocks may become static. In)]TJ
+0 -1.33 TD
+0.0207 Tw
+[(this case, they are added in the current)-249.9(state. Thus, the forward propagation updates the current state)]TJ
+T*
+0 Tw
+(in the following way. )Tj
+/F4 1 Tf
+16.325 49.285 TD
+0 Tc
+( )Tj
+-7.515 -49.285 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+7.765 49.285 TD
+0 Tc
+( )Tj
+-4.405 -49.285 TD
+-0.0001 Tc
+( becomes )Tj
+/F4 1 Tf
+4.655 49.285 TD
+0 Tc
+( )Tj
+-0.665 -49.285 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+0.915 49.285 TD
+0 Tc
+( )Tj
+1.195 -49.285 TD
+-0.0001 Tc
+(, with:)Tj
+-16.17 -1.86 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+15.225 51.145 TD
+( )Tj
+-14.975 -51.145 TD
+-0.0001 Tc
+(Input)Tj
+/F9 1 Tf
+15.225 51.145 TD
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+-13.145 -51.145 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 282 819 Tm
+( )Tj
+-15.738 -61.374 TD
+()Tj
+ET
+124.62 204.28 m
+130.738 204.28 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 285 819 Tm
+( )Tj
+-14.0236 -55.7945 TD
+( )Tj
+12 0 0 12 287.0001 819 Tm
+( )Tj
+-12.7917 -51.145 TD
+( )Tj
+11 0 0 11 290.0001 819 Tm
+( )Tj
+-13.9545 -55.7945 TD
+(\()Tj
+/F4 1 Tf
+14.2273 55.7945 TD
+( )Tj
+-13.9 -55.7945 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+14.1727 55.7945 TD
+0 Tc
+( )Tj
+-10.8127 -55.7945 TD
+( )Tj
+/F2 1 Tf
+11.0855 55.7945 TD
+( )Tj
+/F8 1 Tf
+-10.8345 -55.7945 TD
+(Å)Tj
+/F1 1 Tf
+11.1073 55.7945 TD
+( )Tj
+-10.6055 -55.7945 TD
+( )Tj
+/F4 1 Tf
+10.8782 55.7945 TD
+( )Tj
+-10.6273 -55.7945 TD
+-0.0001 Tc
+0.0001 Tw
+(EnvSP. InitData)Tj
+/F1 1 Tf
+10.8091 55.7945 TD
+0 Tc
+0 Tw
+( )Tj
+-4.2527 -55.7945 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 310 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-3.1314 -43.8386 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+11 0 0 11 317.0001 819 Tm
+( )Tj
+-3.7873 -55.7945 TD
+(  \()Tj
+/F4 1 Tf
+4.06 55.7945 TD
+( )Tj
+-3.2309 -55.7945 TD
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+3.5036 55.7945 TD
+0 Tc
+( )Tj
+1.7764 -55.7945 TD
+( )Tj
+/F2 1 Tf
+-1.5945 55.7945 TD
+( )Tj
+/F8 1 Tf
+1.8455 -55.7945 TD
+(Å)Tj
+/F1 1 Tf
+-1.5727 55.7945 TD
+( )Tj
+2.0745 -55.7945 TD
+( )Tj
+/F4 1 Tf
+-1.8018 55.7945 TD
+( )Tj
+2.0527 -55.7945 TD
+(StaticCom)Tj
+/F1 1 Tf
+12 0 0 12 333 819 Tm
+( )Tj
+5.535 -51.145 TD
+(\))Tj
+-26.23 -1.64 TD
+-0.0001 Tc
+-0.0259 Tw
+(The definitions of )Tj
+/F4 1 Tf
+20.945 52.785 TD
+0 Tc
+0 Tw
+( )Tj
+-13.615 -52.785 TD
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+13.865 52.785 TD
+0 Tc
+( )Tj
+-8.585 -52.785 TD
+-0.026 Tw
+[( and )]TJ
+/F4 1 Tf
+11 0 0 11 342 819 Tm
+0 Tw
+( )Tj
+-7.5764 -57.5836 TD
+-0.0001 Tc
+(StaticCom)Tj
+/F1 1 Tf
+12 0 0 12 345 819 Tm
+0 Tc
+( )Tj
+-3.375 -52.785 TD
+-0.0001 Tc
+-0.0259 Tw
+[( are explained below. As formal)-249.9(\(resp. actual\) para-)]TJ
+-20.69 -1.34 TD
+0.0044 Tw
+(meters are specified by a map named )Tj
+/F4 1 Tf
+24.315 54.125 TD
+0 Tc
+0 Tw
+( )Tj
+-9.205 -54.125 TD
+-0.0001 Tc
+(Formal)Tj
+/F1 1 Tf
+9.455 54.125 TD
+0 Tc
+( )Tj
+-6.455 -54.125 TD
+0.0005 Tc
+0.0038 Tw
+( \(resp. )Tj
+/F4 1 Tf
+6.705 54.125 TD
+0 Tc
+0 Tw
+( )Tj
+-3.945 -54.125 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+4.195 54.125 TD
+0 Tc
+( )Tj
+-0.915 -54.125 TD
+-0.0001 Tc
+0.0044 Tw
+[(\) from integers \(the ranks of)-249.9(parameters in)]TJ
+-24.15 -1.33 TD
+-0.0171 Tw
+[(the list\) to the names of parameters,)-249.9(the link between these formal and actual parameters is specified by)]TJ
+T*
+-0.0047 Tw
+(the map )Tj
+/F2 1 Tf
+25.315 56.785 TD
+0 Tc
+0 Tw
+( )Tj
+-21.875 -56.785 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+22.125 56.785 TD
+0 Tc
+( )Tj
+-19.185 -56.785 TD
+-0.0049 Tc
+( \()Tj
+/F4 1 Tf
+19.435 56.785 TD
+0 Tc
+( )Tj
+-18.855 -56.785 TD
+-0.0001 Tc
+(EnvSP.Formal)Tj
+/F1 1 Tf
+19.105 56.785 TD
+0 Tc
+( )Tj
+-13.195 -56.785 TD
+(, )Tj
+/F4 1 Tf
+13.445 56.785 TD
+( )Tj
+-12.945 -56.785 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+13.195 56.785 TD
+0 Tc
+( )Tj
+-9.915 -56.785 TD
+-0.0001 Tc
+-0.0047 Tw
+[(\) \(see Ex.1 for an example of such a)-249.9(map\). Furthermore, only)]TJ
+-16.65 -1.34 TD
+0.0396 Tw
+[(static actual parameters give values to)-249.9(their corresponding static formal parameters. Thus, these static)]TJ
+0 -1.33 TD
+-0.0001 Tw
+(formal parameters are:)Tj
+ET
+endstream
+endobj
+42 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F8 35 0 R
+/F9 36 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+44 0 obj
+<<
+/Length 22696
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(11)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+( )Tj
+6.1083 -3.065 TD
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+-5.8583 3.065 TD
+0 Tc
+( )Tj
+11.1383 -3.065 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 23 819 Tm
+( )Tj
+13.366 -3.678 TD
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.54 w 10 M []0 d
+1 i 
+156.66 781.24 m
+162.778 781.24 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 26 819 Tm
+( )Tj
+12.4345 -3.3436 TD
+( )Tj
+12 0 0 12 29 819 Tm
+( )Tj
+11.3783 -3.065 TD
+( )Tj
+/F2 1 Tf
+-11.1283 3.065 TD
+( )Tj
+11.3783 -3.065 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+-11.1283 3.065 TD
+0 Tc
+( )Tj
+14.0683 -3.065 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-13.8183 3.065 TD
+0 Tc
+( )Tj
+14.3983 -3.065 TD
+-0.0001 Tc
+(EnvSP.Formal)Tj
+/F1 1 Tf
+-14.1483 3.065 TD
+0 Tc
+( )Tj
+20.0683 -3.065 TD
+(, )Tj
+/F4 1 Tf
+-19.8183 3.065 TD
+( )Tj
+20.3183 -3.065 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+-20.0683 3.065 TD
+0 Tc
+( )Tj
+23.3383 -3.065 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 50.0001 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+20.2657 -2.6271 TD
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F1 1 Tf
+12 0 0 12 57 819 Tm
+0 Tc
+( )Tj
+23.345 -3.065 TD
+( )Tj
+/F2 1 Tf
+-23.095 3.065 TD
+( )Tj
+23.345 -3.065 TD
+-0.0001 Tc
+(eval)Tj
+/F1 1 Tf
+-23.095 3.065 TD
+0 Tc
+( )Tj
+24.815 -3.065 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-24.565 3.065 TD
+0 Tc
+( )Tj
+25.145 -3.065 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+-24.895 3.065 TD
+0 Tc
+( )Tj
+28.255 -3.065 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 72 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+24.4714 -2.6271 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 79 819 Tm
+( )Tj
+28.7717 -3.065 TD
+( )Tj
+/F2 1 Tf
+-28.5217 3.065 TD
+( )Tj
+28.7717 -3.065 TD
+-0.0001 Tc
+(Values)Tj
+/F4 1 Tf
+-28.5217 3.065 TD
+0 Tc
+( )Tj
+31.4117 -3.065 TD
+(,)Tj
+/F1 1 Tf
+-31.1617 3.065 TD
+( )Tj
+-2.6483 -4.815 TD
+-0.0001 Tc
+(where )Tj
+/F9 1 Tf
+14 0 0 14 91 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+-0.2086 -4.1271 TD
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F1 1 Tf
+12 0 0 12 98 819 Tm
+0 Tc
+( )Tj
+-0.5417 -4.815 TD
+( )Tj
+/F2 1 Tf
+0.7917 4.815 TD
+( )Tj
+-0.5417 -4.815 TD
+-0.0001 Tc
+(eval)Tj
+/F1 1 Tf
+0.7917 4.815 TD
+0 Tc
+( )Tj
+0.9283 -4.815 TD
+-0.004 Tc
+( \()Tj
+/F4 1 Tf
+-0.6783 4.815 TD
+0 Tc
+( )Tj
+1.2583 -4.815 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+-1.0083 4.815 TD
+0 Tc
+( )Tj
+4.3683 -4.815 TD
+-0.0001 Tc
+-0.0038 Tw
+[(\) evaluates actual parameters that are)-249.9(expressions, and )]TJ
+/F9 1 Tf
+14 0 0 14 113 818.9999 Tm
+0 Tc
+0 Tw
+( )Tj
+0.03 0 TD
+( )Tj
+22.2457 -4.1271 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 120 819 Tm
+( )Tj
+26.175 -4.815 TD
+( )Tj
+/F2 1 Tf
+-25.925 4.815 TD
+( )Tj
+26.175 -4.815 TD
+-0.0001 Tc
+(Values)Tj
+/F1 1 Tf
+-25.925 4.815 TD
+0 Tc
+( )Tj
+28.815 -4.815 TD
+-0.0003 Tc
+-0.0037 Tw
+( restricts this re-)Tj
+-34.63 -1.39 TD
+-0.0001 Tc
+0 Tw
+(sult to static formal parameters.)Tj
+2.37 -1.75 TD
+0.0251 Tw
+[(Static common blocks of the caller are)-249.9(either inherited in the called procedure or declared in the)]TJ
+-2.37 -1.44 TD
+-0.0467 Tw
+[(caller. Thus, the set of all common block)-249.9(names is )]TJ
+/F2 1 Tf
+6.065 9.395 TD
+0 Tc
+0 Tw
+( )Tj
+13.795 -9.395 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+-13.545 9.395 TD
+0 Tc
+( )Tj
+15.435 -9.395 TD
+-0.0468 Tc
+( \()Tj
+/F4 1 Tf
+-15.185 9.395 TD
+0 Tc
+( )Tj
+15.725 -9.395 TD
+-0.0001 Tc
+(Env.ComDecl)Tj
+/F1 1 Tf
+-15.475 9.395 TD
+0 Tc
+( )Tj
+21.055 -9.395 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 141 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+18.2657 -8.0529 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 148 819 Tm
+( )Tj
+21.4817 -9.395 TD
+( )Tj
+/F4 1 Tf
+-21.2317 9.395 TD
+( )Tj
+21.4417 -9.395 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+-21.1917 9.395 TD
+0 Tc
+( )Tj
+24.4117 -9.395 TD
+-0.0001 Tc
+-0.0466 Tw
+(. The common blocks)Tj
+-32.56 -1.39 TD
+-0.0458 Tw
+[(that are inherited by the called)-249.9(procedure are the whole common blocks except those that are)-249.9(re-declared)]TJ
+0 -1.45 TD
+0 Tw
+(in it, that is )Tj
+/F2 1 Tf
+8.3983 12.235 TD
+0 Tc
+( )Tj
+-3.6483 -12.235 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+3.8983 12.235 TD
+0 Tc
+( )Tj
+-2.0083 -12.235 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+2.2583 12.235 TD
+0 Tc
+( )Tj
+-1.6683 -12.235 TD
+-0.0001 Tc
+(Env.ComDecl)Tj
+/F1 1 Tf
+1.9183 12.235 TD
+0 Tc
+( )Tj
+3.6617 -12.235 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 169 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+3.3914 -10.4871 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 176 819 Tm
+( )Tj
+4.1383 -12.235 TD
+( )Tj
+/F4 1 Tf
+-3.8883 12.235 TD
+( )Tj
+4.1383 -12.235 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+-3.8883 12.235 TD
+0 Tc
+( )Tj
+7.1083 -12.235 TD
+-0.0001 Tc
+( - )Tj
+/F2 1 Tf
+-6.8583 12.235 TD
+0 Tc
+( )Tj
+7.6883 -12.235 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+-7.4383 12.235 TD
+0 Tc
+( )Tj
+9.3283 -12.235 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-9.0783 12.235 TD
+0 Tc
+( )Tj
+9.6583 -12.235 TD
+-0.0001 Tc
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+-9.4083 12.235 TD
+0 Tc
+( )Tj
+16.0983 -12.235 TD
+-0.0001 Tc
+(\).)Tj
+-25.21 -1.8 TD
+0.0171 Tw
+(Given a common block )Tj
+/F4 1 Tf
+9.3617 14.035 TD
+0 Tc
+0 Tw
+( )Tj
+0.3083 -14.035 TD
+(C)Tj
+/F1 1 Tf
+-0.0583 14.035 TD
+( )Tj
+0.7283 -14.035 TD
+-0.0001 Tc
+0.0171 Tw
+[( that is declared or inherited in the)-249.9(caller, if )]TJ
+/F4 1 Tf
+-0.4783 14.035 TD
+0 Tc
+0 Tw
+( )Tj
+18.1683 -14.035 TD
+(V)Tj
+/F1 1 Tf
+-17.9183 14.035 TD
+( )Tj
+18.5283 -14.035 TD
+-0.0001 Tc
+0.0171 Tw
+[( is the n)]TJ
+/F3 1 Tf
+3.1894 0 TD
+0 Tc
+0 Tw
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+0.0171 Tw
+(th variable of )Tj
+/F4 1 Tf
+-21.8007 14.035 TD
+0 Tc
+0 Tw
+( )Tj
+27.4383 -14.035 TD
+(C)Tj
+/F1 1 Tf
+-27.1883 14.035 TD
+( )Tj
+27.8483 -14.035 TD
+(,)Tj
+-40.83 -1.34 TD
+-0.0001 Tc
+0.0636 Tw
+(then its corresponding variable )Tj
+/F4 1 Tf
+13.2317 15.375 TD
+0 Tc
+0 Tw
+( )Tj
+-0.3617 -15.375 TD
+-0.0002 Tc
+(V’)Tj
+/F1 1 Tf
+0.6117 15.375 TD
+0 Tc
+( )Tj
+0.3283 -15.375 TD
+-0.0001 Tc
+0.0636 Tw
+[( in a called procedure )]TJ
+/F4 1 Tf
+-0.0783 15.375 TD
+0 Tc
+0 Tw
+( )Tj
+9.2483 -15.375 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+-8.9983 15.375 TD
+0 Tc
+( )Tj
+10.1083 -15.375 TD
+-0.0001 Tc
+0.0636 Tw
+[( is the n)]TJ
+/F3 1 Tf
+3.3289 0 TD
+0 Tc
+0 Tw
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+0.0636 Tw
+(th variable of )Tj
+/F4 1 Tf
+-13.5202 15.375 TD
+0 Tc
+0 Tw
+( )Tj
+19.2983 -15.375 TD
+(C)Tj
+/F1 1 Tf
+-19.0483 15.375 TD
+( )Tj
+19.7083 -15.375 TD
+-0.0001 Tc
+0.0636 Tw
+(. If )Tj
+/F4 1 Tf
+-19.4583 15.375 TD
+0 Tc
+0 Tw
+( )Tj
+21.0083 -15.375 TD
+(C)Tj
+/F1 1 Tf
+-20.7583 15.375 TD
+( )Tj
+21.4183 -15.375 TD
+-0.0001 Tc
+0.0636 Tw
+[( is declared)]TJ
+-36.4 -1.33 TD
+-0.0256 Tw
+(between the caller and )Tj
+/F4 1 Tf
+15.2317 16.705 TD
+0 Tc
+0 Tw
+( )Tj
+-6.1117 -16.705 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+6.3617 16.705 TD
+0 Tc
+( )Tj
+-5.2517 -16.705 TD
+-0.0001 Tc
+-0.0256 Tw
+[( \(in the chain of callers\), the)-249.9(names of )]TJ
+/F4 1 Tf
+5.5017 16.705 TD
+0 Tc
+0 Tw
+( )Tj
+9.6483 -16.705 TD
+(V)Tj
+/F1 1 Tf
+-9.3983 16.705 TD
+( )Tj
+10.0083 -16.705 TD
+-0.0256 Tw
+[( and )]TJ
+/F4 1 Tf
+-9.7583 16.705 TD
+0 Tw
+( )Tj
+11.6483 -16.705 TD
+-0.0002 Tc
+(V’)Tj
+/F1 1 Tf
+-11.3983 16.705 TD
+0 Tc
+( )Tj
+12.3483 -16.705 TD
+-0.0001 Tc
+-0.0256 Tw
+[( may differ, but these variables)]TJ
+-28.83 -1.33 TD
+0.0372 Tw
+[(share common values. For instance, at)-249.9(the program point )]TJ
+ET
+q
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 257 819 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 335.82 602.58 Tm
+-0.0002 Tc
+0.0892 Tw
+(call SP\(LParam\))Tj
+/F1 1 Tf
+-5.985 18.035 TD
+0 Tc
+0 Tw
+( )Tj
+15.075 -18.035 TD
+-0.0001 Tc
+0.0372 Tw
+(, the value of )Tj
+/F4 1 Tf
+-14.825 18.035 TD
+0 Tc
+0 Tw
+( )Tj
+20.445 -18.035 TD
+(V)Tj
+/F1 1 Tf
+-20.195 18.035 TD
+( )Tj
+20.805 -18.035 TD
+-0.0001 Tc
+0.0372 Tw
+[( is the)]TJ
+-38.62 -1.34 TD
+0.1407 Tw
+(initial value of )Tj
+/F4 1 Tf
+18.065 19.375 TD
+0 Tc
+0 Tw
+( )Tj
+-11.555 -19.375 TD
+-0.0002 Tc
+(V’)Tj
+/F1 1 Tf
+11.805 19.375 TD
+0 Tc
+( )Tj
+-10.865 -19.375 TD
+-0.0001 Tc
+0.1407 Tw
+(. Thus, if )Tj
+/F4 1 Tf
+11.115 19.375 TD
+0 Tc
+0 Tw
+( )Tj
+-6.835 -19.375 TD
+(V)Tj
+/F1 1 Tf
+7.085 19.375 TD
+( )Tj
+-6.465 -19.375 TD
+-0.0001 Tc
+0.1407 Tw
+[( is static, then )]TJ
+/F4 1 Tf
+6.715 19.375 TD
+0 Tc
+0 Tw
+( )Tj
+-0.405 -19.375 TD
+-0.0002 Tc
+(V’)Tj
+/F1 1 Tf
+0.655 19.375 TD
+0 Tc
+( )Tj
+0.285 -19.375 TD
+-0.0001 Tc
+0.1407 Tw
+[( is initially static \(with the same)-249.9(value of )]TJ
+/F4 1 Tf
+-0.035 19.375 TD
+0 Tc
+0 Tw
+( )Tj
+17.825 -19.375 TD
+-0.0002 Tc
+(V’)Tj
+/F1 1 Tf
+-17.575 19.375 TD
+0 Tc
+( )Tj
+18.515 -19.375 TD
+-0.0001 Tc
+0.1407 Tw
+(\). This)Tj
+-38.33 -1.33 TD
+-0.0327 Tw
+[(transmission of values from common)-249.9(blocks of the caller to corresponding common blocks of the called)]TJ
+0 -1.44 TD
+0 Tw
+(procedure is specified by the map )Tj
+/F2 1 Tf
+20.065 22.145 TD
+0 Tc
+( )Tj
+-6.345 -22.145 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F7 1 Tf
+6.595 22.145 TD
+0 Tc
+( )Tj
+-2.095 -22.145 TD
+( )Tj
+/F1 1 Tf
+2.345 22.145 TD
+( )Tj
+-2.095 -22.145 TD
+([)Tj
+/F2 1 Tf
+2.345 22.145 TD
+( )Tj
+-2.015 -22.145 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+2.265 22.145 TD
+0 Tc
+( )Tj
+-0.765 -22.145 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+1.015 22.145 TD
+0 Tc
+( )Tj
+-0.435 -22.145 TD
+-0.0001 Tc
+(EnvSP.ComDecl)Tj
+/F9 1 Tf
+14 0 0 14 315 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+5.1257 -18.9814 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.5 -0.03 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 322 819 Tm
+( )Tj
+6.7517 -22.145 TD
+( )Tj
+/F4 1 Tf
+-6.5017 22.145 TD
+( )Tj
+6.7517 -22.145 TD
+-0.0001 Tc
+(State.ComVal)Tj
+/F1 1 Tf
+-6.5017 22.145 TD
+0 Tc
+( )Tj
+12.0317 -22.145 TD
+-0.0002 Tc
+(\)])Tj
+/F9 1 Tf
+14 0 0 14 331 819 Tm
+0 Tc
+( )Tj
+10.6729 -18.9814 TD
+( )Tj
+-10.1729 18.9814 TD
+( )Tj
+0.03 0 TD
+( )Tj
+10.64 -18.9814 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 345 819 Tm
+( )Tj
+12.635 -22.145 TD
+( )Tj
+/F2 1 Tf
+-12.385 22.145 TD
+( )Tj
+12.635 -22.145 TD
+-0.0001 Tc
+(Values)Tj
+/F1 1 Tf
+-12.385 22.145 TD
+0 Tc
+( )Tj
+15.275 -22.145 TD
+(.)Tj
+/F4 1 Tf
+-15.025 22.145 TD
+( )Tj
+-21.975 -24.065 TD
+-0.0001 Tc
+(StaticCom1)Tj
+/F1 1 Tf
+22.225 24.065 TD
+0 Tc
+( )Tj
+-17.555 -24.065 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 360 819 Tm
+( )Tj
+-21.066 -28.878 TD
+()Tj
+ET
+149.34 529.24 m
+155.458 529.24 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 363 819 Tm
+( )Tj
+-18.8673 -26.2527 TD
+( )Tj
+12 0 0 12 366 819 Tm
+( )Tj
+-17.325 -24.065 TD
+( )Tj
+/F2 1 Tf
+17.575 24.065 TD
+( )Tj
+-17.325 -24.065 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+17.575 24.065 TD
+0 Tc
+( )Tj
+-13.075 -24.065 TD
+([)Tj
+/F2 1 Tf
+13.325 24.065 TD
+( )Tj
+-12.985 -24.065 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+13.235 24.065 TD
+0 Tc
+( )Tj
+-11.735 -24.065 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+11.985 24.065 TD
+0 Tc
+( )Tj
+-11.405 -24.065 TD
+-0.0001 Tc
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+11.655 24.065 TD
+0 Tc
+( )Tj
+-4.965 -24.065 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 387 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-4.2857 -20.6271 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 394 819 Tm
+( )Tj
+-4.8083 -24.065 TD
+( )Tj
+/F4 1 Tf
+5.0583 24.065 TD
+( )Tj
+-4.8083 -24.065 TD
+-0.0001 Tc
+(State.ComVal)Tj
+/F1 1 Tf
+5.0583 24.065 TD
+0 Tc
+( )Tj
+0.4717 -24.065 TD
+-0.0002 Tc
+(\)])Tj
+/F2 1 Tf
+-0.2217 24.065 TD
+0 Tc
+( )Tj
+-28.8983 -25.705 TD
+(Ex.3.)Tj
+/F1 1 Tf
+29.1483 25.705 TD
+( )Tj
+-26.9783 -25.705 TD
+-0.0003 Tc
+-0.0047 Tw
+( If the called procedure )Tj
+/F4 1 Tf
+27.2283 25.705 TD
+0 Tc
+0 Tw
+( )Tj
+-17.7283 -25.705 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+17.9783 25.705 TD
+0 Tc
+( )Tj
+-16.8683 -25.705 TD
+-0.0005 Tc
+-0.0045 Tw
+( is such as )Tj
+/F4 1 Tf
+17.1183 25.705 TD
+0 Tc
+0 Tw
+( )Tj
+-12.8083 -25.705 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+13.0583 25.705 TD
+0 Tc
+( )Tj
+-9.6983 -25.705 TD
+-0.0016 Tc
+-0.0033 Tw
+( = )Tj
+/F4 1 Tf
+9.9483 25.705 TD
+0 Tc
+0 Tw
+( )Tj
+-8.8883 -25.705 TD
+-0.0001 Tc
+({i )Tj
+/F7 1 Tf
+12 0 2.5507 12 424 819 Tm
+0 Tc
+( )Tj
+-2.7546 -25.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 427 819 Tm
+( )Tj
+-7.4783 -25.705 TD
+-0.0014 Tc
+-0.0035 Tw
+( 5,  j )Tj
+/F7 1 Tf
+12 0 2.5507 12 430 819 Tm
+0 Tc
+0 Tw
+( )Tj
+-0.2646 -25.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 433 819 Tm
+( )Tj
+-4.9883 -25.705 TD
+-0.0014 Tc
+-0.0035 Tw
+( 3,  a )Tj
+/F7 1 Tf
+12 0 2.5507 12 436 819 Tm
+0 Tc
+0 Tw
+( )Tj
+2.4554 -25.705 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 439 819 Tm
+( )Tj
+-2.2683 -25.705 TD
+-0.0017 Tc
+-0.0033 Tw
+( 1})Tj
+/F1 1 Tf
+2.5183 25.705 TD
+0 Tc
+0 Tw
+( )Tj
+-1.3783 -25.705 TD
+-0.0003 Tc
+-0.0047 Tw
+( with the following decla-)Tj
+-30.77 -1.33 TD
+-0.0001 Tc
+0 Tw
+(rations \(without initialized data\) )Tj
+ET
+q
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 445 819 Tm
+0 Tc
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 213.54 494.58 Tm
+-0.0002 Tc
+(COMMON A/e,f,g)Tj
+/F1 1 Tf
+19.8717 27.035 TD
+0 Tc
+( )Tj
+-11.4717 -27.035 TD
+( and )Tj
+ET
+q
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 455 819 Tm
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 337.6201 494.58 Tm
+-0.0002 Tc
+(COMMON D/l,m)Tj
+/F1 1 Tf
+10.365 27.035 TD
+0 Tc
+( )Tj
+-3.165 -27.035 TD
+-0.0001 Tc
+(, then:)Tj
+/F4 1 Tf
+3.415 27.035 TD
+0 Tc
+( )Tj
+-34.065 -28.785 TD
+-0.0001 Tc
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+34.315 28.785 TD
+0 Tc
+( )Tj
+-27.615 -28.785 TD
+( = )Tj
+/F4 1 Tf
+27.865 28.785 TD
+( )Tj
+-26.805 -28.785 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 474 819 Tm
+0 Tc
+( )Tj
+-19.6765 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 477 819 Tm
+( )Tj
+-25.055 -28.785 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 480 819 Tm
+( )Tj
+-18.0365 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 483 819 Tm
+( )Tj
+-23.415 -28.785 TD
+( e , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 486 819 Tm
+( )Tj
+-15.6065 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 489 819 Tm
+( )Tj
+-20.985 -28.785 TD
+( f }, D )Tj
+/F7 1 Tf
+12 0 2.5507 12 492 819 Tm
+( )Tj
+-12.4665 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 495 819 Tm
+( )Tj
+-17.855 -28.785 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 498 819 Tm
+( )Tj
+-10.8365 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 501 819 Tm
+( )Tj
+-16.215 -28.785 TD
+(l , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 504 819 Tm
+( )Tj
+-8.8165 -28.785 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 507 819 Tm
+( )Tj
+-14.205 -28.785 TD
+-0.0001 Tc
+(m}})Tj
+/F1 1 Tf
+14.455 28.785 TD
+0 Tc
+( )Tj
+-12.925 -28.785 TD
+(.)Tj
+-24.89 -1.75 TD
+-0.0001 Tc
+(If for instance )Tj
+/F4 1 Tf
+38.065 30.535 TD
+0 Tc
+( )Tj
+-32.205 -30.535 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+32.455 30.535 TD
+0 Tc
+( )Tj
+-29.175 -30.535 TD
+( = )Tj
+/F4 1 Tf
+29.425 30.535 TD
+( )Tj
+-28.365 -30.535 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 522 819 Tm
+0 Tc
+( )Tj
+-20.8646 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 525 819 Tm
+( )Tj
+-26.615 -30.535 TD
+( { 1)Tj
+/F7 1 Tf
+12 0 2.5507 12 528 819 Tm
+( )Tj
+-18.9746 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 531 819 Tm
+( )Tj
+-24.725 -30.535 TD
+( 2 , 2)Tj
+/F7 1 Tf
+12 0 2.5507 12 534 819 Tm
+( )Tj
+-16.4846 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 537 819 Tm
+( )Tj
+-22.245 -30.535 TD
+( 4 }, B )Tj
+/F7 1 Tf
+12 0 2.5507 12 540 819 Tm
+( )Tj
+-13.2346 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 543 819 Tm
+( )Tj
+-18.995 -30.535 TD
+( {2)Tj
+/F7 1 Tf
+12 0 2.5507 12 546 819 Tm
+( )Tj
+-11.6046 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 549 819 Tm
+( )Tj
+-17.355 -30.535 TD
+(1}, D )Tj
+/F7 1 Tf
+12 0 2.5507 12 552 819 Tm
+( )Tj
+-8.7446 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 555 819 Tm
+( )Tj
+-14.495 -30.535 TD
+( {1)Tj
+/F7 1 Tf
+12 0 2.5507 12 558 819 Tm
+( )Tj
+-7.1046 -30.535 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 561 819 Tm
+( )Tj
+-12.865 -30.535 TD
+-0.0001 Tc
+(5}})Tj
+/F1 1 Tf
+13.115 30.535 TD
+0 Tc
+( )Tj
+-11.815 -30.535 TD
+-0.0001 Tc
+(, then \(from Ex.2\):)Tj
+/F2 1 Tf
+12.065 30.535 TD
+0 Tc
+( )Tj
+-42.565 -32.395 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F7 1 Tf
+42.815 32.395 TD
+0 Tc
+( )Tj
+-38.315 -32.395 TD
+( )Tj
+/F1 1 Tf
+38.565 32.395 TD
+( )Tj
+-38.315 -32.395 TD
+([)Tj
+/F2 1 Tf
+38.565 32.395 TD
+( )Tj
+-38.225 -32.395 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+1.5 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+6.69 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 225.54 430.26 Tm
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 234.42 430.26 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+3.28 0 TD
+-0.0002 Tc
+(\)] )Tj
+/F9 1 Tf
+14 0 0 14 287.82 430.26 Tm
+0 Tc
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 297.06 430.26 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(Values)Tj
+/F1 1 Tf
+2.88 0 TD
+0 Tc
+(  = )Tj
+/F4 1 Tf
+1.32 0 TD
+-0.0001 Tc
+({ e )Tj
+/F7 1 Tf
+12 0 2.5507 12 366.54 430.26 Tm
+0 Tc
+()Tj
+/F4 1 Tf
+12 0 0 12 378.42 430.26 Tm
+( 2 , f )Tj
+/F7 1 Tf
+12 0 2.5507 12 402.78 430.26 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 414.54 430.26 Tm
+( 4 , l )Tj
+/F7 1 Tf
+12 0 2.5507 12 438.9 430.26 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 450.78 430.26 Tm
+( 5 })Tj
+/F1 1 Tf
+1.4 0 TD
+(.)Tj
+-34.28 -1.92 TD
+(Thus, )Tj
+/F4 1 Tf
+2.5 0 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+3.37 0 TD
+( becomes )Tj
+/F4 1 Tf
+3.99 0 TD
+({ e )Tj
+/F7 1 Tf
+12 0 2.5507 12 190.74 407.22 Tm
+0 Tc
+()Tj
+/F4 1 Tf
+12 0 0 12 202.5 407.22 Tm
+( 2 , f )Tj
+/F7 1 Tf
+12 0 2.5507 12 226.86 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 238.74 407.22 Tm
+( 4 , l )Tj
+/F7 1 Tf
+12 0 2.5507 12 263.1 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 274.86 407.22 Tm
+( 5 , i )Tj
+/F7 1 Tf
+12 0 2.5507 12 299.22 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 311.1 407.22 Tm
+( 5 , j )Tj
+/F7 1 Tf
+12 0 2.5507 12 335.4601 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 347.22 407.22 Tm
+( 3, a )Tj
+/F7 1 Tf
+12 0 2.5507 12 371.22 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 383.1 407.22 Tm
+( 1 , b )Tj
+/F7 1 Tf
+12 0 2.5507 12 410.1 407.22 Tm
+()Tj
+/F4 1 Tf
+12 0 0 12 421.98 407.22 Tm
+( 3 })Tj
+/F1 1 Tf
+1.4 0 TD
+-0.0235 Tw
+[(.)-3280(End of Ex.3 )]TJ
+/F9 1 Tf
+14 0 0 14 541.02 407.22 Tm
+0 Tw
+(p)Tj
+/F1 1 Tf
+12 0 0 12 84.66 385.5001 Tm
+-0.0001 Tc
+0.0187 Tw
+[(Last, common blocks that have a scope in)-249.9(the caller are either declared or inherited in the caller.)]TJ
+-2.37 -1.44 TD
+-0.001 Tw
+(These are )Tj
+/F2 1 Tf
+4.11 0 TD
+0 Tw
+(dom)Tj
+/F1 1 Tf
+1.89 0 TD
+-0.0011 Tc
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+-0.0001 Tc
+(ComDecl)Tj
+/F1 1 Tf
+3.78 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 187.5 368.22 Tm
+0 Tc
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 196.26 368.22 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+3.22 0 TD
+-0.001 Tw
+[(. They are inherited by the called)-249.9(procedure )]TJ
+/F4 1 Tf
+17.67 0 TD
+0 Tw
+(SP)Tj
+/F1 1 Tf
+1.12 0 TD
+-0.0002 Tc
+-0.0009 Tw
+( except if they are)Tj
+-33.93 -1.39 TD
+-0.0001 Tc
+0 Tw
+[(re-declared in this procedure. Thus, these)-249.9(common blocks are:)]TJ
+/F4 1 Tf
+2.37 -1.86 TD
+(ComInh)Tj
+/F3 1 Tf
+3.22 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 130.26 329.22 Tm
+()Tj
+ET
+130.26 328.24 m
+136.378 328.24 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 136.38 329.22 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+1.89 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(Env.ComDecl)Tj
+/F1 1 Tf
+5.58 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 243.06 329.22 Tm
+0 Tc
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 251.7 329.22 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+3.23 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 296.4601 329.22 Tm
+(-)Tj
+0.03 0 TD
+(-)Tj
+0 0.03 TD
+(-)Tj
+-0.03 0 TD
+(-)Tj
+/F1 1 Tf
+12 0 0 12 305.1 329.22 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+1.89 0 TD
+( \()Tj
+/F4 1 Tf
+0.59 0 TD
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+6.69 0 TD
+(\).)Tj
+-27.79 -1.81 TD
+0.0722 Tw
+(The fields of the state \()Tj
+/F4 1 Tf
+9.6 0 TD
+0 Tw
+(State1)Tj
+/F1 1 Tf
+2.5 0 TD
+0.0722 Tw
+[(\) resulting from the propagation)-249.9(through the called procedure are)]TJ
+/F4 1 Tf
+-14.47 -1.33 TD
+0 Tw
+(Input)Tj
+/F1 1 Tf
+2.12 0 TD
+0 Tc
+-0.0587 Tw
+[( and )]TJ
+/F4 1 Tf
+1.82 0 TD
+-0.0001 Tc
+0 Tw
+(StaticCom1)Tj
+/F1 1 Tf
+4.67 0 TD
+-0.0586 Tw
+(, that is )Tj
+/F4 1 Tf
+2.99 0 TD
+0 Tw
+(State1)Tj
+/F1 1 Tf
+2.5 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 227.7 291.54 Tm
+()Tj
+ET
+227.7 290.56 m
+233.818 290.56 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 233.82 291.54 Tm
+( )Tj
+/F2 1 Tf
+0.19 0 TD
+-0.0002 Tc
+(mk-)Tj
+/F4 1 Tf
+1.72 0 TD
+-0.0001 Tc
+(TState)Tj
+/F1 1 Tf
+2.56 0 TD
+-0.0588 Tc
+( \()Tj
+/F4 1 Tf
+0.52 0 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+2.11 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+11 0 0 11 324.3 291.54 Tm
+-0.0001 Tc
+(StaticCom)Tj
+12 0 0 12 370.14 291.54 Tm
+0 Tc
+(1)Tj
+/F1 1 Tf
+0.5 0 TD
+-0.0001 Tc
+-0.0587 Tw
+(\). After this first propagation,  )Tj
+/F4 1 Tf
+11.92 0 TD
+0 Tw
+(State1)Tj
+/F1 1 Tf
+-38.58 -1.33 TD
+-0.0027 Tw
+[(and the environment of the called)-249.9(procedure are propagated through the statements of the called proce-)]TJ
+0 -1.34 TD
+0 Tw
+(dure, yielding a state )Tj
+/F4 1 Tf
+8.58 0 TD
+(State2)Tj
+/F1 1 Tf
+2.5 0 TD
+[( \(propagation rule\). Then, the)-249.9(propagation through the caller is performed.)]TJ
+-8.71 -1.75 TD
+0.0415 Tw
+[(As in the propagation through the called)-249.9(procedure, actual parameters, local variables and com-)]TJ
+-2.37 -1.33 TD
+0.0006 Tw
+[(mon blocks of the caller may become)-249.9(static and modify the current state )]TJ
+/F4 1 Tf
+29.08 0 TD
+0 Tw
+(State2)Tj
+/F1 1 Tf
+2.5 0 TD
+0 Tc
+0.0005 Tw
+(. In  )Tj
+/F4 1 Tf
+1.84 0 TD
+-0.0001 Tc
+0 Tw
+(State2)Tj
+/F1 1 Tf
+2.5 0 TD
+0 Tc
+0.0005 Tw
+(, the new va-)Tj
+-35.92 -1.33 TD
+-0.0001 Tc
+0.0404 Tw
+[(lues of the actual parameters \(resp.)-249.9(common blocks\) become )]TJ
+/F4 1 Tf
+24.86 0 TD
+0 Tw
+(StaticActual)Tj
+/F1 1 Tf
+4.88 0 TD
+0.0404 Tw
+[( \(resp. )]TJ
+/F4 1 Tf
+2.83 0 TD
+0 Tw
+(StaticCom2)Tj
+/F1 1 Tf
+4.67 0 TD
+0.0404 Tw
+(\) whether)Tj
+-37.24 -1.34 TD
+0.0332 Tw
+[(they had a value in the state or not.)-249.9(Thus, )]TJ
+/F4 1 Tf
+17.05 0 TD
+0 Tw
+(State2)Tj
+/F1 1 Tf
+2.5 0 TD
+0 Tc
+(.)Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(SV)Tj
+/F1 1 Tf
+1.11 0 TD
+0.0332 Tw
+[( becomes )]TJ
+/F4 1 Tf
+11 0 0 11 355.98 190.5 Tm
+0 Tw
+(State2)Tj
+/F5 1 Tf
+2.4982 0 TD
+0 Tc
+(.)Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SV)Tj
+/F2 1 Tf
+1.1127 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.2832 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5023 0 TD
+( )Tj
+/F4 1 Tf
+0.2836 0 TD
+-0.0001 Tc
+(StaticActual)Tj
+/F2 1 Tf
+4.8873 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.2832 0 TD
+(Å)Tj
+/F1 1 Tf
+0.4914 0 TD
+( )Tj
+/F4 1 Tf
+0.2836 0 TD
+(StaticCom)Tj
+/F1 1 Tf
+12 0 0 12 521.4601 190.5 Tm
+-0.0001 Tc
+0.0332 Tw
+(. This)Tj
+-38.77 -1.33 TD
+-0.0284 Tw
+[(map is restricted to remanent)-249.9(variables: data saved in the called procedure are removed from the)-249.9(current)]TJ
+T*
+0 Tw
+(state. Thus, the final state is:)Tj
+2.84 -1.75 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+11 0 0 11 93.3 137.5801 Tm
+-0.0001 Tc
+(SV’)Tj
+/F1 1 Tf
+1.44 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 111.9 137.5801 Tm
+()Tj
+ET
+111.9 136.6 m
+118.018 136.6 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 118.02 137.5801 Tm
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+(EnvSP.SavData)Tj
+/F1 1 Tf
+6.36 0 TD
+( )Tj
+/F9 1 Tf
+0.2509 0 TD
+(r)Tj
+0.03 0 TD
+(r)Tj
+0 0.03 TD
+(r)Tj
+-0.03 0 TD
+(r)Tj
+/F1 1 Tf
+0.6545 -0.03 TD
+( \()Tj
+/F4 1 Tf
+0.5782 0 TD
+-0.0001 Tc
+(State2)Tj
+/F5 1 Tf
+2.5091 0 TD
+0 Tc
+(.)Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SV)Tj
+/F2 1 Tf
+1.1018 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.25 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5027 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(StaticActual)Tj
+/F2 1 Tf
+4.8873 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.25 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5027 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+(StaticCom2)Tj
+/F1 1 Tf
+4.6582 0 TD
+(\).)Tj
+12 0 0 12 84.66 118.4999 Tm
+-0.0001 Tc
+-0.0296 Tw
+(The definitions of )Tj
+/F4 1 Tf
+11 0 0 11 172.5 118.4999 Tm
+0 Tw
+(StaticActual)Tj
+/F1 1 Tf
+12 0 0 12 226.26 118.4999 Tm
+0 Tc
+-0.0296 Tw
+[( and )]TJ
+/F4 1 Tf
+11 0 0 11 248.94 118.4999 Tm
+0 Tw
+(StaticCom2)Tj
+/F1 1 Tf
+12 0 0 12 300.3 118.4999 Tm
+-0.0001 Tc
+-0.0296 Tw
+[( are given below. In the called)-249.9(procedure, if a formal)]TJ
+-20.34 -1.33 TD
+-0.0001 Tw
+(parameter is:)Tj
+ET
+endstream
+endobj
+45 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F5 22 0 R
+/F7 24 0 R
+/F8 35 0 R
+/F9 36 0 R
+/TT2 28 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+49 0 obj
+<<
+/Length 12302
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(12)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+/F3 1 Tf
+3.2683 -2.955 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+[(dynamic, then in the state its corresponding)-249.9(actual parameter is suppressed from the static data,)]TJ
+/F3 1 Tf
+-0.85 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.1406 Tw
+[(static, then its value becomes the new)-249.9(value of the corresponding actual parameter, whatever its)]TJ
+-0.11 -1.33 TD
+0 Tw
+(previous value was.)Tj
+/F2 1 Tf
+0 0 0 rg
+-3.7583 6.035 TD
+0 Tc
+( )Tj
+5.3883 -7.895 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+-5.1383 7.895 TD
+0 Tc
+( )Tj
+8.0783 -7.895 TD
+( \()Tj
+/F4 1 Tf
+-7.8283 7.895 TD
+( )Tj
+8.4083 -7.895 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+-8.1583 7.895 TD
+0 Tc
+( )Tj
+11.4383 -7.895 TD
+(, )Tj
+/F4 1 Tf
+-11.1883 7.895 TD
+( )Tj
+11.6883 -7.895 TD
+-0.0001 Tc
+(Formal)Tj
+/F1 1 Tf
+-11.4383 7.895 TD
+0 Tc
+( )Tj
+14.4383 -7.895 TD
+(\))Tj
+/F9 1 Tf
+14 0 0 14 38 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+12.4143 -6.7671 TD
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F2 1 Tf
+12 0 0 12 45 819 Tm
+0 Tc
+( )Tj
+14.185 -7.895 TD
+-0.0001 Tc
+0.0001 Tw
+( eval)Tj
+/F1 1 Tf
+-13.935 7.895 TD
+0 Tc
+0 Tw
+( )Tj
+15.905 -7.895 TD
+( \()Tj
+/F4 1 Tf
+-15.655 7.895 TD
+( )Tj
+16.245 -7.895 TD
+-0.0001 Tc
+(State2.SV)Tj
+/F1 1 Tf
+-15.995 7.895 TD
+0 Tc
+( )Tj
+19.855 -7.895 TD
+(\))Tj
+/F9 1 Tf
+14 0 0 14 57 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+17.0571 -6.7671 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.4971 -0.03 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F2 1 Tf
+12 0 0 12 64 819 Tm
+( )Tj
+20.7017 -7.895 TD
+-0.0001 Tc
+0.0001 Tw
+( Values)Tj
+/F1 1 Tf
+-20.4517 7.895 TD
+0 Tc
+0 Tw
+( )Tj
+23.5917 -7.895 TD
+-0.0001 Tc
+0.7702 Tw
+[( maps actual parameters to their)]TJ
+-24.49 -1.39 TD
+0.1033 Tw
+[(corresponding static formal parameters,)-249.9(as in the definition of )]TJ
+/F4 1 Tf
+1.1483 9.285 TD
+0 Tc
+0 Tw
+( )Tj
+24.7217 -9.285 TD
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+-24.4717 9.285 TD
+0 Tc
+( )Tj
+29.7517 -9.285 TD
+-0.0001 Tc
+0.1033 Tw
+(. As expressions are not)Tj
+-31.15 -1.34 TD
+0.1847 Tw
+[(handled in static variables maps even if)-249.9(they are static, this map is restricted to identified actual)]TJ
+0 -1.33 TD
+0 Tw
+(parameters \(information such as )Tj
+/F4 1 Tf
+1.6483 11.955 TD
+0 Tc
+( )Tj
+11.4617 -11.955 TD
+-0.0002 Tc
+(x+y)Tj
+/F1 1 Tf
+-11.2117 11.955 TD
+0 Tc
+( )Tj
+12.7717 -11.955 TD
+-0.0001 Tc
+( evaluates to )Tj
+/F4 1 Tf
+-12.5217 11.955 TD
+0 Tc
+( )Tj
+17.7717 -11.955 TD
+(3)Tj
+/F1 1 Tf
+-17.5217 11.955 TD
+( )Tj
+18.0217 -11.955 TD
+-0.0001 Tc
+[( are lost\). Thus, the static actual)-249.9(parameters are:)]TJ
+/F4 1 Tf
+-17.7717 11.955 TD
+0 Tc
+( )Tj
+0.1917 -13.815 TD
+-0.0001 Tc
+(StaticActual)Tj
+/F1 1 Tf
+0.0583 13.815 TD
+0 Tc
+( )Tj
+4.8317 -13.815 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 94 819 Tm
+( )Tj
+5.798 -16.578 TD
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.54 w 10 M []0 d
+1 i 
+151.98 652.24 m
+158.098 652.24 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 97 819 Tm
+( )Tj
+5.0917 -13.815 TD
+( )Tj
+/F4 1 Tf
+-4.8417 13.815 TD
+( )Tj
+5.0917 -13.815 TD
+( )Tj
+/F2 1 Tf
+-4.8417 13.815 TD
+( )Tj
+5.0917 -13.815 TD
+-0.0001 Tc
+(ident)Tj
+/F1 1 Tf
+-4.8417 13.815 TD
+0 Tc
+( )Tj
+7.0017 -13.815 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 109 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+5.9714 -11.8414 TD
+(r)Tj
+0.03 0 TD
+(r)Tj
+0 0.03 TD
+(r)Tj
+-0.03 0 TD
+(r)Tj
+/F1 1 Tf
+12 0 0 12 116 819 Tm
+( )Tj
+7.1883 -13.815 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-6.9383 13.815 TD
+0 Tc
+( )Tj
+7.5183 -13.815 TD
+-0.0001 Tc
+(SV)Tj
+/F2 1 Tf
+-7.2683 13.815 TD
+0 Tc
+( )Tj
+8.3783 -13.815 TD
+( )Tj
+/F8 1 Tf
+0.25 0 TD
+(Å)Tj
+/F1 1 Tf
+-8.3783 13.815 TD
+( )Tj
+8.8783 -13.815 TD
+-0.0001 Tc
+( \()Tj
+/F2 1 Tf
+-8.6283 13.815 TD
+0 Tc
+( )Tj
+9.2083 -13.815 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+-8.9583 13.815 TD
+0 Tc
+( )Tj
+11.9083 -13.815 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-11.6583 13.815 TD
+0 Tc
+( )Tj
+12.2383 -13.815 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+-11.9883 13.815 TD
+0 Tc
+( )Tj
+15.2683 -13.815 TD
+(, )Tj
+/F4 1 Tf
+-15.0183 13.815 TD
+( )Tj
+15.5183 -13.815 TD
+-0.0001 Tc
+(Formal)Tj
+/F1 1 Tf
+-15.2683 13.815 TD
+0 Tc
+( )Tj
+18.2683 -13.815 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 146 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+15.9114 -11.8414 TD
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F1 1 Tf
+12 0 0 12 153 819 Tm
+0 Tc
+( )Tj
+18.265 -13.815 TD
+( )Tj
+/F2 1 Tf
+-18.015 13.815 TD
+( )Tj
+18.265 -13.815 TD
+-0.0001 Tc
+(eval)Tj
+/F1 1 Tf
+-18.015 13.815 TD
+0 Tc
+( )Tj
+19.735 -13.815 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-19.485 13.815 TD
+0 Tc
+( )Tj
+20.065 -13.815 TD
+-0.0001 Tc
+(State2)Tj
+/F1 1 Tf
+-19.815 13.815 TD
+0 Tc
+( )Tj
+22.315 -13.815 TD
+(.)Tj
+/F4 1 Tf
+-22.065 13.815 TD
+( )Tj
+22.315 -13.815 TD
+-0.0001 Tc
+(SV)Tj
+/F1 1 Tf
+-22.065 13.815 TD
+0 Tc
+( )Tj
+23.175 -13.815 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 174 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+20.1257 -11.8414 TD
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 181 819 Tm
+( )Tj
+23.6917 -13.815 TD
+( )Tj
+/F2 1 Tf
+-23.4417 13.815 TD
+( )Tj
+23.6917 -13.815 TD
+-0.0001 Tc
+(Values)Tj
+/F1 1 Tf
+-23.4417 13.815 TD
+0 Tc
+( )Tj
+26.3317 -13.815 TD
+-0.0002 Tc
+(\)\).)Tj
+-34.86 -1.64 TD
+-0.0001 Tc
+0.0006 Tw
+[(In the caller, the values of some static)-249.9(variables  of common blocks are updated in a similar way.)]TJ
+-2.37 -1.33 TD
+-0.009 Tw
+[(These are variables whose value is)-249.9(given by the map )]TJ
+/F4 1 Tf
+11 0 0 11 190 819 Tm
+0 Tc
+0 Tw
+( )Tj
+10.9436 -18.3109 TD
+(State2.Common)Tj
+/F1 1 Tf
+12 0 0 12 193 819 Tm
+( )Tj
+15.6117 -16.785 TD
+-0.0001 Tc
+-0.009 Tw
+[(. Thus, in the caller the static)-249.9(varia-)]TJ
+-27.01 -1.34 TD
+0 Tw
+(bles of common blocks are:)Tj
+/F4 1 Tf
+11.6483 18.125 TD
+0 Tc
+( )Tj
+-8.8083 -19.985 TD
+-0.0001 Tc
+(StaticCom2)Tj
+/F1 1 Tf
+9.0583 19.985 TD
+0 Tc
+( )Tj
+-4.3883 -19.985 TD
+( )Tj
+/F7 1 Tf
+11 0 0 11 202 819 Tm
+( )Tj
+-4.7873 -21.8018 TD
+()Tj
+ET
+0.594 w 
+149.34 578.102 m
+156.07 578.102 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 205 819 Tm
+( )Tj
+-4.0783 -19.985 TD
+( )Tj
+/F2 1 Tf
+4.3283 19.985 TD
+( )Tj
+-4.0783 -19.985 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+4.3283 19.985 TD
+0 Tc
+( )Tj
+0.1617 -19.985 TD
+([)Tj
+/F2 1 Tf
+0.0883 19.985 TD
+( )Tj
+0.2517 -19.985 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+-0.0017 19.985 TD
+0 Tc
+( )Tj
+1.5017 -19.985 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+-1.2517 19.985 TD
+0 Tc
+( )Tj
+1.8317 -19.985 TD
+-0.0001 Tc
+(Env.ComDecl)Tj
+/F1 1 Tf
+-1.5817 19.985 TD
+0 Tc
+( )Tj
+7.1617 -19.985 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 226 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+6.1086 -17.13 TD
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 233 819 Tm
+( )Tj
+7.3283 -19.985 TD
+( )Tj
+/F4 1 Tf
+11 0 0 11 236 819 Tm
+( )Tj
+7.9945 -21.8018 TD
+-0.0001 Tc
+(State2.ComVal)Tj
+/F1 1 Tf
+12 0 0 12 239 819 Tm
+0 Tc
+( )Tj
+12.5983 -19.985 TD
+-0.0002 Tc
+(\)].)Tj
+-25.46 -1.64 TD
+-0.0001 Tc
+0.0457 Tw
+[(Last, in the called procedure, remanent)-249.9(common blocks \()]TJ
+/F4 1 Tf
+13.1117 21.625 TD
+0 Tc
+0 Tw
+( )Tj
+10.0183 -21.625 TD
+-0.0001 Tc
+(RemCom)Tj
+/F1 1 Tf
+-9.7683 21.625 TD
+0 Tc
+( )Tj
+13.4383 -21.625 TD
+-0.0001 Tc
+0.0457 Tw
+(\) have became remanent by a)Tj
+ET
+q
+17 819 560 -797 re
+W n
+BT
+/TT2 1 Tf
+12 0 0 12 248 819 Tm
+0 Tc
+0 Tw
+( )Tj
+ET
+Q
+BT
+/TT2 1 Tf
+12 0 0 12 56.22 543.54 Tm
+-0.0002 Tc
+0 Tw
+(SAVE)Tj
+/F1 1 Tf
+16.565 22.955 TD
+0 Tc
+( )Tj
+-14.165 -22.955 TD
+-0.0001 Tc
+0.0888 Tw
+[( statement of the called procedure)-249.9(\(they belong to )]TJ
+/F4 1 Tf
+14.415 22.955 TD
+0 Tc
+0 Tw
+( )Tj
+6.465 -22.955 TD
+-0.0001 Tc
+(EnvSP.SavData)Tj
+/F1 1 Tf
+-6.215 22.955 TD
+0 Tc
+( )Tj
+12.575 -22.955 TD
+-0.0001 Tc
+0.0888 Tw
+(\), or they exist in the called)Tj
+-29.64 -1.33 TD
+0 Tw
+[(procedure \(either they have been declared in)-249.9(it or they have been inherited from the caller\). Thus:)]TJ
+/F4 1 Tf
+17.315 24.285 TD
+0 Tc
+( )Tj
+-14.475 -26.145 TD
+-0.0001 Tc
+(RemCom)Tj
+/F1 1 Tf
+14.725 26.145 TD
+0 Tc
+( )Tj
+-11.055 -26.145 TD
+( )Tj
+/F7 1 Tf
+11.305 26.145 TD
+( )Tj
+-11.055 -26.145 TD
+()Tj
+ET
+0.648 w 
+137.34 504.084 m
+144.682 504.084 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 273 819 Tm
+( )Tj
+-10.695 -26.145 TD
+( )Tj
+/F2 1 Tf
+10.945 26.145 TD
+( )Tj
+-10.695 -26.145 TD
+-0.0001 Tc
+( dom)Tj
+/F1 1 Tf
+10.945 26.145 TD
+0 Tc
+( )Tj
+-8.805 -26.145 TD
+-0.0001 Tc
+( \()Tj
+/F4 1 Tf
+9.055 26.145 TD
+0 Tc
+( )Tj
+-8.475 -26.145 TD
+-0.0001 Tc
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+8.725 26.145 TD
+0 Tc
+( )Tj
+-2.035 -26.145 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 288 818.9999 Tm
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+-1.4914 -22.41 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 295 819 Tm
+( )Tj
+-1.5583 -26.145 TD
+( )Tj
+/F4 1 Tf
+1.8083 26.145 TD
+( )Tj
+-1.5583 -26.145 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+1.8083 26.145 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+1.4117 -26.145 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 304 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+1.4629 -22.41 TD
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 311.0001 819 Tm
+( )Tj
+1.8883 -26.145 TD
+( )Tj
+/F4 1 Tf
+-1.6383 26.145 TD
+( )Tj
+1.8883 -26.145 TD
+-0.0001 Tc
+(EnvSP.SavData.)Tj
+11 0 0 11 317.0001 819 Tm
+0 Tc
+( )Tj
+-21.1218 -30.3109 TD
+-0.0001 Tc
+(State2.ComVal)Tj
+/F1 1 Tf
+12 0 0 12 320.0001 819 Tm
+0 Tc
+( )Tj
+-14.0917 -27.785 TD
+-0.0001 Tc
+0.0563 Tw
+[( maps static variables of common blocks)-249.9(to their corresponding values. These are)]TJ
+-7.89 -1.34 TD
+0.0527 Tw
+[(common blocks of the caller if remanent)-249.9(common blocks of the called procedure have been removed)]TJ
+0 -1.33 TD
+0 Tw
+(from the map. Thus, )Tj
+/F4 1 Tf
+22.2317 30.455 TD
+0 Tc
+( )Tj
+-13.8417 -30.455 TD
+-0.0001 Tc
+(Env.ComVal)Tj
+/F1 1 Tf
+14.0917 30.455 TD
+0 Tc
+( )Tj
+-9.0117 -30.455 TD
+-0.0001 Tc
+( becomes )Tj
+/F4 1 Tf
+9.2617 30.455 TD
+0 Tc
+( )Tj
+-5.2617 -30.455 TD
+-0.0001 Tc
+(ComVal’)Tj
+/F1 1 Tf
+5.5117 30.455 TD
+0 Tc
+( )Tj
+-1.9017 -30.455 TD
+-0.0001 Tc
+( with:)Tj
+/F4 1 Tf
+2.1517 30.455 TD
+0 Tc
+( )Tj
+-20.3917 -32.315 TD
+-0.0001 Tc
+(ComVal')Tj
+/F1 1 Tf
+20.6417 32.315 TD
+0 Tc
+( )Tj
+-17.1517 -32.315 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 341.0001 819 Tm
+( )Tj
+-20.582 -38.778 TD
+()Tj
+ET
+0.54 w 
+135.18 430.24 m
+141.298 430.24 l
+S
+BT
+12 0 0 12 344.0001 819 Tm
+( )Tj
+-16.8917 -32.315 TD
+( )Tj
+/F4 1 Tf
+11 0 0 11 347.0001 819 Tm
+( )Tj
+-18.4273 -35.2527 TD
+(RemCom)Tj
+/F1 1 Tf
+18.6091 35.2527 TD
+( )Tj
+-14.9436 -35.2527 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 352 818.9999 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+-11.7886 -27.6986 TD
+(y)Tj
+0.03 0 TD
+(y)Tj
+0 0.03 TD
+(y)Tj
+-0.03 0 TD
+(y)Tj
+/F1 1 Tf
+11 0 0 11 359.0001 819 Tm
+( )Tj
+-14.7727 -35.2527 TD
+( )Tj
+/F4 1 Tf
+15.0455 35.2527 TD
+( )Tj
+-14.7945 -35.2527 TD
+-0.0001 Tc
+(State2.ComVal)Tj
+/F1 1 Tf
+12 0 0 12 365.0001 819 Tm
+0 Tc
+( )Tj
+-8.2917 -32.315 TD
+(.)Tj
+-14.6 -1.56 TD
+-0.0001 Tc
+-0.0573 Tw
+(The fields of the final state )Tj
+/F4 1 Tf
+23.1417 33.875 TD
+0 Tc
+0 Tw
+( )Tj
+-12.4917 -33.875 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+12.7417 33.875 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+-10.7417 -33.875 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+-0.0573 Tw
+[( are )]TJ
+/F4 1 Tf
+10.6588 33.875 TD
+0 Tc
+0 Tw
+( )Tj
+-9.0517 -33.875 TD
+-0.0001 Tc
+(SV)Tj
+/F1 1 Tf
+9.3017 33.875 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+-8.1917 -33.875 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+-0.0572 Tw
+[( and )]TJ
+/F4 1 Tf
+8.1087 33.875 TD
+0 Tc
+0 Tw
+( )Tj
+-6.2817 -33.875 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+6.5317 33.875 TD
+0 Tc
+( )Tj
+-3.2517 -33.875 TD
+-0.0001 Tc
+-0.0572 Tw
+(, that is )Tj
+/F4 1 Tf
+3.5017 33.875 TD
+0 Tc
+0 Tw
+( )Tj
+-0.5117 -33.875 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+0.7617 33.875 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+1.2383 -33.875 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 392.0001 819 Tm
+( )Tj
+1.822 -40.65 TD
+()Tj
+ET
+410.22 411.52 m
+416.338 411.52 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 395.0001 819 Tm
+( )Tj
+1.7783 -33.875 TD
+( )Tj
+/F2 1 Tf
+-1.5283 33.875 TD
+( )Tj
+1.7183 -33.875 TD
+-0.0002 Tc
+(mk-)Tj
+/F4 1 Tf
+-1.4683 33.875 TD
+0 Tc
+( )Tj
+3.1883 -33.875 TD
+-0.0001 Tc
+(TState)Tj
+/F1 1 Tf
+-2.9383 33.875 TD
+0 Tc
+( )Tj
+5.4983 -33.875 TD
+-0.0574 Tc
+( \()Tj
+/F4 1 Tf
+-5.2483 33.875 TD
+0 Tc
+( )Tj
+5.7683 -33.875 TD
+-0.0001 Tc
+(SV)Tj
+/F1 1 Tf
+-5.5183 33.875 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+6.6283 -33.875 TD
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(, )Tj
+/F4 1 Tf
+-6.7113 33.875 TD
+0 Tc
+( )Tj
+7.1583 -33.875 TD
+-0.0001 Tc
+(ComVal)Tj
+/F1 1 Tf
+-6.9083 33.875 TD
+0 Tc
+( )Tj
+/F3 1 Tf
+10.1883 -33.875 TD
+(ê)Tj
+/F1 1 Tf
+0.3328 0 TD
+-0.0002 Tc
+(\).)Tj
+-38.1328 -1.58 TD
+-0.0001 Tc
+-0.008 Tw
+[(Fig. 4.)5.6( recalls whole definitions and the)-249.9(corresponding propagation rule explained in this section.)]TJ
+-2.37 -1.33 TD
+0 Tw
+[(While implementing such rules, variables)-249.9(should be replaced in the rules by their definition.)]TJ
+ET
+endstream
+endobj
+50 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F8 35 0 R
+/F9 36 0 R
+/TT2 28 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+52 0 obj
+<<
+/Length 12217
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(13)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F2 1 Tf
+10 0 0 10 17 819 Tm
+0 0 0 rg
+( )Tj
+20.638 -61.062 TD
+-0.0001 Tc
+0.0001 Tw
+[(Fig. 4. )8.7(Propagation of call-statements)]TJ
+-16.716 -1.596 TD
+0 Tw
+[(4.2)-454.1( Simplification)]TJ
+/F1 1 Tf
+12 0 0 12 20 819 Tm
+0 Tc
+( )Tj
+5.3883 -53.825 TD
+-0.0001 Tc
+0.0312 Tw
+[(While simplifying a call-statement, the)-249.9(specializer checks first whether the called procedure has)]TJ
+-2.37 -1.34 TD
+0.0254 Tw
+[(been specialized in a similar context)-249.9(\(that is with the same or less restrictive static data\) before.)-249.9(Three)]TJ
+0 -1.33 TD
+0.0001 Tw
+[(situations may happen. They correspond to)-249.9(the three rules of )-6.7(Fig. 5. and are:)]TJ
+/F3 1 Tf
+0 -1.75 TD
+0 Tc
+0 Tw
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0133 Tw
+(the called procedure )Tj
+/F4 1 Tf
+-3.6183 58.245 TD
+0 Tc
+0 Tw
+( )Tj
+11.9383 -58.245 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+-11.6883 58.245 TD
+0 Tc
+( )Tj
+12.7983 -58.245 TD
+-0.0001 Tc
+-0.0132 Tw
+[( has already been specialized into )]TJ
+/F4 1 Tf
+-12.5483 58.245 TD
+0 Tc
+0 Tw
+( )Tj
+26.1283 -58.245 TD
+(V)Tj
+/F1 1 Tf
+-25.8783 58.245 TD
+( )Tj
+26.4883 -58.245 TD
+-0.0001 Tc
+-0.0133 Tw
+[( with the same static data \()]TJ
+/F4 1 Tf
+-26.2383 58.245 TD
+0 Tc
+0 Tw
+( )Tj
+36.8283 -58.245 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+-36.5783 58.245 TD
+0 Tc
+( )Tj
+38.6883 -58.245 TD
+-0.0001 Tc
+-0.0132 Tw
+(\). Thus, )Tj
+/F4 1 Tf
+-38.4383 58.245 TD
+0 Tc
+0 Tw
+( )Tj
+41.7383 -58.245 TD
+(V)Tj
+/F1 1 Tf
+-41.4883 58.245 TD
+( )Tj
+1.7583 -59.575 TD
+-0.0001 Tc
+[(becomes the specialized procedure of the)-249.9(subject procedure )]TJ
+/F4 1 Tf
+-1.5083 59.575 TD
+0 Tc
+( )Tj
+25.5483 -59.575 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+-25.2983 59.575 TD
+0 Tc
+( )Tj
+26.4183 -59.575 TD
+-0.0001 Tc
+( \(first rule\).)Tj
+ET
+1 g
+61.74 776.7 481.92 -549.96 re
+f
+BT
+/F2 1 Tf
+11 0 0 11 277.0201 769.38 Tm
+0 0 0 rg
+0 Tc
+(Definitions)Tj
+/F4 1 Tf
+12 0 0 12 61.74 751.74 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.67 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 96.78 751.74 Tm
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.54 w 10 M []0 d
+1 i 
+96.78 750.76 m
+102.898 750.76 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 102.78 751.74 Tm
+( )Tj
+12 0 0 12 105.54 751.74 Tm
+( )Tj
+/F4 1 Tf
+11 0 0 11 108.54 751.74 Tm
+-0.0001 Tc
+(Called\(SP\).Env)Tj
+12 0 0 12 177.3 751.74 Tm
+(Called)Tj
+/F2 1 Tf
+11 0 0 11 235.98 731.34 Tm
+(Caller )Tj
+/F7 1 Tf
+2.9127 0 TD
+0 Tc
+()Tj
+/F1 1 Tf
+0.9927 0 TD
+( )Tj
+/F2 1 Tf
+0.2509 0 TD
+(called propagation)Tj
+/F4 1 Tf
+12 0 0 12 61.74 712.38 Tm
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+5.28 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 128.1 712.38 Tm
+()Tj
+ET
+128.1 711.4 m
+134.218 711.4 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 134.22 712.38 Tm
+( )Tj
+12 0 0 12 136.98 712.38 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(Corres)Tj
+/F1 1 Tf
+2.94 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(EnvSP.Formal)Tj
+/F1 1 Tf
+5.92 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.27 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 305.58 712.38 Tm
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F1 1 Tf
+12 0 0 12 308.58 712.38 Tm
+0 Tc
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(eval)Tj
+/F1 1 Tf
+1.72 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(State.SV)Tj
+/F1 1 Tf
+3.36 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 386.46 712.38 Tm
+0 Tc
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 395.7 712.38 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(Values)Tj
+/F4 1 Tf
+-28.08 -1.83 TD
+(StaticCom1)Tj
+/F1 1 Tf
+4.67 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 120.78 690.42 Tm
+()Tj
+ET
+120.78 689.44 m
+126.898 689.44 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 126.9 690.42 Tm
+( )Tj
+12 0 0 12 129.54 690.42 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+4.5 0 TD
+0 Tc
+([)Tj
+/F2 1 Tf
+0.34 0 TD
+-0.0001 Tc
+(ran)Tj
+/F1 1 Tf
+1.5 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+6.69 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 298.86 690.42 Tm
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 307.7401 690.42 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(State.ComVal)Tj
+/F1 1 Tf
+5.53 0 TD
+-0.0002 Tc
+(\)])Tj
+/F4 1 Tf
+-26.28 -1.84 TD
+-0.0001 Tc
+(Input)Tj
+/F9 1 Tf
+2.11 0 TD
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 93.06 668.34 Tm
+()Tj
+ET
+93.06 667.36 m
+99.178 667.36 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 99.18 668.34 Tm
+( )Tj
+12 0 0 12 101.94 668.34 Tm
+( )Tj
+11 0 0 11 104.94 668.34 Tm
+(\()Tj
+/F4 1 Tf
+0.3273 0 TD
+-0.0001 Tc
+(State.SV)Tj
+/F1 1 Tf
+3.36 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.2509 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5018 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+0.0001 Tw
+(EnvSP. InitData)Tj
+/F1 1 Tf
+6.5564 0 TD
+0 Tc
+0 Tw
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 235.02 668.34 Tm
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+11 0 0 11 243.78 668.34 Tm
+(  \()Tj
+/F4 1 Tf
+0.8291 0 TD
+-0.0001 Tc
+(StaticFormal)Tj
+/F1 1 Tf
+5.28 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.2509 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5018 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+(StaticCom)Tj
+12 0 0 12 367.86 668.34 Tm
+(1)Tj
+/F1 1 Tf
+0.5 0 TD
+(\))Tj
+/F4 1 Tf
+-26.01 -3.5 TD
+-0.0001 Tc
+(ComInh)Tj
+/F3 1 Tf
+3.22 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 107.34 626.34 Tm
+()Tj
+ET
+107.34 625.36 m
+113.458 625.36 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 113.46 626.34 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+1.89 0 TD
+( \()Tj
+/F4 1 Tf
+0.59 0 TD
+(Env.ComDecl)Tj
+/F1 1 Tf
+5.58 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 220.14 626.34 Tm
+0 Tc
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 228.9 626.34 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ComInh)Tj
+/F1 1 Tf
+3.22 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 273.54 626.34 Tm
+(-)Tj
+0.03 0 TD
+(-)Tj
+0 0.03 TD
+(-)Tj
+-0.03 0 TD
+(-)Tj
+/F1 1 Tf
+12 0 0 12 282.3 626.34 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(dom)Tj
+/F1 1 Tf
+1.89 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(EnvSP.ComDecl )Tj
+/F1 1 Tf
+6.94 0 TD
+0 Tc
+(\))Tj
+/F4 1 Tf
+-28.04 -5.05 TD
+-0.0001 Tc
+(State1)Tj
+/F1 1 Tf
+2.5 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+10 0 0 10 94.74 565.74 Tm
+()Tj
+ET
+94.74 564.76 m
+100.858 564.76 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 100.86 565.74 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0002 Tc
+(mk-)Tj
+/F4 1 Tf
+1.72 0 TD
+-0.0001 Tc
+(TState)Tj
+/F1 1 Tf
+2.56 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(Input)Tj
+/F1 1 Tf
+2.11 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+11 0 0 11 193.5 565.74 Tm
+-0.0001 Tc
+(StaticCom)Tj
+12 0 0 12 239.34 565.74 Tm
+0 Tc
+(1)Tj
+/F1 1 Tf
+0.5 0 TD
+(\))Tj
+/F2 1 Tf
+11 0 0 11 235.98 514.3801 Tm
+(Called )Tj
+/F7 1 Tf
+3.0327 0 TD
+()Tj
+/F1 1 Tf
+0.9818 0 TD
+( )Tj
+/F2 1 Tf
+0.2509 0 TD
+(caller propagation)Tj
+/F4 1 Tf
+12 0 0 12 61.74 495.42 Tm
+-0.0001 Tc
+(StaticActual)Tj
+/F1 1 Tf
+4.89 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+11 0 0 11 123.42 495.42 Tm
+()Tj
+ET
+0.594 w 
+123.42 494.342 m
+130.15 494.342 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 130.14 495.42 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ident)Tj
+/F1 1 Tf
+2.16 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 165.06 495.42 Tm
+(r)Tj
+0.03 0 TD
+(r)Tj
+0 0.03 TD
+(r)Tj
+-0.03 0 TD
+(r)Tj
+/F1 1 Tf
+12 0 0 12 174.3 495.42 Tm
+-0.0001 Tc
+( [)Tj
+/F2 1 Tf
+0.58 0 TD
+(Corres)Tj
+/F1 1 Tf
+2.94 0 TD
+( \()Tj
+/F4 1 Tf
+0.59 0 TD
+(LParam)Tj
+/F1 1 Tf
+3.27 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(EnvSP.Formal)Tj
+/F1 1 Tf
+5.92 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 346.86 495.42 Tm
+-0.184 Tc
+(;;)Tj
+0.03 0.03 TD
+-0.244 Tc
+(;;)Tj
+/F1 1 Tf
+12 0 0 12 349.86 495.42 Tm
+0 Tc
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(eval)Tj
+/F1 1 Tf
+1.72 0 TD
+( \()Tj
+/F4 1 Tf
+11 0 0 11 380.58 495.42 Tm
+(State2.SV)Tj
+/F1 1 Tf
+12 0 0 12 422.94 495.42 Tm
+-0.0002 Tc
+(\)] )Tj
+/F9 1 Tf
+14 0 0 14 433.98 495.42 Tm
+0 Tc
+(t)Tj
+0.03 0 TD
+(t)Tj
+0 0.03 TD
+(t)Tj
+-0.03 0 TD
+(t)Tj
+/F1 1 Tf
+12 0 0 12 443.22 495.42 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(Values)Tj
+/F4 1 Tf
+-32.04 -1.84 TD
+(StaticCom2)Tj
+/F1 1 Tf
+4.67 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+11 0 0 11 120.78 473.34 Tm
+()Tj
+ET
+120.78 472.262 m
+127.51 472.262 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 127.5 473.34 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(GalCorres)Tj
+/F1 1 Tf
+4.49 0 TD
+( [)Tj
+/F2 1 Tf
+0.59 0 TD
+(ran)Tj
+/F1 1 Tf
+1.5 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(Env.ComDecl)Tj
+/F1 1 Tf
+5.58 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+14 0 0 14 286.38 473.34 Tm
+(∞)Tj
+0.03 0 TD
+(∞)Tj
+0 0.03 TD
+(∞)Tj
+-0.03 0 TD
+(∞)Tj
+/F1 1 Tf
+12 0 0 12 295.38 473.34 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(State2.ComVal)Tj
+/F1 1 Tf
+6.02 0 TD
+-0.0002 Tc
+(\)])Tj
+11 0 0 11 61.74 453.42 Tm
+0.0001 Tc
+(SV)Tj
+/F3 1 Tf
+1.2782 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3331 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 82.26 453.42 Tm
+()Tj
+ET
+0.54 w 
+82.26 452.44 m
+88.378 452.44 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 88.38 453.42 Tm
+( )Tj
+/F4 1 Tf
+0.24 0 TD
+(EnvSP.SavData)Tj
+/F1 1 Tf
+6.36 0 TD
+( )Tj
+/F9 1 Tf
+0.2509 0 TD
+(r)Tj
+0.03 0 TD
+(r)Tj
+0 0.03 TD
+(r)Tj
+-0.03 0 TD
+(r)Tj
+/F1 1 Tf
+0.6545 -0.03 TD
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+-0.0001 Tc
+(State2)Tj
+/F5 1 Tf
+2.4982 0 TD
+0.0001 Tc
+(.SV)Tj
+/F2 1 Tf
+1.4727 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.25 0 TD
+(Å)Tj
+/F1 1 Tf
+0.5027 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(StaticActual)Tj
+/F2 1 Tf
+4.8873 0 TD
+0 Tc
+( )Tj
+/F8 1 Tf
+0.25 0 TD
+(Å)Tj
+/F1 1 Tf
+0.4918 0 TD
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+(StaticCom2)Tj
+/F1 1 Tf
+4.6691 0 TD
+(\))Tj
+/F4 1 Tf
+12 0 0 12 61.74 412.38 Tm
+-0.0001 Tc
+(RemCom)Tj
+/F1 1 Tf
+3.67 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+0.25 0 TD
+()Tj
+ET
+0.648 w 
+108.78 411.204 m
+116.122 411.204 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 116.1 412.38 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+( dom)Tj
+/F1 1 Tf
+2.14 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(EnvSP.ComDecl)Tj
+/F1 1 Tf
+6.69 0 TD
+(\) )Tj
+/F9 1 Tf
+14 0 0 14 238.98 412.38 Tm
+0 Tc
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 247.74 412.38 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(ComInh)Tj
+/F3 1 Tf
+3.22 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 296.34 412.38 Tm
+(U)Tj
+0.03 0 TD
+(U)Tj
+0 0.03 TD
+(U)Tj
+-0.03 0 TD
+(U)Tj
+/F1 1 Tf
+12 0 0 12 305.1 412.38 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(EnvSP.SavData)Tj
+11 0 0 11 61.74 390.42 Tm
+0 Tc
+(ComVal)Tj
+/F3 1 Tf
+3.2727 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 104.22 390.42 Tm
+()Tj
+ET
+0.54 w 
+104.22 389.44 m
+110.338 389.44 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 110.34 390.42 Tm
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+(RemCom)Tj
+/F1 1 Tf
+3.6655 0 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 158.94 390.42 Tm
+(y)Tj
+0.03 0 TD
+(y)Tj
+0 0.03 TD
+(y)Tj
+-0.03 0 TD
+(y)Tj
+/F1 1 Tf
+11 0 0 11 168.06 390.42 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 170.82 390.42 Tm
+-0.0001 Tc
+(State2.ComVal)Tj
+-9.09 -2.98 TD
+(State)Tj
+/F3 1 Tf
+2 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+( )Tj
+/F7 1 Tf
+10 0 0 10 92.7 354.66 Tm
+()Tj
+ET
+92.7 353.68 m
+98.818 353.68 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 98.82 354.66 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0002 Tc
+(mk-)Tj
+/F4 1 Tf
+1.72 0 TD
+-0.0001 Tc
+(TState)Tj
+/F1 1 Tf
+2.56 0 TD
+( \()Tj
+/F4 1 Tf
+0.58 0 TD
+(SV)Tj
+/F3 1 Tf
+1.11 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(, )Tj
+/F4 1 Tf
+0.4971 0 TD
+(ComVal)Tj
+/F3 1 Tf
+3.28 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3328 0 TD
+(\))Tj
+/F2 1 Tf
+11 0 0 11 262.86 295.38 Tm
+(Propagation rule)Tj
+/F4 1 Tf
+-9.5236 -2.0945 TD
+-0.0001 Tc
+(Called\(SP\).Env)Tj
+/F1 1 Tf
+6.2509 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State1)Tj
+/F1 1 Tf
+2.4982 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+( |)Tj
+0.4473 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6618 0 TD
+0 Tc
+(.)Tj
+/F4 1 Tf
+0.2509 0 TD
+(Stmts)Tj
+/F7 1 Tf
+2.1709 0 TD
+-0.0001 Tc
+( :)Tj
+/F1 1 Tf
+0.5236 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(State2)Tj
+/F1 1 Tf
+12 0 0 12 61.74 254.7001 Tm
+-0.0031 Tc
+[(________________________________________________________________________)-246.9(________)]TJ
+/F4 1 Tf
+11 0 0 11 177.18 235.3799 Tm
+-0.0001 Tc
+(Env)Tj
+/F1 1 Tf
+1.56 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+1.9964 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F1 1 Tf
+3.2182 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6727 0 TD
+0.0001 Tc
+(  |)Tj
+0.6982 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F2 1 Tf
+0.4909 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+1.1127 0 TD
+0 Tc
+( \()Tj
+/F4 1 Tf
+0.5782 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2836 0 TD
+0 Tc
+(\))Tj
+/F7 1 Tf
+0.3273 0 TD
+-0.0001 Tc
+( :)Tj
+/F1 1 Tf
+0.5236 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(State)Tj
+/F3 1 Tf
+2.0073 0 TD
+0 Tc
+(ê)Tj
+ET
+q
+56.1 791.7 493.08 -698.04 re
+W n
+0 G
+0.972 w 
+56.1 224.1 493.32 555.48 re
+S
+Q
+endstream
+endobj
+53 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F5 22 0 R
+/F7 24 0 R
+/F8 35 0 R
+/F9 36 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+55 0 obj
+<<
+/Length 6661
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(14)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+/F3 1 Tf
+3.2683 -2.955 TD
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+0.0937 Tw
+[(the procedure is not as specialized as)-249.9(wanted \(second rule\). For instance the last parameter of the)]TJ
+-0.11 -1.33 TD
+0.0812 Tw
+[(procedure to specialize is static, but)-249.9(the last parameter of the most specialized version is dynamic.)]TJ
+0 -1.34 TD
+0.0461 Tw
+(Then, one of the most specialized versions \()Tj
+/F4 1 Tf
+0 0 0 rg
+-3.7583 5.625 TD
+0 Tc
+0 Tw
+( )Tj
+21.6883 -5.625 TD
+-0.0001 Tc
+(Version)Tj
+/F1 1 Tf
+-21.4383 5.625 TD
+0 Tc
+( )Tj
+24.5483 -5.625 TD
+-0.0001 Tc
+0.0461 Tw
+(\) and its output static data \()Tj
+/F4 1 Tf
+-24.2983 5.625 TD
+0 Tc
+0 Tw
+( )Tj
+35.4583 -5.625 TD
+-0.0001 Tc
+(Output)Tj
+/F1 1 Tf
+-35.2083 5.625 TD
+0 Tc
+( )Tj
+37.9883 -5.625 TD
+-0.0001 Tc
+0.046 Tw
+(\) are selected)Tj
+-34.98 -1.33 TD
+0.0428 Tw
+[(among the versions such that the cardinal)-249.9(of their input static data is the biggest. Note that its static)]TJ
+T*
+0.1466 Tw
+[(variables and parameters are strictly)-249.9(included in those of the subject procedure, and its common)]TJ
+0 -1.34 TD
+0.0046 Tw
+[(blocks, that have also a scope in the)-249.9(subject procedure, are such that each of their static variables has)]TJ
+0 -1.33 TD
+0 Tw
+(the same value in both common blocks. Thus, )Tj
+/F4 1 Tf
+-2.7583 10.955 TD
+0 Tc
+( )Tj
+21.3683 -10.955 TD
+-0.0001 Tc
+(Version)Tj
+/F1 1 Tf
+-21.1183 10.955 TD
+0 Tc
+( )Tj
+24.2283 -10.955 TD
+( and )Tj
+/F4 1 Tf
+-23.9783 10.955 TD
+( )Tj
+25.9183 -10.955 TD
+-0.0001 Tc
+(Output)Tj
+/F1 1 Tf
+-25.6683 10.955 TD
+0 Tc
+( )Tj
+28.4483 -10.955 TD
+-0.0001 Tc
+-0.0001 Tw
+( are:)Tj
+/F4 1 Tf
+-28.1983 10.955 TD
+0 Tc
+0 Tw
+( )Tj
+3.8583 -12.705 TD
+-0.0001 Tc
+(Version, Output)Tj
+/F1 1 Tf
+-3.6083 12.705 TD
+0 Tc
+( )Tj
+9.9983 -12.705 TD
+( )Tj
+/F7 1 Tf
+-9.7483 12.705 TD
+( )Tj
+9.9983 -12.705 TD
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.648 w 10 M []0 d
+1 i 
+169.98 665.364 m
+177.322 665.364 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 53 819 Tm
+( )Tj
+10.3583 -12.705 TD
+( any )Tj
+/F4 1 Tf
+-10.1083 12.705 TD
+( )Tj
+12.0483 -12.705 TD
+(V)Tj
+/F1 1 Tf
+-11.7983 12.705 TD
+( )Tj
+12.4083 -12.705 TD
+(, )Tj
+/F4 1 Tf
+-12.1583 12.705 TD
+( )Tj
+12.6583 -12.705 TD
+(O)Tj
+/F1 1 Tf
+-12.4083 12.705 TD
+( )Tj
+13.1383 -12.705 TD
+-0.0001 Tc
+( such that \()Tj
+/F4 1 Tf
+-12.8883 12.705 TD
+0 Tc
+( )Tj
+17.2983 -12.705 TD
+-0.0001 Tc
+(N, In)Tj
+/F1 1 Tf
+-17.0483 12.705 TD
+0 Tc
+( )Tj
+19.0483 -12.705 TD
+(, )Tj
+/F4 1 Tf
+-18.7983 12.705 TD
+( )Tj
+19.2983 -12.705 TD
+(O)Tj
+/F1 1 Tf
+-19.0483 12.705 TD
+( )Tj
+19.7683 -12.705 TD
+(, )Tj
+/F4 1 Tf
+-19.5183 12.705 TD
+( )Tj
+20.0183 -12.705 TD
+(V)Tj
+/F1 1 Tf
+-19.7683 12.705 TD
+( )Tj
+20.3783 -12.705 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+-20.1283 12.705 TD
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+20.6883 -12.705 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+-20.2183 12.675 TD
+( )Tj
+20.7483 -12.705 TD
+( )Tj
+/F4 1 Tf
+-20.2483 12.705 TD
+( )Tj
+20.7483 -12.705 TD
+-0.0001 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+-20.4983 12.705 TD
+0 Tc
+( )Tj
+28.6883 -12.705 TD
+( )Tj
+/F9 1 Tf
+-28.4383 12.705 TD
+( )Tj
+0.03 0 TD
+( )Tj
+28.6583 -12.705 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.4999 -0.03 TD
+(∂)Tj
+0.03 0 TD
+(∂)Tj
+0 0.03 TD
+(∂)Tj
+-0.03 0 TD
+(∂)Tj
+/F1 1 Tf
+-28.6882 12.675 TD
+( )Tj
+29.2983 -12.705 TD
+(  )Tj
+/F4 1 Tf
+-29.0483 12.705 TD
+( )Tj
+29.5483 -12.705 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+-29.2983 12.705 TD
+0 Tc
+( )Tj
+31.4083 -12.705 TD
+( )Tj
+/F9 1 Tf
+-31.1583 12.705 TD
+( )Tj
+0.03 0 TD
+( )Tj
+31.3783 -12.705 TD
+(c)Tj
+0.03 0 TD
+(c)Tj
+0 0.03 TD
+(c)Tj
+-0.03 0 TD
+(c)Tj
+/F1 1 Tf
+-30.9083 12.675 TD
+( )Tj
+31.5183 -12.705 TD
+(  )Tj
+/F4 1 Tf
+-31.2683 12.705 TD
+( )Tj
+31.7683 -12.705 TD
+-0.0001 Tc
+(In)Tj
+/F1 1 Tf
+-31.5183 12.705 TD
+0 Tc
+( )Tj
+32.3483 -12.705 TD
+( )Tj
+/F9 1 Tf
+-32.0983 12.705 TD
+( )Tj
+0.03 0 TD
+( )Tj
+32.3183 -12.705 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.4999 -0.03 TD
+(∂)Tj
+0.03 0 TD
+(∂)Tj
+0 0.03 TD
+(∂)Tj
+-0.03 0 TD
+(∂)Tj
+/F1 1 Tf
+-32.3482 12.675 TD
+( )Tj
+32.9483 -12.705 TD
+( )Tj
+-25.78 -1.5 TD
+(\()Tj
+/T2 1 Tf
+0.34 0 TD
+(í)Tj
+/F1 1 Tf
+-6.925 14.205 TD
+( )Tj
+7.675 -14.205 TD
+0.0002 Tc
+(\( )Tj
+/F4 1 Tf
+-7.425 14.205 TD
+0 Tc
+( )Tj
+8.005 -14.205 TD
+-0.0055 Tc
+(N’, J)Tj
+/F1 1 Tf
+-7.755 14.205 TD
+0 Tc
+( )Tj
+9.675 -14.205 TD
+0.0417 Tc
+(, )Tj
+/F4 1 Tf
+-9.425 14.205 TD
+0 Tc
+( )Tj
+10.005 -14.205 TD
+(O)Tj
+/F1 1 Tf
+-9.755 14.205 TD
+( )Tj
+10.505 -14.205 TD
+0.0417 Tc
+(, )Tj
+/F4 1 Tf
+-10.255 14.205 TD
+0 Tc
+( )Tj
+10.835 -14.205 TD
+-0.0137 Tc
+(V’)Tj
+/F1 1 Tf
+-10.585 14.205 TD
+0 Tc
+( )Tj
+11.505 -14.205 TD
+0.0002 Tc
+(\) )Tj
+/F9 1 Tf
+-11.255 14.205 TD
+0 Tc
+( )Tj
+0.03 0 TD
+( )Tj
+11.805 -14.205 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+-11.335 14.175 TD
+( )Tj
+11.875 -14.205 TD
+( )Tj
+/F4 1 Tf
+-11.375 14.205 TD
+( )Tj
+11.875 -14.205 TD
+-0.0014 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+-11.625 14.205 TD
+0 Tc
+( )Tj
+19.795 -14.205 TD
+-0.0075 Tc
+( such that )Tj
+/F4 1 Tf
+-19.545 14.205 TD
+0 Tc
+( )Tj
+23.545 -14.205 TD
+-0.0055 Tc
+(Input)Tj
+/F1 1 Tf
+-23.295 14.205 TD
+0 Tc
+( )Tj
+25.375 -14.205 TD
+( )Tj
+/F9 1 Tf
+-25.125 14.205 TD
+( )Tj
+0.03 0 TD
+( )Tj
+25.345 -14.205 TD
+(c)Tj
+0.03 0 TD
+(c)Tj
+0 0.03 TD
+(c)Tj
+-0.03 0 TD
+(c)Tj
+/F1 1 Tf
+-24.875 14.175 TD
+( )Tj
+25.485 -14.205 TD
+(  )Tj
+/F4 1 Tf
+-25.235 14.205 TD
+( )Tj
+25.735 -14.205 TD
+(J)Tj
+/F1 1 Tf
+-25.485 14.205 TD
+( )Tj
+25.905 -14.205 TD
+( )Tj
+/F9 1 Tf
+-25.655 14.205 TD
+( )Tj
+0.03 0 TD
+( )Tj
+25.875 -14.205 TD
+(z)Tj
+0.03 0 TD
+(z)Tj
+0 0.03 TD
+(z)Tj
+-0.03 0 TD
+(z)Tj
+/F1 1 Tf
+-25.405 14.175 TD
+( )Tj
+26.025 -14.205 TD
+(   )Tj
+/F4 1 Tf
+-25.775 14.205 TD
+( )Tj
+26.525 -14.205 TD
+0.0002 Tc
+(In)Tj
+/F1 1 Tf
+-26.275 14.205 TD
+0 Tc
+( )Tj
+27.105 -14.205 TD
+(\))Tj
+-39.93 -1.58 TD
+-0.0001 Tc
+-0.0033 Tw
+[( The selected procedure is then)-249.9(specialized \(as in the following situation\) and the name of the)-249.9(specia-)]TJ
+-0.74 -1.34 TD
+0.0766 Tw
+(lized procedure \()Tj
+/F4 1 Tf
+13.815 17.125 TD
+0 Tc
+0 Tw
+( )Tj
+-6.885 -17.125 TD
+-0.0001 Tc
+(NewName)Tj
+/F1 1 Tf
+7.135 17.125 TD
+0 Tc
+( )Tj
+-3.025 -17.125 TD
+-0.0001 Tc
+0.0766 Tw
+(\) is selected among the set )Tj
+/F2 1 Tf
+3.275 17.125 TD
+0 Tc
+0 Tw
+( )Tj
+7.955 -17.125 TD
+-0.0001 Tc
+(NAME)Tj
+/F1 1 Tf
+-7.705 17.125 TD
+0 Tc
+( )Tj
+10.765 -17.125 TD
+-0.0001 Tc
+0.0766 Tw
+[( of possible names, that have not been)]TJ
+-25.33 -1.33 TD
+0 Tw
+(already selected as procedure names.)Tj
+/F3 1 Tf
+0 -1.75 TD
+0 Tc
+(Ä)Tj
+/F1 1 Tf
+0.85 0 TD
+-0.0001 Tc
+-0.0365 Tw
+[(the called procedure has not been)-249.9(specialized. A residual procedure is specialized from it, a new name)]TJ
+-0.11 -1.33 TD
+0 Tw
+[(is computed and the current state is)-249.9(modified by the results of the specialization \(third rule\).)]TJ
+ET
+endstream
+endobj
+56 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F9 36 0 R
+/T2 57 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+59 0 obj
+<<
+/Length 13025
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(15)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F2 1 Tf
+10 0 0 10 17 819 Tm
+0 0 0 rg
+( )Tj
+20.278 -72.066 TD
+-0.0001 Tc
+0.0001 Tw
+[(Fig. 5. )8.7(Simplification of call-statements)]TJ
+ET
+1 g
+60.66 788.7 481.8 -680.28 re
+f
+BT
+11 0 0 11 275.94 781.38 Tm
+0 0 0 rg
+0 Tc
+0 Tw
+(Definitions)Tj
+/F4 1 Tf
+12 0 0 12 60.66 759.66 Tm
+-0.0001 Tc
+(Version)Tj
+/F1 1 Tf
+3.11 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Output)Tj
+/F1 1 Tf
+2.77 0 TD
+0 Tc
+( )Tj
+/F7 1 Tf
+0.25 0 TD
+()Tj
+ET
+0 0 0 RG
+0 J 0 j 0.648 w 10 M []0 d
+1 i 
+140.22 758.484 m
+147.562 758.484 l
+S
+BT
+/F1 1 Tf
+12 0 0 12 147.66 759.66 Tm
+( any )Tj
+/F4 1 Tf
+1.94 0 TD
+(V)Tj
+/F1 1 Tf
+0.61 0 TD
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+(O)Tj
+/F1 1 Tf
+0.72 0 TD
+-0.0001 Tc
+( such that \()Tj
+/F4 1 Tf
+4.42 0 TD
+(In)Tj
+/F1 1 Tf
+0.83 0 TD
+0 Tc
+(, O, )Tj
+/F4 1 Tf
+1.72 0 TD
+(V)Tj
+/F1 1 Tf
+0.61 0 TD
+-0.0001 Tc
+(\) )Tj
+/F9 1 Tf
+0.59 0 TD
+0 Tc
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.53 -0.03 TD
+( )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+8.19 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.4999 -0.03 TD
+(∂)Tj
+0.03 0 TD
+(∂)Tj
+0 0.03 TD
+(∂)Tj
+-0.03 0 TD
+(∂)Tj
+/F1 1 Tf
+0.6001 -0.03 TD
+(  )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Input)Tj
+/F1 1 Tf
+2.12 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+(c)Tj
+0.03 0 TD
+(c)Tj
+0 0.03 TD
+(c)Tj
+-0.03 0 TD
+(c)Tj
+/F1 1 Tf
+0.61 -0.03 TD
+(  )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(In)Tj
+/F1 1 Tf
+0.83 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.4999 -0.03 TD
+(∂)Tj
+0.03 0 TD
+(∂)Tj
+0 0.03 TD
+(∂)Tj
+-0.03 0 TD
+(∂)Tj
+/F1 1 Tf
+0.6001 -0.03 TD
+( )Tj
+-21.18 -1.75 TD
+(\()Tj
+/T2 1 Tf
+0.34 0 TD
+(í)Tj
+/F1 1 Tf
+0.75 0 TD
+0.0002 Tc
+(\( )Tj
+/F4 1 Tf
+0.58 0 TD
+0 Tc
+(J)Tj
+/F1 1 Tf
+0.42 0 TD
+0.0417 Tc
+(, )Tj
+/F4 1 Tf
+0.58 0 TD
+0 Tc
+(O)Tj
+/F1 1 Tf
+0.75 0 TD
+0.0417 Tc
+(, )Tj
+/F4 1 Tf
+0.58 0 TD
+-0.0137 Tc
+(V’)Tj
+/F1 1 Tf
+0.92 0 TD
+0.0002 Tc
+(\) )Tj
+/F9 1 Tf
+0.58 0 TD
+0 Tc
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.54 -0.03 TD
+( )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0014 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+8.16 0 TD
+-0.0075 Tc
+-0.0001 Tw
+( such that )Tj
+/F4 1 Tf
+4 0 TD
+-0.0055 Tc
+0 Tw
+(Input)Tj
+/F1 1 Tf
+2.09 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+(c)Tj
+0.03 0 TD
+(c)Tj
+0 0.03 TD
+(c)Tj
+-0.03 0 TD
+(c)Tj
+/F1 1 Tf
+0.61 -0.03 TD
+(  )Tj
+/F4 1 Tf
+0.5 0 TD
+(J)Tj
+/F1 1 Tf
+0.42 0 TD
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+(c)Tj
+0.03 0 TD
+(c)Tj
+0 0.03 TD
+(c)Tj
+-0.03 0 TD
+(c)Tj
+/F1 1 Tf
+0.61 -0.03 TD
+(   )Tj
+/F4 1 Tf
+0.75 0 TD
+0.0002 Tc
+(In)Tj
+/F1 1 Tf
+0.84 0 TD
+0 Tc
+(\))Tj
+/F4 1 Tf
+-39.76 -3.5 TD
+-0.0001 Tc
+(SelectedName)Tj
+/F1 1 Tf
+5.66 0 TD
+0 Tc
+(s )Tj
+/F7 1 Tf
+10 0 0 10 136.26 696.66 Tm
+()Tj
+ET
+0.54 w 
+136.26 695.68 m
+142.378 695.68 l
+S
+BT
+/F1 1 Tf
+11 0 0 11 142.38 696.66 Tm
+(  {)Tj
+/F4 1 Tf
+0.9818 0 TD
+(N)Tj
+/F1 1 Tf
+0.6655 0 TD
+0.0001 Tc
+(  |)Tj
+/F4 1 Tf
+0.6982 0 TD
+0 Tc
+( )Tj
+/F1 1 Tf
+0.2509 0 TD
+(\()Tj
+/F4 1 Tf
+0.3273 0 TD
+(N, I, O, V)Tj
+/F1 1 Tf
+3.84 0 TD
+(\))Tj
+/F9 1 Tf
+12 0 0 12 220.38 696.66 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.5 -0.03 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.54 -0.03 TD
+( )Tj
+/F2 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(ran)Tj
+/F4 1 Tf
+1.5 0 TD
+( \(Called)Tj
+/F1 1 Tf
+11 0 0 11 295.86 696.66 Tm
+0 Tc
+(\).)Tj
+/F4 1 Tf
+0.5782 0 TD
+(Versions)Tj
+/F1 1 Tf
+3.5018 0 TD
+(})Tj
+/F2 1 Tf
+-7.7455 -3.7527 TD
+(Simplification rules)Tj
+-17.7164 -1.9091 TD
+[(Rule 1: the called pocedure has already been)-250(specialized with the same static data)]TJ
+/F1 1 Tf
+11.6291 -1.7236 TD
+(\()Tj
+/F4 1 Tf
+0.3382 0 TD
+(Name, State1.SV, Out, V)Tj
+/F1 1 Tf
+9.8073 0 TD
+(\))Tj
+/F9 1 Tf
+12 0 0 12 303.78 615.42 Tm
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.53 -0.03 TD
+( )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Called\(SP\).Versions)Tj
+8 0 0 8 312.9001 595.38 Tm
+0 Tc
+(Propagation)Tj
+11 0 0 11 199.74 579.42 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6727 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(Output)Tj
+/F1 1 Tf
+2.7709 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+( |)Tj
+0.4473 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+(V)Tj
+/F7 1 Tf
+0.6109 0 TD
+-0.0001 Tc
+( :)Tj
+/F1 1 Tf
+0.5345 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.24 0 TD
+-0.0001 Tc
+(State2)Tj
+/F1 1 Tf
+9 0 0 9 72.42 559.74 Tm
+-0.0024 Tc
+0.0001 Tw
+[(_____________________________________________________________________)-247.7(____________________________     \(1\))]TJ
+/F4 1 Tf
+11 0 0 11 128.34 543.42 Tm
+-0.0001 Tc
+0 Tw
+(Env)Tj
+/F1 1 Tf
+1.56 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+1.9964 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F1 1 Tf
+3.2182 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+(  |)Tj
+0.7091 0.5455 TD
+0 Tc
+(_)Tj
+0.4909 -0.5455 TD
+(  )Tj
+/F2 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+1.1018 0 TD
+0 Tc
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+/F7 1 Tf
+0.3382 0 TD
+(  )Tj
+/F1 1 Tf
+1.4836 0 TD
+( )Tj
+/F2 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.24 0 TD
+(NewName)Tj
+/F1 1 Tf
+4.1127 0 TD
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+/F2 1 Tf
+-37.3091 -4.6364 TD
+[(Rule 2: the called procedure is not as)-250(specialized as wanted)]TJ
+/F1 1 Tf
+8.1273 -1.7345 TD
+({\()Tj
+/F4 1 Tf
+0.8073 0 TD
+(Name, In, Out, V)Tj
+/F1 1 Tf
+6.7745 0 TD
+(\))Tj
+/F9 1 Tf
+12 0 0 12 237.18 473.34 Tm
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.53 -0.03 TD
+( )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+11 0 0 11 347.94 473.34 Tm
+0.0001 Tc
+( |)Tj
+/F4 1 Tf
+0.4473 0 TD
+-0.0001 Tc
+( State1.SV)Tj
+/F1 1 Tf
+4.1127 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+12 0 0 12 400.7401 473.34 Tm
+(z)Tj
+0.03 0 TD
+(z)Tj
+0 0.03 TD
+(z)Tj
+-0.03 0 TD
+(z)Tj
+/F1 1 Tf
+0.62 -0.03 TD
+(  )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(In)Tj
+/F1 1 Tf
+11 0 0 11 424.26 473.34 Tm
+0 Tc
+(} )Tj
+/F7 1 Tf
+0.7309 0 TD
+()Tj
+/F1 1 Tf
+0.5455 0 TD
+( )Tj
+/F9 1 Tf
+14 0 0 14 441.06 473.34 Tm
+(0)Tj
+/F4 1 Tf
+11 0 0 11 183.78 445.38 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6727 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(Output)Tj
+/F1 1 Tf
+2.7709 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+(  |)Tj
+0.6982 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+(Version)Tj
+/F7 1 Tf
+3.1091 0 TD
+(  )Tj
+/F1 1 Tf
+1.4836 0 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(SP)Tj
+/F3 1 Tf
+1.1127 0 TD
+0 Tc
+(ê)Tj
+/F4 1 Tf
+8 0 0 8 312.9001 426.42 Tm
+(Propagation)Tj
+11 0 0 11 195.18 410.34 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6727 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.4909 0 TD
+(Output)Tj
+/F1 1 Tf
+2.7818 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+( |)Tj
+0.4473 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(SP)Tj
+/F3 1 Tf
+1.1127 0 TD
+0 Tc
+(ê)Tj
+/F7 1 Tf
+0.3273 0 TD
+-0.0001 Tc
+( :)Tj
+/F1 1 Tf
+0.5345 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(State2)Tj
+/F2 1 Tf
+-23.2473 -1.9636 TD
+0.0001 Tc
+(add)Tj
+/F1 1 Tf
+1.6145 0 TD
+0 Tc
+( \(\()Tj
+/F4 1 Tf
+0.9164 0 TD
+[(NewName, State.Variables, State2.Variables,)-249.9(SP)]TJ
+/F3 1 Tf
+19.4945 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(\), )Tj
+/F4 1 Tf
+12 0 0 12 379.86 388.74 Tm
+-0.0001 Tc
+(Called\(SP\).)Tj
+11 0 0 11 436.14 388.74 Tm
+0 Tc
+(Versions)Tj
+/F1 1 Tf
+3.5018 0 TD
+(\))Tj
+/F4 1 Tf
+12 0 0 12 208.38 366.66 Tm
+-0.0001 Tc
+(NewName)Tj
+/F1 1 Tf
+4.11 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+11 0 0 11 267.06 366.66 Tm
+( )Tj
+12 0 0 12 269.82 366.66 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+( NAME)Tj
+/F1 1 Tf
+3.31 0 TD
+0 Tc
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+(-)Tj
+/F1 1 Tf
+0.33 0 TD
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(SelectedName)Tj
+/F1 1 Tf
+11 0 0 11 390.42 366.66 Tm
+0 Tc
+(s)Tj
+9 0 0 9 72.42 346.74 Tm
+-0.0024 Tc
+0.0001 Tw
+[(_____________________________________________________________________)-247.7(____________________________     \(2\))]TJ
+/F4 1 Tf
+11 0 0 11 128.34 330.42 Tm
+-0.0001 Tc
+0 Tw
+(Env)Tj
+/F1 1 Tf
+1.56 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+1.9964 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F1 1 Tf
+3.2182 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+(  |)Tj
+0.7091 0.5455 TD
+0 Tc
+(_)Tj
+0.4909 -0.5455 TD
+(  )Tj
+/F2 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+1.1018 0 TD
+0 Tc
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+/F7 1 Tf
+0.3382 0 TD
+(  )Tj
+/F1 1 Tf
+1.4836 0 TD
+( )Tj
+/F2 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.24 0 TD
+(NewName)Tj
+/F1 1 Tf
+4.1127 0 TD
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+/F2 1 Tf
+-37.3091 -4.6364 TD
+[(Rule 3: the called procedure has not been)-250(specialized)]TJ
+/F1 1 Tf
+7.8436 -1.7345 TD
+({\()Tj
+/F4 1 Tf
+0.8073 0 TD
+(Name, In, Out, V)Tj
+/F1 1 Tf
+6.7855 0 TD
+(\))Tj
+/F9 1 Tf
+12 0 0 12 234.06 260.34 Tm
+( )Tj
+0.03 0 TD
+( )Tj
+0 0.03 TD
+( )Tj
+-0.03 0 TD
+( )Tj
+0.5 -0.03 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+0.54 -0.03 TD
+( )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(Called\(SP\).Versions)Tj
+/F1 1 Tf
+11 0 0 11 350.82 260.34 Tm
+0.0001 Tc
+( |)Tj
+/F4 1 Tf
+0.4473 0 TD
+-0.0001 Tc
+( State1.SV)Tj
+/F1 1 Tf
+4.1127 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+12 0 0 12 403.7401 260.34 Tm
+(z)Tj
+0.03 0 TD
+(z)Tj
+0 0.03 TD
+(z)Tj
+-0.03 0 TD
+(z)Tj
+/F1 1 Tf
+0.62 -0.03 TD
+(  )Tj
+/F4 1 Tf
+0.5 0 TD
+-0.0001 Tc
+(In)Tj
+/F1 1 Tf
+11 0 0 11 427.14 260.34 Tm
+0 Tc
+(} = )Tj
+/F9 1 Tf
+14 0 0 14 444.1801 260.34 Tm
+(0)Tj
+/F4 1 Tf
+11 0 0 11 174.54 232.3799 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6618 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State1)Tj
+/F1 1 Tf
+2.4982 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+(  |)Tj
+0.6982 0.5455 TD
+0 Tc
+(_)Tj
+0.5018 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+(EnvSP.Stmts)Tj
+/F7 1 Tf
+5.0836 0 TD
+(  )Tj
+/F1 1 Tf
+1.4836 0 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(SP)Tj
+/F3 1 Tf
+1.1127 0 TD
+0 Tc
+(ê)Tj
+/F4 1 Tf
+8 0 0 8 312.9001 213.42 Tm
+(Propagation)Tj
+11 0 0 11 196.74 197.34 Tm
+-0.0001 Tc
+(EnvSP)Tj
+/F1 1 Tf
+2.6618 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State1)Tj
+/F1 1 Tf
+2.4982 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F3 1 Tf
+3.2182 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+( |)Tj
+0.4582 0.5455 TD
+0 Tc
+(_)Tj
+0.4909 -0.5455 TD
+(  )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(SP)Tj
+/F3 1 Tf
+1.1127 0 TD
+0 Tc
+(ê)Tj
+/F7 1 Tf
+0.3382 0 TD
+-0.0001 Tc
+( :)Tj
+/F1 1 Tf
+0.5236 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(State2)Tj
+/F2 1 Tf
+-23.1055 -1.9636 TD
+0.0001 Tc
+(add)Tj
+/F1 1 Tf
+1.6145 0 TD
+0 Tc
+( \(\()Tj
+/F4 1 Tf
+0.9164 0 TD
+[(NewName, State.Variables, State2.Variables,)-249.9(SP)]TJ
+/F3 1 Tf
+19.4945 0 TD
+(ê)Tj
+/F1 1 Tf
+0.333 0 TD
+(\), )Tj
+/F4 1 Tf
+12 0 0 12 379.86 175.74 Tm
+-0.0001 Tc
+(Called\(SP\).)Tj
+11 0 0 11 436.14 175.74 Tm
+0 Tc
+(Versions)Tj
+/F1 1 Tf
+3.5018 0 TD
+(\))Tj
+/F4 1 Tf
+12 0 0 12 208.38 153.66 Tm
+-0.0001 Tc
+(NewName)Tj
+/F1 1 Tf
+4.11 0 TD
+0 Tc
+( )Tj
+/F9 1 Tf
+0.25 0 TD
+(e)Tj
+0.03 0 TD
+(e)Tj
+0 0.03 TD
+(e)Tj
+-0.03 0 TD
+(e)Tj
+/F1 1 Tf
+11 0 0 11 267.06 153.66 Tm
+( )Tj
+12 0 0 12 269.82 153.66 Tm
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+-0.0001 Tc
+( NAME)Tj
+/F1 1 Tf
+3.31 0 TD
+0 Tc
+( )Tj
+/F2 1 Tf
+0.25 0 TD
+(-)Tj
+/F1 1 Tf
+0.33 0 TD
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+-0.0001 Tc
+(SelectedName)Tj
+/F1 1 Tf
+11 0 0 11 390.42 153.66 Tm
+0 Tc
+(s)Tj
+9 0 0 9 65.7 133.74 Tm
+-0.0023 Tc
+[(_____________________________________________________________________)-247.7(_______________________________     \(3\))]TJ
+/F4 1 Tf
+11 0 0 11 128.34 117.42 Tm
+-0.0001 Tc
+(Env)Tj
+/F1 1 Tf
+1.56 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(State)Tj
+/F1 1 Tf
+1.9964 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+(ComInh)Tj
+/F1 1 Tf
+3.2182 0 TD
+(, )Tj
+/F4 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(Called)Tj
+/F1 1 Tf
+2.6618 0 TD
+0.0001 Tc
+(  |)Tj
+0.7091 0.5455 TD
+0 Tc
+(_)Tj
+0.4909 -0.5455 TD
+(  )Tj
+/F2 1 Tf
+0.5018 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(SP)Tj
+/F1 1 Tf
+1.1018 0 TD
+0 Tc
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+/F7 1 Tf
+0.3382 0 TD
+(  )Tj
+/F1 1 Tf
+1.4836 0 TD
+( )Tj
+/F2 1 Tf
+0.2509 0 TD
+-0.0001 Tc
+(call)Tj
+/F1 1 Tf
+1.5055 0 TD
+0 Tc
+( )Tj
+/F4 1 Tf
+0.24 0 TD
+(NewName)Tj
+/F1 1 Tf
+4.1127 0 TD
+( \()Tj
+/F4 1 Tf
+0.5891 0 TD
+0.0001 Tc
+(LParam)Tj
+/F1 1 Tf
+3.2727 0 TD
+0 Tc
+(\))Tj
+ET
+q
+56.1 791.7 493.08 -698.04 re
+W n
+0 G
+0.972 w 
+57.78 104.94 489.96 686.64 re
+S
+Q
+endstream
+endobj
+60 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+/F9 36 0 R
+/T2 57 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+62 0 obj
+<<
+/Length 6575
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(16)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+/F2 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+( )Tj
+3.2683 -2.955 TD
+-0.0001 Tc
+[(5)-210.1( Implementa)-5.4(tion)]TJ
+/F1 1 Tf
+-3.0183 2.955 TD
+0 Tc
+( )Tj
+5.3883 -4.535 TD
+-0.0001 Tc
+-0.0618 Tw
+[(We have implemented our specification)-249.9(rules as such in our tool where B and VDM operators have)]TJ
+-2.37 -1.34 TD
+-0.0176 Tw
+[(been translated into Prolog. This)-249.9(process is the same as those followed in  )11.1([4])5.6( and [11]. The tool is fully)]TJ
+0 -1.33 TD
+0.0037 Tw
+[(automated. A debugger allows to apply the)-249.9(rules step by step. This is useful while trying to understand)]TJ
+T*
+0.0099 Tw
+[(the behavior of a residual program. For)-249.9(instance, with such a debugger, the user may know at any pro-)]TJ
+0 -1.34 TD
+-0.0155 Tw
+[(gram point the static values and then)-249.9(understand either why a then-branch of an alternative has been re-)]TJ
+0 -1.33 TD
+-0.0566 Tw
+[(moved and not the else-branch, as he)-250(would have thought, or why a function does not yields the expected)]TJ
+T*
+0 Tw
+(result.)Tj
+2.37 -1.75 TD
+0.0028 Tw
+[(We have used natual semantics to write)-249.9(our specification rules. Natural semantics gives a forma-)]TJ
+-2.37 -1.34 TD
+-0.0238 Tw
+[(lism to write inference rules, but it)-249.9(does not provide any formalism to describe \(and decompose\) the en-)]TJ
+0 -1.33 TD
+0.0093 Tw
+[(vironments appearing in the rules.)-249.9(Without interprocedural analysis, such an environment was a single)]TJ
+T*
+-0.0027 Tw
+[(SV-like map. This map was thus a)-249.9(variable in the inference rules. But with an interprocedural analysis,)]TJ
+0 -1.34 TD
+0.0089 Tw
+[(given the environments we propagate, we)-249.9(can not afford to show to the user all the environment varia-)]TJ
+0 -1.33 TD
+0.0156 Tw
+[(bles appearing in the rules. Thus, the)-249.9(environments are pretty-printed in a user-friendly style \(which is)]TJ
+T*
+-0.013 Tw
+[(close to Fortran\). Instead of showing)-249.9(directly the mathematical variables that are used in environments,)]TJ
+0 -1.34 TD
+0.0121 Tw
+[(only information that are relevant for)-249.9(the user \(for instance information related to common blocks\) are)]TJ
+0 -1.33 TD
+-0.0263 Tw
+[(visualized. For instance COMMON A / e =)-249.9(2, f = u is pretty-printed instead of)]TJ
+/F4 1 Tf
+-2.7683 24.955 TD
+0 Tc
+0 Tw
+( )Tj
+33.6883 -24.955 TD
+-0.0001 Tc
+-0.0263 Tw
+[( Env.ComDecl)]TJ
+/F1 1 Tf
+-33.4383 24.955 TD
+0 Tc
+0 Tw
+( )Tj
+39.2483 -24.955 TD
+-0.0263 Tw
+[( = )]TJ
+/F4 1 Tf
+-38.9983 24.955 TD
+0 Tw
+( )Tj
+40.0083 -24.955 TD
+-0.0001 Tc
+({A )Tj
+/F7 1 Tf
+12 0 2.5507 12 32 819 Tm
+0 Tc
+( )Tj
+46.2927 -24.955 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 35 819 Tm
+( )Tj
+41.7283 -24.955 TD
+-0.0264 Tw
+[( {1)]TJ
+/F7 1 Tf
+12 0 2.5507 12 38 819 Tm
+0 Tw
+( )Tj
+7.1054 -26.285 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 41 819 Tm
+( )Tj
+2.2583 -26.285 TD
+( e, 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 44 819 Tm
+( )Tj
+9.5454 -26.285 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 47 819 Tm
+( )Tj
+4.6883 -26.285 TD
+-0.0001 Tc
+( f}} ,  State.ComVal)Tj
+/F1 1 Tf
+-4.4383 26.285 TD
+0 Tc
+( )Tj
+12.2983 -26.285 TD
+( = )Tj
+/F4 1 Tf
+-12.0483 26.285 TD
+( )Tj
+13.1083 -26.285 TD
+-0.0001 Tc
+({ A )Tj
+/F7 1 Tf
+12 0 2.5507 12 56 819 Tm
+0 Tc
+( )Tj
+19.9554 -26.285 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 59 819 Tm
+( )Tj
+15.1083 -26.285 TD
+( { 1 )Tj
+/F7 1 Tf
+12 0 2.5507 12 62 819 Tm
+( )Tj
+22.0954 -26.285 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 65 819 Tm
+( )Tj
+17.2483 -26.285 TD
+( 2 , 2 )Tj
+/F7 1 Tf
+12 0 2.5507 12 68 819 Tm
+( )Tj
+24.8354 -26.285 TD
+()Tj
+/F4 1 Tf
+12 0 0 12 71 819 Tm
+( )Tj
+19.9783 -26.285 TD
+( u } })Tj
+/F1 1 Tf
+-19.7283 26.285 TD
+( )Tj
+21.7783 -26.285 TD
+(.)Tj
+/F2 1 Tf
+-21.5283 26.285 TD
+( )Tj
+-1.7317 -28.455 TD
+-0.0001 Tc
+[(6)-210.1( Conc)-8.4(lusion)]TJ
+/F1 1 Tf
+1.9817 28.455 TD
+0 Tc
+( )Tj
+0.3883 -30.035 TD
+-0.0001 Tc
+-0.0141 Tw
+[(We have explained how to extend  by)-249.9(interprocedural analysis our program specialization techni-)]TJ
+-2.37 -1.34 TD
+0.0371 Tw
+[(que for program understanding. That)-249.9(analysis is especially difficult in Fortran, due to the lack of well)]TJ
+0 -1.33 TD
+-0.0221 Tw
+[(defined interprocedural mechanisms and)-249.9(the complexity of visibility rules. Therefore we have designed)]TJ
+T*
+0.0028 Tw
+[(these extensions very carefully,)-249.9(starting with a formal specification of the information to be)-249.9(computed.)]TJ
+0 -1.34 TD
+-0.0081 Tw
+[(These extensions are now integrated in)-249.9(our tool and they allow us to specialize complex programs with)]TJ
+0 -1.33 TD
+0.0173 Tw
+[(much greater precision than previously.)-249.9(Information is propagated along procedure calls, and speciali-)]TJ
+T*
+0 Tw
+[(zed versions of the called procedures are)-249.9(proposed to the maintainer.)]TJ
+2.37 -1.75 TD
+0.0262 Tw
+[(The first experiments with these)-249.9(extensions have given very satisfactory results. Some improve-)]TJ
+-2.37 -1.34 TD
+0.005 Tw
+[(ments are now under consideration. For)-249.9(instance a good strategy for reuse of procedure specializations)]TJ
+0 -1.33 TD
+0.0382 Tw
+[(must be developed. Furthermore the)-249.9(information we compute for interprocedural specialization are of)]TJ
+T*
+-0.0119 Tw
+[(great interest by themselves, in the)-249.9(program comprehension process, independently of its particular use)]TJ
+0 -1.34 TD
+0 Tw
+[(in specialization. Therefore we develop ways)-249.9(to show it in a user-friendly shape.)]TJ
+/F2 1 Tf
+2.2317 45.125 TD
+0 Tc
+( )Tj
+0.1383 -46.875 TD
+-0.0001 Tc
+(References)Tj
+/F1 1 Tf
+0.1117 46.875 TD
+0 Tc
+( )Tj
+-2.4817 -48.625 TD
+-0.0001 Tc
+[([1])-634.4(J.R.Abrial "The B method" CNAM lecture)-249.9(notes, 1994)]TJ
+0 -1.41 TD
+-0.0552 Tw
+[([2])-634.4(L.O.Andersen "Program analysis and)-249.9(specialization for the C programming language" Ph.D.Thesis,)]TJ
+1.8 -1.17 TD
+0 Tw
+[(University of Copenhagen, Denmark, DIKU)-250(report 94/19, 1994.)]TJ
+-1.8 -1.42 TD
+-0.0553 Tw
+[([3])-634.4(S.Blazy, P.Facon "Partial evaluation)-249.9(as an aid to the comprehension of Fortran programs" 2nd IEEE)]TJ
+1.8 -1.16 TD
+0 Tw
+[(Workshop on Program Comprehension, Capri,)-250(Italy, July 1993, 46-54.)]TJ
+-1.8 -1.42 TD
+0.3308 Tw
+[([4])-634.4(S.Blazy, P.Facon "SFAC: a tool for)-249.9(program comprehension by specialization" 3rd IEEE)]TJ
+1.8 -1.17 TD
+0 Tw
+[(Workshop on Program Comprehension,)-250(Washington D.C., November 1994, 162-167.)]TJ
+-1.8 -1.41 TD
+0.0363 Tw
+[([5])-634.4(S.Blazy, P.Facon "Formal specification)-249.9(and prototyping of a program specializer" TAPSOFT)]TJ
+/F3 1 Tf
+39.4592 0 TD
+0 Tc
+0 Tw
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(95,)Tj
+-37.9921 -1.17 TD
+0 Tc
+(Aarhus, May 1995, LNCS 915, 666-680.)Tj
+ET
+endstream
+endobj
+63 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+/F3 6 0 R
+/F4 15 0 R
+/F7 24 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+65 0 obj
+<<
+/Length 2941
+>>
+stream
+BT
+/F1 1 Tf
+12 0 0 12 17 819 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+( )Tj
+23.7683 -64.295 TD
+(17)Tj
+ET
+1 g
+56.22 791.58 492.96 -697.92 re
+f
+BT
+12 0 0 12 17 819 Tm
+0 g
+( )Tj
+3.2683 -2.955 TD
+-0.0002 Tc
+([6])Tj
+/F4 1 Tf
+0 0 0 rg
+-3.0183 2.955 TD
+0 Tc
+( )Tj
+4.8183 -2.955 TD
+-0.0001 Tc
+(FORTRAN. )Tj
+/F1 1 Tf
+-4.5683 2.955 TD
+0 Tc
+( )Tj
+9.4583 -2.955 TD
+-0.0001 Tc
+(ANSI standard X3.9, 1978.)Tj
+-6.69 -1.42 TD
+0.2863 Tw
+[([7])-634.4(M.Haziza, J.F.Voidrot, E.Minor,)-249.9(L.Pofelski, S.Blazy "Software maintenance: an analysis of)]TJ
+1.8 -1.16 TD
+0 Tw
+[(industrial needs and constraints" IEEE Conf.)-249.9(on Soft. Maintenance, Orlando, November 1992.)]TJ
+-1.8 -1.42 TD
+[([8])-634.4(C.B.Jones "Systematic development using VDM")-249.9(2nd eds., Prentice-Hall, 1990.)]TJ
+T*
+0.41 Tw
+[([9])-634.4(N.D.Jones, C.K.Gomard, P.Sestoft)-249.9("Partial evaluation and automatic program generation")]TJ
+1.8 -1.16 TD
+0 Tw
+(Prentice-Hall, 1993.)Tj
+-1.8 -1.42 TD
+[([10])-134.5( G.Kahn, "Natural semantics" Proceedings)-249.9(of STACS)]TJ
+/F3 1 Tf
+23.2766 0 TD
+0 Tc
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+(87, LNCS, vol.247, March 1987.)Tj
+-23.6096 -1.42 TD
+0.1621 Tw
+[([11])-134.5(H.Parisot, F.Paumier "Aide )]TJ
+/F3 1 Tf
+13.5246 0 TD
+0 Tc
+0 Tw
+(‡)Tj
+/F1 1 Tf
+0.4439 0 TD
+-0.0001 Tc
+0.1621 Tw
+[( la)-249.9(compr)]TJ
+/F3 1 Tf
+3.9382 0 TD
+0 Tc
+0 Tw
+(È)Tj
+/F1 1 Tf
+0.4439 0 TD
+-0.0001 Tc
+0.1621 Tw
+(hension et )Tj
+/F3 1 Tf
+4.6561 0 TD
+0 Tc
+0 Tw
+(‡)Tj
+/F1 1 Tf
+0.4439 0 TD
+-0.0001 Tc
+0.1621 Tw
+[( la maintenance du logiciel: calculs inter-)]TJ
+-21.6507 -1.16 TD
+0 Tw
+(proc)Tj
+/F3 1 Tf
+1.7766 0 TD
+0 Tc
+(È)Tj
+/F1 1 Tf
+0.4439 0 TD
+-0.0001 Tc
+-0.0305 Tw
+[(duraux pour la maintenance de)-249.9(programmes Fortran" Master)]TJ
+/F3 1 Tf
+24.02 0 TD
+0 Tc
+0 Tw
+(ê)Tj
+/F1 1 Tf
+0.3329 0 TD
+-0.0001 Tc
+-0.0305 Tw
+(s thesis, IIE-CNAM, June 1995.)Tj
+-28.3734 -1.42 TD
+0.201 Tw
+[([12])-134.5(S.Tilley, K.Wong, M.A.Storey,)-249.9(H.M)]TJ
+/F3 1 Tf
+16.8932 0 TD
+0 Tc
+0 Tw
+(¸)Tj
+/F1 1 Tf
+0.4999 0 TD
+-0.0001 Tc
+0.201 Tw
+(ller "Programmable reverse engineering" Int. Journal of)Tj
+-15.5931 -1.17 TD
+0 Tw
+[(Soft.Eng.&Knowledge Eng., 4\(4\), December)-250(1994, 501-520.)]TJ
+-1.8 -1.41 TD
+0 Tc
+0.2434 Tw
+[([13])-134.4( H.J.Van Zuylen, )]TJ
+/F4 1 Tf
+-2.5183 17.535 TD
+0 Tw
+( )Tj
+12.1583 -17.535 TD
+-0.0001 Tc
+0.2434 Tw
+(Understanding in reverse engineering)Tj
+/F1 1 Tf
+-11.9083 17.535 TD
+0 Tc
+0 Tw
+( )Tj
+27.8883 -17.535 TD
+0.2434 Tw
+[(. The REDO handbook, Wiley eds.,)]TJ
+-23.82 -1.17 TD
+-0.0001 Tc
+0 Tw
+(September 1992.)Tj
+-1.8 -1.42 TD
+-0.0156 Tw
+[([14])-134.5(A.Von Maryhauser, A.M.Vans "Dynamic)-249.9(code cognition behaviors for large scale code" 3rd IEEE)]TJ
+1.8 -1.16 TD
+0 Tw
+[(Workshop on Program Comprehension,)-250(Washington D.C., November 1994, 74-81.)]TJ
+-1.8 -1.42 TD
+0.1858 Tw
+[([15])-134.5(N.Wilde, M.C.Scully "Software)-249.9(reconnaissance: mapping program features to code" Software)]TJ
+1.8 -1.17 TD
+0 Tw
+[(maintenance research and practice, vol.7,)-249.9(1995, 49-62.)]TJ
+ET
+endstream
+endobj
+66 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F1 4 0 R
+/F3 6 0 R
+/F4 15 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+67 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 865
+/CapHeight 685
+/Descent 9
+/Flags 6
+/FontBBox [-31 -399 1107 920]
+/FontName /EHPHLD+Zed
+/ItalicAngle 0
+/StemV 46
+/XHeight 532
+/StemH 46
+/CharSet (/space/r/t/y/u/e/degree/AE/p/U/semicolon/hyphen/paragraph/c/z/zero)
+/FontFile3 68 0 R
+>>
+endobj
+68 0 obj
+<<
+/Filter /FlateDecode
+/Length 973
+/Subtype /Type1C
+>>
+stream
+HâåR]LTGûŸÂÓRƒ´ÜçÓÆ5§ .A©÷ÇÆñZä+H≠61Úﬂ[d/k√O®4‡.
+¢∏¶±$––´µp±4T|≤}™&jScÈ[Œ,Á&Ì,}®èù/g2Á|ﬂôs2s(â2JÈ™=˘û¸∑ÛPyYƒM·Iî[¢xrl¢¢o\˛mŸ%≠'Ó…î’ÆÅuk¡wm˘F<1Pj€∞˚x›)µ∫≤™¡QT}¨Í®ZÊÿwº∂ºﬁÂ»‹±#+rùXî»$é$ìl‚&{…Ú)&%‰yáÙìz‚#ki;ãèï◊©'N}ÿˇ˘ó$NtEåD"åÙS+-†MÙ[˙–@vC°°…†≥çcôCv»üB´F˘]he˙ï√fz™¥pñF«µVÕûó≤öaÈN~÷hjVbÆ@eÍh÷læΩ≤¢‰†ﬂ:\#˘ß¶Øé⁄<˜~≠xöïê+PÒ¥‚—˛{ˆ◊uE_*Ω£<X∞¬õ‡(¯˘G•t÷—ÿ√∞ ùòä/Áßˆ€:π¬ø} Ã…∂ ˙˙∂°[CpbËˆ˝fd|ƒ‹¬ÇÍÄ¢xUEPÉ¡¡Å†G˘ÕÎˇc.5¥w]∂]P>hˆ’∫o‹=s?∫≥∆ÊÊ∆∆ñæ¿•ﬁæ@†Øπ)í‹ÿ“"bΩÅ@oƒZmÚe>«/∞√®ö–πs+:œŸ•≥ª¬&+®GP5cﬁ‚»Î∞Å˚Ã_@¿mï{:5¯C££öë?ËdŒòS∂|∑¥¥¯ÀífÑk¬x49ƒñ Q9ê`ówµiê£AÆFØâúˆ66ÅMÊÃWFa›Gvû9°gö¿rq˛´GI–$∆ =à< Ùmà±À'}œä‰rÒK|Ã«xóﬁ≠wô˘ªìLwÒÓ2…7˘Ìi#áb∆ÁÕ˙éK¸¨fz!TÛB®ï‰…©ic8N3}∆%}ﬁÃOÉ&x¨ñ¯n≥<µΩ)f@~^Rﬂ3}€˘(í¯vle˙v,9È_9üü=WqjYÈ€>é»[ÑJ∏p‰æÕ⁄Ù ì]˝œ˝ü'ÉôMbFø3‰ÅÄ˙`R†(é¯ö	Ra?Ó>£‡‹ù@¡Ìd.'¶˚“û8˝∞Â˜P(ÈæP˙ó]iŒËÊÎaﬁA¥$Ç≈ÎÖD\¡`ù`, ‚í‹Œ:À
+œ√~=O∫eÇ¡{í‰‹I⁄≠'ıç,9Í˛ëd‹lñ[?·o√´cêk≤}ˆ¢™÷ˇ˚Ç£≠∫z16v§7v5ƒ%gÏ ﬂ»´
+endstream
+endobj
+69 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+70 0 obj
+<<
+/ProcSet [/PDF /ImageB ]
+>>
+endobj
+57 0 obj
+<<
+/Name /T2
+/Type /Font
+/Subtype /Type3
+/Resources 70 0 R
+/FontBBox [0.08 -0.16 0.64 0.88]
+/FontMatrix [1 0 0 1 0 0]
+/FirstChar 146
+/LastChar 146
+/Encoding 71 0 R
+/CharProcs 72 0 R
+/Widths [0.75 ]
+/ToUnicode 73 0 R
+>>
+endobj
+71 0 obj
+<<
+/Type /Encoding
+/Differences [146/trademark ]
+>>
+endobj
+72 0 obj
+<<
+/trademark 74 0 R
+>>
+endobj
+74 0 obj
+<<
+/Length 134
+>>
+stream
+0.75 0 0.08 -0.16 0.64 0.88 d1
+q
+0.72 0 0 1.36 0.08 -0.32 cm
+BI
+/W 9
+/H 17
+/BPC 1
+/IM true
+ID ˇˇˇˇÔˇÔˇˇÌˇÌˇÌˇÅˇÌˇÌˇÌˇˇÔˇÔˇˇˇˇˇ
+EI
+Q
+endstream
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding 75 0 R
+/BaseFont /Times-Roman
+/ToUnicode 76 0 R
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Italic
+>>
+endobj
+22 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-BoldItalic
+>>
+endobj
+23 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding 77 0 R
+/BaseFont /Symbol
+/ToUnicode 78 0 R
+>>
+endobj
+35 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Encoding 79 0 R
+/BaseFont /Times-Bold
+/ToUnicode 80 0 R
+>>
+endobj
+36 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/FirstChar 32
+/LastChar 198
+/Widths [500 500 500 500 500 500 500 500 500 500 500 500 500 625 500 500 
+861 500 500 500 500 500 500 500 500 500 500 214 500 500 500 500 
+500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 
+500 500 500 500 500 623 500 500 500 500 500 500 500 500 500 500 
+500 500 500 614 500 534 500 500 500 500 500 500 500 500 500 500 
+587 500 655 500 658 651 500 500 500 651 620 500 500 500 500 500 
+500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 
+500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 
+500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 
+638 500 500 500 500 500 603 500 500 500 500 500 500 500 500 500 
+500 500 500 500 500 500 125 ]
+/Encoding 81 0 R
+/BaseFont /EHPHLD+Zed
+/FontDescriptor 67 0 R
+/ToUnicode 82 0 R
+>>
+endobj
+28 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 114
+/Widths [600 0 0 0 0 0 0 0 600 600 0 0 600 0 0 600 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 600 600 600 600 600 0 0 0 600 0 0 600 600 600 600 
+600 0 600 600 600 600 600 0 600 600 0 0 0 0 0 0 
+0 600 600 600 0 600 600 600 0 0 0 0 600 600 0 0 
+0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 69 0 R
+>>
+endobj
+75 0 obj
+<<
+/Type /Encoding
+/Differences [ 128/bullet 144/quoteright 224/agrave 233/eacute 252/udieresis
+]
+>>
+endobj
+77 0 obj
+<<
+/Type /Encoding
+/Differences [ 1/arrowright/union/Delta/notequal 32/space 58/colon 61/equal
+]
+>>
+endobj
+79 0 obj
+<<
+/Type /Encoding
+/Differences [ 129/dagger
+]
+>>
+endobj
+81 0 obj
+<<
+/Type /Encoding
+/Differences [ 32/space 45/hyphen 48/zero 59/semicolon 85/U 99/c 101/e 112/p
+ 114/r 116/t/u 121/y/z 176/degree 182/paragraph 198/AE
+]
+>>
+endobj
+76 0 obj
+<<
+/Filter /FlateDecode
+/Length 243
+>>
+stream
+HâTP=oƒ ›˘Ô‘BU©ë"ñ\O –5◊ÓòÈàê!ˇæêDWu¿z∂yœœ¶mwÍúM@?¢W=&0÷Èàìü£B∏‚`T¥Uiœ÷®FÄfrøL	«ŒMCËgnN).p8?>∞#–˜®1Z7¿·R}}ÁB?áp√]BÄFCh˚*√õh°˝’.K@‡k^ÌÉΩ∆)HÖQ∫°yf£†”ˇ{‰ic\ç˙ëël?9„\ê¶ﬁpUgå3ˆ¬
+Æ7\ÍE4„s+H÷ﬁU î≤˙›∞öcÃª¨˜Y-≥÷·˝Ñ¡á‚≠<Ú+¿ Vs
+endstream
+endobj
+78 0 obj
+<<
+/Filter /FlateDecode
+/Length 254
+>>
+stream
+HâTêMkƒ ÜÔ˛ä9nÈAc .Ö î]
+9ÙÉf€ª´ìThås»øØ„Ü-=(œ|˘˙?∂ß÷ª¸=N¶√ΩÛ6‚<-— \pp*	÷ô¥EÂ6£¿Ûp∑Œ	«÷˜4„π8ß∏¬Ó˘p/ÓÄøEã—˘vÁÍÛ+'∫%Ñ—'†XÏ?æË™GNcπÛdâ´Mx≤8m0j? 4¢R–‘Vz˚ø∆◊âKoæud◊NY=JïYK˘D\{‚á¬{ëYäÃBH‚ZÆ©üƒàOäeÕÌuRßï‹åò%∆Ï±Ï≠X!Œ„mµa
+Ùg:ÏWÄ ¡Dv◊
+endstream
+endobj
+80 0 obj
+<<
+/Filter /FlateDecode
+/Length 215
+>>
+stream
+HâTP±éÉ0›Û{∫!¿‘±¥™ƒ–ª”—Îû&ÜF*Nd¬¿ﬂ_î™Éü‰g?ΩgÀC}¨…ê?ÏtÉZKÜqp#kÑvñ /¿X÷nF›+2äõiÿ◊‘:(K!„p<¡Ó¥ˇÃ>@~≥A∂‘¡Óíˇ]#—åﬁ?∞G
+êAUÅ¡V»√Y˘/’#»${qó…#süØ∆Œ‡‡ïFV‘!î˚ºZ …ºœûä[´Ôä≈≤YdEVâ∏ª≤IïNŸËë9fõÔù#$sK∏Ωƒ;üºRâ ëahi
+endstream
+endobj
+82 0 obj
+<<
+/Filter /FlateDecode
+/Length 297
+>>
+stream
+HâTëMoÉ0ÜÔ¸
+;Ì
++®Rƒ°Tì8ÏC£€=$¶C!
+pËøü£N;$~Ú∆Ø‚ÿ¢nŒçÔ~“-.–÷xúß’kÑØÉÖ}f–ÀväªïAÊˆ6/86∂ü@ D|–Âº¯ÏûèèÈà7o–ˆ
+ªÀ˛ÛãÑvuÓG¥§PU`∞OD˝¢‹´D∞˝ióõC»‚yø=<úù“ËïΩ"»,≠@Í¢¥Êˇ]BeGK◊ÎoÂNMS
+ƒÜ˘Lú≥û=ÔòOƒáCd
+â,Ú»àY/Ç^≤∑ﬁ2cŒà;÷OAÔ
+ÊÇX3◊ƒTVŸΩNÆ[ñOîTÚ+ƒ$É†X8nVNﬂ≥∏wPØﬁSs„¿bC˜ã˜ô∫…ÖfÖï¸
+0 Qì{
+endstream
+endobj
+73 0 obj
+<<
+/Filter /FlateDecode
+/Length 223
+>>
+stream
+HâTê±nƒ Üwû¬c´ t:	±\ów≠ökwú©‰ê!o_‡¢´: Úoˆo¯©ÌÉœ¿ﬂ)⁄3å>8¬%Ædn8˘ ùÁmﬁ£v€Ÿ$‡∂%„‹á1ÇRåî‰íiÉß´<àg‡o‰ê|òäÚ˘UÑaMÈghG∆Ogì.fF‡˚”Æ[Bê-Óˆ¡—·íåE2aBPRhPG©É˚ücÚN‹F˚mà›+Ö(kÄíùîönØ®ÍZ3v%*>€ÓÕN5‚>æ'≈TÁ÷√~ ˝∫jæ
+endstream
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 14 0 R
+/Contents 13 0 R
+>>
+endobj
+16 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 18 0 R
+/Contents 17 0 R
+>>
+endobj
+19 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 21 0 R
+/Contents 20 0 R
+>>
+endobj
+25 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 27 0 R
+/Contents 26 0 R
+>>
+endobj
+29 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 31 0 R
+/Contents 30 0 R
+>>
+endobj
+32 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 34 0 R
+/Contents 33 0 R
+>>
+endobj
+37 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 39 0 R
+/Contents 38 0 R
+>>
+endobj
+40 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 42 0 R
+/Contents 41 0 R
+>>
+endobj
+43 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 45 0 R
+/Contents 44 0 R
+>>
+endobj
+48 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 50 0 R
+/Contents 49 0 R
+>>
+endobj
+51 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 53 0 R
+/Contents 52 0 R
+>>
+endobj
+54 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 56 0 R
+/Contents 55 0 R
+>>
+endobj
+58 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 60 0 R
+/Contents 59 0 R
+>>
+endobj
+61 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 63 0 R
+/Contents 62 0 R
+>>
+endobj
+64 0 obj
+<<
+/Type /Page
+/Parent 47 0 R
+/Resources 66 0 R
+/Contents 65 0 R
+>>
+endobj
+83 0 obj
+<<
+/S /D
+>>
+endobj
+84 0 obj
+<<
+/Nums [0 83 0 R ]
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R 12 0 R 16 0 R 19 0 R 25 0 R 29 0 R 32 0 R 37 0 R 40 0 R]
+/Count 10
+/Parent 46 0 R
+>>
+endobj
+47 0 obj
+<<
+/Type /Pages
+/Kids [43 0 R 48 0 R 51 0 R 54 0 R 58 0 R 61 0 R 64 0 R]
+/Count 7
+/Parent 46 0 R
+>>
+endobj
+46 0 obj
+<<
+/Type /Pages
+/Kids [8 0 R 47 0 R ]
+/Count 17
+/MediaBox [0 0 595 842]
+>>
+endobj
+85 0 obj
+<<
+/CreationDate (D:20041229084324-06'00')
+/ModDate (D:20041229084324-06'00')
+/Producer (PSNormalizer.framework)
+>>
+endobj
+86 0 obj
+<<
+/Type /Catalog
+/Pages 46 0 R
+/PageLabels 84 0 R
+>>
+endobj
+xref
+0 87
+0000000000 65535 f 
+0000170066 00000 n 
+0000000016 00000 n 
+0000002412 00000 n 
+0000165931 00000 n 
+0000166030 00000 n 
+0000166128 00000 n 
+0000163674 00000 n 
+0000171548 00000 n 
+0000170146 00000 n 
+0000002526 00000 n 
+0000007699 00000 n 
+0000170228 00000 n 
+0000007814 00000 n 
+0000014164 00000 n 
+0000166235 00000 n 
+0000170311 00000 n 
+0000014290 00000 n 
+0000017900 00000 n 
+0000170394 00000 n 
+0000018005 00000 n 
+0000023170 00000 n 
+0000166337 00000 n 
+0000166442 00000 n 
+0000166545 00000 n 
+0000170477 00000 n 
+0000023329 00000 n 
+0000029268 00000 n 
+0000167602 00000 n 
+0000170560 00000 n 
+0000029396 00000 n 
+0000035062 00000 n 
+0000170643 00000 n 
+0000035178 00000 n 
+0000052353 00000 n 
+0000166648 00000 n 
+0000166755 00000 n 
+0000170726 00000 n 
+0000052512 00000 n 
+0000071717 00000 n 
+0000170809 00000 n 
+0000071877 00000 n 
+0000085629 00000 n 
+0000170892 00000 n 
+0000085788 00000 n 
+0000108538 00000 n 
+0000171799 00000 n 
+0000171683 00000 n 
+0000170976 00000 n 
+0000108720 00000 n 
+0000121076 00000 n 
+0000171060 00000 n 
+0000121247 00000 n 
+0000133518 00000 n 
+0000171144 00000 n 
+0000133688 00000 n 
+0000140402 00000 n 
+0000165402 00000 n 
+0000171228 00000 n 
+0000140561 00000 n 
+0000153640 00000 n 
+0000171312 00000 n 
+0000153799 00000 n 
+0000160427 00000 n 
+0000171396 00000 n 
+0000160564 00000 n 
+0000163558 00000 n 
+0000163814 00000 n 
+0000164101 00000 n 
+0000165164 00000 n 
+0000165355 00000 n 
+0000165637 00000 n 
+0000165705 00000 n 
+0000169770 00000 n 
+0000165745 00000 n 
+0000167998 00000 n 
+0000168469 00000 n 
+0000168115 00000 n 
+0000168785 00000 n 
+0000168231 00000 n 
+0000169112 00000 n 
+0000168297 00000 n 
+0000169400 00000 n 
+0000171480 00000 n 
+0000171508 00000 n 
+0000171890 00000 n 
+0000172022 00000 n 
+trailer
+<<
+/Size 87
+/Root 86 0 R
+/Info 85 0 R
+/ID [<e1f77e4b73fe812dc2b02c622787d60d><e1f77e4b73fe812dc2b02c622787d60d>]
+>>
+startxref
+172092
+%%EOF
